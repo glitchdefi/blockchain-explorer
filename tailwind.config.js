@@ -19,6 +19,11 @@ module.exports = {
         cobalt: "var(--color-cobalt)",
         nero: "var(--color-nero)",
       },
+      maxWidth: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+      },
       borderRadius: {
         DEFAULT: "5px",
       },

@@ -1,11 +1,8 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 
 export const PageElementWrap = styled.div(() => [
   tw`
-  container
-  flex 
-  flex-wrap 
-  mx-auto 
-  items-center
+  px-8
+  lg:px-16
   `,
 ]);
