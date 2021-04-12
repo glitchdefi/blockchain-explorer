@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
 import { ThemeContext } from "../../../styles/theme/themeContext";
 
-// Sub Components
-import { Footer } from "../../components/Footer";
+// Main layout
+import { Page } from "../../layouts/Page";
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -12,13 +11,10 @@ export function HomePage() {
 
   return (
     <>
-      <Helmet
-        titleTemplate="Home Page"
-        defaultTitle="Home Page"
-        htmlAttributes={{ lang: "en" }}
-      >
-        <meta name="description" content="Home Page" />
-      </Helmet>
+      <Page meta={{}}>
+        {/* Content here */}
+        <div style={{ height: "75vh" }}></div>
+      </Page>
     </>
   );
 }
