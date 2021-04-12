@@ -9,7 +9,11 @@ import { Text } from "../Text";
 // Icon
 import glLogo from "./assets/logo.png";
 
-const Wrapper = styled.div(() => [tw``]);
+const Wrapper = tw.div`
+  text-center 
+  lg:(text-left max-w-1/4) 
+  xl:max-w-md
+`;
 
 function GlitchInfo() {
   const { t } = useTranslation();
@@ -18,9 +22,7 @@ function GlitchInfo() {
     <Wrapper>
       <ImageLink href="/" src={glLogo} alt="logo" width={60} height={60} />
       <Text tw="mt-3">{t("footer.powered_by_glitch")}</Text>
-      <Text tw="mt-3 text-white opacity-60">
-        {t("footer.glitch_info")}
-      </Text>
+      <Text tw="mt-3 text-white opacity-60">{t("footer.glitch_info")}</Text>
     </Wrapper>
   );
 }

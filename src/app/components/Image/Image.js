@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import tw, { styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import PropTypes from "prop-types";
 import observerOptions from "./options";
-import Wrapper from "./Wrapper";
 
-const StyledImage = styled.img(() => [
-  tw`absolute top-0 left-0 w-full h-full max-w-full`,
+const StyledImage = styled.img(({ width, height }) => [
+  css`height: ${height} width: ${width}`,
 ]);
 
-const Placeholder = styled.div(() => [tw`absolute top-0 left-0 w-full h-full`]);
+const Placeholder = styled.div(() => [tw`w-full h-full`]);
 
 const Image = ({ src, alt, ...otherProps }) => {
   const imgRef = useRef(null);
@@ -33,9 +32,13 @@ const Image = ({ src, alt, ...otherProps }) => {
   }, [src]);
 
   return (
-    <Wrapper ref={imgRef} {...otherProps}>
-      {isLoaded ? <StyledImage src={src} alt={alt} /> : <Placeholder />}
-    </Wrapper>
+    <div ref={imgRef}>
+      {isLoaded ? (
+        <StyledImage src={src} alt={alt} {...otherProps} />
+      ) : (
+        <Placeholder />
+      )}
+    </div>
   );
 };
 

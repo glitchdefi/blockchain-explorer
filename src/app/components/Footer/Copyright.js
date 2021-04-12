@@ -5,7 +5,7 @@ import moment from "moment";
 import { Text } from "../Text";
 
 const Wrapper = styled.div(() => [
-  tw`flex w-full py-4 justify-end`,
+  tw`text-center flex w-full py-4 justify-center lg:justify-end`,
   css`
     border-top-width: 1px;
     border-top-color: rgba(255, 255, 255, 0.11);
