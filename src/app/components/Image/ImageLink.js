@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { styled } from "twin.macro";
 
-import { Link } from "../Link";
 import Image from "./Image";
 
 const ImageLink = ({ href, src, alt, width, height }) => {
   return (
-    <Link href={href}>
+    <ImgLink href={href}>
       <Image src={src} alt={alt} width={width} height={height} />
-    </Link>
+    </ImgLink>
   );
 };
 
@@ -17,7 +17,11 @@ ImageLink.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   width: PropTypes.number,
-  height: PropTypes.number,
+  height: PropTypes.number
 };
+
+const ImgLink = styled.a`
+  display: inline-block;
+`;
 
 export default ImageLink;
