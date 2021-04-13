@@ -6,6 +6,7 @@ export function Logo() {
   return (
     <div className="gl-logo-blk">
       <ImageLink href="/" alt="gl-logo" src={glLogo} width={60} />
+      {/* <!-- Glitch LOGO --> */}
     </div>
   );
 }
