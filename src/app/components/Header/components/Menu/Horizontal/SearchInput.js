@@ -1,20 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import tw, { styled } from "twin.macro";
+import tw from "twin.macro";
 
 // Components
-import { Input } from "../../Input";
-import { StyledButton as Button } from "../../Button/StyledButton";
-import { Image } from "../../Image";
+import { Input } from "../../../../Input";
+import { StyledButton as Button } from "../../../../Button/StyledButton";
+import { Image } from "../../../../Image";
 
 // Icon
-import searchIcon from "../assets/search_icon.png";
-
-const Wrapper = styled.div(() => [
-  tw`flex flex-wrap col-span-3 items-center justify-end`,
-]);
-
-const InputWrapper = styled.div(() => [tw`flex`]);
+import searchIcon from "../../../assets/search_icon.png";
 
 export function SearchInput() {
   const { t } = useTranslation();
@@ -30,3 +24,6 @@ export function SearchInput() {
     </Wrapper>
   );
 }
+
+const Wrapper = tw.div`lg:flex items-center hidden`;
+const InputWrapper = tw.div`flex`;

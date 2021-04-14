@@ -1,15 +1,8 @@
 {
-  "compilerOptions": {
-      "baseUrl": ".",
-      "target": "es6",
+    "compilerOptions": {
       "module": "commonjs",
-      "paths": {
-        "@app/*": ["./src/app/*"],
-        "@constants/*": ["./src/constants/*"],
-        "@hooks/*": ["./src/hooks/*"]
-      }
-  },
-  "include": [
-    "src/**/*"
-  ]
+      "target": "es6",
+      "baseUrl": "./src"
+    },
+    "include": ["src/**/*"]
 }

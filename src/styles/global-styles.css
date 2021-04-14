@@ -3,6 +3,7 @@
   --color-secondary: #172a45;
   --color-white-alt: #ccd6f6;
   --color-oxford-blue: #243237;
+  --color-oxford-blue-opacity-60: rgba(36, 50, 55, 0.6);
   --color-cobalt: #005fa9;
   --color-nero: #131313;
 }
@@ -13,7 +14,7 @@ html {
   font-family: "PT Mono", monospace;
   height: 100%;
   background-color: var(--color-nero);
-  font-size: .875;
+  font-size: 0.875;
   line-height: 1.5;
 }
 
@@ -27,17 +28,8 @@ code {
   font-family: "PT Mono", monospace;
 }
 
-/* @font-face {
-  font-family: "PT Mono";
-  src: url("./fonts/PTMono-Regular.woff2") format("woff2"),
-    url("./fonts/PTMono-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-} */
-
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
