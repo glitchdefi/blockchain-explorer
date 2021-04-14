@@ -4,10 +4,13 @@ import PropTypes from "prop-types";
 import observerOptions from "./options";
 
 const StyledImage = styled.img(({ width, height }) => [
-  css`height: ${height} width: ${width}`,
+  css`
+    height: ${height ? height : 'auto'};
+    width: ${width ? width + 'px' : 'auto'};
+  `,
 ]);
 
-const Placeholder = styled.div(() => [tw`w-full h-full`]);
+const Placeholder = styled.div(() => [tw`h-full`]);
 
 const Image = ({ src, alt, ...otherProps }) => {
   const imgRef = useRef(null);
@@ -32,13 +35,13 @@ const Image = ({ src, alt, ...otherProps }) => {
   }, [src]);
 
   return (
-    <div ref={imgRef}>
+    <span ref={imgRef}>
       {isLoaded ? (
         <StyledImage src={src} alt={alt} {...otherProps} />
       ) : (
         <Placeholder />
       )}
-    </div>
+    </span>
   );
 };
 

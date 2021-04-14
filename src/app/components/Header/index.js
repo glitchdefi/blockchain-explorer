@@ -6,7 +6,7 @@ import { HorizontalMenu, VerticalMenu } from "./components/Menu";
 
 import { Button } from "../Button";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
-import { Logo } from "./components/Logo";
+import { Logo } from "src/app/components/Logo";
 import { SearchInput } from "./components/Menu/Horizontal/SearchInput";
 
 // Icon
