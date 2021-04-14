@@ -18,9 +18,9 @@ const LinkWrapper = styled.li(() => [tw`pl-8`]);
 function NavBar() {
   return (
     <Wrapper>
-      {links.map((link) => {
+      {links.map((link, i) => {
         return (
-          <LinkWrapper>
+          <LinkWrapper key={i}>
             <Link href={link.href}>{link.label}</Link>
           </LinkWrapper>
         );

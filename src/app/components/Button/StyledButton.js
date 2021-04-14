@@ -14,6 +14,7 @@ export const StyledButton = styled.button(({ isLoading, disabled }) => [
   justify-center 
   cursor-pointer 
   hover:opacity-90
+  bg-transparent
   `,
 
   css`

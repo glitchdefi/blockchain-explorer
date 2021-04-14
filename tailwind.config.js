@@ -16,6 +16,7 @@ module.exports = {
         secondary: "var(--color-secondary)",
         whiteAlt: "var(--color-white-alt)",
         oxfordBlue: "var(--color-oxford-blue)",
+        oxfordBlue60: "var(--color-oxford-blue-opacity-60)",
         cobalt: "var(--color-cobalt)",
         nero: "var(--color-nero)",
       },
