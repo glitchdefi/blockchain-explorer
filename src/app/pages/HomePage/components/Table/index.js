@@ -9,14 +9,112 @@ import {
   TableBody,
   TableCell,
 } from "src/app/components/Table";
+import { TabContentWrapper } from "src/app/components/Tab/TabContentWrapper";
 import { Tabs } from "./Tabs";
 
 export function Table() {
   return (
     <TableContainer>
       <Tabs />
-      <PTable>
-        <TableHeader>
+      <TabContentWrapper>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+        <p>Demo content</p>
+      </TabContentWrapper>
+        {/* <TableHeader>
           <TableRow>
             <TableHeaderCell>Rank</TableHeaderCell>
             <TableHeaderCell>Block Producer</TableHeaderCell>
@@ -44,8 +142,7 @@ export function Table() {
             <TableCell>Test</TableCell>
             <TableCell>Test</TableCell>
           </TableRow>
-        </TableBody>
-      </PTable>
+        </TableBody> */}
     </TableContainer>
   );
 }

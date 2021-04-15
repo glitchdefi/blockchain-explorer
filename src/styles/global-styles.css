@@ -43,3 +43,8 @@ code {
   background: var(--color-primary);
   border-radius: 10px;
 }
+
+p {
+  margin: 0;
+  padding: 0;
+}
