@@ -22,7 +22,7 @@ const Wrapper = styled.div(() => [
     &:before {
       content: '';
       display: block;
-      width: 12px;
+      width: 30px;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -32,7 +32,7 @@ const Wrapper = styled.div(() => [
     &:after {
       content: '';
       display: block;
-      width: 12px;
+      width: 30px;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -40,8 +40,11 @@ const Wrapper = styled.div(() => [
       background: rgba(36, 198, 201, 0.3);
     }
     .inner {
+      position: relative;
+      z-index: 2;
       background-color: #1C2A2F;
       padding: 30px;
+      border-radius: 0 0px 5px 5px;
     }
   `,
 ]);
