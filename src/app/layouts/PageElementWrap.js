@@ -1,4 +1,4 @@
-import tw, { styled, css } from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 export const PageElementWrap = styled.div(() => [
   tw`

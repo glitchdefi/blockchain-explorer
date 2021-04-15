@@ -4,6 +4,16 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
+        10: "10px",
+        11: "11px",
+        12: "12px",
+        13: "13px",
+        14: "14px",
+        15: "15px",
+        16: "16px",
+        17: "17px",
+        18: "18px",
+        tiny: "13px",
         xs: "14px",
         base: "16px",
         lg: "18px",
@@ -19,6 +29,7 @@ module.exports = {
         oxfordBlue60: "var(--color-oxford-blue-opacity-60)",
         cobalt: "var(--color-cobalt)",
         nero: "var(--color-nero)",
+        "black-pearl": "var(--color-black-pearl)",
       },
       maxWidth: {
         "1/4": "25%",
@@ -27,6 +38,9 @@ module.exports = {
       },
       borderRadius: {
         DEFAULT: "5px",
+      },
+      zIndex: {
+        "-1": "-1",
       },
     },
   },
