@@ -3,10 +3,14 @@
   --color-secondary: #bf28e4;
   --color-white-alt: #ccd6f6;
   --color-oxford-blue: #243237;
+  --color-oxford-blue-2: #26353a;
   --color-oxford-blue-opacity-60: rgba(36, 50, 55, 0.6);
   --color-cobalt: #005fa9;
   --color-nero: #131313;
   --color-black-pearl: #1c2a2f;
+  --color-success: #24c6c9;
+  --color-pending: #bf28e4;
+  --color-info: #005fa9;
 }
 
 body,

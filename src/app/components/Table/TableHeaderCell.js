@@ -24,5 +24,5 @@ const styles = css`
 `;
 
 TableHeaderCell.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType(PropTypes.string, PropTypes.elementÇ),
 };

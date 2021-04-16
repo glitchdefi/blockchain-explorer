@@ -30,6 +30,10 @@ module.exports = {
         cobalt: "var(--color-cobalt)",
         nero: "var(--color-nero)",
         "black-pearl": "var(--color-black-pearl)",
+        "oxford-blue-2": "var(--color-oxford-blue-2)",
+        success: "var(--color-success)",
+        pending: "var(--color-pending)",
+        info: "var(--color-info)",
       },
       maxWidth: {
         "1/4": "25%",

@@ -4,7 +4,7 @@ import tw, { css } from "twin.macro";
 
 export default function Table({ children, ...props }) {
   return (
-    <table css={[tw`min-w-full bg-black-pearl pt-4 pl-4 pr-4`, tableStyles]} {...props}>
+    <table css={[tw`min-w-full bg-black-pearl`, tableStyles]} {...props}>
       {children}
     </table>
   );

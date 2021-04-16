@@ -24,7 +24,7 @@ const Wrapper = styled(Button)(({ isActive }) => [
 
   css`
     border-radius: 5px 5px 0px 0px;
-    background-color: #26353a;
+    background-color: ${theme`colors.oxford-blue-2`};
 
     .tab-label {
       color: ${isActive ? "white" : theme`colors.primary`} !important;

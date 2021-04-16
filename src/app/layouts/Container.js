@@ -1,4 +1,4 @@
-import tw, { styled, css } from "twin.macro";
+import { styled, css } from "twin.macro";
 import bg from "./assets/g_bg.jpg";
 
 export const Container = styled.div(() => [
