@@ -11,7 +11,7 @@ import { Page } from "src/app/layouts/Page";
 import { Text } from "src/app/components/Text";
 import { StatsCard } from "./components/StatsCard";
 import { PriceChart } from "./components/PriceChart";
-import { Table } from "./components/Table";
+import { DemoTable } from "./components/TabSections";
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -33,8 +33,8 @@ export function HomePage() {
     );
   };
 
-  const renderTable = () => {
-    return <Table />;
+  const renderTabSections = () => {
+    return <DemoTable />;
   };
 
   return (
@@ -48,8 +48,7 @@ export function HomePage() {
           </StatsWrapper>
         </div>
 
-        {/* Table */}
-        {renderTable()}
+        {renderTabSections()}
       </Page>
     </>
   );
