@@ -5,7 +5,7 @@ import tw from "twin.macro";
 // Components
 import { Card } from "src/app/components/Card";
 import { Text } from "src/app/components/Text";
-import { NumberChange } from "../NumberChange";
+import { NumberChange } from "src/app/components/NumberChange";
 
 export function StatsCard({ icon, title, value }) {
   return (

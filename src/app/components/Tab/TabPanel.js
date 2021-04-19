@@ -1,10 +1,15 @@
 import React from "react";
 import { theme, styled, css } from "twin.macro";
+import { usePanelState } from "./hooks/usePanelState";
 
-export function TabContentWrapper({ children, ...props }) {
+export function TabPanel({ children, ...props }) {
+  const { isActive } = usePanelState();
+
+  if (!isActive) return null;
+
   return (
     <Wrapper {...props}>
-      <div className="tab-content">
+      <div className="tab-panel">
         <div className="inner">{children}</div>
       </div>
     </Wrapper>

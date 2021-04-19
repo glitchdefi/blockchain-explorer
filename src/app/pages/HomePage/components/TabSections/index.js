@@ -1,70 +1,35 @@
 import React from "react";
-import { css, theme } from "twin.macro";
-import {
-  TableContainer,
-  Table as PTable,
-  TableRow,
-  TableHeader,
-  TableHeaderCell,
-  TableBody,
-  TableCell,
-} from "src/app/components/Table";
-import { TabContentWrapper } from "src/app/components/Tab/TabContentWrapper";
-import { Tag } from "src/app/components/Tag";
-import { Pagination } from "src/app/components/Pagination";
+import { TableContainer as Wrapper } from "src/app/components/Table";
+import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
+import { ProducerTable } from "src/app/components/Table/Producer";
+import { EpochTable } from "src/app/components/Table/Epoch";
+import { TransactionTable } from "src/app/components/Table/Transactions";
+import { BlockTable } from "src/app/components/Table/Block";
 
-import { Tabs } from "./Tabs";
-import { BlockProducerName } from "./BlockProducerName";
-import { NumberChange } from "../NumberChange";
-
-export function DemoTable() {
+export function TabSections() {
   return (
-    <TableContainer>
-      <Tabs />
-      <TabContentWrapper>
-        <PTable>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderCell>Rank</TableHeaderCell>
-              <TableHeaderCell>Block Producer</TableHeaderCell>
-              <TableHeaderCell>Status</TableHeaderCell>
-              <TableHeaderCell>Vote</TableHeaderCell>
-              <TableHeaderCell>Total Vote</TableHeaderCell>
-              <TableHeaderCell>Total Rewards</TableHeaderCell>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>1</TableCell>
-              <TableCell>
-                <BlockProducerName>Block Producer 1</BlockProducerName>
-              </TableCell>
-              <TableCell>
-                <Tag color="success">Success</Tag>
-              </TableCell>
-              <TableCell>Test</TableCell>
-              <TableCell>
-                <NumberChange
-                  css={[numberChangeStyles]}
-                  value="370,850,779"
-                  diff="26,049,388"
-                />
-              </TableCell>
-              <TableCell>Test</TableCell>
-            </TableRow>
-          </TableBody>
-        </PTable>
-        <Pagination />
-      </TabContentWrapper>
-    </TableContainer>
+    <Wrapper>
+      <TabContainer>
+        <Tabs>
+          <Tab>Producer</Tab>
+          <Tab>Epoch</Tab>
+          <Tab>Transactions</Tab>
+          <Tab>Block</Tab>
+        </Tabs>
+
+        <TabPanel>
+          <ProducerTable data={[1, 2, 3]} />
+        </TabPanel>
+        <TabPanel>
+          <EpochTable data={[1, 2]} />
+        </TabPanel>
+        <TabPanel>
+          <TransactionTable data={[1, 2, 3, 4]} />
+        </TabPanel>
+        <TabPanel>
+          <BlockTable data={[1, 2, 3, 5]} />
+        </TabPanel>
+      </TabContainer>
+    </Wrapper>
   );
 }
-
-const numberChangeStyles = css`
-  justify-content: center;
-  .number-change-value {
-    font-size: 13px;
-    color: ${theme`colors.white`};
-    opacity: 70%;
-  }
-`;

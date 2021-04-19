@@ -2,21 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import tw from "twin.macro";
 
-import { Text } from "src/app/components/Text";
-import { MoneyIcon } from "./icons";
+import { Link } from "src/app/components/Link";
+import { MoneyIcon } from "src/app/components/Icons";
 
 export const BlockProducerName = ({ href, children }) => {
   if (!children) return <div />;
   return (
     <Wrapper>
       <MoneyIcon />
-      <Text
-        as="a"
+      <Link
         href={href}
-        tw="text-13 ml-3 no-underline text-primary! hover:opacity-80"
+        tw="text-13 ml-3 text-primary! hover:opacity-80"
       >
         {children}
-      </Text>
+      </Link>
     </Wrapper>
   );
 };

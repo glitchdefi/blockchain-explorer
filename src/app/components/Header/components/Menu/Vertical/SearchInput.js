@@ -29,4 +29,4 @@ export function SearchInput() {
 }
 
 const Wrapper = tw.div`lg:flex w-full items-center`;
-const InputWrapper = tw.div`flex mx-8 my-3`;
+const InputWrapper = tw.div`flex mx-6 my-3`;

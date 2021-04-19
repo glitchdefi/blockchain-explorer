@@ -11,7 +11,7 @@ import { Page } from "src/app/layouts/Page";
 import { Text } from "src/app/components/Text";
 import { StatsCard } from "./components/StatsCard";
 import { PriceChart } from "./components/PriceChart";
-import { DemoTable } from "./components/TabSections";
+import { TabSections } from "./components/TabSections";
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ export function HomePage() {
   };
 
   const renderTabSections = () => {
-    return <DemoTable />;
+    return <TabSections />;
   };
 
   return (
