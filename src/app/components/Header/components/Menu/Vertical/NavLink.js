@@ -46,7 +46,7 @@ const Wrapper = tw.li`
 `;
 
 const CustomLink = styled(Link)(({ isActive }) => [
-  tw`flex w-full items-center px-8 py-3`,
+  tw`flex w-full items-center px-6 py-3`,
   isActive &&
     css`
       color: ${theme`colors.primary`} !important;

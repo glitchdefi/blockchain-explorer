@@ -5,6 +5,7 @@ export const StyledButton = styled.button(({ isLoading, disabled }) => [
   inline-flex 
   text-white 
   text-sm 
+  font-mono
   leading-none 
   border-none 
   rounded

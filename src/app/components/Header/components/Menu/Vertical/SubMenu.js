@@ -29,10 +29,9 @@ Submenu.defaultProps = {
 };
 
 const Wrapper = tw.ul`
-  absolute 
   w-full 
   shadow-lg 
-  bg-oxfordBlue60
+  bg-black-pearl
 `;
 
 export const SubMenuItem = styled.li(() => [

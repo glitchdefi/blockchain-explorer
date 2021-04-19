@@ -7,7 +7,7 @@ import GlitchInfo from "./GlitchInfo";
 import NavBar from "./NavBar";
 import Copyrite from "./Copyright";
 
-const Wrapper = tw.div`bg-nero`;
+const Wrapper = tw.div`mt-4 bg-nero`;
 
 const ContentWrapper = tw.div`
   w-full 

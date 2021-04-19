@@ -1,6 +1,13 @@
 {
     "search": "Search",
     "not_found_page": "Not Found Page",
+    "pagination": {
+        "prev": "Prev",
+        "next": "Next"
+    },
+    "homepage": {
+        "7_day_GLCH_price_history": "7 day GLCH price history (USD)"
+    },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",
         "glitch_info": "Glitch explorer is a Block producers explorer for Glitch, a decentralized smart contracts platform using DPOS protocol",
