@@ -6,7 +6,11 @@ export const Container = styled.div(() => [
     background-image: url(${bg});
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: auto 100%;
     background-attachment: fixed;
+
+    @media (min-width: 1024px) { 
+      background-size: 100% auto;
+    }
   `,
 ]);
