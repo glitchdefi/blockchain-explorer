@@ -50,4 +50,4 @@ export function InfoDetailCard() {
   );
 }
 
-export const Wrapper = tw.div`w-full pl-3`;
+export const Wrapper = tw.div`w-full px-1 lg:pl-3`;

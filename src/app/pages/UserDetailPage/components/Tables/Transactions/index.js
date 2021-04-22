@@ -4,6 +4,7 @@ import { transWithActionTableHeader } from "src/constants/tableConfig";
 
 // Components
 import {
+  TableContainer,
   Table,
   TableRow,
   TableHeader,
@@ -38,12 +39,14 @@ export function TransactionTable({ data }) {
 
   return (
     <>
-      <Table>
-        <TableHeader>
-          <TableRow>{renderHeaders()}</TableRow>
-        </TableHeader>
-        <TableBody>{renderBodyRows()}</TableBody>
-      </Table>
+      <TableContainer>
+        <Table>
+          <TableHeader>
+            <TableRow>{renderHeaders()}</TableRow>
+          </TableHeader>
+          <TableBody>{renderBodyRows()}</TableBody>
+        </Table>
+      </TableContainer>
       {renderPagination()}
     </>
   );

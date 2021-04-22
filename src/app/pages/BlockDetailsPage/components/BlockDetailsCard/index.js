@@ -12,7 +12,7 @@ export function BlockDetailsCard() {
   const { t } = useTranslation();
 
   return (
-    <Container tw="mt-5 mb-8">
+    <Container tw="mb-8">
       <Card>
         <Wrapper>
           <InfoRow label={t("blockDetails.block_height")} value="11676248" />
