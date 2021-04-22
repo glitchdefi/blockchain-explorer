@@ -1,6 +1,11 @@
 import React from "react";
-import "twin.macro"
-import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
+import "twin.macro";
+import {
+  TabContainer,
+  Tabs,
+  Tab,
+  TabPanel,
+} from "src/app/components/Tab/Horizontal";
 import { ProducerTable } from "src/app/components/Table/Producer";
 import { EpochTable } from "src/app/components/Table/Epoch";
 import { TransactionTable } from "src/app/components/Table/Transactions";

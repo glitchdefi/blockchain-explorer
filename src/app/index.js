@@ -10,6 +10,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 // Pages
 import { HomePage } from "./pages/HomePage/Loadable";
+import { WalletPage } from "./pages/WalletPage/Loadable";
 import { UserDetailPage } from "./pages/UserDetailPage/Loadable";
 import { TransactionDetailsPage } from "./pages/TransactionDetailsPage/Loadable";
 import { BlockDetailsPage } from "./pages/BlockDetailsPage/Loadable";
@@ -21,6 +22,7 @@ export function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/wallet" component={WalletPage} />
         <Route path="/user-detail" component={UserDetailPage} />
         <Route path="/transaction-details" component={TransactionDetailsPage} />
         <Route path="/block-details" component={BlockDetailsPage} />

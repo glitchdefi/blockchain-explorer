@@ -25,8 +25,8 @@ export function HomePage() {
     return (
       <div>
         <StatsCardsWrapper>
-          {statsData.map((o) => (
-            <StatsCard icon={o.icon} title={o.title} value={o.value} />
+          {statsData.map((o, i) => (
+            <StatsCard key={i} icon={o.icon} title={o.title} value={o.value} />
           ))}
         </StatsCardsWrapper>
       </div>

@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 
 // Components
-import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
+import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab/Horizontal";
 
 import { TransactionTable } from "./Tables/Transactions";
 import { GRC20TokenTable } from "./Tables/GRC20";

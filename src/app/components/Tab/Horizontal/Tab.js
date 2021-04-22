@@ -1,8 +1,8 @@
 import React from "react";
 import tw, { styled, css, theme } from "twin.macro";
-import { Button } from "../Button";
-import { Text } from "../Text";
-import { useTabState } from "./hooks/useTabState";
+import { Button } from "../../Button";
+import { Text } from "../../Text";
+import { useTabState } from "../hooks/useTabState";
 
 export function Tab({ children, onClick, ...props }) {
   const { isActive, onChangeTab } = useTabState();

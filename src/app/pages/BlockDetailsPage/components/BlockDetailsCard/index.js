@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 // Components
 import { TableContainer as Container } from "src/app/components/Table";
-import { TabPanel as Card } from "src/app/components/Tab";
+import { TabPanel as Card } from "src/app/components/Tab/Horizontal";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Link } from "src/app/components/Link";
 
