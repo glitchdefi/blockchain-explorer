@@ -13,7 +13,7 @@ export default function TableCell({ children, isLink, href, ...props }) {
 
   return (
     <td
-      css={[tw`px-6 py-4 text-13 text-center whitespace-nowrap`, styles]}
+      css={[tw`px-5 py-4 text-13 text-center whitespace-nowrap`, styles]}
       {...props}
     >
       {getChildren()}
