@@ -32,5 +32,5 @@ export function EpodDetailsPage() {
 }
 
 const Wrapper = tw.div`mb-4`;
-const HeadWrapper = tw.div`flex flex-wrap items-center`;
+const HeadWrapper = tw.div`flex flex-wrap items-center mb-4`;
 const Heading = tw(Text)`text-16`;
