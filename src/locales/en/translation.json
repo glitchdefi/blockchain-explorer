@@ -52,6 +52,9 @@
         "last_block_at": "Last block at",
         "total_output": "Total output"
     },
+    "notFoundPage": {
+        "go_back_home_page":"Go back to the Home page"
+    },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",
         "glitch_info": "Glitch explorer is a Block producers explorer for Glitch, a decentralized smart contracts platform using DPOS protocol",
