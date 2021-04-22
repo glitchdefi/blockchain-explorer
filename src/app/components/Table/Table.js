@@ -15,5 +15,5 @@ const tableStyles = css`
 `;
 
 Table.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
 };

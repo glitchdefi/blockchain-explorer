@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "twin.macro";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router";
 
@@ -34,7 +35,9 @@ export function Page({ children, meta, ...props }) {
       <PageMeta meta={meta} />
       <Container>
         <Header />
-        <PageElementWrap {...props}>{children}</PageElementWrap>
+        <PageElementWrap tw="mt-4" {...props}>
+          {children}
+        </PageElementWrap>
         <Footer />
       </Container>
     </>

@@ -6,3 +6,5 @@ export { default as LibIcon } from "./Lib";
 export { default as TotalAccountIcon } from "./TotalAccount";
 export { default as UpDownIcon } from "./UpDown";
 export { default as MoneyIcon } from "./Money";
+export { default as CopyIcon } from "./Copy";
+export { default as InfoIcon } from "./Info";

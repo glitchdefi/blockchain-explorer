@@ -4,12 +4,12 @@ import "twin.macro";
 
 export default function TableBody({ children, ...props }) {
   return (
-    <tbody tw="bg-black-pearl divide-y divide-gray-200" {...props}>
+    <tbody tw="bg-black-pearl" {...props}>
       {children}
     </tbody>
   );
 }
 
 TableBody.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
 };

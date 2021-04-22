@@ -1,12 +1,56 @@
-{
-    "search": "Search",
-    "not_found_page": "Not Found Page",
+{ 
+    "common": {
+        "search": "Search",
+        "not_found_page": "Not Found Page",
+        "status": "Status",
+        "block": "Block",
+        "blocks": "Blocks",
+        "from": "From",
+        "to": "To",
+        "txnFee": "Txn Fee",
+        "timeStamp": "Timestamp",
+        "transactions": "Transactions",
+        "difficulty": "Difficulty",
+        "size": "Size",
+        "started_at": "Started at",
+        "overview": "Overview",
+        "value": "Value",
+        "token": "Token",
+        "balance": "Balance",
+        "state": "State"
+    },
     "pagination": {
         "prev": "Prev",
         "next": "Next"
     },
     "homepage": {
         "7_day_GLCH_price_history": "7 day GLCH price history (USD)"
+    },
+    "userDetails": {
+        "more_info": "More Info",
+        "name_tag": "Name Tag",
+        "mined": "Mined",
+        "grc20_token_txns": "GRC20 Token Txns",
+        "mined_blocks": "Mined Blocks",
+        "search_for_token_name": "Search for Token Name"
+    },
+    "transactionDetails": {
+        "title": "Transaction Details",
+        "transaction_hash": "Transaction hash"
+    },
+    "blockDetails": {
+        "title": "Block Details",
+        "block_height": "Block Height",
+        "mined_by": "Mined by",
+        "block_reward": "Block Reward",
+        "total_difficulty":"Total Difficulty",
+        "hash": "Hash"
+    },
+    "epodDetails": {
+        "title": "Epod Details",
+        "number_of_blocks": "Number of blocks",
+        "last_block_at": "Last block at",
+        "total_output": "Total output"
     },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",

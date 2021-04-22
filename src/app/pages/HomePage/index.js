@@ -40,7 +40,7 @@ export function HomePage() {
   return (
     <>
       <Page meta={{}}>
-        <div tw="my-4">
+        <div tw="mb-4">
           <Text>{t("homepage.7_day_GLCH_price_history")}</Text>
           <StatsWrapper>
             {renderPriceChart()}

@@ -11,19 +11,14 @@ export function TableBodyRows({ item }) {
   return (
     <>
       <TableRow>
-        <TableCell>
-          <CustomLink>54agdt367dgt65656</CustomLink>
-        </TableCell>
+        <TableCell isLink>54agdt367dgt65656</TableCell>
         <TableCell>
           <CustomLink>5192802</CustomLink>
         </TableCell>
         <TableCell>01/12/2021</TableCell>
-        <TableCell>
-          <CustomLink>54agdt367dgt65656</CustomLink>
-        </TableCell>
-        <TableCell>
-          <CustomLink>54agdt367dgt65656</CustomLink>
-        </TableCell>
+        {/* <TableCell>Send</TableCell> */}
+        <TableCell isLink>54agdt367dgt65656</TableCell>
+        <TableCell isLink>54agdt367dgt65656</TableCell>
         <TableCell>0.0005 GLCH</TableCell>
         <TableCell>0.0005 GLCH</TableCell>
         <TableCell>
