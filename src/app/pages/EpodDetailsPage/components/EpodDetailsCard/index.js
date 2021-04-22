@@ -11,7 +11,7 @@ export function EpodDetailsCard() {
   const { t } = useTranslation();
 
   return (
-    <Card tw="mt-5 mb-8">
+    <Card tw="mt-5 mb-10">
       <Wrapper>
         <InfoRow
           label={t("epodDetails.number_of_blocks")}
@@ -39,4 +39,4 @@ export function EpodDetailsCard() {
   );
 }
 
-export const Wrapper = tw.div`w-full pl-3`;
+export const Wrapper = tw.div`w-full py-1 lg:pl-3`;

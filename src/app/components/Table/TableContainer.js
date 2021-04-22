@@ -5,8 +5,8 @@ import "twin.macro";
 export default function TableContainer({ children }) {
   return (
     <div tw="flex flex-col">
-      <div tw="my-4 overflow-x-auto">
-        <div tw="py-2 align-middle inline-block min-w-full">
+      <div tw="mb-4 overflow-x-auto">
+        <div tw="align-middle inline-block min-w-full">
           <div tw="overflow-hidden rounded-b">{children}</div>
         </div>
       </div>

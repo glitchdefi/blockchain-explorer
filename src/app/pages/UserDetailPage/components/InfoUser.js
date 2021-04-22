@@ -12,7 +12,7 @@ export function InfoUser({ user }) {
   return (
     <Wrapper>
       <Avatar
-        src="https://unchainedpodcast.com/wp-content/uploads/2018/09/CZ.jpg"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMx1itTXTXLB8p4ALTTL8mUPa9TFN_m9h5VQ&usqp=CAU"
         width={50}
       />
       <div tw="ml-6">

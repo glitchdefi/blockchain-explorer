@@ -23,7 +23,7 @@ export function BlockDetailsPage() {
 
           <BlockDetailsCard />
           
-          <Heading>{t("blockDetails.title")}</Heading>
+          <Heading tw="mt-8">{t("blockDetails.title")}</Heading>
           <BlockDetailsTable data={[1, 2, 3]} />
         </Wrapper>
       </Page>
@@ -33,4 +33,4 @@ export function BlockDetailsPage() {
 
 const Wrapper = tw.div`mb-4`;
 const HeadWrapper = tw.div`flex flex-wrap items-center`;
-const Heading = tw(Text)`text-16`;
+const Heading = tw(Text)`text-16 mb-5`;

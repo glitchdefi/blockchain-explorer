@@ -1,5 +1,5 @@
 import React from "react";
-import { TableContainer as Wrapper } from "src/app/components/Table";
+import "twin.macro"
 import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
 import { ProducerTable } from "src/app/components/Table/Producer";
 import { EpochTable } from "src/app/components/Table/Epoch";
@@ -8,28 +8,26 @@ import { BlockTable } from "src/app/components/Table/Block";
 
 export function TabSections() {
   return (
-    <Wrapper>
-      <TabContainer>
-        <Tabs>
-          <Tab>Producer</Tab>
-          <Tab>Epoch</Tab>
-          <Tab>Transactions</Tab>
-          <Tab>Block</Tab>
-        </Tabs>
+    <TabContainer>
+      <Tabs>
+        <Tab>Producer</Tab>
+        <Tab>Epoch</Tab>
+        <Tab>Transactions</Tab>
+        <Tab>Block</Tab>
+      </Tabs>
 
-        <TabPanel>
-          <ProducerTable data={[1, 2, 3]} />
-        </TabPanel>
-        <TabPanel>
-          <EpochTable data={[1, 2]} />
-        </TabPanel>
-        <TabPanel>
-          <TransactionTable data={[1, 2, 3, 4]} />
-        </TabPanel>
-        <TabPanel>
-          <BlockTable data={[1, 2, 3, 5]} />
-        </TabPanel>
-      </TabContainer>
-    </Wrapper>
+      <TabPanel>
+        <ProducerTable data={[1, 2, 3]} />
+      </TabPanel>
+      <TabPanel>
+        <EpochTable data={[1, 2]} />
+      </TabPanel>
+      <TabPanel>
+        <TransactionTable data={[1, 2, 3, 4]} />
+      </TabPanel>
+      <TabPanel>
+        <BlockTable data={[1, 2, 3, 5]} />
+      </TabPanel>
+    </TabContainer>
   );
 }

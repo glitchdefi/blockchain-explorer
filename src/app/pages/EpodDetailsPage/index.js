@@ -22,6 +22,7 @@ export function EpodDetailsPage() {
           </HeadWrapper>
 
           <EpodDetailsCard />
+
           <Heading>{t("common.blocks")}</Heading>
           <EpodDetailsTable />
         </Wrapper>

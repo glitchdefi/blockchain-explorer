@@ -5,6 +5,7 @@ import { transactionTableHeader } from "src/constants/tableConfig";
 // Components
 import {
   Table,
+  TableContainer,
   TableRow,
   TableHeader,
   TableHeaderCell,
@@ -19,9 +20,7 @@ export function TransactionTable({ data }) {
 
   const renderHeaders = () => {
     return transactionTableHeader.map((item, i) => (
-      <TableHeaderCell key={`transaction-header-${i}`}>
-        {item}
-      </TableHeaderCell>
+      <TableHeaderCell key={`transaction-header-${i}`}>{item}</TableHeaderCell>
     ));
   };
 
@@ -40,12 +39,14 @@ export function TransactionTable({ data }) {
 
   return (
     <>
-      <Table>
-        <TableHeader>
-          <TableRow>{renderHeaders()}</TableRow>
-        </TableHeader>
-        <TableBody>{renderBodyRows()}</TableBody>
-      </Table>
+      <TableContainer>
+        <Table>
+          <TableHeader>
+            <TableRow>{renderHeaders()}</TableRow>
+          </TableHeader>
+          <TableBody>{renderBodyRows()}</TableBody>
+        </Table>
+      </TableContainer>
       {renderPagination()}
     </>
   );

@@ -5,6 +5,7 @@ import { MinedBlocksTableHeader } from "src/constants/tableConfig";
 // Components
 import {
   Table,
+  TableContainer,
   TableRow,
   TableHeader,
   TableHeaderCell,
@@ -38,12 +39,14 @@ export function MinedBlockTable({ data }) {
 
   return (
     <>
-      <Table>
-        <TableHeader>
-          <TableRow>{renderHeaders()}</TableRow>
-        </TableHeader>
-        <TableBody>{renderBodyRows()}</TableBody>
-      </Table>
+      <TableContainer>
+        <Table>
+          <TableHeader>
+            <TableRow>{renderHeaders()}</TableRow>
+          </TableHeader>
+          <TableBody>{renderBodyRows()}</TableBody>
+        </Table>
+      </TableContainer>
       {renderPagination()}
     </>
   );

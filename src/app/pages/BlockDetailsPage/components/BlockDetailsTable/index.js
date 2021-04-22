@@ -40,17 +40,17 @@ export function BlockDetailsTable({ data }) {
 
   return (
     <>
-      <TableContainer tw="mt-5">
-        <TabPanel>
+      <TabPanel>
+        <TableContainer>
           <Table>
             <TableHeader>
               <TableRow>{renderHeaders()}</TableRow>
             </TableHeader>
             <TableBody>{renderBodyRows()}</TableBody>
           </Table>
-          {renderPagination()}
-        </TabPanel>
-      </TableContainer>
+        </TableContainer>
+        {renderPagination()}
+      </TabPanel>
     </>
   );
 }
