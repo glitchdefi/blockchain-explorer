@@ -20,26 +20,28 @@ export function TokenDropdown() {
   };
 
   const renderDropdownItems = () => {
-    return (
-      <DropdownItem>
-        <FlexLayout>
-          <Text>Glitch (GLCH)</Text>
-          <Text>$1,651.47</Text>
-        </FlexLayout>
+    return [1, 2, 3].map(() => {
+      return (
+        <DropdownItem>
+          <FlexLayout>
+            <Text tw="font-bold">Glitch (GLCH)</Text>
+            <Text tw="font-bold">$1,651.47</Text>
+          </FlexLayout>
 
-        <FlexLayout>
-          <Text>312.778 GLCH</Text>
-          <Text>@5.28</Text>
-        </FlexLayout>
-      </DropdownItem>
-    );
+          <FlexLayout>
+            <Text tw="text-opacity-60!">312.778 GLCH</Text>
+            <Text tw="text-opacity-60!">@5.28</Text>
+          </FlexLayout>
+        </DropdownItem>
+      );
+    });
   };
 
   return (
     <>
       <Dropdown
         search
-        searchPlaceholder={t('userDetails.search_for_token_name')}
+        searchPlaceholder={t("userDetails.search_for_token_name")}
         customLabel={renderLabel()}
       >
         {renderDropdownItems()}
