@@ -27,7 +27,7 @@ export const Text = styled(TextBase)((type) => [
 ]);
 
 const Button = styled(ButtonBase)(() => [
-  tw`bg-transparent border border-primary border-solid ml-8`
+  tw`bg-transparent border border-primary border-solid ml-2 lg:ml-8`
 ]);
 
 Status.propTypes = {

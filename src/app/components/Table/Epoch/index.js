@@ -4,6 +4,7 @@ import { epochTableHeaders } from "src/constants/tableConfig";
 // Components
 import {
   Table,
+  TableContainer,
   TableRow,
   TableHeader,
   TableHeaderCell,
@@ -37,12 +38,14 @@ export function EpochTable({ data }) {
 
   return (
     <>
-      <Table>
-        <TableHeader>
-          <TableRow>{renderHeaders()}</TableRow>
-        </TableHeader>
-        <TableBody>{renderBodyRows()}</TableBody>
-      </Table>
+      <TableContainer>
+        <Table>
+          <TableHeader>
+            <TableRow>{renderHeaders()}</TableRow>
+          </TableHeader>
+          <TableBody>{renderBodyRows()}</TableBody>
+        </Table>
+      </TableContainer>
       {renderPagination()}
     </>
   );
