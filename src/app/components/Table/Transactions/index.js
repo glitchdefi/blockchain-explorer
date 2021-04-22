@@ -1,4 +1,5 @@
 import React from "react";
+import "twin.macro";
 import { transactionTableHeader } from "src/constants/tableConfig";
 
 // Components
@@ -18,7 +19,9 @@ export function TransactionTable({ data }) {
 
   const renderHeaders = () => {
     return transactionTableHeader.map((item, i) => (
-      <TableHeaderCell key={`transaction-header-${i}`}>{item}</TableHeaderCell>
+      <TableHeaderCell key={`transaction-header-${i}`}>
+        {item}
+      </TableHeaderCell>
     ));
   };
 

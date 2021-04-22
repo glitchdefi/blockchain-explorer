@@ -14,7 +14,7 @@ export function NotFoundPage() {
         <Wrapper>
           <div>
             <Text tw="text-9xl">404</Text>
-            <Text tw="text-4xl">{t("not_found_page")}</Text>
+            <Text tw="text-4xl">{t("common.not_found_page")}</Text>
           </div>
         </Wrapper>
       </Container>

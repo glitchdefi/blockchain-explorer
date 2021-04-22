@@ -2,13 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import tw, { css } from "twin.macro";
 
-export default function TableCell({ children, ...props }) {
+import { Link } from "../Link";
+export default function TableCell({ children, isLink, href, ...props }) {
+  const getChildren = () => {
+    if (isLink) {
+      return <CustomLink>{children}</CustomLink>;
+    }
+    return children;
+  };
+
   return (
     <td
       css={[tw`px-6 py-4 text-13 text-center whitespace-nowrap`, styles]}
       {...props}
     >
-      {children}
+      {getChildren()}
     </td>
   );
 }
@@ -20,6 +28,9 @@ const styles = css`
   border-bottom-color: rgba(255, 255, 255, 0.11);
 `;
 
+const CustomLink = tw(Link)`text-white text-opacity-70! underline`;
 TableCell.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  isLink: PropTypes.bool,
+  href: PropTypes.string,
 };

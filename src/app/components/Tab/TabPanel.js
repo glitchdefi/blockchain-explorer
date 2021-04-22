@@ -2,10 +2,10 @@ import React from "react";
 import { theme, styled, css } from "twin.macro";
 import { usePanelState } from "./hooks/usePanelState";
 
-export function TabPanel({ children, ...props }) {
+export function TabPanel({ children, isCard, ...props }) {
   const { isActive } = usePanelState();
 
-  if (!isActive) return null;
+  if (!isCard && !isActive) return null;
 
   return (
     <Wrapper {...props}>

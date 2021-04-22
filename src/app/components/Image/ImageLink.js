@@ -4,10 +4,10 @@ import { styled } from "twin.macro";
 
 import Image from "./Image";
 
-const ImageLink = ({ href, src, alt, width, height }) => {
+const ImageLink = ({ href, src, alt, width, height, ...props }) => {
   return (
     <ImgLink href={href}>
-      <Image src={src} alt={alt} width={width} height={height} />
+      <Image src={src} alt={alt} width={width} height={height} {...props} />
     </ImgLink>
   );
 };
@@ -17,7 +17,7 @@ ImageLink.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   width: PropTypes.number,
-  height: PropTypes.number
+  height: PropTypes.number,
 };
 
 const ImgLink = styled.a`
