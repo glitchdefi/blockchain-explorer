@@ -12,8 +12,9 @@ export function InfoUser({ user }) {
   return (
     <Wrapper>
       <Avatar
-        src="https://unchainedpodcast.com/wp-content/uploads/2018/09/CZ.jpg"
-        width={50}
+        src="https://image.flaticon.com/icons/png/512/168/168723.png"
+        width={90}
+        height={90}
       />
       <div tw="ml-6">
         <FlexLayout>
