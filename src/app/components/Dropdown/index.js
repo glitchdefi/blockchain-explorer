@@ -1,7 +1,7 @@
 import React, { cloneElement, isValidElement, useState } from "react";
 import tw, { theme } from "twin.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 
 import { Text } from "../Text";
 import { DropdownMenu } from "./DropdownMenu";
@@ -60,7 +60,7 @@ export function Dropdown(props) {
           {renderLabel()}
           <FontAwesomeIcon
             css={[tw`h-3 w-3!`, { color: theme`colors.primary` }]}
-            icon={faCaretDown}
+            icon={isShow ? faSortUp : faCaretDown}
           />
         </DropdownLabel>
 
