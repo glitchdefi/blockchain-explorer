@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "twin.macro";
 
 // Components
@@ -7,12 +8,13 @@ import { Text } from "src/app/components/Text";
 import { AreaChart } from "src/app/components/Charts";
 
 export function MarketCapitalizationChart() {
+  const { t } = useTranslation();
+
   return (
     <>
       <CardLayout>
         <Text tw="text-center">
-          The Glitch Market Capitalization chart shows the historical breakdown
-          of GLCH daily market capitalization and average price.
+          {t("chartsAndStats.the_glitch_market_capitalization")}
         </Text>
       </CardLayout>
 

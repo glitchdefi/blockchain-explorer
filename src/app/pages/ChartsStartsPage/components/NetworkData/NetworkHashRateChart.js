@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "twin.macro";
 
 // Components
@@ -7,12 +8,13 @@ import { Text } from "src/app/components/Text";
 import { AreaChart } from "src/app/components/Charts";
 
 export function NetworkHashRateChart() {
+  const { t } = useTranslation();
+
   return (
     <>
       <CardLayout>
         <Text tw="text-center">
-          The Glitch Network Hash Rate Chart shows the historical measure of the
-          processing power of the Glitch network.
+          {t("chartsAndStats.the_glitch_network_hash_rate")}
         </Text>
       </CardLayout>
 
