@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "twin.macro";
 
 // Components
@@ -7,12 +8,13 @@ import { Text } from "src/app/components/Text";
 import { AreaChart } from "src/app/components/Charts";
 
 export function NetworkDifficultyChart() {
+  const { t } = useTranslation();
+
   return (
     <>
       <CardLayout>
         <Text tw="text-center">
-          The Glitch Network Difficulty Chart displays the mining difficulty and
-          the historical value of the Glitch network.
+          {t("chartsAndStats.the_glitch_difficulty_chart")}
         </Text>
       </CardLayout>
 

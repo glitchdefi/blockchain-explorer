@@ -81,6 +81,24 @@
         "top_glitch_receivers": "Top Glitch Receivers",
         "top_txn_count_received": "Top Txn Count Received"
     },
+    "chartsAndStats": {
+        "daily_price_chart_show": "The GLCH Daily Price (USD) chart shows the daily historical price for GLCH in USD.",
+        "current_glitch_price": "Note: Current Glitch price at {{price}}",
+        "the_glitch_market_capitalization": "The Glitch Market Capitalization chart shows the historical breakdown of GLCH daily market capitalization and average price.",
+        "total_glitch_supply": "Total Glitch Supply",
+        "market_capitalization": "Market Capitaliztion",
+        "breakdown_by_supply_types": "Breakdown by Supply Types",
+        "average_block_size_chart": "Average Block Size Chart",
+        "average_block_time_chart": "The chart shows the average block time",
+        "the_chart_highlights": "The chart highlights the total number of transactions on the Glitch blockchain with daily individual breakdown for average difficulty, estimated hash rate, average block time and size, total block and and total new address seen.",
+        "highest_number": "Highest number of {{transactions}} transactions on {{date}}",
+        "lowest_number": "Lowest number of {{transactions}} transactions on {{date}}",
+        "the_chart_shows_the_number_of_grc20": "The chart shows the number of GRC20 tokens transferred daily.",
+        "the_glitch_block_count": "The Glitch Block Count and Rewards Chart shows the historical number of blocks produced daily on the Glitch network and the total block reward.",
+        "the_glitch_network_hash_rate": "The Glitch Network Hash Rate Chart shows the historical measure of the processing power of the Glitch network.",
+        "the_glitch_difficulty_chart": "The Glitch Network Difficulty Chart displays the mining difficulty and the historical value of the Glitch network.",
+        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network."
+    },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",
         "glitch_info": "Glitch explorer is a Block producers explorer for Glitch, a decentralized smart contracts platform using DPOS protocol",
