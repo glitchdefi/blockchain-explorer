@@ -5,15 +5,18 @@ import { ImageLink } from "../Image";
 
 export function Avatar({ href, src, alt, width, height, ...props }) {
   return (
-    <Wrapper>
-      <ImageLink
-        href={href}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        {...props}
-      />
+    <Wrapper
+      width={width}
+      height={height}
+      {...props}>
+      <div className="ring">
+        <ImageLink
+          href={href}
+          src={src}
+          alt={alt}
+          {...props}
+        />
+      </div>
     </Wrapper>
   );
 }
@@ -26,4 +29,49 @@ ImageLink.propTypes = {
   height: PropTypes.number,
 };
 
-const Wrapper = styled.div(() => [tw``, css``]);
+const Wrapper = styled.div.attrs(props => ({
+  // we can define static props
+  className: 'glc-avatar ' + (props.className ? props.className : ''),
+}))`
+  .ring {
+    width: ${props => props.width ? props.width + 'px' : 'auto' };
+    height: ${props => props.height ? props.height + 'px' : 'auto' };
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      border: 2px solid #BF28E4;
+      width: 100%;
+      height: 100%;
+      top: -2px;
+      left: -1px;
+      border-radius: 50%;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      border: 2px solid #24C6C9;
+      width: 100%;
+      height: 100%;
+      top: -2px;
+      left: -2px;
+      border-radius: 50%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+    a {
+      box-sizing: border-box;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      line-height: 0;
+      padding: 5px;
+      position: relative;
+      z-index: 2;
+    }
+  }
+`;
