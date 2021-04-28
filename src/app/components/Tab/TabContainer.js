@@ -16,7 +16,7 @@ export function TabContainer({ children, orientation }) {
 }
 
 const Wrapper = styled.div(({ orientation }) => [
-  tw`block`,
+  tw`block max-w-full`,
   orientation === "vertical" && tw`flex`,
 ]);
 

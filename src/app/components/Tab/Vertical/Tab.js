@@ -1,69 +1,54 @@
-import React from "react";
-import tw, { styled, css, theme } from "twin.macro";
-import { Button } from "../../Button";
+import React, { cloneElement, isValidElement } from "react";
+import PropTypes from "prop-types";
+import tw from "twin.macro";
+
 import { Text } from "../../Text";
+import { StyledTab } from "./StyledTab";
 import { useTabState } from "../hooks/useTabState";
 
-export function Tab({ children, onClick, ...props }) {
+export function Tab(props) {
+  const { children, tabStyles, leftIcon, onClick, ...rest } = props;
   const { isActive, onChangeTab } = useTabState();
+
   return (
-    <Wrapper
+    <StyledTab
       isActive={isActive}
+      tabStyles={tabStyles}
       onClick={() => {
         onChangeTab();
         onClick && onClick();
       }}
-      {...props}
+      {...rest}
     >
-      <Text className="tab-label" tw="text-14">
-        {children}
-      </Text>
-    </Wrapper>
+      <LabelWrapper>
+        {isValidElement(leftIcon) && (
+          <LeftIconWrapper>{cloneElement(leftIcon)}</LeftIconWrapper>
+        )}
+        <Text className="tab-label" tw="flex-grow w-full text-left">
+          {children}
+        </Text>
+      </LabelWrapper>
+    </StyledTab>
   );
 }
 
-const Wrapper = styled(Button)(({ isActive }) => [
-  tw`
-    w-full
-    py-3
-  `,
+const LabelWrapper = tw.div`flex items-center w-full`;
+const LeftIconWrapper = tw.div`w-1/4 mr-3`;
+Tab.propTypes = {
+  children: PropTypes.element,
+  leftIcon: PropTypes.element,
+  tabStyles: PropTypes.shape({
+    label: PropTypes.shape({
+      color: PropTypes.string,
+      activeColor: PropTypes.string,
+      size: PropTypes.string,
+    }),
+  }),
+  onClick: PropTypes.func,
+};
 
-  css`
-    background-color: ${isActive
-      ? "rgba(255, 255, 255, 0.1)"
-      : theme`colors.black-pearl`};
-
-    border-radius: 0px;
-
-    &:first-child {
-      border-radius: 5px 5px 0px 0px;
-    }
-
-    &:last-child {
-      border-radius: 0px 0px 5px 5px;
-    }
-
-    .tab-label {
-      color: ${isActive
-        ? theme`colors.primary`
-        : "rgba(255,255,255,0.7)"} !important;
-
-      font-weight: ${isActive ? "bold" : "normal"};
-    }
-  `,
-
-  isActive &&
-    css`
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-right: 20px solid ${theme`colors.black-pearl`};
-        border-bottom: 10px solid transparent;
-      }
-    `,
-]);
+Tab.defaultProps = {
+  tabStyles: {
+    label: {},
+  },
+};
