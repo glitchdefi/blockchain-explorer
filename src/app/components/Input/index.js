@@ -2,7 +2,7 @@ import tw, { styled } from "twin.macro";
 
 export const Input = styled.input(() => [
   tw`
-  bg-oxfordBlue 
+  bg-oxford-blue 
   py-2
   px-4
   rounded

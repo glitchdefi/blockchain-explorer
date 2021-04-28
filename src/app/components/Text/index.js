@@ -1,4 +1,4 @@
-import tw, { styled } from "twin.macro";
+import tw, { css, styled } from "twin.macro";
 
 export const Text = styled.div(() => [
   tw`
@@ -7,5 +7,9 @@ export const Text = styled.div(() => [
   dark:text-white 
   font-normal
   normal-case
+  `,
+
+  css`
+    word-break: break-word;
   `,
 ]);

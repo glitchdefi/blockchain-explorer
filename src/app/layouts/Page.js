@@ -45,7 +45,10 @@ export function Page({ children, meta, ...props }) {
 }
 
 Page.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
   meta: PropTypes.objectOf({
     title: PropTypes.string,
     description: PropTypes.string,

@@ -1,9 +1,14 @@
 import React from "react";
-import tw from "twin.macro";
+import tw, { css, styled } from "twin.macro";
 import { useTranslation } from "react-i18next";
 
 // Components
-import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
+import {
+  TabContainer,
+  Tabs,
+  Tab,
+  TabPanel,
+} from "src/app/components/Tab/Horizontal";
 
 import { TransactionTable } from "./Tables/Transactions";
 import { GRC20TokenTable } from "./Tables/GRC20";
@@ -14,7 +19,7 @@ export function TabSections() {
 
   return (
     <TabContainer>
-      <Tabs>
+      <Tabs tw="grid-cols-3 lg:grid-cols-4">
         <Tab>{t("common.transactions")}</Tab>
         <Tab>{t("userDetails.grc20_token_txns")}</Tab>
         <Tab>{t("userDetails.mined_blocks")}</Tab>

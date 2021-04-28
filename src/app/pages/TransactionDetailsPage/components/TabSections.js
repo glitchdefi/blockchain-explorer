@@ -1,9 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import "twin.macro";
 
 // Components
 import { TableContainer as Wrapper } from "src/app/components/Table";
-import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab";
+import {
+  TabContainer,
+  Tabs,
+  Tab,
+  TabPanel,
+} from "src/app/components/Tab/Horizontal";
 import { InfoDetailCard } from "./InfoDetailCard";
 
 export function TabSections() {
@@ -12,7 +18,7 @@ export function TabSections() {
   return (
     <Wrapper>
       <TabContainer>
-        <Tabs>
+        <Tabs tw="grid-cols-2 lg:grid-cols-4">
           <Tab>{t("common.overview")}</Tab>
           <Tab>{t("common.state")}</Tab>
         </Tabs>

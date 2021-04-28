@@ -13,7 +13,7 @@ export default function TableCell({ children, isLink, href, ...props }) {
 
   return (
     <td
-      css={[tw`px-5 py-4 text-13 text-center whitespace-nowrap`, styles]}
+      css={[tw`p-4 text-13 text-center whitespace-nowrap`, styles]}
       {...props}
     >
       {getChildren()}
@@ -28,7 +28,7 @@ const styles = css`
   border-bottom-color: rgba(255, 255, 255, 0.11);
 `;
 
-const CustomLink = tw(Link)`text-white text-opacity-70! underline`;
+const CustomLink = tw(Link)`text-white-70! whitespace-nowrap underline`;
 TableCell.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   isLink: PropTypes.bool,

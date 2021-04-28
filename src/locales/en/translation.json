@@ -17,7 +17,12 @@
         "value": "Value",
         "token": "Token",
         "balance": "Balance",
-        "state": "State"
+        "state": "State",
+        "pending": "Pending",
+        "history": "History",
+        "glitch": "Glitch",
+        "vote": "Vote",
+        "miners": "Miners"
     },
     "pagination": {
         "prev": "Prev",
@@ -54,6 +59,27 @@
     },
     "notFoundPage": {
         "go_back_home_page":"Go back to the Home page"
+    },
+    "walletPage": {
+        "public_key": "Public key",
+        "connect_to_wallet": "Connect to Wallet",
+        "add_token": "Add Token",
+        "total_glitch_balance": "Total Glitch Balance",
+        "total_usd_value": "Total USD Value",
+        "glitch_value": "Glitch Value",
+        "value_in_glitch": "Value in Glitch",
+        "value_in_usd": "Value in USD",
+        "login": "Login",
+        "scan_qr_code": "Scan the QR-Code with you application",
+        "open_your_app": "Open your app"
+    },
+    "votePage": {
+        "selected_producers": "Selected Producers"
+    },
+    "topStatsPage": {
+        "top_glitch_senders": "Top Glitch Senders",
+        "top_glitch_receivers": "Top Glitch Receivers",
+        "top_txn_count_received": "Top Txn Count Received"
     },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",

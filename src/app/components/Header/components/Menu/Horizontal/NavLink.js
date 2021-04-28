@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { styled, css } from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
 // Components
@@ -12,12 +12,12 @@ export function NavLink({ isActive, link, children }) {
   const isSubmenu = items?.length;
 
   return (
-    <Wrapper className="horizontal-menu-item">
+    <Wrapper isActive={isActive} className="horizontal-menu-item">
       <LinkWrapper>
-        <Link href={href} isActive={isActive}>
+        <Link className="menu-item-link" href={href}>
           {children}
         </Link>
-        {isSubmenu && <DropdownIcon />}
+        {isSubmenu && <DropdownIcon tw="mb-1" />}
       </LinkWrapper>
 
       {isSubmenu && <Submenu items={items} />}
@@ -25,27 +25,35 @@ export function NavLink({ isActive, link, children }) {
   );
 }
 
-NavLink.propTypes = {
-  isActive: PropTypes.bool,
-  link: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};
-
-const Wrapper = styled.div(() => [
-  tw`relative inline-block px-8 py-2 items-center justify-center`,
+const Wrapper = styled.li(({ isActive }) => [
+  tw`inline-block px-8 py-2 items-center justify-center`,
   css`
     svg {
       transform: rotate(0deg);
       transition: transform 300ms;
     }
 
+    .menu-item-link:after {
+      display: block;
+      content: "";
+      width: 0;
+      height: 4px;
+      background: ${theme`colors.primary`};
+      transition: width 0.2s;
+    }
+
+    .menu-item-link:hover:after {
+      width: 80%;
+      transition: width 0.2s;
+    }
+
+    .menu-item-link:hover {
+      color: white;
+    }
+
     &:hover {
-      a {
-        color: #9ca3af;
-      }
-      
       svg {
-        color: #9ca3af !important;
+        color: ${theme`colors.primary`} !important;
         transform: rotate(-180deg);
       }
 
@@ -54,6 +62,22 @@ const Wrapper = styled.div(() => [
       }
     }
   `,
+
+  isActive &&
+    css`
+      .menu-item-link:after {
+        display: block;
+        content: "";
+        width: 80%;
+        height: 4px;
+        background: ${theme`colors.primary`};
+      }
+    `,
 ]);
 
 const LinkWrapper = tw.div`flex items-center!`;
+NavLink.propTypes = {
+  isActive: PropTypes.bool,
+  link: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+};

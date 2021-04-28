@@ -10,7 +10,7 @@ export function NumberChange({ value, diff, ...props }) {
   return (
     <Wrapper {...props}>
       <Text className="number-change-value">{value}</Text>
-      {diff && <UpDownIcon isUp={true} />} {/* Up or down */}
+      {diff && <UpDownIcon isup />} {/* Up or down */}
       {diff && (
         <Text tw="text-12 text-primary!" className="number-change-diff">
           {diff}

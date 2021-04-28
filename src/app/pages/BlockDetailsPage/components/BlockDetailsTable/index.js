@@ -11,7 +11,7 @@ import {
   TableHeaderCell,
   TableBody,
 } from "src/app/components/Table";
-import { TabPanel } from "src/app/components/Tab";
+import { TabPanel } from "src/app/components/Tab/Horizontal";
 import { Empty } from "src/app/components/Empty";
 import { Pagination } from "src/app/components/Pagination";
 import { TableBodyRows } from "./components";

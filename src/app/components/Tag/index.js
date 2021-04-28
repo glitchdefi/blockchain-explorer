@@ -9,7 +9,7 @@ export function Tag(props) {
   const { children, color } = props;
   return (
     <Wrapper color={color}>
-      <Text tw="text-12 text-center">{children}</Text>
+      <Text tw="text-12 text-center font-bold">{children}</Text>
     </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { theme, styled, css } from "twin.macro";
-import { usePanelState } from "./hooks/usePanelState";
+import { usePanelState } from "../hooks/usePanelState";
 
 export function TabPanel({ children, isCard, ...props }) {
   const { isActive } = usePanelState();
@@ -32,6 +32,7 @@ const Wrapper = styled.div(() => [
       left: 0;
       background: ${theme`colors.secondary`};
       opacity: 16%;
+      border-radius: 0 0px 5px 5px;
     }
     &:after {
       content: "";
@@ -43,12 +44,13 @@ const Wrapper = styled.div(() => [
       right: 0;
       background: ${theme`colors.primary`};
       opacity: 30%;
+      border-radius: 0 0px 5px 5px;
     }
     .inner {
       position: relative;
       z-index: 2;
       background-color: ${theme`colors.black-pearl`};
-      padding: 16px;
+      padding: 20px;
       border-radius: 0 0px 5px 5px;
     }
   `,

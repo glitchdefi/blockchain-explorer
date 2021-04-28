@@ -1,9 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import 'twin.macro';
+import "twin.macro";
 
-const Dropdown = () => (
-  <FontAwesomeIcon tw="h-3 w-3! ml-2" icon={faCaretDown} color="white"/>
+const Dropdown = (props) => (
+  <FontAwesomeIcon
+    tw="h-3 w-3! ml-2"
+    icon={faCaretDown}
+    color="white"
+    {...props}
+  />
 );
 
 export default Dropdown;

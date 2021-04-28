@@ -20,9 +20,9 @@ export function TokenDropdown() {
   };
 
   const renderDropdownItems = () => {
-    return [1, 2, 3].map(() => {
+    return [1, 2, 3].map((_, i) => {
       return (
-        <DropdownItem>
+        <DropdownItem key={i}>
           <FlexLayout>
             <Text tw="font-bold">Glitch (GLCH)</Text>
             <Text tw="font-bold">$1,651.47</Text>

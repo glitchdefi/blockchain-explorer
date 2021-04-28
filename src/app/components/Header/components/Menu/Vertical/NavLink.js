@@ -42,17 +42,14 @@ const Wrapper = tw.li`
   inline-block 
   items-center 
   justify-center
-  hover:bg-oxfordBlue
+  hover:bg-white-10
 `;
 
 const CustomLink = styled(Link)(({ isActive }) => [
-  tw`flex w-full items-center px-6 py-3`,
+  tw`flex w-full items-center px-6 py-3 hover:text-white`,
   isActive &&
     css`
       color: ${theme`colors.primary`} !important;
-      &:after {
-        height: 0px;
-      }
     `,
 ]);
 

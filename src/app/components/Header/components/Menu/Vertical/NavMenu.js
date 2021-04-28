@@ -16,7 +16,11 @@ export function NavMenu() {
       {/* Menu */}
       <UlWrapper>
         {links.map((link, i) => {
-          const isActive = link.href === location.pathname;
+          const items = link?.items;
+          const isActive = items?.length
+            ? items.findIndex((sub) => sub.href === location.pathname) >= 0
+            : link.href === location.pathname;
+            
           return (
             <NavLink key={i} isActive={isActive} link={link}>
               {link.label}

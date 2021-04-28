@@ -1,8 +1,8 @@
 import React from "react";
 import tw, { styled, css, theme } from "twin.macro";
-import { Button } from "../Button";
-import { Text } from "../Text";
-import { useTabState } from "./hooks/useTabState";
+import { Button } from "../../Button";
+import { Text } from "../../Text";
+import { useTabState } from "../hooks/useTabState";
 
 export function Tab({ children, onClick, ...props }) {
   const { isActive, onChangeTab } = useTabState();
@@ -17,7 +17,7 @@ export function Tab({ children, onClick, ...props }) {
     >
       <Text
         className="tab-label"
-        tw="text-14 uppercase font-bold text-primary!"
+        tw="text-12 md:text-13 lg:text-14 uppercase font-bold text-primary!"
       >
         {children}
       </Text>
@@ -33,11 +33,15 @@ const Wrapper = styled(Button)(({ isActive }) => [
 
   css`
     border-radius: 5px 5px 0px 0px;
-    background-color: ${theme`colors.oxford-blue-2`};
+    background-color: ${theme`colors.oxford-blue.lighter`};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 
     .tab-label {
       color: ${isActive ? "white" : theme`colors.primary`} !important;
       opacity: ${isActive ? "100%" : "60%"};
+      word-break: inherit;
     }
   `,
 
