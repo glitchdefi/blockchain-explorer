@@ -45,7 +45,7 @@ export function Dropdown(props) {
       return options.map((o, i) => {
         return (
           <DropdownItem key={i}>
-            <Text tw="text-13">{o?.label}</Text>
+            <Text tw="text-tiny">{o?.label}</Text>
           </DropdownItem>
         );
       });

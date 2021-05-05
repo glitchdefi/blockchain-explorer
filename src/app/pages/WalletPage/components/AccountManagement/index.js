@@ -22,7 +22,7 @@ export function AccountManagement() {
       />
 
       <InfoRow
-       tw="items-start"
+        tw="items-start"
         label={t("walletPage.public_key")}
         customValueComp={
           <PublicKey>
@@ -34,8 +34,12 @@ export function AccountManagement() {
   );
 }
 
-const Wrapper = styled.div(() => [
+const Wrapper = styled.div([
   css`
+    @media (min-width: 1024px) {
+      padding: 20px;
+    }
+
     .info-row-content {
       display: block;
     }

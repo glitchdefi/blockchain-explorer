@@ -13,8 +13,8 @@ export function InfoUser({ user }) {
     <Wrapper>
       <Avatar
         src="https://image.flaticon.com/icons/png/512/168/168723.png"
-        width={90}
-        height={90}
+        width={60}
+        height={60}
       />
       <div tw="ml-6">
         <FlexLayout>
@@ -34,7 +34,7 @@ const Wrapper = tw.div`flex items-center`;
 const FlexLayout = tw.div`flex items-center`;
 
 const UserAddress = styled.div(() => [
-  tw`text-16 lg:text-18 text-primary!`,
+  tw`text-lg lg:text-xl text-primary!`,
   css`
     word-break: break-word;
   `,

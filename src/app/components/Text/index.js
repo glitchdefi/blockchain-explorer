@@ -1,15 +1,15 @@
-import tw, { css, styled } from "twin.macro";
+import React from "react";
+import PropTypes from "prop-types";
 
-export const Text = styled.div(() => [
-  tw`
-  text-sm 
-  text-black 
-  dark:text-white 
-  font-normal
-  normal-case
-  `,
+import { StyledText } from "./StyledText";
+export function Text({ children, ...props }) {
+  return <StyledText {...props}>{children}</StyledText>;
+}
 
-  css`
-    word-break: break-word;
-  `,
-]);
+Text.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  size: PropTypes.string,
+  color: PropTypes.string,
+  bold: PropTypes.bool,
+  textTransform: PropTypes.string,
+};

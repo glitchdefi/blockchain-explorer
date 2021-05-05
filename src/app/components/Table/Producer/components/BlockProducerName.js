@@ -12,7 +12,7 @@ export const BlockProducerName = ({ href, children }) => {
       <MoneyIcon />
       <Link
         href={href}
-        tw="text-13 ml-3 text-primary! hover:opacity-80"
+        tw="text-tiny ml-3 text-primary! hover:opacity-80"
       >
         {children}
       </Link>

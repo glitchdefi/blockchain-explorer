@@ -5,4 +5,4 @@ export function Card({ children, ...props }) {
   return <Wrapper {...props}>{children}</Wrapper>;
 }
 
-const Wrapper = tw.div`flex p-5 rounded items-center bg-black-pearl`;
+const Wrapper = tw.div`flex p-5 rounded items-center bg-bgPrimary`;

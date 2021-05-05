@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 import "./styles/index.css";
 
-export const Pagination = () => {
+export const Pagination = ({ containerStyles }) => {
   const { t } = useTranslation();
 
   /**
@@ -23,7 +23,7 @@ export const Pagination = () => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper css={containerStyles}>
         <RcPagination total={100} itemRender={renderButtons} />
       </Wrapper>
     </>

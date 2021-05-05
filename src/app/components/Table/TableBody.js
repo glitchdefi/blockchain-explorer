@@ -4,7 +4,7 @@ import "twin.macro";
 
 export default function TableBody({ children, ...props }) {
   return (
-    <tbody tw="bg-black-pearl" {...props}>
+    <tbody tw="bg-bgPrimary" {...props}>
       {children}
     </tbody>
   );

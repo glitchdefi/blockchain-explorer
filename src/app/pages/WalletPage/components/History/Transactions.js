@@ -7,7 +7,7 @@ export const Transactions = () => {
   return (
     <>
       {[1, 2, 3, 4].map((transaction) => {
-        return <TransactionItem transaction={transaction} />;
+        return <TransactionItem key={transaction} transaction={transaction} />;
       })}
     </>
   );

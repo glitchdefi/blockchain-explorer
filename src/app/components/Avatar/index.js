@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import tw, { styled, css } from "twin.macro";
+import tw, { theme, styled, css } from "twin.macro";
 import { ImageLink } from "../Image";
 
 export function Avatar({ href, src, alt, width, height, ...props }) {
@@ -33,6 +33,7 @@ const Wrapper = styled.div.attrs(props => ({
   // we can define static props
   className: 'glc-avatar ' + (props.className ? props.className : ''),
 }))`
+  display: flex;
   .ring {
     width: ${props => props.width ? props.width + 'px' : 'auto' };
     height: ${props => props.height ? props.height + 'px' : 'auto' };
@@ -41,7 +42,7 @@ const Wrapper = styled.div.attrs(props => ({
       content: '';
       position: absolute;
       z-index: 1;
-      border: 2px solid #BF28E4;
+      border: 2px solid ${theme`colors.secondary`};
       width: 100%;
       height: 100%;
       top: -2px;
@@ -52,7 +53,7 @@ const Wrapper = styled.div.attrs(props => ({
       content: '';
       position: absolute;
       z-index: 0;
-      border: 2px solid #24C6C9;
+      border: 2px solid ${theme`colors.primary`};
       width: 100%;
       height: 100%;
       top: -2px;
@@ -66,7 +67,7 @@ const Wrapper = styled.div.attrs(props => ({
     }
     a {
       box-sizing: border-box;
-      border: 2px solid #fff;
+      border: 2px solid ${theme`colors.white`};
       border-radius: 50%;
       line-height: 0;
       padding: 5px;

@@ -6,11 +6,11 @@ export function ModalContainer({ children, onBackdropClick }) {
   return (
     <Wrapper onClick={onBackdropClick}>
       <div
-        tw="relative w-auto my-6 mx-auto"
+        tw="relative w-auto my-6 mx-6 lg:mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div tw="relative w-auto my-6 mx-auto">
-          <div tw="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-big-stone outline-none focus:outline-none">
+          <div tw="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-bg2 outline-none focus:outline-none">
             <div tw="relative p-8 flex-auto">{children}</div>
           </div>
         </div>
@@ -34,5 +34,5 @@ const Wrapper = tw.div`
 
 ModalContainer.propTypes = {
   children: PropTypes.element,
-  onBackdropClick: PropTypes.func
+  onBackdropClick: PropTypes.func,
 };

@@ -15,20 +15,20 @@ export function TotalSupplyChart() {
       <div tw="grid grid-cols-2 gap-4">
         <CardLayout>
           <Text tw="font-bold">88,888,8888</Text>
-          <Text tw="text-12 text-white-70!">
+          <Text tw="text-sm text-textSecondary">
             {t("chartsAndStats.total_glitch_supply")}
           </Text>
         </CardLayout>
         <CardLayout>
           <Text tw="font-bold">88,888,8888</Text>
-          <Text tw="text-12 text-white-70!">
+          <Text tw="text-sm text-textSecondary">
             {t("chartsAndStats.market_capitalization")}
           </Text>
         </CardLayout>
       </div>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <Text tw="text-white-70! mt-5 text-13">
+        <Text tw="text-textSecondary mt-5 text-tiny">
           {t("chartsAndStats.breakdown_by_supply_types")}
         </Text>
         <PieChart />

@@ -3,7 +3,7 @@ import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
 // Components
-import { Link } from "../../../../Link";
+import { Link } from "src/app/components/Link";
 import { Submenu } from "./SubMenu";
 import { DropdownIcon } from "../../../icons";
 
@@ -42,7 +42,7 @@ const Wrapper = tw.li`
   inline-block 
   items-center 
   justify-center
-  hover:bg-white-10
+  hover:bg-bg5
 `;
 
 const CustomLink = styled(Link)(({ isActive }) => [

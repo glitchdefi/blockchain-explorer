@@ -34,13 +34,19 @@ const GridWrap = styled.div(() => [
   tw`grid grid-cols-2 gap-4 w-full`,
   css`
     .number-change-value {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       color: ${theme`colors.primary`};
       ${tw`mt-2`}
     }
+
+    @media (min-width: 1024px) {
+      .number-change-value {
+        font-size: 20px;
+      }
+    }
   `,
 ]);
 const FlexLayout = tw.div`flex flex-col items-center justify-center w-full`;
-const Title = tw(Text)`text-14 uppercase`;
-const Value = tw(Text)`text-20 text-primary! font-bold mt-2`;
+const Title = tw(Text)`text-base uppercase`;
+const Value = tw(Text)`text-xl text-primary! font-bold mt-2`;

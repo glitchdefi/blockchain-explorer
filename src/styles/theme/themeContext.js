@@ -11,11 +11,8 @@ export const ThemeProvider = ({ initialTheme, children }) => {
     const root = window.document.documentElement;
     const isDark = theme === ThemeKeyType.dark;
 
-    if (isDark) {
-      root.classList.add(ThemeKeyType.dark);
-    } else {
-      root.classList.remove(ThemeKeyType.dark);
-    }
+    root.classList.remove(isDark ? ThemeKeyType.light : ThemeKeyType.dark);
+    root.classList.add(theme);
 
     localStorage.setItem(KEY_THEME_STORAGE, theme);
   };

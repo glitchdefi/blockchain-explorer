@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 
-import { ThemeContext } from "src/styles/theme/themeContext";
 import { statsData } from "src/constants/statsData";
-
-import { Page } from "src/app/layouts/Page";
 
 // Components
 import { Text } from "src/app/components/Text";
@@ -15,7 +12,6 @@ import { TabSections } from "./components/TabSections";
 
 export function HomePage() {
   const { t } = useTranslation();
-  const { theme, setTheme } = useContext(ThemeContext);
 
   const renderPriceChart = () => {
     return <PriceChart />;
@@ -39,17 +35,16 @@ export function HomePage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <div tw="mb-4">
-          <Text>{t("homepage.7_day_GLCH_price_history")}</Text>
-          <StatsWrapper>
-            {renderPriceChart()}
-            {renderStatsCards()}
-          </StatsWrapper>
-        </div>
-
-        {renderTabSections()}
-      </Page>
+      <div tw="mb-4">
+        <Text size={theme`fontSize.lg`}>
+          {t("homepage.7_day_GLCH_price_history")}
+        </Text>
+        <StatsWrapper>
+          {renderPriceChart()}
+          {renderStatsCards()}
+        </StatsWrapper>
+      </div>
+      {renderTabSections()}
     </>
   );
 }

@@ -55,20 +55,20 @@ export function TokenTransactionTable({ data }) {
   };
 
   return (
-    <div tw="mt-10">
-      <CardLayout tw="block">
+    <div tw="mt-7">
+      <CardLayout tw="block py-0 px-1 mb-6">
         <TableContainer>
-          <Table tw="bg-outer-space">
+          <Table tw="bg-bgSecondary">
             <TableHeader>
               <TableRow>{renderHeaders()}</TableRow>
             </TableHeader>
-            <TableBody tw="bg-outer-space">{renderBodyRows()}</TableBody>
+            <TableBody tw="bg-bgSecondary">{renderBodyRows()}</TableBody>
           </Table>
         </TableContainer>
-        {renderPagination()}
       </CardLayout>
+      {renderPagination()}
     </div>
   );
 }
 
-export const Star = tw(Text)`text-2xl text-white-70!`;
+export const Star = tw(Text)`text-2xl text-textSecondary!`;

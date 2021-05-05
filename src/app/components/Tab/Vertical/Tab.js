@@ -35,7 +35,7 @@ export function Tab(props) {
 const LabelWrapper = tw.div`flex items-center w-full`;
 const LeftIconWrapper = tw.div`w-1/4 mr-3`;
 Tab.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
   leftIcon: PropTypes.element,
   tabStyles: PropTypes.shape({
     label: PropTypes.shape({

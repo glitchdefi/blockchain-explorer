@@ -11,7 +11,7 @@ export function MoreInfoCard() {
   return (
     <Wrapper>
       <Card>
-        <Text tw="text-14 font-bold">{t("userDetails.more_info")}</Text>
+        <Text tw="text-base font-bold">{t("userDetails.more_info")}</Text>
         <Block tw="mt-6">
           <Text tw="w-1/4 mb-1 lg:mb-0">{t("userDetails.name_tag")}</Text>
           <Text tw="text-primary!">julian1234abc</Text>

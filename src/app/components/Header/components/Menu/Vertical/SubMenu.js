@@ -34,7 +34,7 @@ Submenu.defaultProps = {
 const Wrapper = tw.ul`
   w-full 
   shadow-lg 
-  bg-black-pearl
+  bg-bgPrimary
 `;
 
 export const SubMenuItem = styled.li(({ isActive }) => [

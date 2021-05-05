@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { styled, css } from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
 // Components
@@ -19,7 +19,7 @@ export function WalletButton({ wallet, onClick }) {
 const StyledWalletButton = styled(Button)(() => [
   tw`p-6`,
   css`
-    background-color: rgba(36, 198, 201, 0.15);
+    background-color: ${theme`colors.bg1`};
   `,
 ]);
 

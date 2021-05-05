@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 
 // Components
 import { Text } from "src/app/components/Text";
@@ -12,7 +12,11 @@ export function NumberChange({ value, diff, ...props }) {
       <Text className="number-change-value">{value}</Text>
       {diff && <UpDownIcon isup />} {/* Up or down */}
       {diff && (
-        <Text tw="text-12 text-primary!" className="number-change-diff">
+        <Text
+          size={theme`fontSize.sm`}
+          color={theme`colors.primary`}
+          className="number-change-diff"
+        >
           {diff}
         </Text>
       )}

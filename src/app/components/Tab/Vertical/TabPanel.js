@@ -16,10 +16,22 @@ export function TabPanel({ children, isCard, ...props }) {
 
 const Wrapper = styled.div(() => [
   css`
-    background-color: ${theme`colors.black-pearl`};
+    background-color: ${theme`colors.bgPrimary`};
     padding: 20px;
-    border-radius: 5px;
-    max-width: 75%;
-    width: 75%;
+    border-radius: 0px 0px 5px 5px;
+    max-width: 100%;
+
+    .tab-panel {
+      min-height: 45vh;
+    }
+
+    @media (min-width: 1024px) {
+      width: 100%;
+      border-radius: 5px;
+
+      .tab-panel {
+        min-height: 65vh;
+      }
+    }
   `,
 ]);

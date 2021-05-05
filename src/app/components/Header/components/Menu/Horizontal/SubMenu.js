@@ -13,7 +13,9 @@ export function Submenu({ isActive, items }) {
           const { label, href } = item;
           return (
             <SubMenuItem isActive={href === location.pathname} key={i}>
-              <Link tw="pl-6 pr-2 py-2" href={href}>{label}</Link>
+              <Link tw="pl-6 pr-2 py-2" href={href}>
+                {label}
+              </Link>
             </SubMenuItem>
           );
         })}
@@ -22,7 +24,7 @@ export function Submenu({ isActive, items }) {
   );
 }
 
-const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-big-stone`;
+const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-bg2`;
 export const SubMenuItem = styled.li(({ isActive }) => [
   tw`
   grid 
@@ -30,10 +32,17 @@ export const SubMenuItem = styled.li(({ isActive }) => [
   select-none 
   first:rounded-t
   last:rounded-b
-  hover:bg-white-10
   transition duration-200
 `,
-  isActive && tw`bg-white-10`,
+  css`
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  `,
+  isActive &&
+    css`
+      background-color: rgba(255, 255, 255, 0.15);
+    `,
 ]);
 Submenu.propTypes = {
   items: PropTypes.array,

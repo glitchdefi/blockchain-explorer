@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import tw, { css, styled } from "twin.macro";
+import tw, { css, styled, theme } from "twin.macro";
 import { Text } from "../Text";
 import { getColor } from "./utils";
 import { Types } from "./types";
 
 export function Tag(props) {
-  const { children, color } = props;
+  const { children, color, ...rest } = props;
   return (
-    <Wrapper color={color}>
-      <Text tw="text-12 text-center font-bold">{children}</Text>
+    <Wrapper color={color} {...rest}>
+      <Text bold size={theme`fontSize.sm`} tw="text-center">
+        {children}
+      </Text>
     </Wrapper>
   );
 }
