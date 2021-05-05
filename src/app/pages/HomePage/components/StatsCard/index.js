@@ -1,6 +1,6 @@
 import React, { cloneElement, isValidElement } from "react";
 import PropTypes from "prop-types";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 
 // Components
 import { Card } from "src/app/components/Card";
@@ -14,7 +14,9 @@ export function StatsCard({ icon, title, value }) {
         {isValidElement(icon) && cloneElement(icon)}
         <div tw="ml-5">
           <NumberChange value={value} />
-          <Text tw="text-12 opacity-60">{title}</Text>
+          <Text size={theme`fontSize.sm`} color={theme`colors.textSecondary`}>
+            {title}
+          </Text>
         </div>
       </CardBody>
     </Card>

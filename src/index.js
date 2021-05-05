@@ -19,8 +19,12 @@ import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import { configureAppStore } from "./store/configureStore";
 
+import { MinScreenProvider } from "./hooks/useMinScreen";
+
 // Theme
+import { theme } from "twin.macro";
 import { ThemeProvider } from "./styles/theme/themeContext";
+import { StylesBase } from "./styles/stylesBase";
 import "./styles/global-styles.css";
 
 // Initialize languages
@@ -42,13 +46,16 @@ const MOUNT_NODE = document.getElementById("root");
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </ThemeProvider>
+    <MinScreenProvider screens={theme`screens`}>
+      <ThemeProvider>
+        <HelmetProvider>
+          <React.StrictMode>
+            <StylesBase />
+            <App />
+          </React.StrictMode>
+        </HelmetProvider>
+      </ThemeProvider>
+    </MinScreenProvider>
   </Provider>,
   MOUNT_NODE
 );

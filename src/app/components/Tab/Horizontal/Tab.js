@@ -17,7 +17,7 @@ export function Tab({ children, onClick, ...props }) {
     >
       <Text
         className="tab-label"
-        tw="text-12 md:text-13 lg:text-14 uppercase font-bold text-primary!"
+        tw="text-sm md:text-tiny lg:text-base uppercase font-bold text-primary!"
       >
         {children}
       </Text>
@@ -33,7 +33,7 @@ const Wrapper = styled(Button)(({ isActive }) => [
 
   css`
     border-radius: 5px 5px 0px 0px;
-    background-color: ${theme`colors.oxford-blue.lighter`};
+    background-color: ${theme`colors.bg2`};
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;

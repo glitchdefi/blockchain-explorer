@@ -10,7 +10,7 @@ export function ModalContainer({ children, onBackdropClick }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div tw="relative w-auto my-6 mx-auto">
-          <div tw="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-big-stone outline-none focus:outline-none">
+          <div tw="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-bg2 outline-none focus:outline-none">
             <div tw="relative p-8 flex-auto">{children}</div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const Container = tw.div`
     mt-2 
     rounded 
     shadow-lg
-    bg-big-stone 
+    bg-bg2
     border 
     border-primary 
     border-solid

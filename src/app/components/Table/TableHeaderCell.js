@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import tw, { css } from "twin.macro";
 
 export default function TableHeaderCell({ children, ...props }) {
-  console.log(css);
   return (
     <th
       scope="col"

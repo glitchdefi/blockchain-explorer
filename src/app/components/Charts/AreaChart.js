@@ -56,7 +56,7 @@ export function AreaChart({ data }) {
   );
 }
 
-const chartMargin = { top: 10, right: 30, left: 0, bottom: 0 };
+const chartMargin = { top: 30, right: 30, bottom: 20, left: 5 };
 const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };
 
 AreaChart.propTypes = {

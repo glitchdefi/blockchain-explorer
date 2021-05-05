@@ -19,4 +19,4 @@ export function AssetManagement() {
   );
 }
 
-const Wrapper = tw.div`p-6`;
+const Wrapper = tw.div`lg:p-6`;

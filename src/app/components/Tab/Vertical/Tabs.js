@@ -10,8 +10,15 @@ export function Tabs({ children, ...props }) {
   );
 }
 
-const Container = tw.div`relative pr-9 w-1/4 min-w-1/4`;
-const Wrapper = tw.div`w-full bg-black-pearl rounded-t rounded-b`;
+const Container = tw.div`relative lg:(w-1/4 min-w-1/4 pr-9)`;
+const Wrapper = tw.div`
+ flex 
+ overflow-auto 
+ lg:overflow-hidden 
+ whitespace-nowrap 
+ rounded-t 
+ lg:(block rounded-b bg-bgPrimary whitespace-normal)
+`;
 
 Tabs.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),

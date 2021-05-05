@@ -25,7 +25,7 @@ export function Wallets() {
   return (
     <Wrapper>
       <Text tw="text-16 font-bold">{t("walletPage.connect_to_wallet")}</Text>
-      <div tw="grid grid-cols-4 gap-4 p-6">{renderWallet()}</div>
+      <div tw="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 lg:mt-0 lg:p-6">{renderWallet()}</div>
 
       {/* Modal */}
       <LoginModal isOpen={isModalOpen} onBackdropClick={closeModal} />

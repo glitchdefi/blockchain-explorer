@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { StyledLink } from "./StyledLink";
 export function Link({ children, href, ...props }) {
   return (
-    <StyledLink as="a" href={href} {...props}>
+    <StyledLink to={href} {...props}>
       {children}
     </StyledLink>
   );

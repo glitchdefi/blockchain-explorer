@@ -52,5 +52,5 @@ export function TokenDropdown() {
 
 const LabelWrapper = tw.div`flex flex-wrap items-center`;
 const FlexLayout = tw.div`flex flex-wrap justify-between items-center`;
-const NumberTokens = tw.div`rounded-sm ml-5 text-13 px-3 py-1 bg-gradient-to-r from-primary to-cobalt`;
+const NumberTokens = tw.div`rounded-sm ml-5 text-13 px-3 py-1 bg-gradient-to-r from-primary to-info`;
 const Text = tw(TextBase)`text-13`;

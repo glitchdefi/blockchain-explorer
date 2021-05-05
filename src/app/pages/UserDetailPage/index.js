@@ -11,14 +11,12 @@ import { TabSections } from "./components/TabSections";
 export function UserDetailPage() {
   return (
     <>
-      <Page meta={{}}>
-        <InfoUser />
-        <GridWrapper>
-          <OverviewCard />
-          <MoreInfoCard />
-        </GridWrapper>
-        <TabSections />
-      </Page>
+      <InfoUser />
+      <GridWrapper>
+        <OverviewCard />
+        <MoreInfoCard />
+      </GridWrapper>
+      <TabSections />
     </>
   );
 }

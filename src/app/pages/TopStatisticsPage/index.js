@@ -9,11 +9,9 @@ import { TabSections } from "./components/TabSections";
 export function TopStatisticsPage() {
   return (
     <>
-      <Page meta={{}}>
-        <div tw="mb-4">
-          <TabSections />
-        </div>
-      </Page>
+      <div tw="mb-4">
+        <TabSections />
+      </div>
     </>
   );
 }

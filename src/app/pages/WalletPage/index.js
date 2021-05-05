@@ -12,9 +12,7 @@ export function WalletPage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <TabSections />
-      </Page>
+      <TabSections />
     </>
   );
 }

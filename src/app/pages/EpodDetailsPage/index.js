@@ -14,19 +14,17 @@ export function EpodDetailsPage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <Wrapper>
-          <HeadWrapper>
-            <Heading>{t("epodDetails.title")}</Heading>
-            <Heading tw="text-opacity-60! ml-4">#111111</Heading>
-          </HeadWrapper>
+      <Wrapper>
+        <HeadWrapper>
+          <Heading>{t("epodDetails.title")}</Heading>
+          <Heading tw="text-opacity-60! ml-4">#111111</Heading>
+        </HeadWrapper>
 
-          <EpodDetailsCard />
+        <EpodDetailsCard />
 
-          <Heading>{t("common.blocks")}</Heading>
-          <EpodDetailsTable />
-        </Wrapper>
-      </Page>
+        <Heading>{t("common.blocks")}</Heading>
+        <EpodDetailsTable />
+      </Wrapper>
     </>
   );
 }

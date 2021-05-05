@@ -22,7 +22,7 @@ export function Submenu({ isActive, items }) {
   );
 }
 
-const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-big-stone`;
+const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-bg2`;
 export const SubMenuItem = styled.li(({ isActive }) => [
   tw`
   grid 
@@ -30,10 +30,10 @@ export const SubMenuItem = styled.li(({ isActive }) => [
   select-none 
   first:rounded-t
   last:rounded-b
-  hover:bg-white-10
+  hover:bg-bg5
   transition duration-200
 `,
-  isActive && tw`bg-white-10`,
+  isActive && tw`bg-bg5`,
 ]);
 Submenu.propTypes = {
   items: PropTypes.array,

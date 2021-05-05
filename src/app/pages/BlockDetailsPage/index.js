@@ -14,19 +14,17 @@ export function BlockDetailsPage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <Wrapper>
-          <HeadWrapper>
-            <Heading>{t("blockDetails.title")}</Heading>
-            <Heading tw="text-opacity-60! ml-4">#111111</Heading>
-          </HeadWrapper>
+      <Wrapper>
+        <HeadWrapper>
+          <Heading>{t("blockDetails.title")}</Heading>
+          <Heading tw="text-opacity-60! ml-4">#111111</Heading>
+        </HeadWrapper>
 
-          <BlockDetailsCard />
-          
-          <Heading tw="mt-8">{t("blockDetails.title")}</Heading>
-          <BlockDetailsTable data={[1, 2, 3]} />
-        </Wrapper>
-      </Page>
+        <BlockDetailsCard />
+
+        <Heading tw="mt-8">{t("blockDetails.title")}</Heading>
+        <BlockDetailsTable data={[1, 2, 3]} />
+      </Wrapper>
     </>
   );
 }

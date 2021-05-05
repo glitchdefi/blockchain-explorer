@@ -12,9 +12,7 @@ export function ChartsStatsPage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <TabSections />
-      </Page>
+      <TabSections />
     </>
   );
 }

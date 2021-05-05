@@ -13,12 +13,10 @@ export function TransactionDetailsPage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <div tw="mb-4">
-          <Text tw="text-16">{t("transactionDetails.title")}</Text>
-          <TabSections />
-        </div>
-      </Page>
+      <div tw="mb-4">
+        <Text tw="text-16">{t("transactionDetails.title")}</Text>
+        <TabSections />
+      </div>
     </>
   );
 }

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import tw from "twin.macro";
 
-// Sub Components
+// Components
+import { Logo } from "src/app/components/Logo";
 import { HorizontalMenu, VerticalMenu } from "./components/Menu";
-
 import { Button } from "../Button";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
-import { Logo } from "src/app/components/Logo";
 import { SearchInput } from "./components/Menu/Horizontal/SearchInput";
 
 // Icon
@@ -14,6 +14,11 @@ import { HamburgerIcon, CloseIcon } from "./icons";
 
 export function Header() {
   const [isShowVerticalMenu, setIsShowVerticalMenu] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isShowVerticalMenu) setIsShowVerticalMenu(false);
+  }, [location]);
 
   const toggleVerticalMenu = () => {
     setIsShowVerticalMenu(!isShowVerticalMenu);

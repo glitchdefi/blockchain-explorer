@@ -13,12 +13,10 @@ export function VotePage() {
 
   return (
     <>
-      <Page meta={{}}>
-        <Wrapper>
-          <Header />
-          <ProducerTable data={[1,2,3]}/>
-        </Wrapper>
-      </Page>
+      <Wrapper>
+        <Header />
+        <ProducerTable data={[1, 2, 3]} />
+      </Wrapper>
     </>
   );
 }

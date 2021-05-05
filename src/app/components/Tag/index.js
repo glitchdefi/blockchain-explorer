@@ -6,9 +6,9 @@ import { getColor } from "./utils";
 import { Types } from "./types";
 
 export function Tag(props) {
-  const { children, color } = props;
+  const { children, color, ...rest } = props;
   return (
-    <Wrapper color={color}>
+    <Wrapper color={color} {...rest}>
       <Text tw="text-12 text-center font-bold">{children}</Text>
     </Wrapper>
   );

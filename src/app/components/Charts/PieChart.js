@@ -59,7 +59,7 @@ export function PieChart() {
 
 const LegendWrapper = tw.ul`list-none flex items-center justify-center`;
 const LegendContent = styled.li(({ circleColor }) => [
-  tw`text-white-70! text-13 mr-12 items-center flex`,
+  tw`text-textSecondary! text-tiny mr-12 items-center flex`,
   css`
     &:before {
       content: "";

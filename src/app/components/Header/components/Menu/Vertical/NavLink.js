@@ -42,7 +42,7 @@ const Wrapper = tw.li`
   inline-block 
   items-center 
   justify-center
-  hover:bg-white-10
+  hover:bg-bg5
 `;
 
 const CustomLink = styled(Link)(({ isActive }) => [

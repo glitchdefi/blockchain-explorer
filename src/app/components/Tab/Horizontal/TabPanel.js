@@ -49,7 +49,7 @@ const Wrapper = styled.div(() => [
     .inner {
       position: relative;
       z-index: 2;
-      background-color: ${theme`colors.black-pearl`};
+      background-color: ${theme`colors.bgPrimary`};
       padding: 20px;
       border-radius: 0 0px 5px 5px;
     }

@@ -33,4 +33,4 @@ export function InfoGlitchTokenCard() {
 
 const Block = tw.div`my-2 lg:flex flex-wrap items-center w-full`;
 const Text = tw(TextBase)`text-14`;
-const Label = tw(Text)`w-1/4 mb-1 lg:mb-0`;
+const Label = tw(Text)`w-full lg:w-1/4 mb-1 lg:mb-0`;
