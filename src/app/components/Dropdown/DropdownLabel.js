@@ -15,6 +15,7 @@ const ButtonWrapper = styled(ButtonBase)(() => [
   border-primary
   border-solid
   px-5
+  py-2
   `,
 ]);
 

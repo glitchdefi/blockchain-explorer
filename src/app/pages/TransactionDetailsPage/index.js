@@ -14,7 +14,7 @@ export function TransactionDetailsPage() {
   return (
     <>
       <div tw="mb-4">
-        <Text tw="text-16">{t("transactionDetails.title")}</Text>
+        <Text tw="text-base lg:text-lg">{t("transactionDetails.title")}</Text>
         <TabSections />
       </div>
     </>

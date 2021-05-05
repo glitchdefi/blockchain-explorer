@@ -17,7 +17,7 @@ export const TransactionItem = ({ transaction }) => {
         />
 
         <div tw="flex flex-col items-center mt-3 lg:mt-0 lg:items-start lg:ml-6">
-          <Text tw="text-14 text-white! font-bold">Sent Glitch</Text>
+          <Text tw="text-base text-white! font-bold">Sent Glitch</Text>
           <Text tw="mt-1">#1 - 01/01/2021</Text>
         </div>
       </div>
@@ -31,7 +31,7 @@ export const TransactionItem = ({ transaction }) => {
       <Text tw="mt-1 text-center">Complete in ~ 10 mins</Text>
 
       <div tw="text-center mt-2 lg:text-right">
-        <Text tw="text-14 text-white! font-bold">- $2,100 USD</Text>
+        <Text tw="text-base text-white! font-bold">- $2,100 USD</Text>
         <Text tw="mt-1">3 GLCH</Text>
       </div>
     </StyledTransaction>

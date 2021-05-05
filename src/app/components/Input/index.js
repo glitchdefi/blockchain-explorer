@@ -9,10 +9,9 @@ export const Input = styled.input(() => [
   block
   border-none
   outline-none 
-  placeholder-white
-  placeholder-opacity-60
-  text-sm
-  text-white
+  placeholder-textSecondary
+  text-base
+  text-textPrimary
   font-mono
   `,
 ]);

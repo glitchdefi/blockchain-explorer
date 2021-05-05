@@ -28,8 +28,8 @@ export function LoginModal({ isOpen, onBackdropClick }) {
           <div tw="flex w-full items-center">
             <UserIcon />
             <div tw="ml-8">
-              <Text tw="font-bold text-18">{t("walletPage.login")}</Text>
-              <Text tw="text-opacity-70! mt-2">
+              <Text tw="font-bold text-xl">{t("walletPage.login")}</Text>
+              <Text tw="text-textSecondary! mt-2">
                 {t("walletPage.scan_qr_code")}
               </Text>
             </div>

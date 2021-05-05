@@ -29,8 +29,8 @@ export function TokenDropdown() {
           </FlexLayout>
 
           <FlexLayout>
-            <Text tw="text-opacity-60!">312.778 GLCH</Text>
-            <Text tw="text-opacity-60!">@5.28</Text>
+            <Text tw="text-textSecondary!">312.778 GLCH</Text>
+            <Text tw="text-textSecondary!">@5.28</Text>
           </FlexLayout>
         </DropdownItem>
       );
@@ -52,5 +52,5 @@ export function TokenDropdown() {
 
 const LabelWrapper = tw.div`flex flex-wrap items-center`;
 const FlexLayout = tw.div`flex flex-wrap justify-between items-center`;
-const NumberTokens = tw.div`rounded-sm ml-5 text-13 px-3 py-1 bg-gradient-to-r from-primary to-info`;
-const Text = tw(TextBase)`text-13`;
+const NumberTokens = tw.div`rounded-sm ml-5 text-tiny px-3 py-1 bg-gradient-to-r from-primary to-info`;
+const Text = tw(TextBase)`text-tiny`;

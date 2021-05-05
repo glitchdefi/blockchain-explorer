@@ -48,5 +48,5 @@ const GridWrap = styled.div(() => [
   `,
 ]);
 const FlexLayout = tw.div`flex flex-col items-center justify-center w-full`;
-const Title = tw(Text)`text-14 uppercase`;
-const Value = tw(Text)`text-18 lg:text-20 text-primary! font-bold mt-2`;
+const Title = tw(Text)`text-base uppercase`;
+const Value = tw(Text)`text-xl text-primary! font-bold mt-2`;

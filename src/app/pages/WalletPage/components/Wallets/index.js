@@ -18,14 +18,18 @@ export function Wallets() {
       const onWalletClick = () => {
         openModal();
       };
-      return <WalletButton key={wallet} wallet={wallet} onClick={onWalletClick} />;
+      return (
+        <WalletButton key={wallet} wallet={wallet} onClick={onWalletClick} />
+      );
     });
   };
 
   return (
     <Wrapper>
-      <Text tw="text-16 font-bold">{t("walletPage.connect_to_wallet")}</Text>
-      <div tw="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 lg:mt-0 lg:p-6">{renderWallet()}</div>
+      <Text tw="text-lg font-bold">{t("walletPage.connect_to_wallet")}</Text>
+      <div tw="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 lg:mt-3 lg:p-3">
+        {renderWallet()}
+      </div>
 
       {/* Modal */}
       <LoginModal isOpen={isModalOpen} onBackdropClick={closeModal} />

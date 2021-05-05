@@ -2,6 +2,7 @@ import React from "react";
 import "twin.macro";
 
 import { ThemeContext } from "src/styles/theme/themeContext";
+import { Button } from "../Button";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);
@@ -11,12 +12,12 @@ const ThemeToggle = () => {
   }
 
   return (
-    <button
-      tw="w-10 h-10 focus:outline-none fill-current text-primary hover:text-secondary"
+    <Button
+      tw="mt-3 w-10 h-10 bg-bgSecondary focus:outline-none fill-current text-primary hover:text-secondary"
       onClick={() => setTheme(isDark() ? "light" : "dark")}
     >
       {isDark() ? <Moon /> : <Sun />}
-    </button>
+    </Button>
   );
 };
 

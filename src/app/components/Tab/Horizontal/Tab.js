@@ -4,7 +4,7 @@ import { Button } from "../../Button";
 import { Text } from "../../Text";
 import { useTabState } from "../hooks/useTabState";
 
-export function Tab({ children, onClick, ...props }) {
+export function Tab({ children, onClick, labelStyles, ...props }) {
   const { isActive, onChangeTab } = useTabState();
   return (
     <Wrapper
@@ -17,7 +17,10 @@ export function Tab({ children, onClick, ...props }) {
     >
       <Text
         className="tab-label"
-        tw="text-sm md:text-tiny lg:text-base uppercase font-bold text-primary!"
+        css={[
+          tw`text-sm md:text-tiny lg:text-base uppercase font-bold text-primary!`,
+          labelStyles,
+        ]}
       >
         {children}
       </Text>
@@ -29,11 +32,12 @@ const Wrapper = styled(Button)(({ isActive }) => [
   tw`
     w-full
     py-3
+    lg:py-4
   `,
 
   css`
     border-radius: 5px 5px 0px 0px;
-    background-color: ${theme`colors.bg2`};
+    background-color: ${theme`colors.bg6`};
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;

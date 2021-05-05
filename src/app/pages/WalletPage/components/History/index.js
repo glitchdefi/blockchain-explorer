@@ -8,7 +8,7 @@ import { HistoryCard } from "./HistoryCard";
 export function History() {
   const renderToken = () => {
     return [1, 2, 3, 4].map((token) => {
-      return <TokenButton isActive={token === 1} key={token}/>;
+      return <TokenButton isActive={token === 1} key={token} />;
     });
   };
 
@@ -18,7 +18,7 @@ export function History() {
 
   return (
     <Wrapper>
-      <div tw="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div tw="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {renderToken()}
         {renderAddToken()}
       </div>
@@ -29,4 +29,4 @@ export function History() {
   );
 }
 
-const Wrapper = tw.div`lg:p-6`;
+const Wrapper = tw.div`lg:p-3`;

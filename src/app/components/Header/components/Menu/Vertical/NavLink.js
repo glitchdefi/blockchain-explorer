@@ -3,7 +3,7 @@ import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
 // Components
-import { Link } from "../../../../Link";
+import { Link } from "src/app/components/Link";
 import { Submenu } from "./SubMenu";
 import { DropdownIcon } from "../../../icons";
 

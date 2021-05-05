@@ -18,7 +18,7 @@ export function TabSections() {
   return (
     <Wrapper>
       <TabContainer>
-        <Tabs tw="grid-cols-2 lg:grid-cols-4">
+        <Tabs tw="grid-cols-2 lg:grid-cols-4 mt-6">
           <Tab>{t("common.overview")}</Tab>
           <Tab>{t("common.state")}</Tab>
         </Tabs>

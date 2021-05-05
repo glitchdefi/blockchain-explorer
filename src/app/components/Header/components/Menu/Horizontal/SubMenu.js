@@ -13,7 +13,9 @@ export function Submenu({ isActive, items }) {
           const { label, href } = item;
           return (
             <SubMenuItem isActive={href === location.pathname} key={i}>
-              <Link tw="pl-6 pr-2 py-2" href={href}>{label}</Link>
+              <Link tw="pl-6 pr-2 py-2" href={href}>
+                {label}
+              </Link>
             </SubMenuItem>
           );
         })}
@@ -30,10 +32,17 @@ export const SubMenuItem = styled.li(({ isActive }) => [
   select-none 
   first:rounded-t
   last:rounded-b
-  hover:bg-bg5
   transition duration-200
 `,
-  isActive && tw`bg-bg5`,
+  css`
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  `,
+  isActive &&
+    css`
+      background-color: rgba(255, 255, 255, 0.15);
+    `,
 ]);
 Submenu.propTypes = {
   items: PropTypes.array,

@@ -10,13 +10,13 @@ export const StyledTab = styled(Button)(
   }) => [
     tw`
       w-full
-      py-2
+      py-2.5
       lg:py-3
     `,
 
     css`
       background-color: ${isActive
-        ? theme`colors.outer-space-2`
+        ? theme`colors.bg5`
         : theme`colors.bgPrimary`};
       border-radius: 5px 5px 0px 0px;
       margin-right: 5px;
@@ -28,9 +28,9 @@ export const StyledTab = styled(Button)(
       .tab-label {
         color: ${isActive
           ? activeColor || theme`colors.primary`
-          : "rgba(255,255,255,0.7)"} !important;
-        font-size: ${size || "14px"};
-        font-weight: ${isActive ? "bold" : "normal"};
+          : theme`colors.textSecondary`} !important;
+        font-size: ${size || theme`fontSize.base`};
+        font-weight: ${isActive ? 700 : "normal"};
       }
 
       @media (min-width: 1024px) {
@@ -48,21 +48,21 @@ export const StyledTab = styled(Button)(
 
     isActive &&
       css`
+        svg path {
+          fill: ${theme`colors.primary`};
+        }
+
+        .wallet-icon path {
+          stroke: ${theme`colors.primary`};
+          fill: none;
+        }
+
+        .wallet-icon path:last-child {
+          stroke: none;
+          fill: ${theme`colors.primary`};
+        }
+
         @media (min-width: 1024px) {
-          svg path {
-            fill: ${theme`colors.primary`};
-          }
-
-          .wallet-icon path {
-            stroke: ${theme`colors.primary`};
-            fill: none;
-          }
-
-          .wallet-icon path:last-child {
-            stroke: none;
-            fill: ${theme`colors.primary`};
-          }
-
           &:after {
             content: "";
             display: block;

@@ -1,6 +1,6 @@
 import React, { cloneElement, isValidElement } from "react";
 import PropTypes from "prop-types";
-import tw, { css } from "twin.macro";
+import tw from "twin.macro";
 
 // Components
 import { InfoIcon } from "src/app/components/Icons";
@@ -33,7 +33,7 @@ export function InfoRow(props) {
 const Container = tw.div`mt-6 first:mt-0 flex w-full lg:items-center`;
 const Content = tw.div`flex flex-col ml-2 lg:flex-grow lg:flex-row lg:ml-6`;
 const LabelWrapper = tw.div`flex items-start lg:(items-center w-1/5)`;
-const Text = tw(TextBase)`text-14 text-white text-opacity-60!`;
+const Text = tw(TextBase)`text-base text-textSecondary`;
 
 InfoRow.propTypes = {
   label: PropTypes.string,

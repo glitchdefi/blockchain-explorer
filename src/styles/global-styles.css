@@ -1,15 +1,9 @@
-:root {
-  --color-primary: #24c6c9;
-  --color-nero: #131313;
-  --color-info: #005fa9;
-}
-
 body,
 html {
   margin: 0;
   font-family: "PT Mono", monospace;
   height: 100%;
-  background-color: var(--color-nero);
+  background-color: var(--bg-4);
   font-size: 0.875;
   line-height: 1.5;
 }

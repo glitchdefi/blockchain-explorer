@@ -7,7 +7,7 @@ export default function TableHeaderCell({ children, ...props }) {
     <th
       scope="col"
       css={[
-        tw`p-4 text-center text-14 font-medium text-white tracking-wider`,
+        tw`p-4 text-center text-base font-medium text-white tracking-wider`,
         styles,
       ]}
       {...props}

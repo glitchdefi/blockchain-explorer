@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 import tw from "twin.macro";
-import { mainNav as links } from "../../../../../../constants/navConfig";
+import { mainNav as links } from "src/constants/navConfig";
 import { SearchInput } from "./SearchInput";
 
 // Sub Components

@@ -14,5 +14,5 @@ export const getColor = (type) => {
     return theme`colors.info`;
   }
 
-  return theme`colors.pending`;
+  return theme`colors.success`;
 };

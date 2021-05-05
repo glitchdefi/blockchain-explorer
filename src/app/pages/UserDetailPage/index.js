@@ -1,5 +1,4 @@
 import React from "react";
-import { Page } from "src/app/layouts/Page";
 import tw from "twin.macro";
 
 // Components
@@ -21,4 +20,4 @@ export function UserDetailPage() {
   );
 }
 
-const GridWrapper = tw.div`grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 mb-3`;
+const GridWrapper = tw.div`grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 mb-12`;

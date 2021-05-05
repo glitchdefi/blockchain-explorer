@@ -37,6 +37,7 @@ export function TabSections() {
     // Default Tab
     const Tab = ({ label, key }) => (
       <TabBase
+        tw="py-3"
         tabStyles={{ label: { activeColor: "white", size: "13px" } }}
         key={key}
       >
@@ -69,7 +70,7 @@ export function TabSections() {
     <TabContainer orientation="vertical">
       <Tabs>{renderTab()}</Tabs>
 
-      {/* Network */}
+      {/* Market */}
       <TabPanel>
         <DailyPriceChart />
       </TabPanel>

@@ -3,14 +3,14 @@ import tw, { css, styled } from "twin.macro";
 export const StyledButton = styled.button(({ isLoading, disabled }) => [
   tw`
   inline-flex 
-  text-white 
+  text-textPrimary 
   text-sm 
   font-mono
   leading-none 
   border-none 
   rounded
   outline-none 
-  px-3 py-2 
+  p-3 
   items-center 
   justify-center 
   cursor-pointer 
@@ -20,7 +20,7 @@ export const StyledButton = styled.button(({ isLoading, disabled }) => [
 
   css`
     transition: background-color 0.2s;
-  `,  
+  `,
 
   (isLoading || disabled) && tw`disabled:cursor-not-allowed`,
 ]);

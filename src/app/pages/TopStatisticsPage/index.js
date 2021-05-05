@@ -1,8 +1,6 @@
 import React from "react";
 import "twin.macro";
 
-import { Page } from "src/app/layouts/Page";
-
 // Components
 import { TabSections } from "./components/TabSections";
 

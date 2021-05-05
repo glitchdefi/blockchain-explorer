@@ -22,12 +22,16 @@ const Wrapper = styled.div(() => [
     max-width: 100%;
 
     .tab-panel {
-      min-height: 65vh;
+      min-height: 45vh;
     }
 
     @media (min-width: 1024px) {
       width: 100%;
       border-radius: 5px;
+
+      .tab-panel {
+        min-height: 65vh;
+      }
     }
   `,
 ]);

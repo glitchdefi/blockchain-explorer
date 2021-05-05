@@ -13,7 +13,7 @@ export function OverviewCard() {
   return (
     <Wrapper>
       <Card>
-        <Text tw="text-14 font-bold">{t("common.overview")}</Text>
+        <Text tw="text-base font-bold">{t("common.overview")}</Text>
         <Block tw="mt-6">
           <Text tw="w-1/4 mb-1 lg:mb-0">{t("common.balance")}</Text>
           <Text>88,888,888888 Glitch</Text>
@@ -34,4 +34,4 @@ export function OverviewCard() {
 export const Wrapper = tw.div`grid grid-cols-1 gap-4`;
 export const Card = tw(CardBase)`flex-col items-start p-6`;
 export const Block = tw.div`my-2 lg:flex flex-wrap items-center w-full`;
-export const Text = tw(TextBase)`text-13`;
+export const Text = tw(TextBase)`text-tiny`;

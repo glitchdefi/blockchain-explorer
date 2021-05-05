@@ -47,11 +47,11 @@ export function RankTable({ tableName, data }) {
         <Text tw="mb-4">{tableName}</Text>
         <CardLayout tw="block p-2">
           <TableContainer>
-            <Table tw="bg-outer-space">
+            <Table tw="bg-bgSecondary">
               <TableHeader>
                 <TableRow>{renderHeaders()}</TableRow>
               </TableHeader>
-              <TableBody tw="bg-outer-space">{renderBodyRows()}</TableBody>
+              <TableBody tw="bg-bgSecondary">{renderBodyRows()}</TableBody>
             </Table>
           </TableContainer>
         </CardLayout>

@@ -20,7 +20,7 @@ export function Status({ status, buttonLabel }) {
 const Wrapper = tw.div`flex flex-wrap items-center`;
 
 export const Text = styled(TextBase)((type) => [
-  tw`text-14`,
+  tw`text-base`,
   css`
     color: ${getColor(type)};
   `,
