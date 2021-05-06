@@ -4,6 +4,20 @@ import tw, { styled, css } from "twin.macro";
 import moment from "moment";
 import { Text } from "../Text";
 
+const year = moment().year();
+const version = "22.0.9";
+
+function Copyrite() {
+  const { t } = useTranslation();
+  return (
+    <Wrapper>
+      <Text tw="text-sm lg:text-base">
+        {t("footer.copyrite", { year, version })}
+      </Text>
+    </Wrapper>
+  );
+}
+
 const Wrapper = styled.div(() => [
   tw`text-center flex w-full py-4 justify-center lg:justify-end`,
   css`
@@ -12,17 +26,5 @@ const Wrapper = styled.div(() => [
     border-top-style: solid;
   `,
 ]);
-
-const year = moment().year();
-const version = "22.0.9";
-
-function Copyrite() {
-  const { t } = useTranslation();
-  return (
-    <Wrapper>
-      <Text tw="text-xs">{t("footer.copyrite", { year, version })}</Text>
-    </Wrapper>
-  );
-}
 
 export default Copyrite;
