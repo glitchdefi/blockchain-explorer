@@ -1,5 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
+
+import { Grid } from "src/app/components/Grid";
 import { TokenButton } from "./TokenButton";
 import { AddTokenButton } from "./AddTokenButton";
 import { PendingCard } from "./PendingCard";
@@ -18,10 +20,10 @@ export function History() {
 
   return (
     <Wrapper>
-      <div tw="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Grid cols={4}>
         {renderToken()}
         {renderAddToken()}
-      </div>
+      </Grid>
 
       <PendingCard />
       <HistoryCard />

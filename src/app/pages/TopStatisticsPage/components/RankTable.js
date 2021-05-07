@@ -31,7 +31,7 @@ export function RankTable({ tableName, data }) {
 
     return data.map((item, i) => {
       return (
-        <TableRow css={[rowStyles]}>
+        <TableRow css={[rowStyles]} key={i}>
           <TableCell>1</TableCell>
           <TableCell isLink>dhjsoepn694278hfie</TableCell>
           <TableCell>2,000,000 GLCH</TableCell>

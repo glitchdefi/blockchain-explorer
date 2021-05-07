@@ -16,4 +16,4 @@ export function AssetManagement() {
   );
 }
 
-const Wrapper = tw.div`lg:(pt-1 px-3 pb-3)`;
+const Wrapper = tw.div`lg:(pt-1 px-3)`;
