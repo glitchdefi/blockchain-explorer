@@ -19,13 +19,13 @@ import { HomePage } from "./pages/HomePage/Loadable";
 import { WalletPage } from "./pages/WalletPage/Loadable";
 import { VotePage } from "./pages/VotePage/Loadable";
 import { TokenPage } from "./pages/TokenPage/Loadable";
-import { ChartsStatsPage } from "./pages/ChartsStartsPage";
-import { TopStatisticsPage } from "./pages/TopStatisticsPage";
+import { ChartsStatsPage } from "./pages/ChartsStartsPage/Loadable";
+import { TopStatisticsPage } from "./pages/TopStatisticsPage/Loadable";
 
 import { UserDetailPage } from "./pages/UserDetailPage/Loadable";
 import { TransactionDetailsPage } from "./pages/TransactionDetailsPage/Loadable";
 import { BlockDetailsPage } from "./pages/BlockDetailsPage/Loadable";
-import { EpodDetailsPage } from "./pages/EpodDetailsPage";
+import { EpodDetailsPage } from "./pages/EpodDetailsPage/Loadable";
 import { NotFoundPage } from "./pages/NotFoundPage/Loadable";
 
 export function App() {
