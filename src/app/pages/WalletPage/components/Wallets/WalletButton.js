@@ -5,13 +5,22 @@ import PropTypes from "prop-types";
 // Components
 import { Button } from "src/app/components/Button";
 import { Text } from "src/app/components/Text";
+import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 
-export function WalletButton({ wallet, onClick }) {
-  const { name } = wallet || {};
+export function WalletButton({ pendingConnectorId, wallet, onClick }) {
+  const { name, connectorId } = wallet || {};
+  const isPending = pendingConnectorId === connectorId;
 
   return (
     <StyledWalletButton onClick={onClick}>
-      <Text tw="text-primary!">Wallet {name}</Text>
+      {isPending ? (
+        <>
+          <Spinner tw="mr-3" />
+          <Text tw="text-primary!">Initializing...</Text>
+        </>
+      ) : (
+        <Text tw="text-primary!">{name}</Text>
+      )}
     </StyledWalletButton>
   );
 }

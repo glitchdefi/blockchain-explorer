@@ -12,13 +12,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import FontFaceObserver from "fontfaceobserver";
 import reportWebVitals from "./reportWebVitals";
-
 import { HelmetProvider } from "react-helmet-async";
+
+// Web3
+import { createWeb3ReactRoot, Web3ReactProvider } from "@web3-react/core";
+import { NetworkContextName } from "src/constants/wallet";
+import { getLibrary } from "src/utils/getLibrary";
 
 // Redux
 import { Provider } from "react-redux";
 import { configureAppStore } from "./store/configureStore";
 
+// Hooks
 import { MinScreenProvider } from "./hooks/useMinScreen";
 
 // Theme
@@ -42,21 +47,30 @@ openSansObserver.load().then(() => {
 });
 
 const store = configureAppStore();
+const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 const MOUNT_NODE = document.getElementById("root");
 
+if (!!window.ethereum) {
+  window.ethereum.autoRefreshOnNetworkChange = false;
+}
+
 ReactDOM.render(
-  <Provider store={store}>
-    <MinScreenProvider screens={theme`screens`}>
-      <ThemeProvider>
-        <HelmetProvider>
-          <React.StrictMode>
-            <StylesBase />
-            <App />
-          </React.StrictMode>
-        </HelmetProvider>
-      </ThemeProvider>
-    </MinScreenProvider>
-  </Provider>,
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <Web3ProviderNetwork getLibrary={getLibrary}>
+      <Provider store={store}>
+        <MinScreenProvider screens={theme`screens`}>
+          <ThemeProvider>
+            <HelmetProvider>
+              <React.StrictMode>
+                <StylesBase />
+                <App />
+              </React.StrictMode>
+            </HelmetProvider>
+          </ThemeProvider>
+        </MinScreenProvider>
+      </Provider>
+    </Web3ProviderNetwork>
+  </Web3ReactProvider>,
   MOUNT_NODE
 );
 

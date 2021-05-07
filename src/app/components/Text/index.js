@@ -7,7 +7,7 @@ export function Text({ children, ...props }) {
 }
 
 Text.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  children: PropTypes.any,
   size: PropTypes.string,
   color: PropTypes.string,
   bold: PropTypes.bool,
