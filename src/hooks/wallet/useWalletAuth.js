@@ -56,9 +56,7 @@ export const useWalletAuth = () => {
             // toastError(error.name, error.message);
           }
         }
-
-        callback && callback();
-      });
+      }).then(callback);
     } else {
       console.error("Can't find connector", "The connector config is wrong");
       //   toastError("Can't find connector", "The connector config is wrong");

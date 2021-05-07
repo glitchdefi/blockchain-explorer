@@ -1,7 +1,8 @@
 import React from "react";
-import tw from "twin.macro";
+import "twin.macro";
 
 // Components
+import { Grid } from "src/app/components/Grid";
 import { InfoUser } from "./components/InfoUser";
 import { OverviewCard } from "./components/OverviewCard";
 import { MoreInfoCard } from "./components/MoreInfoCard";
@@ -11,13 +12,11 @@ export function UserDetailPage() {
   return (
     <>
       <InfoUser />
-      <GridWrapper>
+      <Grid cols={2} tw="mt-6 mb-12">
         <OverviewCard />
         <MoreInfoCard />
-      </GridWrapper>
+      </Grid>
       <TabSections />
     </>
   );
 }
-
-const GridWrapper = tw.div`grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6 mb-12`;
