@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import tw, { styled } from "twin.macro";
 
 export const TabsContext = createContext();
-export function TabContainer({ children, orientation }) {
+export function TabContainer({ children, orientation, ...props }) {
   const [activeTab, setActiveTab] = useState(1);
 
   return (
     <TabsContext.Provider
       value={{ tabIndex: 0, panelIndex: 0, activeTab, setActiveTab }}
     >
-      <Wrapper orientation={orientation}>{children}</Wrapper>
+      <Wrapper orientation={orientation} {...props}>
+        {children}
+      </Wrapper>
     </TabsContext.Provider>
   );
 }

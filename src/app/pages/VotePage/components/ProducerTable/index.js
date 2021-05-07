@@ -41,7 +41,7 @@ export function ProducerTable({ data }) {
   return (
     <>
       <TabPanel tw="mt-5">
-        <TableContainer tw="mb-6">
+        <TableContainer>
           <Table>
             <TableHeader>
               <TableRow>{renderHeaders()}</TableRow>

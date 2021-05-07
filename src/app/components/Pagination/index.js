@@ -32,8 +32,8 @@ export const Pagination = ({ containerStyles }) => {
 
 const Wrapper = tw.div`
  flex 
- mt-3
- mb-2 
+ mt-7
+ mb-2
  items-center 
  justify-start 
  lg:justify-end 

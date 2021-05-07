@@ -56,7 +56,7 @@ export function TokenTransactionTable({ data }) {
 
   return (
     <div tw="mt-7">
-      <CardLayout tw="block py-0 px-1 mb-6">
+      <CardLayout tw="block py-0 px-1">
         <TableContainer>
           <Table tw="bg-bgSecondary">
             <TableHeader>

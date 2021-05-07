@@ -37,7 +37,7 @@ export function MinersPanel({ data }) {
 
     return data.map((item, i) => {
       return (
-        <TableRow>
+        <TableRow key={i}>
           <TableCell>1</TableCell>
           <TableCell isLink>dhjsoepn694278hfie</TableCell>
           <TableCell>1,627</TableCell>

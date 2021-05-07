@@ -13,7 +13,7 @@ import { BlockTable } from "src/app/components/Table/Block";
 
 export function TabSections() {
   return (
-    <TabContainer>
+    <TabContainer tw="mt-12">
       <Tabs>
         <Tab>Producer</Tab>
         <Tab>Epoch</Tab>

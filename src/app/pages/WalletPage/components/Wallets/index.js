@@ -6,6 +6,7 @@ import { useWalletAuth } from "src/hooks/wallet/useWalletAuth";
 
 // Components
 import { Text } from "src/app/components/Text";
+import { Grid } from "src/app/components/Grid";
 import { WalletButton } from "./WalletButton";
 
 export function Wallets() {
@@ -46,10 +47,13 @@ export function Wallets() {
         Logout
       </Text>
 
-      {!active && <WalletWrapper>{renderWallet()}</WalletWrapper>}
+      {!active && (
+        <Grid cols={4} tw="mt-6 lg:(mt-3 p-3)">
+          {renderWallet()}
+        </Grid>
+      )}
     </Wrapper>
   );
 }
 
 const Wrapper = tw.div`w-full text-center`;
-const WalletWrapper = tw.div`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 lg:mt-3 lg:p-3`;
