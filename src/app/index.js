@@ -8,6 +8,9 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
+// Hooks
+import { useEagerConnect } from "src/hooks/wallet";
+
 // Main layout
 import { Page } from "./layouts/Page";
 
@@ -26,6 +29,8 @@ import { EpodDetailsPage } from "./pages/EpodDetailsPage";
 import { NotFoundPage } from "./pages/NotFoundPage/Loadable";
 
 export function App() {
+  useEagerConnect();
+
   return (
     <BrowserRouter>
       <Page>

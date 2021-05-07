@@ -16,7 +16,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 // Web3
 import { createWeb3ReactRoot, Web3ReactProvider } from "@web3-react/core";
-import { NetworkContextName } from "src/constants";
+import { NetworkContextName } from "src/constants/wallet";
 import { getLibrary } from "src/utils/getLibrary";
 
 // Redux
@@ -49,6 +49,10 @@ openSansObserver.load().then(() => {
 const store = configureAppStore();
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 const MOUNT_NODE = document.getElementById("root");
+
+if (!!window.ethereum) {
+  window.ethereum.autoRefreshOnNetworkChange = false;
+}
 
 ReactDOM.render(
   <Web3ReactProvider getLibrary={getLibrary}>

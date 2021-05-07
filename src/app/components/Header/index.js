@@ -16,7 +16,6 @@ export function Header() {
   const [isShowVerticalMenu, setIsShowVerticalMenu] = useState(false);
   const location = useLocation();
 
-  console.log(location);
   useEffect(() => {
     if (isShowVerticalMenu) setIsShowVerticalMenu(false);
   }, [location]);
