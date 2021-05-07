@@ -5,7 +5,7 @@ import {
   PriceIcon,
   LibIcon,
   TotalAccountIcon,
-} from "src/app/components/Icons";
+} from "src/app/components/Svg/Icons";
 
 export const statsData = [
   {

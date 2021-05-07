@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "twin.macro";
 
 // Components
-import { AddCircleIcon } from "src/app/components/Icons";
+import { AddCircleIcon } from "src/app/components/Svg/Icons";
 import { Wrapper as TokenButtonWrapper } from "./TokenButton";
 import { Text } from "../Text";
 

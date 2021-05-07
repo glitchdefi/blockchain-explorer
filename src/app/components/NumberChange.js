@@ -4,7 +4,7 @@ import tw, { theme } from "twin.macro";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { UpDownIcon } from "src/app/components/Icons";
+import { UpDownIcon } from "src/app/components/Svg/Icons";
 
 export function NumberChange({ value, diff, ...props }) {
   return (

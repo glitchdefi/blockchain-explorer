@@ -5,7 +5,7 @@ import tw from "twin.macro";
 import qrCodeImg from "./assets/qr_code.png";
 
 import { Modal } from "src/app/components/Modal";
-import { UserIcon } from "src/app/components/Icons";
+import { UserIcon } from "src/app/components/Svg/Icons";
 import { Text } from "src/app/components/Text";
 import { Image } from "src/app/components/Image";
 import { Button } from "src/app/components/Button";
