@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { SupportedWallets } from "src/constants/wallet";
-import { useWalletAuth } from "src/hooks/wallet/useWalletAuth";
+import { useWalletAuth } from "src/hooks/wallet";
 
 // Components
 import { Text } from "src/app/components/Text";

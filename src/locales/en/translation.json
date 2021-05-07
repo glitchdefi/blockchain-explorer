@@ -22,7 +22,8 @@
         "history": "History",
         "glitch": "Glitch",
         "vote": "Vote",
-        "miners": "Miners"
+        "miners": "Miners",
+        "loading": "Loading ..."
     },
     "pagination": {
         "prev": "Prev",
@@ -71,7 +72,8 @@
         "value_in_usd": "Value in USD",
         "login": "Login",
         "scan_qr_code": "Scan the QR-Code with you application",
-        "open_your_app": "Open your app"
+        "open_your_app": "Open your app",
+        "initializing": "Initializing..."
     },
     "votePage": {
         "selected_producers": "Selected Producers"

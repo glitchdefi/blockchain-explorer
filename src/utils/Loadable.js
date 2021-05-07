@@ -11,7 +11,10 @@ export const lazyLoad = (
     lazyFactory = () =>
       importFunc().then((module) => ({ default: selectorFunc(module) }));
   }
-  const LazyComponent = lazy(lazyFactory);
+  const LazyComponent = lazy(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    return lazyFactory();
+  });
 
   return (props) => (
     <Suspense fallback={opts.fallback}>
