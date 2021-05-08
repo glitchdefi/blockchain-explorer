@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import tw from "twin.macro";
 
 // Components
-import { InfoIcon } from "src/app/components/Icons";
+import { InfoIcon } from "src/app/components/Svg/Icons";
 import { Text as TextBase } from "src/app/components/Text";
 
 export function InfoRow(props) {

@@ -11,6 +11,9 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 // Hooks
 import { useEagerConnect } from "src/hooks/wallet";
 
+// Components
+import { ToastListener } from "src/app/components/Toast/ToastListener";
+
 // Main layout
 import { Page } from "./layouts/Page";
 
@@ -57,6 +60,7 @@ export function App() {
           <Route component={NotFoundPage} />
         </Switch>
       </Page>
+      <ToastListener />
     </BrowserRouter>
   );
 }

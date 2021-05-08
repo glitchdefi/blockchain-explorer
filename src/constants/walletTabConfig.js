@@ -3,7 +3,7 @@ import {
   AssetManagementIcon,
   HistoryIcon,
   WalletIcon,
-} from "src/app/components/Icons";
+} from "src/app/components/Svg/Icons";
 
 export const walletTabConfig = [
   {

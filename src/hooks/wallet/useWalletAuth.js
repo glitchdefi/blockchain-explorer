@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
@@ -12,27 +12,26 @@ import {
   connectorLocalStorageKey,
   SupportedWallets,
 } from "src/constants/wallet";
-// import useToast from "hooks/useToast";
+import { useToast } from "src/hooks/useToast";
 
 export const useWalletAuth = () => {
   const { active, account, activate, deactivate } = useWeb3React();
-  //   const { toastError } = useToast();
+  const { toastError } = useToast();
 
   const login = useCallback((connectorId, callback) => {
     const connector = getConnectorById({ connectorId });
     if (connector) {
-      // Cached ConnecterId to localstorage
+      // Cached ConnectorId to localstorage
       window.localStorage.setItem(connectorLocalStorageKey, connectorId);
 
       activate(connector, async (error) => {
         if (error instanceof UnsupportedChainIdError) {
-          console.error("Wrong Network");
           activate(connector);
+          toastError("Error", "Wrong Network");
         } else {
           window.localStorage.removeItem(connectorLocalStorageKey);
           if (error instanceof NoEthereumProviderError) {
-            console.error("Provider Error", "No provider was found");
-            // toastError("Provider Error", "No provider was found");
+            toastError("Provider Error", "No provider was found");
           } else if (
             error instanceof UserRejectedRequestErrorInjected ||
             error instanceof UserRejectedRequestErrorWalletConnect
@@ -43,23 +42,17 @@ export const useWalletAuth = () => {
             ) {
               connector.walletConnectProvider = undefined;
             }
-            console.error(
+            toastError(
               "Authorization Error",
               "Please authorize to access your account"
             );
-            // toastError(
-            //   "Authorization Error",
-            //   "Please authorize to access your account"
-            // );
           } else {
-            console.error(error.name, error.message);
-            // toastError(error.name, error.message);
+            toastError(error.name || "Error", error.message || "Unknown");
           }
         }
       }).then(callback);
     } else {
-      console.error("Can't find connector", "The connector config is wrong");
-      //   toastError("Can't find connector", "The connector config is wrong");
+      toastError("Can't find connector", "The connector config is wrong");
     }
   }, []);
 

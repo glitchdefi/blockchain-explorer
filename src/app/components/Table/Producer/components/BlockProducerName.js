@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import tw from "twin.macro";
 
 import { Link } from "src/app/components/Link";
-import { MoneyIcon } from "src/app/components/Icons";
+import { MoneyIcon } from "src/app/components/Svg/Icons";
 
 export const BlockProducerName = ({ href, children }) => {
   if (!children) return <div />;

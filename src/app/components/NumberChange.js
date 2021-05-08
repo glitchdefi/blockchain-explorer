@@ -4,13 +4,13 @@ import tw, { theme } from "twin.macro";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { UpDownIcon } from "src/app/components/Icons";
+import { UpDownIcon } from "src/app/components/Svg/Icons";
 
 export function NumberChange({ value, diff, ...props }) {
   return (
     <Wrapper {...props}>
       <Text className="number-change-value">{value}</Text>
-      {diff && <UpDownIcon isup />} {/* Up or down */}
+      {diff && <UpDownIcon isUp />} {/* Up or down */}
       {diff && (
         <Text
           size={theme`fontSize.sm`}

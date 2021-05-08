@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { Avatar } from "src/app/components/Avatar";
 import { Text } from "src/app/components/Text";
 import { Button } from "src/app/components/Button";
-import { CopyIcon } from "src/app/components/Icons";
+import { CopyIcon } from "src/app/components/Svg/Icons";
 
 export function InfoUser({ user }) {
   return (
