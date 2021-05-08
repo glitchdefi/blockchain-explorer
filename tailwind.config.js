@@ -35,6 +35,7 @@ module.exports = {
         bg4: "var(--bg-4)",
         bg5: "var(--bg-5)",
         bg6: "var(--bg-6)",
+        bg7: "var(--bg-7)",
       },
       maxWidth: {
         "1/4": "25%",

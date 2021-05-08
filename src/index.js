@@ -32,6 +32,8 @@ import { ThemeProvider } from "./styles/theme/themeContext";
 import { StylesBase } from "./styles/stylesBase";
 import "./styles/global-styles.css";
 
+import { ToastsProvider } from "./contexts/ToastsContext";
+
 // Initialize languages
 import "./locales/i18n";
 
@@ -55,22 +57,24 @@ if (!!window.ethereum) {
 }
 
 ReactDOM.render(
-  <Web3ReactProvider getLibrary={getLibrary}>
-    <Web3ProviderNetwork getLibrary={getLibrary}>
-      <Provider store={store}>
-        <MinScreenProvider screens={theme`screens`}>
-          <ThemeProvider>
-            <HelmetProvider>
-              <React.StrictMode>
-                <StylesBase />
-                <App />
-              </React.StrictMode>
-            </HelmetProvider>
-          </ThemeProvider>
-        </MinScreenProvider>
-      </Provider>
-    </Web3ProviderNetwork>
-  </Web3ReactProvider>,
+  <React.StrictMode>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Web3ProviderNetwork getLibrary={getLibrary}>
+        <Provider store={store}>
+          <ToastsProvider>
+            <MinScreenProvider screens={theme`screens`}>
+              <ThemeProvider>
+                <HelmetProvider>
+                  <StylesBase />
+                  <App />
+                </HelmetProvider>
+              </ThemeProvider>
+            </MinScreenProvider>
+          </ToastsProvider>
+        </Provider>
+      </Web3ProviderNetwork>
+    </Web3ReactProvider>
+  </React.StrictMode>,
   MOUNT_NODE
 );
 

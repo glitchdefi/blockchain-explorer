@@ -11,8 +11,8 @@ export const Svg = ({ width, height, children, ...props }) => {
 };
 
 Svg.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   children: PropTypes.any.isRequired,
 };
 
