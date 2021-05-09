@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { styled, css, theme } from "twin.macro";
+import { css } from "twin.macro";
 
 import { useMinScreen } from "src/hooks/useMinScreen";
 import { tabsConfig } from "./config";
@@ -29,6 +29,7 @@ import {
   NetworkHashRateChart,
   NetworkTransactionFeeChart,
 } from "./NetworkData";
+import tw from "twin.macro";
 
 export function TabSections() {
   const renderTab = () => {
@@ -37,7 +38,7 @@ export function TabSections() {
     // Default Tab
     const Tab = ({ label, key }) => (
       <TabBase
-        tw="py-3"
+        tw="py-4 pl-7"
         tabStyles={{ label: { activeColor: "white", size: "13px" } }}
         key={key}
       >
@@ -50,15 +51,14 @@ export function TabSections() {
       if (min`lg`) {
         return (
           <div key={tabGroupIndex}>
-            <Text tw="pt-4 pb-2 px-3 font-bold text-primary!">
-              {tabGroup.label}
-            </Text>
+            <Label>{tabGroup.label}</Label>
             {tabGroup.items.map((tab, tabIndex) => {
               return <Tab label={tab} key={tabIndex} />;
             })}
           </div>
         );
       } else {
+        // For mobile
         return tabGroup.items.map((tab, tabIndex) => {
           return <Tab label={tab} key={tabIndex} />;
         });
@@ -67,7 +67,7 @@ export function TabSections() {
   };
 
   return (
-    <TabContainer orientation="vertical">
+    <TabContainer css={[styles]} orientation="vertical">
       <Tabs>{renderTab()}</Tabs>
 
       {/* Market */}
@@ -111,3 +111,10 @@ export function TabSections() {
     </TabContainer>
   );
 }
+
+const Label = tw(Text)`py-4 pl-7 pr-3 font-bold text-primary!`;
+const styles = `
+  .tab-panel {
+    padding: 10px;
+  }
+`;

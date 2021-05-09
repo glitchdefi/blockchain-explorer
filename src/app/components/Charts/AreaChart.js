@@ -9,57 +9,63 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
-import { theme } from "twin.macro";
+import tw, { theme } from "twin.macro";
+import { Text } from "../Text";
 
-export function AreaChart({ data }) {
+export function AreaChart({ tableName, data }) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <ReAreaChart width={500} height={400} data={data} margin={chartMargin}>
-        <defs>
-          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop
-              offset="5%"
-              stopColor={theme`colors.primary`}
-              stopOpacity={0.8}
-            />
-            <stop
-              offset="95%"
-              stopColor={theme`colors.primary`}
-              stopOpacity={0}
-            />
-          </linearGradient>
-        </defs>
-        <CartesianGrid vertical={false} strokeOpacity="15%" />
-        <XAxis
-          dataKey="name"
-          tickLine={false}
-          axisLine={false}
-          tickSize={16}
-          tick={tickStyles}
-        />
-        <YAxis
-          tickLine={false}
-          axisLine={false}
-          tickSize={10}
-          tick={tickStyles}
-        />
-        <Tooltip cursor={false} />
-        <Area
-          type="linear"
-          dataKey="uv"
-          stroke={theme`colors.primary`}
-          fillOpacity={1}
-          fill="url(#colorUv)"
-        />
-      </ReAreaChart>
-    </ResponsiveContainer>
+    <>
+      <Label>{tableName}</Label>
+      <ResponsiveContainer width="100%" height="100%">
+        <ReAreaChart width={500} height={400} data={data} margin={chartMargin}>
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop
+                offset="5%"
+                stopColor={theme`colors.primary`}
+                stopOpacity={0.8}
+              />
+              <stop
+                offset="95%"
+                stopColor={theme`colors.primary`}
+                stopOpacity={0}
+              />
+            </linearGradient>
+          </defs>
+          <CartesianGrid vertical={false} strokeOpacity="15%" />
+          <XAxis
+            dataKey="name"
+            tickLine={false}
+            axisLine={false}
+            tickSize={16}
+            tick={tickStyles}
+          />
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tickSize={10}
+            tick={tickStyles}
+          />
+          <Tooltip cursor={false} />
+          <Area
+            type="linear"
+            dataKey="uv"
+            stroke={theme`colors.primary`}
+            fillOpacity={1}
+            fill="url(#colorUv)"
+          />
+        </ReAreaChart>
+      </ResponsiveContainer>
+    </>
   );
 }
 
+const Label = tw(Text)`text-tiny text-textSecondary text-center mb-2`;
 const chartMargin = { top: 30, right: 30, bottom: 20, left: 5 };
 const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };
 
 AreaChart.propTypes = {
+  tableName: PropTypes.string,
   data: PropTypes.array,
 };
 

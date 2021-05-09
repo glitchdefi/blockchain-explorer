@@ -12,7 +12,7 @@ export function BlockDetailsCard() {
   const { t } = useTranslation();
 
   return (
-    <Container tw="mb-8">
+    <Container>
       <Card>
         <Wrapper>
           <InfoRow label={t("blockDetails.block_height")} value="11676248" />
@@ -59,4 +59,4 @@ export function BlockDetailsCard() {
   );
 }
 
-export const Wrapper = tw.div`w-full pl-3`;
+export const Wrapper = tw.div`w-full px-1 py-3 lg:pl-6`;

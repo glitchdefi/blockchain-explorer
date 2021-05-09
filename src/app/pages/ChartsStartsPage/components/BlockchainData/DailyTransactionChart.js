@@ -6,6 +6,7 @@ import "twin.macro";
 import { CardLayout } from "src/app/pages/WalletPage/components/CardLayout";
 import { Text } from "src/app/components/Text";
 import { AreaChart } from "src/app/components/Charts";
+import { Grid } from "src/app/components/Grid";
 
 export function DailyTransactionChart() {
   const { t } = useTranslation();
@@ -15,9 +16,9 @@ export function DailyTransactionChart() {
         <Text tw="text-center">{t("chartsAndStats.the_chart_highlights")}</Text>
       </CardLayout>
 
-      <div tw="grid grid-cols-2 gap-4 mt-4">
+      <Grid cols={2} tw="mt-4">
         <CardLayout>
-          <Text>
+          <Text tw="text-center">
             {t("chartsAndStats.highest_number", {
               transactions: "1,406,016",
               date: "Thursday, September 17, 2021",
@@ -25,17 +26,17 @@ export function DailyTransactionChart() {
           </Text>
         </CardLayout>
         <CardLayout>
-          <Text>
+          <Text tw="text-center">
             {t("chartsAndStats.lowest_number", {
               transactions: "1,329",
               date: "Sunday, August 9, 2015",
             })}
           </Text>
         </CardLayout>
-      </div>
+      </Grid>
 
-      <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+      <CardLayout tw="mt-7 px-2 h-96">
+        <AreaChart tableName="Glitch Daily Transactions Chart"/>
       </CardLayout>
     </>
   );

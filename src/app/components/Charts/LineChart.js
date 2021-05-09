@@ -10,6 +10,40 @@ import {
 } from "recharts";
 import { theme } from "twin.macro";
 
+export function LineChart() {
+  return (
+    <ResponsiveContainer width="100%" height="100%">
+      <ReLineChart width={500} height={300} data={data} margin={chartMargin}>
+        <CartesianGrid vertical={false} strokeOpacity="15%" />
+        <XAxis
+          dataKey="name"
+          tickLine={false}
+          axisLine={false}
+          padding={{ left: 20, right: 20 }}
+          tickSize={16}
+          tick={tickStyles}
+        />
+        <YAxis
+          tickLine={false}
+          axisLine={false}
+          tickSize={10}
+          tick={tickStyles}
+        />
+        <Tooltip cursor={false} />
+        <Line
+          dataKey="pv"
+          stroke={theme`colors.primary`}
+          strokeWidth={2}
+          activeDot={{ r: 5 }}
+        />
+      </ReLineChart>
+    </ResponsiveContainer>
+  );
+}
+
+const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };
+const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };
+
 const data = [
   {
     name: "9.Jan",
@@ -48,37 +82,3 @@ const data = [
     amt: 2100,
   },
 ];
-
-export function LineChart() {
-  return (
-    <ResponsiveContainer width="100%" height="100%">
-      <ReLineChart width={500} height={300} data={data} margin={chartMargin}>
-        <CartesianGrid vertical={false} strokeOpacity="15%" />
-        <XAxis
-          dataKey="name"
-          tickLine={false}
-          axisLine={false}
-          padding={{ left: 20, right: 20 }}
-          tickSize={16}
-          tick={tickStyles}
-        />
-        <YAxis
-          tickLine={false}
-          axisLine={false}
-          tickSize={10}
-          tick={tickStyles}
-        />
-        <Tooltip cursor={false} />
-        <Line
-          dataKey="pv"
-          stroke={theme`colors.primary`}
-          strokeWidth={2}
-          activeDot={{ r: 5 }}
-        />
-      </ReLineChart>
-    </ResponsiveContainer>
-  );
-}
-
-const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };
-const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };

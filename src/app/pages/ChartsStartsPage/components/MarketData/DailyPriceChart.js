@@ -9,20 +9,22 @@ import { AreaChart } from "src/app/components/Charts";
 
 export function DailyPriceChart() {
   const { t } = useTranslation();
-  
+
   return (
     <>
       <CardLayout>
-        <Text>{t("chartsAndStats.daily_price_chart_show")}</Text>
+        <Text tw="text-center">
+          {t("chartsAndStats.daily_price_chart_show")}
+        </Text>
       </CardLayout>
       <CardLayout tw="mt-4">
-        <Text>
+        <Text tw="text-center">
           {t("chartsAndStats.current_glitch_price", { price: "$1,227.06" })}
         </Text>
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="GLCH Daily Price (USD) Chart"/>
       </CardLayout>
     </>
   );

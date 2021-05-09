@@ -20,7 +20,7 @@ export function BlockDetailsPage() {
 
         <BlockDetailsCard />
 
-        <Heading tw="mt-8">{t("blockDetails.title")}</Heading>
+        <Heading tw="mt-8 lg:mt-12">{t("blockDetails.title")}</Heading>
         <BlockDetailsTable data={[1, 2, 3]} />
       </Wrapper>
     </>

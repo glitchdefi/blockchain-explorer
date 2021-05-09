@@ -37,7 +37,7 @@ export function AccountManagement() {
 const Wrapper = styled.div([
   css`
     @media (min-width: 1024px) {
-      padding: 20px;
+      padding: 20px 20px 20px 30px;
     }
 
     .info-row-content {

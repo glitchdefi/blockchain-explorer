@@ -51,15 +51,15 @@ export function PieChart() {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Legend content={renderLegend} verticalAlign="bottom" height={50} />
+        <Legend content={renderLegend} verticalAlign="bottom" height={80} />
       </RePieChart>
     </ResponsiveContainer>
   );
 }
 
-const LegendWrapper = tw.ul`list-none flex items-center justify-center`;
+const LegendWrapper = tw.ul`list-none block md:flex items-center justify-center`;
 const LegendContent = styled.li(({ circleColor }) => [
-  tw`text-textSecondary! text-tiny mr-12 items-center flex`,
+  tw`text-textSecondary! text-tiny mt-3 md:mr-12 items-center justify-center flex`,
   css`
     &:before {
       content: "";
