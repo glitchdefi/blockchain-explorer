@@ -6,13 +6,14 @@ import { useTranslation } from "react-i18next";
 import { CardLayout } from "src/app/pages/WalletPage/components/CardLayout";
 import { Text } from "src/app/components/Text";
 import { PieChart } from "src/app/components/Charts";
+import { Grid } from "src/app/components/Grid";
 
 export function TotalSupplyChart() {
   const { t } = useTranslation();
 
   return (
     <>
-      <div tw="grid grid-cols-2 gap-4">
+      <Grid cols={2}>
         <CardLayout>
           <Text tw="font-bold">88,888,8888</Text>
           <Text tw="text-sm text-textSecondary">
@@ -25,9 +26,9 @@ export function TotalSupplyChart() {
             {t("chartsAndStats.market_capitalization")}
           </Text>
         </CardLayout>
-      </div>
+      </Grid>
 
-      <CardLayout tw="mt-8 px-2 h-96">
+      <CardLayout tw="mt-6 px-2 flex h-96 min-h-full">
         <Text tw="text-textSecondary mt-5 text-tiny">
           {t("chartsAndStats.breakdown_by_supply_types")}
         </Text>

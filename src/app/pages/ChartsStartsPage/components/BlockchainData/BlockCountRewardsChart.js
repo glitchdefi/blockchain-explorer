@@ -19,7 +19,7 @@ export function BlockCountRewardsChart() {
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="Glitch Block Count and Reward"/>
       </CardLayout>
     </>
   );

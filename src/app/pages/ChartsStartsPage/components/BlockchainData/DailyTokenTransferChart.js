@@ -18,7 +18,7 @@ export function DailyTokenTransferChart() {
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="GRC20 Daily Token Transfer Chart"/>
       </CardLayout>
     </>
   );

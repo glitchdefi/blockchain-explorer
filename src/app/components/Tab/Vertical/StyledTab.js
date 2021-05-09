@@ -18,12 +18,8 @@ export const StyledTab = styled(Button)(
       background-color: ${isActive
         ? theme`colors.bg5`
         : theme`colors.bgPrimary`};
-      border-radius: 5px 5px 0px 0px;
+      border-radius: 5px;
       margin-right: 5px;
-
-      &:last-child {
-        margin-right: 0px;
-      }
 
       .tab-label {
         color: ${isActive
@@ -31,18 +27,6 @@ export const StyledTab = styled(Button)(
           : theme`colors.textSecondary`} !important;
         font-size: ${size || theme`fontSize.base`};
         font-weight: ${isActive ? 700 : "normal"};
-      }
-
-      @media (min-width: 1024px) {
-        border-radius: 0px;
-
-        &:first-child {
-          border-radius: 5px 5px 0px 0px;
-        }
-
-        &:last-child {
-          border-radius: 0px 0px 5px 5px;
-        }
       }
     `,
 

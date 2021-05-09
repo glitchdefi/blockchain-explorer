@@ -19,11 +19,11 @@ export function InfoUser({ user }) {
       <div tw="ml-6">
         <FlexLayout>
           <UserAddress>5A0b54D5dc17e0AadC383d2db43B0a0D3E029c4c</UserAddress>
-          <Button tw="p-0 ml-8">
+          <Button tw="p-0 ml-5 md:ml-10">
             <CopyIcon />
           </Button>
         </FlexLayout>
-        <Text tw="mt-1 lg:mt-0">created 3 years ago</Text>
+        <Text tw="mt-1">created 3 years ago</Text>
       </div>
     </Wrapper>
   );

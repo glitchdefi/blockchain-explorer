@@ -10,7 +10,7 @@ export const PublicKey = ({ children }) => {
   return (
     <div tw="flex items-center">
       <Text tw="lg:break-normal">{children}</Text>
-      <Button tw="p-0 ml-6">
+      <Button tw="p-0 ml-6 lg:ml-8">
         <Copy24Icon />
       </Button>
     </div>

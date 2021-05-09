@@ -19,7 +19,7 @@ export function MarketCapitalizationChart() {
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="GLCH Market Capitalization Chart" />
       </CardLayout>
     </>
   );

@@ -12,7 +12,7 @@ export function EpodDetailsCard() {
   const { t } = useTranslation();
 
   return (
-    <Container tw="mb-8">
+    <Container>
       <Card>
         <Wrapper>
           <InfoRow

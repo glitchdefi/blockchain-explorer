@@ -19,7 +19,7 @@ export function NetworkTransactionFeeChart() {
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="Glitch Network Transactions Fee Chart" />
       </CardLayout>
     </>
   );

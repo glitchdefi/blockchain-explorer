@@ -19,7 +19,7 @@ export function AverageBlockSizeChart() {
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart />
+        <AreaChart tableName="Average Block Size Chart" />
       </CardLayout>
     </>
   );

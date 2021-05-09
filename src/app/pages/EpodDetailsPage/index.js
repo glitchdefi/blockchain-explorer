@@ -20,7 +20,7 @@ export function EpodDetailsPage() {
 
         <EpodDetailsCard />
 
-        <Heading>{t("common.blocks")}</Heading>
+        <Heading tw="mt-8 lg:mt-12">{t("common.blocks")}</Heading>
         <EpodDetailsTable />
       </Wrapper>
     </>
