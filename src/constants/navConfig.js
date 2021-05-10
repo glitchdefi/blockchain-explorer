@@ -17,7 +17,7 @@ export const mainNav = [
   },
   {
     label: "Resources",
-    href: "",
+    href: "#",
     items: [
       {
         label: "Charts & Stats",
