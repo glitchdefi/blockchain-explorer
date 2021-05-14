@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import tw, { theme } from "twin.macro";
+import { theme } from "twin.macro";
 
 import { statsData } from "src/constants/statsData";
 
