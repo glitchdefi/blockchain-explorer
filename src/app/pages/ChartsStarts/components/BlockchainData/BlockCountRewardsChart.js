@@ -3,28 +3,23 @@ import { useTranslation } from "react-i18next";
 import "twin.macro";
 
 // Components
-import { CardLayout } from "src/app/pages/WalletPage/components/CardLayout";
+import { CardLayout } from "src/app/pages/Wallet/components/CardLayout";
 import { Text } from "src/app/components/Text";
 import { AreaChart } from "src/app/components/Charts";
 
-export function DailyPriceChart() {
+export function BlockCountRewardsChart() {
   const { t } = useTranslation();
 
   return (
     <>
       <CardLayout>
         <Text tw="text-center">
-          {t("chartsAndStats.daily_price_chart_show")}
-        </Text>
-      </CardLayout>
-      <CardLayout tw="mt-4">
-        <Text tw="text-center">
-          {t("chartsAndStats.current_glitch_price", { price: "$1,227.06" })}
+          {t("chartsAndStats.the_glitch_block_count")}
         </Text>
       </CardLayout>
 
       <CardLayout tw="mt-8 px-2 h-96">
-        <AreaChart tableName="GLCH Daily Price (USD) Chart"/>
+        <AreaChart tableName="Glitch Block Count and Reward"/>
       </CardLayout>
     </>
   );
