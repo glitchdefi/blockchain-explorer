@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { theme } from "twin.macro";
 
@@ -14,6 +14,18 @@ import { TabSections } from "./components/TabSections";
 export function HomePage() {
   const { t } = useTranslation();
 
+  // Test skeleton
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setIsLoading(false);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }, 1000);
+  }, []);
+
   const renderPriceChart = () => {
     return <PriceChart />;
   };
@@ -22,7 +34,13 @@ export function HomePage() {
     return (
       <Grid cols={2}>
         {statsData.map((o, i) => (
-          <StatsCard key={i} icon={o.icon} title={o.title} value={o.value} />
+          <StatsCard
+            loading={isLoading}
+            key={i}
+            icon={o.icon}
+            title={o.title}
+            value={o.value}
+          />
         ))}
       </Grid>
     );
@@ -37,12 +55,10 @@ export function HomePage() {
       <Text size={theme`fontSize.lg`}>
         {t("homepage.7_day_GLCH_price_history")}
       </Text>
-
       <Grid cols={2} tw="mt-3">
         {renderPriceChart()}
         {renderStatsCards()}
       </Grid>
-
       {renderTabSections()}
     </>
   );

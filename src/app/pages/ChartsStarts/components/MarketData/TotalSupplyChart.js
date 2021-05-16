@@ -3,7 +3,7 @@ import "twin.macro";
 import { useTranslation } from "react-i18next";
 
 // Components
-import { CardLayout } from "src/app/pages/WalletPage/components/CardLayout";
+import { CardLayout } from "src/app/pages/Wallet/components/CardLayout";
 import { Text } from "src/app/components/Text";
 import { PieChart } from "src/app/components/Charts";
 import { Grid } from "src/app/components/Grid";

@@ -1,5 +1,5 @@
 import React from "react";
-import "twin.macro";
+import tw, { css, styled } from "twin.macro";
 
 // Components
 import {
@@ -12,18 +12,12 @@ import {
   TableCell,
 } from "src/app/components/Table";
 import { Empty } from "src/app/components/Empty";
-import { CardLayout } from "src/app/pages/WalletPage/components/CardLayout";
+import { CardLayout } from "src/app/pages/Wallet/components/CardLayout";
 import { Text } from "src/app/components/Text";
 
-const configHeader = [
-  "Rank",
-  "Address",
-  "Total Blocks Mined",
-  "Total Rewards (GLCH)",
-  "Estimated Hash Rate (GH/s)",
-];
+const configHeader = ["Rank", "Address", "Total Txn", "Percentage"];
 
-export function MinersPanel({ data }) {
+export function RankTable({ tableName, data }) {
   const isDataEmpty = !data?.length;
 
   const renderHeaders = () => {
@@ -37,12 +31,11 @@ export function MinersPanel({ data }) {
 
     return data.map((item, i) => {
       return (
-        <TableRow key={i}>
+        <TableRow css={[rowStyles]} key={i}>
           <TableCell>1</TableCell>
           <TableCell isLink>dhjsoepn694278hfie</TableCell>
-          <TableCell>1,627</TableCell>
-          <TableCell>4,500.212978</TableCell>
-          <TableCell>77,250.7239567 (23.57%)</TableCell>
+          <TableCell>2,000,000 GLCH</TableCell>
+          <TableCell>7%</TableCell>
         </TableRow>
       );
     });
@@ -51,7 +44,7 @@ export function MinersPanel({ data }) {
   return (
     <>
       <div>
-        <Text tw="mt-10 mb-4">Top Miners by Blocks Mined</Text>
+        <Text tw="mb-4">{tableName}</Text>
         <CardLayout tw="block p-2">
           <TableContainer>
             <Table tw="bg-bgSecondary">
@@ -66,3 +59,11 @@ export function MinersPanel({ data }) {
     </>
   );
 }
+
+const rowStyles = css`
+  &:last-child: {
+    td {
+      border-bottom: none;
+    }
+  }
+`;

@@ -18,18 +18,18 @@ import { ToastListener } from "src/app/components/Toast/ToastListener";
 import { Page } from "./layouts/Page";
 
 // Pages
-import { HomePage } from "./pages/HomePage/Loadable";
-import { WalletPage } from "./pages/WalletPage/Loadable";
-import { VotePage } from "./pages/VotePage/Loadable";
-import { TokenPage } from "./pages/TokenPage/Loadable";
-import { ChartsStatsPage } from "./pages/ChartsStartsPage/Loadable";
-import { TopStatisticsPage } from "./pages/TopStatisticsPage/Loadable";
+import { HomePage } from "./pages/Home/Loadable";
+import { WalletPage } from "./pages/Wallet/Loadable";
+import { VotePage } from "./pages/Vote/Loadable";
+import { TokenPage } from "./pages/Token/Loadable";
+import { ChartsStatsPage } from "./pages/ChartsStarts/Loadable";
+import { TopStatisticsPage } from "./pages/TopStatistics/Loadable";
 
-import { UserDetailPage } from "./pages/UserDetailPage/Loadable";
-import { TransactionDetailsPage } from "./pages/TransactionDetailsPage/Loadable";
-import { BlockDetailsPage } from "./pages/BlockDetailsPage/Loadable";
-import { EpodDetailsPage } from "./pages/EpodDetailsPage/Loadable";
-import { NotFoundPage } from "./pages/NotFoundPage/Loadable";
+import { UserDetailPage } from "./pages/UserDetail/Loadable";
+import { TransactionDetailsPage } from "./pages/TransactionDetails/Loadable";
+import { BlockDetailsPage } from "./pages/BlockDetails/Loadable";
+import { EpodDetailsPage } from "./pages/EpodDetails/Loadable";
+import { NotFoundPage } from "./pages/NotFound/Loadable";
 
 export function App() {
   // Monkey patch warn() because of web3 flood

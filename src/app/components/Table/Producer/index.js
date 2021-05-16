@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { producerTableHeaders } from "src/constants/tableConfig";
 
 // Components
@@ -16,6 +16,18 @@ import { Pagination } from "../../Pagination";
 
 export function ProducerTable({ data }) {
   const isDataEmpty = !data?.length;
+
+  // Test skeleton
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setIsLoading(false);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }, 1500);
+  }, []);
 
   const renderHeaders = () => {
     return producerTableHeaders.map((item, i) => (
@@ -43,7 +55,7 @@ export function ProducerTable({ data }) {
           <TableHeader>
             <TableRow>{renderHeaders()}</TableRow>
           </TableHeader>
-          <TableBody>{renderBodyRows()}</TableBody>
+          <TableBody loading={{ isShow: isLoading }}>{renderBodyRows()}</TableBody>
         </Table>
       </TableContainer>
       {renderPagination()}
