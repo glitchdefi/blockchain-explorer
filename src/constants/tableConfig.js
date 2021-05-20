@@ -16,26 +16,6 @@ export const epochTableHeaders = [
   "Transactions",
 ];
 
-export const transactionTableHeader = [
-  "Txn Hash",
-  "Block",
-  "Create At",
-  "From",
-  "To",
-  "Value (Glitch)",
-  "Txn Fee",
-  "Status",
-];
-
-export const blockTableHeader = [
-  "Epoch/ Slot",
-  "Block",
-  "Create At",
-  "Reward (Glitch)",
-  "Size (Bytes)",
-  "Producer",
-];
-
 export const GRC20TokenTableHeader = [
   "Txn hash",
   "Create at",

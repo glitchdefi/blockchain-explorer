@@ -1,52 +1,32 @@
-import React from "react";
-import { blockTableHeader } from "src/constants/tableConfig";
+import React, { useState } from "react";
+import { isEmpty } from "lodash";
 
 // Components
-import {
-  Table,
-  TableContainer,
-  TableRow,
-  TableHeader,
-  TableHeaderCell,
-  TableBody,
-} from "../index";
+import { Table, TableContainer } from "../index";
+import { TableHeaderRows } from "./components/TableHeaderRows";
 import { TableBodyRows } from "./components";
-import { Empty } from "../../Empty";
 import { Pagination } from "../../Pagination";
 
-export function BlockTable({ data }) {
-  const isDataEmpty = !data?.length;
+// Redux
+import { useBlockList } from "src/state/block/hooks";
+import { DEFAULT_PAGE_SIZE } from "src/constants";
 
-  const renderHeaders = () => {
-    return blockTableHeader.map((item, i) => (
-      <TableHeaderCell key={`block-header-${i}`}>{item}</TableHeaderCell>
-    ));
-  };
-
-  const renderBodyRows = () => {
-    if (isDataEmpty) return <Empty />;
-
-    return data.map((item, i) => {
-      return <TableBodyRows item={item} key={`block-body-${i}`} />;
-    });
-  };
-
-  const renderPagination = () => {
-    if (isDataEmpty) return null;
-    return <Pagination />;
-  };
+export function BlockTable() {
+  const [params, setParams] = useState({
+    page_size: DEFAULT_PAGE_SIZE,
+    page_index: 1,
+  });
+  const { isLoading, blockList } = useBlockList(params);
 
   return (
     <>
       <TableContainer>
         <Table>
-          <TableHeader>
-            <TableRow>{renderHeaders()}</TableRow>
-          </TableHeader>
-          <TableBody>{renderBodyRows()}</TableBody>
+          <TableHeaderRows />
+          <TableBodyRows isLoading={isLoading} data={blockList} />
         </Table>
       </TableContainer>
-      {renderPagination()}
+      {!isEmpty(blockList) && <Pagination />}
     </>
   );
 }

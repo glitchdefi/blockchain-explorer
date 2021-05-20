@@ -11,8 +11,14 @@ import { StatsCard } from "./components/StatsCard";
 import { PriceChart } from "./components/PriceChart";
 import { TabSections } from "./components/TabSections";
 
+// Redux
+import { useBlockSlice } from "src/state/block/hooks";
+import { useTxSlice } from "src/state/transaction/hooks";
+
 export function HomePage() {
   const { t } = useTranslation();
+  useBlockSlice();
+  useTxSlice();
 
   // Test skeleton
   const [isLoading, setIsLoading] = useState(true);

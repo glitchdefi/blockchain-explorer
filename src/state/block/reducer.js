@@ -21,9 +21,52 @@ export const slice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    loadBlockCount: (state) => {
+      state.blockCount = null;
+    },
+    blockCountLoaded: (state, action) => {
+      state.blockCount = action.payload;
+    },
+    blockCountError: (state, action) => {
+      state.blockCountError = action.payload;
+    },
+    loadBlockHeight: (state) => {
+      state.blockHeight = null;
+    },
+    blockHeightLoaded: (state, action) => {
+      state.blockHeight = action.payload;
+    },
+    blockHeightError: (state, action) => {
+      state.blockHeightError = action.payload;
+    },
+    loadBlockLatest: (state) => {
+      state.blockLatest = null;
+    },
+    blockLatestLoaded: (state, action) => {
+      state.blockLatest = action.payload;
+    },
+    blockLatestError: (state, action) => {
+      state.blockLatestError = action.payload;
+    },
     // ...
   },
 });
 
 // Actions
-export const { loadBlockList, blockListLoaded, blockListError } = slice.actions;
+export const {
+  loadBlockList,
+  blockListLoaded,
+  blockListError,
+
+  loadBlockCount,
+  blockCountLoaded,
+  blockCountError,
+
+  loadBlockHeight,
+  blockHeightLoaded,
+  blockHeightError,
+
+  loadBlockLatest,
+  blockLatestLoaded,
+  blockLatestError,
+} = slice.actions;

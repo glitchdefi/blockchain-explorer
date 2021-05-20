@@ -6,11 +6,15 @@ const instance = axios.create({
   baseURL: BASE_URL,
 });
 
+const handleResponse = (response) => {
+  return response?.data;
+};
+
 instance.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    return response;
+    return handleResponse(response);
   },
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
@@ -18,7 +22,5 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-instance.defaults.timeout = 5000;
 
 export { instance as Request };

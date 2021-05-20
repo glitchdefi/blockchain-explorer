@@ -1,53 +1,25 @@
 import React from "react";
 import "twin.macro";
-import { transactionTableHeader } from "src/constants/tableConfig";
 
 // Components
-import {
-  Table,
-  TableContainer,
-  TableRow,
-  TableHeader,
-  TableHeaderCell,
-  TableBody,
-} from "../index";
-import { TableBodyRows } from "./components";
-import { Empty } from "../../Empty";
+import { Table, TableContainer } from "../index";
+import { TableBodyRows, TableHeaderRows } from "./components";
 import { Pagination } from "../../Pagination";
+import { useTxList } from "src/state/transaction/hooks";
+import { isEmpty } from "lodash";
 
-export function TransactionTable({ data }) {
-  const isDataEmpty = !data?.length;
-
-  const renderHeaders = () => {
-    return transactionTableHeader.map((item, i) => (
-      <TableHeaderCell key={`transaction-header-${i}`}>{item}</TableHeaderCell>
-    ));
-  };
-
-  const renderBodyRows = () => {
-    if (isDataEmpty) return <Empty />;
-
-    return data.map((item, i) => {
-      return <TableBodyRows item={item} key={`transaction-body-${i}`} />;
-    });
-  };
-
-  const renderPagination = () => {
-    if (isDataEmpty) return null;
-    return <Pagination />;
-  };
+export function TransactionTable() {
+  const { isLoading, txList } = useTxList();
 
   return (
     <>
       <TableContainer>
         <Table>
-          <TableHeader>
-            <TableRow>{renderHeaders()}</TableRow>
-          </TableHeader>
-          <TableBody>{renderBodyRows()}</TableBody>
+          <TableHeaderRows />
+          <TableBodyRows isLoading={isLoading} data={txList} />
         </Table>
       </TableContainer>
-      {renderPagination()}
+      {!isEmpty(txList) && <Pagination />}
     </>
   );
 }

@@ -2,26 +2,38 @@ import React from "react";
 import PropTypes from "prop-types";
 import "twin.macro";
 
-// Components
-import { TableRow, TableCell } from "src/app/components/Table";
-import { Tag } from "src/app/components/Tag";
+import { isEmpty } from "lodash";
 
-export function TableBodyRows({ item }) {
+// Components
+import { TableRow, TableCell, TableBody } from "src/app/components/Table";
+import { Empty } from "src/app/components/Empty";
+import { Tag } from "src/app/components/Tag";
+export function TableBodyRows({ isLoading, data }) {
+  const renderBodyRows = () => {
+    if (isEmpty(data)) return <Empty />;
+
+    return data.map((tx, i) => {
+      return (
+        <TableRow key={i}>
+          <TableCell isLink>54agdt367dgt65656</TableCell>
+          <TableCell isLink>5192802</TableCell>
+          <TableCell>01/12/2021</TableCell>
+          <TableCell isLink>54agdt367dgt65656</TableCell>
+          <TableCell isLink>54agdt367dgt65656</TableCell>
+          <TableCell>0.0005 GLCH</TableCell>
+          <TableCell>0.0005 GLCH</TableCell>
+          <TableCell>
+            <Tag color="pending">Pending</Tag>
+          </TableCell>
+        </TableRow>
+      );
+    });
+  };
+
   return (
-    <>
-      <TableRow>
-        <TableCell isLink>54agdt367dgt65656</TableCell>
-        <TableCell isLink>5192802</TableCell>
-        <TableCell>01/12/2021</TableCell>
-        <TableCell isLink>54agdt367dgt65656</TableCell>
-        <TableCell isLink>54agdt367dgt65656</TableCell>
-        <TableCell>0.0005 GLCH</TableCell>
-        <TableCell>0.0005 GLCH</TableCell>
-        <TableCell>
-          <Tag color="pending">Pending</Tag>
-        </TableCell>
-      </TableRow>
-    </>
+    <TableBody loading={{ isShow: isLoading, cols: 8 }}>
+      {renderBodyRows()}
+    </TableBody>
   );
 }
 

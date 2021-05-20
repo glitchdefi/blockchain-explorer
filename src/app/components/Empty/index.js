@@ -1,8 +1,13 @@
 import { React } from "react";
 import tw from "twin.macro";
+import { Text } from "../Text";
 
 export function Empty() {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <Text>Empty</Text>
+    </Wrapper>
+  );
 }
 
-const Wrapper = tw.div`p-10 items-center justify-center`;
+const Wrapper = tw.div`flex! w-full h-full p-10`;
