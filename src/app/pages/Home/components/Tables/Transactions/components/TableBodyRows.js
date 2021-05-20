@@ -12,6 +12,7 @@ import {
   TableEmpty,
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
+
 export function TableBodyRows({ isLoading, data }) {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty colSpan={8} />;

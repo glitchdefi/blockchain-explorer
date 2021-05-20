@@ -3,7 +3,7 @@ import "twin.macro";
 
 // Components
 import { TabPanel } from "src/app/components/Tab/Horizontal";
-import { BlockTable } from "src/app/components/Table/Block";
+import { BlockTable } from "src/app/pages/Home/components/Tables/Block";
 
 export function EpodDetailsTable() {
   return (

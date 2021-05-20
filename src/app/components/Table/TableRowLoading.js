@@ -5,8 +5,7 @@ import TableRow from "./TableRow";
 import TableCell from "./TableCell";
 import { Skeleton } from "../Skeleton";
 
-const ROWS = 3;
-
+const ROWS = 5;
 export default function TableRowLoading({ cols }) {
   return Array.from({ length: ROWS }, (_, i) => (
     <TableRow key={i}>

@@ -22,7 +22,6 @@ export const fetchTxList = (params) => async (dispatch) => {
 };
 
 export const resetTxList = () => async (dispatch) => {
-  dispatch(txListLoaded([]));
   dispatch(loadTxList());
 };
 

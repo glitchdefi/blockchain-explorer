@@ -25,7 +25,6 @@ export const fetchBlockList = (params) => async (dispatch) => {
 };
 
 export const resetBlockList = () => async (dispatch) => {
-  dispatch(blockListLoaded([]));
   dispatch(loadBlockList());
 };
 

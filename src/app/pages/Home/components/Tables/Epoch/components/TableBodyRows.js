@@ -4,6 +4,7 @@ import "twin.macro";
 
 // Components
 import { TableRow, TableCell } from "src/app/components/Table";
+
 export function TableBodyRows({ item }) {
   return (
     <>

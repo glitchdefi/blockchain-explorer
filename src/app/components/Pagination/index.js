@@ -2,9 +2,12 @@ import React from "react";
 import RcPagination from "rc-pagination";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
+
+import { DEFAULT_PAGE_SIZE } from "src/constants";
 import "./styles/index.css";
 
-export const Pagination = ({ containerStyles }) => {
+export const Pagination = (props) => {
+  const { containerStyles, total, current, onChange } = props;
   const { t } = useTranslation();
 
   /**
@@ -24,7 +27,13 @@ export const Pagination = ({ containerStyles }) => {
   return (
     <>
       <Wrapper css={containerStyles}>
-        <RcPagination total={100} itemRender={renderButtons} />
+        <RcPagination
+          current={current}
+          total={total}
+          pageSize={DEFAULT_PAGE_SIZE}
+          onChange={onChange}
+          itemRender={renderButtons}
+        />
       </Wrapper>
     </>
   );

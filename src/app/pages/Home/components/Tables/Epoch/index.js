@@ -9,10 +9,10 @@ import {
   TableHeader,
   TableHeaderCell,
   TableBody,
-} from "../index";
+} from "src/app/components/Table";
+import { Empty } from "src/app/components/Empty";
+import { Pagination } from "src/app/components/Pagination";
 import { TableBodyRows } from "./components";
-import { Empty } from "../../Empty";
-import { Pagination } from "../../Pagination";
 
 export function EpochTable({ data }) {
   const isDataEmpty = !data?.length;

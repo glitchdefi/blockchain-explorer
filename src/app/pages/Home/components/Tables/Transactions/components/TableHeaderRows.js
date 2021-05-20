@@ -1,9 +1,11 @@
 import React from "react";
 
 // Components
-import TableHeader from "../../TableHeader";
-import TableHeaderCell from "../../TableHeaderCell";
-import TableRow from "../../TableRow";
+import {
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from "src/app/components/Table";
 
 export function TableHeaderRows() {
   const renderHeaders = () => {

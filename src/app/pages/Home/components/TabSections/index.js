@@ -6,10 +6,10 @@ import {
   Tab,
   TabPanel,
 } from "src/app/components/Tab/Horizontal";
-import { ProducerTable } from "src/app/components/Table/Producer";
-import { EpochTable } from "src/app/components/Table/Epoch";
-import { TransactionTable } from "src/app/components/Table/Transactions";
-import { BlockTable } from "src/app/components/Table/Block";
+import { ProducerTable } from "../Tables/Producer";
+import { EpochTable } from "../Tables/Epoch";
+import { TransactionTable } from "../Tables/Transactions";
+import { BlockTable } from "../Tables/Block";
 
 export function TabSections() {
   return (

@@ -18,7 +18,9 @@ export function TableBodyRows({ isLoading, data }) {
       return (
         <TableRow key={i}>
           <TableCell>240/ 432860</TableCell>
-          <TableCell isLink>5192802</TableCell>
+          <TableCell isLink href={`/block/${5192802}`}>
+            5192802
+          </TableCell>
           <TableCell>01/12/2021</TableCell>
           <TableCell>4,00 GLCH</TableCell>
           <TableCell>3</TableCell>

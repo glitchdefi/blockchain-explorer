@@ -55,7 +55,7 @@ export function App() {
             path="/transaction-details"
             component={TransactionDetailsPage}
           />
-          <Route path="/block-details" component={BlockDetailsPage} />
+          <Route path="/block" component={BlockDetailsPage} />
           <Route path="/epod-details" component={EpodDetailsPage} />
           <Route component={NotFoundPage} />
         </Switch>

@@ -1,12 +1,12 @@
 import React from "react";
 import "twin.macro";
+import { isEmpty } from "lodash";
+import { useTxList } from "src/state/transaction/hooks";
 
 // Components
-import { Table, TableContainer } from "../index";
+import { Table, TableContainer } from "src/app/components/Table";
+import { Pagination } from "src/app/components/Pagination";
 import { TableBodyRows, TableHeaderRows } from "./components";
-import { Pagination } from "../../Pagination";
-import { useTxList } from "src/state/transaction/hooks";
-import { isEmpty } from "lodash";
 
 export function TransactionTable() {
   const { isLoading, txList } = useTxList();
