@@ -1,21 +1,3 @@
-export const producerTableHeaders = [
-  "Rank",
-  "Block Producer",
-  "Status",
-  "Vote",
-  "Total Vote",
-  "Total Rewards",
-];
-
-export const epochTableHeaders = [
-  "Epoch",
-  "Slot",
-  "Block",
-  "Started at",
-  "Last block at",
-  "Transactions",
-];
-
 export const GRC20TokenTableHeader = [
   "Txn hash",
   "Create at",

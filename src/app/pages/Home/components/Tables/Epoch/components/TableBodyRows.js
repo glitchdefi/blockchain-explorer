@@ -1,25 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "twin.macro";
+import { isEmpty } from "lodash";
 
 // Components
-import { TableRow, TableCell } from "src/app/components/Table";
+import { TableRow, TableCell, TableBody } from "src/app/components/Table";
+export function TableBodyRows({ isLoading, data }) {
+  const renderBodyRows = () => {
+    if (isEmpty(data)) return <TableEmpty />;
 
-export function TableBodyRows({ item }) {
+    return data.map((epoch, i) => {
+      return (
+        <TableRow key={i}>
+          <TableCell isLink>241</TableCell>
+          <TableCell>432000</TableCell>
+          <TableCell>19251</TableCell>
+          <TableCell>2021/01/10 21:45:01</TableCell>
+          <TableCell>2021/01/15 09:53:30</TableCell>
+          <TableCell>57584</TableCell>
+        </TableRow>
+      );
+    });
+  };
+
   return (
     <>
-      <TableRow>
-        <TableCell isLink>241</TableCell>
-        <TableCell>432000</TableCell>
-        <TableCell>19251</TableCell>
-        <TableCell>2021/01/10 21:45:01</TableCell>
-        <TableCell>2021/01/15 09:53:30</TableCell>
-        <TableCell>57584</TableCell>
-      </TableRow>
+      <TableBody loading={{ isShow: isLoading }}>{renderBodyRows()}</TableBody>
     </>
   );
 }
 
 TableBodyRows.propTypes = {
-  item: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool,
+  data: PropTypes.array,
 };

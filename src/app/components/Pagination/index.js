@@ -1,5 +1,6 @@
 import React from "react";
 import RcPagination from "rc-pagination";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
@@ -48,3 +49,10 @@ const Wrapper = tw.div`
  lg:justify-end 
  w-full
 `;
+
+Pagination.propTypes = {
+  total: PropTypes.number,
+  current: PropTypes.number,
+  onChange: PropTypes.func,
+  containerStyles: PropTypes.object,
+};

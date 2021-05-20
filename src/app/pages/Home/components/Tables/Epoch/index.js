@@ -1,52 +1,24 @@
 import React from "react";
-import { epochTableHeaders } from "src/constants/tableConfig";
+
+import { usePagination } from "src/hooks/usePagination";
 
 // Components
-import {
-  Table,
-  TableContainer,
-  TableRow,
-  TableHeader,
-  TableHeaderCell,
-  TableBody,
-} from "src/app/components/Table";
-import { Empty } from "src/app/components/Empty";
+import { Table, TableContainer } from "src/app/components/Table";
 import { Pagination } from "src/app/components/Pagination";
-import { TableBodyRows } from "./components";
+import { TableBodyRows, TableHeaderRows } from "./components";
 
-export function EpochTable({ data }) {
-  const isDataEmpty = !data?.length;
-
-  const renderHeaders = () => {
-    return epochTableHeaders.map((item, i) => (
-      <TableHeaderCell key={`epoch-header-${i}`}>{item}</TableHeaderCell>
-    ));
-  };
-
-  const renderBodyRows = () => {
-    if (isDataEmpty) return <Empty />;
-
-    return data.map((item, i) => {
-      return <TableBodyRows item={item} key={`epoch-body-${i}`} />;
-    });
-  };
-
-  const renderPagination = () => {
-    if (isDataEmpty) return null;
-    return <Pagination />;
-  };
+export function EpochTable() {
+  const { current, pParams, onChange } = usePagination();
 
   return (
     <>
       <TableContainer>
         <Table>
-          <TableHeader>
-            <TableRow>{renderHeaders()}</TableRow>
-          </TableHeader>
-          <TableBody>{renderBodyRows()}</TableBody>
+          <TableHeaderRows />
+          <TableBodyRows data={[1, 2, 3]} isLoading={false} />
         </Table>
       </TableContainer>
-      {renderPagination()}
+      <Pagination current={current} total={5} onChange={onChange} />
     </>
   );
 }
