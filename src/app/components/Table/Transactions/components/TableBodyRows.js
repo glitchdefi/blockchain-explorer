@@ -5,12 +5,16 @@ import "twin.macro";
 import { isEmpty } from "lodash";
 
 // Components
-import { TableRow, TableCell, TableBody } from "src/app/components/Table";
-import { Empty } from "src/app/components/Empty";
+import {
+  TableRow,
+  TableCell,
+  TableBody,
+  TableEmpty,
+} from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
 export function TableBodyRows({ isLoading, data }) {
   const renderBodyRows = () => {
-    if (isEmpty(data)) return <Empty />;
+    if (isEmpty(data)) return <TableEmpty colSpan={8} />;
 
     return data.map((tx, i) => {
       return (
