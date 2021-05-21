@@ -43,5 +43,6 @@ export function TableBodyRows({ isLoading, data }) {
 }
 
 TableBodyRows.propTypes = {
-  item: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool,
+  data: PropTypes.array,
 };

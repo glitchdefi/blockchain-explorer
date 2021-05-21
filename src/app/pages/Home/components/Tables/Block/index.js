@@ -10,7 +10,7 @@ import { TableHeaderRows, TableBodyRows } from "./components";
 import { usePagination } from "src/hooks/usePagination";
 import { useBlockList } from "src/state/block/hooks";
 
-export function BlockTable() {
+export const BlockTable = React.memo(function () {
   const { current, pParams, onChange } = usePagination();
   const { isLoading, blockList } = useBlockList(pParams);
 
@@ -31,4 +31,4 @@ export function BlockTable() {
       )}
     </>
   );
-}
+});

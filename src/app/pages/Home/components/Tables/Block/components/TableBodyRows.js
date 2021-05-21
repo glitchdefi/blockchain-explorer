@@ -10,7 +10,11 @@ import {
   TableBody,
   TableEmpty,
 } from "src/app/components/Table";
-export function TableBodyRows({ isLoading, data }) {
+
+export const TableBodyRows = React.memo(function TableBodyRows({
+  isLoading,
+  data,
+}) {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty />;
 
@@ -35,7 +39,7 @@ export function TableBodyRows({ isLoading, data }) {
       <TableBody loading={{ isShow: isLoading }}>{renderBodyRows()}</TableBody>
     </>
   );
-}
+});
 
 TableBodyRows.propTypes = {
   isLoading: PropTypes.bool,
