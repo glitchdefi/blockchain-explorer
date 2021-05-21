@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "src/app/components/Table";
 
-export function TableHeaderRows() {
+export const TableHeaderRows = React.memo(() => {
   const renderHeaders = () => {
     return headers.map((item, i) => (
       <TableHeaderCell key={`epoch-header-${i}`}>{item}</TableHeaderCell>
@@ -19,7 +19,7 @@ export function TableHeaderRows() {
       <TableRow>{renderHeaders()}</TableRow>
     </TableHeader>
   );
-}
+});
 
 const headers = [
   "Epoch",

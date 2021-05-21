@@ -7,7 +7,7 @@ import tw from "twin.macro";
 import { DEFAULT_PAGE_SIZE } from "src/constants";
 import "./styles/index.css";
 
-export const Pagination = (props) => {
+export const Pagination = React.memo((props) => {
   const { containerStyles, total, current, onChange } = props;
   const { t } = useTranslation();
 
@@ -38,7 +38,7 @@ export const Pagination = (props) => {
       </Wrapper>
     </>
   );
-};
+});
 
 const Wrapper = tw.div`
  flex 

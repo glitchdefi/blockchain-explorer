@@ -8,7 +8,8 @@ import { TableRow, TableCell, TableBody } from "src/app/components/Table";
 import { NumberChange } from "src/app/components/NumberChange";
 import { Tag } from "src/app/components/Tag";
 import { BlockProducerName } from "./BlockProducerName";
-export function TableBodyRows({ isLoading, data }) {
+
+export const TableBodyRows = React.memo(({ isLoading, data }) => {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty />;
 
@@ -41,7 +42,7 @@ export function TableBodyRows({ isLoading, data }) {
       <TableBody loading={{ isShow: isLoading }}>{renderBodyRows()}</TableBody>
     </>
   );
-}
+});
 
 const numberChangeStyles = css`
   justify-content: center;

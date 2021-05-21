@@ -11,10 +11,7 @@ import {
   TableEmpty,
 } from "src/app/components/Table";
 
-export const TableBodyRows = React.memo(function TableBodyRows({
-  isLoading,
-  data,
-}) {
+export const TableBodyRows = React.memo(({ isLoading, data }) => {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty />;
 

@@ -52,10 +52,6 @@ export function HomePage() {
     );
   };
 
-  const renderTabSections = () => {
-    return <TabSections />;
-  };
-
   return (
     <>
       <Text size={theme`fontSize.lg`}>
@@ -65,7 +61,7 @@ export function HomePage() {
         {renderPriceChart()}
         {renderStatsCards()}
       </Grid>
-      {renderTabSections()}
+      <TabSections />
     </>
   );
 }

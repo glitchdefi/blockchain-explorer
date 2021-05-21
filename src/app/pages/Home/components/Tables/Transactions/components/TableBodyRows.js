@@ -13,7 +13,7 @@ import {
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
 
-export function TableBodyRows({ isLoading, data }) {
+export const TableBodyRows = React.memo(({ isLoading, data }) => {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty colSpan={8} />;
 
@@ -40,7 +40,7 @@ export function TableBodyRows({ isLoading, data }) {
       {renderBodyRows()}
     </TableBody>
   );
-}
+});
 
 TableBodyRows.propTypes = {
   isLoading: PropTypes.bool,
