@@ -80,7 +80,10 @@
         "login": "Login",
         "scan_qr_code": "Scan the QR-Code with you application",
         "open_your_app": "Open your app",
-        "initializing": "Initializing..."
+        "initializing": "Initializing...",
+        "wallet": "Wallet",
+        "asset_management": "Asset Management",
+        "account_management": "Account Management"
     },
     "votePage": {
         "selected_producers": "Selected Producers"

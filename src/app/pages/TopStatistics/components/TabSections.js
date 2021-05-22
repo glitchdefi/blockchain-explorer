@@ -21,17 +21,17 @@ export function TabSections() {
     <Wrapper>
       <TabContainer>
         <Tabs tw="grid-cols-2 lg:grid-cols-4">
-          <Tab>{t("common.transactions")}</Tab>
-          <Tab>{t("common.miners")}</Tab>
+          <Tab evtKey="transactions">{t("common.transactions")}</Tab>
+          <Tab evtKey="miners">{t("common.miners")}</Tab>
         </Tabs>
 
-        <TabPanel>
+        <TabPanel evtKey="transactions">
           <Filters />
           <TransactionsPanel />
         </TabPanel>
-        <TabPanel>
+        <TabPanel evtKey="miners">
           <Filters />
-          <MinersPanel data={[1,2,3]}/>
+          <MinersPanel data={[1, 2, 3]} />
         </TabPanel>
       </TabContainer>
     </Wrapper>

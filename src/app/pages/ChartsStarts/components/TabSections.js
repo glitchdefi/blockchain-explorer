@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "twin.macro";
+import { theme } from "twin.macro";
 
 import { useMinScreen } from "src/hooks/useMinScreen";
 import { tabsConfig } from "./config";
@@ -36,11 +36,14 @@ export function TabSections() {
     const { min } = useMinScreen();
 
     // Default Tab
-    const Tab = ({ label, key }) => (
+    const Tab = ({ label, evtKey, key }) => (
       <TabBase
         tw="py-4 pl-7"
-        tabStyles={{ label: { activeColor: "white", size: "13px" } }}
+        tabStyles={{
+          label: { activeColor: "white", size: theme`fontSize.tiny` },
+        }}
         key={key}
+        evtKey={evtKey}
       >
         {label}
       </TabBase>
@@ -53,14 +56,16 @@ export function TabSections() {
           <div key={tabGroupIndex}>
             <Label>{tabGroup.label}</Label>
             {tabGroup.items.map((tab, tabIndex) => {
-              return <Tab label={tab} key={tabIndex} />;
+              return (
+                <Tab label={tab.label} evtKey={tab.evtKey} key={tabIndex} />
+              );
             })}
           </div>
         );
       } else {
         // For mobile
         return tabGroup.items.map((tab, tabIndex) => {
-          return <Tab label={tab} key={tabIndex} />;
+          return <Tab label={tab.label} evtKey={tab.evtKey} key={tabIndex} />;
         });
       }
     });
@@ -71,41 +76,41 @@ export function TabSections() {
       <Tabs>{renderTab()}</Tabs>
 
       {/* Market */}
-      <TabPanel>
+      <TabPanel evtKey="GLCHDailyPriceChart">
         <DailyPriceChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="totalSupplyChart">
         <TotalSupplyChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="GLCHMarketChart">
         <MarketCapitalizationChart />
       </TabPanel>
 
       {/* Blockchain */}
-      <TabPanel>
+      <TabPanel evtKey="dailyTransactionsChart">
         <DailyTransactionChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="ERC20DailyTokenTransferChart">
         <DailyTokenTransferChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="averageBlockSizeChart">
         <AverageBlockSizeChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="averageBlockTimeChart">
         <AverageBlockTimeChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="blockCountRewardsChart">
         <BlockCountRewardsChart />
       </TabPanel>
 
       {/* Network */}
-      <TabPanel>
+      <TabPanel evtKey="networkHashRateChart">
         <NetworkHashRateChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="networkDifficultyChart">
         <NetworkDifficultyChart />
       </TabPanel>
-      <TabPanel>
+      <TabPanel evtKey="networkTransactionFeeChart">
         <NetworkTransactionFeeChart />
       </TabPanel>
     </TabContainer>
