@@ -23,14 +23,21 @@
         "glitch": "Glitch",
         "vote": "Vote",
         "miners": "Miners",
-        "loading": "Loading ..."
+        "loading": "Loading ...",
+        "glitch_price": "Glitch price"
     },
     "pagination": {
         "prev": "Prev",
         "next": "Next"
     },
-    "homepage": {
-        "7_day_GLCH_price_history": "7 day GLCH price history (USD)"
+    "homePage": {
+        "7_day_GLCH_price_history": "7 day GLCH price history (USD)",
+        "producer": "Producer",
+        "current_max": "Current/Max",
+        "head_block": "Head Block",
+        "price_market_cap": "Price | Market cap",
+        "lib": "LIB (Last Irreversible Block)",
+        "total_account": "Total Account"
     },
     "userDetails": {
         "more_info": "More Info",

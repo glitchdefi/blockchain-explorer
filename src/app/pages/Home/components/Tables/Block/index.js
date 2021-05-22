@@ -6,11 +6,11 @@ import { Table, TableContainer } from "src/app/components/Table";
 import { Pagination } from "src/app/components/Pagination";
 import { TableHeaderRows, TableBodyRows } from "./components";
 
-// Redux
+// Hooks
 import { usePagination } from "src/hooks/usePagination";
 import { useBlockList } from "src/state/block/hooks";
 
-export const BlockTable = React.memo(function () {
+export const BlockTable = React.memo(() => {
   const { current, pParams, onChange } = usePagination();
   const { isLoading, blockList } = useBlockList(pParams);
 

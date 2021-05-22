@@ -18,7 +18,7 @@ import { ToastListener } from "src/app/components/Toast/ToastListener";
 import { Page } from "./layouts/Page";
 
 // Pages
-import { HomePage } from "./pages/Home/Loadable";
+import { HomePage } from "./pages/Home";
 import { WalletPage } from "./pages/Wallet/Loadable";
 import { VotePage } from "./pages/Vote/Loadable";
 import { TokenPage } from "./pages/Token/Loadable";
