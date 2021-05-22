@@ -20,9 +20,7 @@ export const useWalletCount = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchWalletCount());
-    }, 200);
+    dispatch(fetchWalletCount());
   }, [dispatch]);
 
   useEffect(() => {
