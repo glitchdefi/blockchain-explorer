@@ -22,16 +22,16 @@ export function TabSections() {
       </Tabs>
 
       <TabPanel evtKey="producer">
-        <ProducerTable data={[1, 2, 3]} />
+        <ProducerTable />
       </TabPanel>
       <TabPanel evtKey="epoch">
-        <EpochTable data={[1, 2]} />
+        <EpochTable />
       </TabPanel>
       <TabPanel evtKey="transactions">
-        <TransactionTable data={[1, 2, 3, 4]} />
+        <TransactionTable />
       </TabPanel>
       <TabPanel evtKey="block">
-        <BlockTable data={[1, 2, 3, 5]} />
+        <BlockTable />
       </TabPanel>
     </TabContainer>
   );
