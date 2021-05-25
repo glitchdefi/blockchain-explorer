@@ -23,9 +23,9 @@ export const useBlockList = (params) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
+    if (params) {
       dispatch(fetchBlockList(params));
-    }, 250);
+    }
 
     return () => {
       dispatch(resetBlockList());

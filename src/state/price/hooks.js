@@ -6,15 +6,24 @@ import { useToast } from "src/hooks/useToast";
 
 // Redux
 import { slice } from "./reducer";
-import { fetchPriceHistory } from "./actions";
+import {
+  fetchPriceHistory,
+  fetchAllGlitchInfo,
+  fetchGlitchMarketData,
+} from "./actions";
 
 export const usePriceSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
 };
 
+export const usePriceSelector = () => {
+  const price = useSelector((state) => state.price);
+  return price;
+};
+
 export const usePriceHistory = () => {
   const { isFetchingPriceHistory, priceHistory, priceHistoryError } =
-    useSelector((state) => state.price);
+    usePriceSelector();
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
@@ -29,4 +38,45 @@ export const usePriceHistory = () => {
   }, [priceHistoryError]);
 
   return { isFetchingPriceHistory, priceHistory };
+};
+
+export const useAllGlitchInfo = () => {
+  const { isFetchingAllGlitchInfo, allGlitchInfo, allGlitchInfoError } =
+    usePriceSelector();
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllGlitchInfo());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (allGlitchInfoError) {
+      toastError("Price Error", allGlitchInfoError);
+    }
+  }, [allGlitchInfoError]);
+
+  return { isFetchingAllGlitchInfo, allGlitchInfo };
+};
+
+export const useGlitchMarketData = () => {
+  const {
+    isFetchingGlitchMarketData,
+    glitchMarketData,
+    glitchMarketDataError,
+  } = usePriceSelector();
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGlitchMarketData());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (glitchMarketDataError) {
+      toastError("Price Error", glitchMarketDataError);
+    }
+  }, [glitchMarketDataError]);
+
+  return { isFetchingGlitchMarketData, glitchMarketData };
 };

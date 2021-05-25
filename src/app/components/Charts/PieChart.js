@@ -15,7 +15,7 @@ const data = [
 
 const COLORS = [theme`colors.secondary`, theme`colors.primary`];
 
-export function PieChart() {
+export const PieChart = React.memo(() => {
   const renderLegend = (props) => {
     const { payload } = props;
 
@@ -55,7 +55,7 @@ export function PieChart() {
       </RePieChart>
     </ResponsiveContainer>
   );
-}
+});
 
 const LegendWrapper = tw.ul`list-none block md:flex items-center justify-center`;
 const LegendContent = styled.li(({ circleColor }) => [

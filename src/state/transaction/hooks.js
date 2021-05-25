@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
@@ -25,13 +25,11 @@ export const useTxList = (params) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchTxList(params));
-    }, 250);
+    if (params) dispatch(fetchTxList(params));
 
-    return () => {
-      dispatch(resetTxList());
-    };
+    // return () => {
+    //   dispatch(resetTxList());
+    // };
   }, [params, dispatch]);
 
   useEffect(() => {

@@ -36,13 +36,12 @@ export function TabSections() {
     const { min } = useMinScreen();
 
     // Default Tab
-    const Tab = ({ label, evtKey, key }) => (
+    const Tab = ({ label, evtKey }) => (
       <TabBase
         tw="py-4 pl-7"
         tabStyles={{
           label: { activeColor: "white", size: theme`fontSize.tiny` },
         }}
-        key={key}
         evtKey={evtKey}
       >
         {label}
@@ -57,7 +56,7 @@ export function TabSections() {
             <Label>{tabGroup.label}</Label>
             {tabGroup.items.map((tab, tabIndex) => {
               return (
-                <Tab label={tab.label} evtKey={tab.evtKey} key={tabIndex} />
+                <Tab key={tabIndex} label={tab.label} evtKey={tab.evtKey} />
               );
             })}
           </div>
@@ -65,7 +64,7 @@ export function TabSections() {
       } else {
         // For mobile
         return tabGroup.items.map((tab, tabIndex) => {
-          return <Tab label={tab.label} evtKey={tab.evtKey} key={tabIndex} />;
+          return <Tab key={tabIndex} label={tab.label} evtKey={tab.evtKey} />;
         });
       }
     });

@@ -4,16 +4,16 @@ export const mainNav = [
     href: "/",
   },
   {
-    label: "Wallet",
-    href: "/wallet",
+    label: "Blocks",
+    href: "/blocks",
+  },
+  {
+    label: "Transactions",
+    href: "/transactions",
   },
   {
     label: "Vote",
     href: "/vote",
-  },
-  {
-    label: "Token",
-    href: "/token",
   },
   {
     label: "Resources",

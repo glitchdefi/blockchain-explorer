@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useHistory, useLocation } from "react-router";
 import { DEFAULT_PAGE_SIZE } from "src/constants";
 
@@ -9,13 +9,13 @@ export function usePagination() {
   );
   const history = useHistory();
 
-  const onChange = (current, _) => {
+  const onChange = useCallback((current, _) => {
     setCurrentPage(current);
     history.push({
       hash,
       search: `?p=${current}`,
     });
-  };
+  }, []);
 
   return useMemo(() => {
     return {

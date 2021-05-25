@@ -1,5 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { theme } from "twin.macro";
+import { formatDollarAmount } from "src/utils/numbers";
+
 import {
   LineChart as ReLineChart,
   Line,
@@ -9,7 +12,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { theme } from "twin.macro";
+import { TooltipTable } from "../Tooltip/TooltipTable";
 
 export function LineChart({ data }) {
   const { t } = useTranslation();
@@ -34,15 +37,23 @@ export function LineChart({ data }) {
         />
         <Tooltip
           cursor={false}
-          wrapperStyle={tooltipStyles.wrapperStyle}
-          contentStyle={tooltipStyles.contentStyle}
-          labelStyle={tooltipStyles.textStyle}
-          itemStyle={tooltipStyles.textStyle}
-          formatter={function (value) {
-            return [value, t("common.glitch_price")];
-          }}
-          labelFormatter={function (label, props) {
-            return `${props[0]?.payload?.fullStringDate}`;
+          content={({ payload, active }) => {
+            if (active) {
+              const data = payload[0].payload;
+              return (
+                <TooltipTable>
+                  <TooltipTable.Text value={data.fullStringDate} />
+                  <TooltipTable.Text
+                    value={`${t("common.glitch_price")}: ${formatDollarAmount(
+                      data.price,
+                      2,
+                      true
+                    )}`}
+                  />
+                </TooltipTable>
+              );
+            }
+            return null;
           }}
         />
         <Line
@@ -61,13 +72,4 @@ const tickStyles = {
   fill: "#fff",
   fillOpacity: "70%",
   fontSize: theme`fontSize.sm`,
-};
-const tooltipStyles = {
-  wrapperStyle: { backgroundColor: theme`colors.bg8`, borderRadius: "5px" },
-  contentStyle: { borderRadius: "5px" },
-  textStyle: {
-    color: theme`colors.text2`,
-    fontSize: theme`fontSize.sm`,
-    fontWeight: "bold",
-  },
 };

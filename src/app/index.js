@@ -20,10 +20,12 @@ import { Page } from "./layouts/Page";
 
 // Pages
 import { HomePage } from "./pages/Home";
-import { WalletPage } from "./pages/Wallet";
+// import { WalletPage } from "./pages/Wallet";
+// import { TokenPage } from "./pages/Token";
+import { BlocksPage } from "./pages/Blocks";
+import { TransactionsPage } from "./pages/Transactions";
 import { VotePage } from "./pages/Vote";
-import { TokenPage } from "./pages/Token";
-import { ChartsStatsPage } from "./pages/ChartsStarts";
+import { ChartsStatsPage } from "./pages/ChartsStats";
 import { TopStatisticsPage } from "./pages/TopStatistics";
 
 import { UserDetailPage } from "./pages/UserDetail";
@@ -56,9 +58,11 @@ export function App() {
             <Page>
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                <Route path="/wallet" component={WalletPage} />
+                {/* <Route path="/wallet" component={WalletPage} /> */}
+                {/* <Route path="/token" component={TokenPage} /> */}
+                <Route path="/blocks" component={BlocksPage} />
+                <Route path="/transactions" component={TransactionsPage} />
                 <Route path="/vote" component={VotePage} />
-                <Route path="/token" component={TokenPage} />
                 <Route path="/charts" component={ChartsStatsPage} />
                 <Route path="/topstat" component={TopStatisticsPage} />
                 <Route path="/user-detail" component={UserDetailPage} />

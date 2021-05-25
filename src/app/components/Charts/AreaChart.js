@@ -10,9 +10,16 @@ import {
 } from "recharts";
 import PropTypes from "prop-types";
 import tw, { theme } from "twin.macro";
-import { Text } from "../Text";
 
-export function AreaChart({ tableName, data }) {
+// Components
+import { Text } from "src/app/components/Text";
+import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
+export function AreaChart(props) {
+  const { loading, tableName, data, tooltipContent, xAxis, yAxis, area } =
+    props;
+
+  if (loading) return <Spinner size="30px" />;
+
   return (
     <>
       <Label>{tableName}</Label>
@@ -34,25 +41,27 @@ export function AreaChart({ tableName, data }) {
           </defs>
           <CartesianGrid vertical={false} strokeOpacity="15%" />
           <XAxis
-            dataKey="name"
             tickLine={false}
             axisLine={false}
             tickSize={16}
             tick={tickStyles}
+            {...xAxis}
           />
           <YAxis
             tickLine={false}
             axisLine={false}
             tickSize={10}
             tick={tickStyles}
+            {...yAxis}
           />
-          <Tooltip cursor={false} />
+          <Tooltip cursor={false} content={tooltipContent} />
           <Area
             type="linear"
-            dataKey="uv"
             stroke={theme`colors.primary`}
             fillOpacity={1}
             fill="url(#colorUv)"
+            activeDot={{ r: 5 }}
+            {...area}
           />
         </ReAreaChart>
       </ResponsiveContainer>
@@ -65,183 +74,17 @@ const chartMargin = { top: 30, right: 30, bottom: 20, left: 5 };
 const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };
 
 AreaChart.propTypes = {
+  loading: PropTypes.bool,
   tableName: PropTypes.string,
   data: PropTypes.array,
+  xAxis: PropTypes.object,
+  yAxis: PropTypes.object,
+  area: PropTypes.object,
+  tooltipContent: PropTypes.any,
 };
 
 AreaChart.defaultProps = {
-  data: [
-    {
-      name: "Jan 21",
-      uv: 10,
-    },
-    {
-      name: "Jan 21",
-      uv: 100,
-    },
-    {
-      name: "Jan 21",
-      uv: 220,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 310,
-    },
-    {
-      name: "Jan 21",
-      uv: 340,
-    },
-    {
-      name: "Jan 21",
-      uv: 350,
-    },
-    {
-      name: "Jan 21",
-      uv: 400,
-    },
-    {
-      name: "Jan 21",
-      uv: 350,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 400,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 250,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 500,
-    },
-    {
-      name: "Jan 21",
-      uv: 550,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-    {
-      name: "Jan 21",
-      uv: 340,
-    },
-    {
-      name: "Jan 21",
-      uv: 100,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-    {
-      name: "Jan 21",
-      uv: 50,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 550,
-    },
-    {
-      name: "Jan 21",
-      uv: 800,
-    },
-    {
-      name: "Jan 21",
-      uv: 520,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 550,
-    },
-    {
-      name: "Jan 21",
-      uv: 340,
-    },
-    {
-      name: "Jan 21",
-      uv: 310,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 500,
-    },
-    {
-      name: "Jan 21",
-      uv: 200,
-    },
-    {
-      name: "Jan 21",
-      uv: 500,
-    },
-    {
-      name: "Jan 21",
-      uv: 520,
-    },
-    {
-      name: "Jan 21",
-      uv: 300,
-    },
-    {
-      name: "Jan 21",
-      uv: 320,
-    },
-  ],
+  xAxis: {},
+  yAxis: {},
+  area: {},
 };

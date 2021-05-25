@@ -5,136 +5,204 @@ import { css, theme } from "twin.macro";
 export function GlitchText() {
   const { t } = useTranslation();
   return (
-    <p data-text={t("common.loading")} css={[styles]}>
-      {t("common.loading")}
-    </p>
+    <div css={[styles]}>
+      <span className="fast-flicker">L</span>oad
+      <span className="flicker">i</span>ng...
+    </div>
   );
 }
 
 const styles = css`
-    font-size: 18px;
-    line-height: 1.5;
-    margin: auto;
-    color: ${theme`colors.primary`};
-    text-align: center;
-    animation: glitch-p 6s infinite alternate;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  left: 50%;
+  top: 50%;
+  font-family: "Clip";
+  text-transform: uppercase;
+  font-size: 3em;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
 
-    &::before,
-    &::after {
-      --top: 0;
-      --left: 0;
-      --v-height: 30%;
-
-      --n-tenth: calc(var(20) * 0.1 * var(--top));
-      --t-cut: calc(var(--n-tenth) / var(20) * 100%);
-      --b-cut: calc(var(--t-cut) + var(--v-height));
-
-      content: attr(data-text);
-      position: absolute;
-      width: 100%;
-      left: 0;
-      text-align: center;
-
-      filter: drop-shadow(0 0 transparent);
-
-      text-shadow: calc(var(--left) * -1em) 0 0.02em lime,
-        calc(var(--left) * -2em) 0 0.02em ${theme`colors.secondary`};
-    
-      clip-path: polygon(
-        0% var(--t-cut),
-        100% var(--t-cut),
-        100% var(--b-cut),
-        0% var(--b-cut)
-      );
+  @keyframes blink {
+    0%,
+    22%,
+    36%,
+    75% {
+      color: #ffe6ff;
+      text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+        -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+        0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
     }
-
-    &::before {
-      animation: glitch-b 1.7s infinite alternate-reverse;
+    28%,
+    33% {
+      color: #ff65bd;
+      text-shadow: none;
     }
-    &::after {
-      animation: glitch-a 2.1s infinite alternate;
+    82%,
+    97% {
+      color: #ff2483;
+      text-shadow: none;
     }
   }
 
-  @keyframes glitch-p {
-    17% { --scale: .87; }
-    31% { --scale: 1.005; }
-    37% { --scale: 1.01; }
-    47% { --scale: .90; }
-    87% { --scale: 1; }
+  .flicker {
+    animation: shine 2s forwards, blink 3s 2s infinite;
   }
 
-  @keyframes glitch-a {
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      --top: 0;
-      --left: 0;
-    }
+  .fast-flicker {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+  }
+
+  @keyframes shine {
     0% {
-      --v-height: 15%;
-    }
-    20% {
-      --left: 0.005;
-    }
-    40% {
-      --left: 0.01;
-      --v-height: 20%;
-      --top: 3;
-    }
-    60% {
-      --left: 0.03;
-      --v-height: 25%;
-      --top: 6;
-    }
-    80% {
-      --left: 0.07;
-      --v-height: 5%;
-      --top: 8;
+      color: #6b1839;
+      text-shadow: none;
     }
     100% {
-      --left: 0.083;
-      --v-height: 30%;
-      --top: 1;
+      color: #ffe6ff;
+      text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+        -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+        0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
     }
   }
 
-  @keyframes glitch-b {
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-      --top: 0;
-      --left: 0;
+  @keyframes flicker {
+    from {
+      opacity: 1;
     }
-    0% {
-      --v-height: 15%;
-      --top: 10;
+
+    4% {
+      opacity: 0.9;
     }
+
+    6% {
+      opacity: 0.85;
+    }
+
+    8% {
+      opacity: 0.95;
+    }
+
+    10% {
+      opacity: 0.9;
+    }
+
+    11% {
+      opacity: 0.922;
+    }
+
+    12% {
+      opacity: 0.9;
+    }
+
+    14% {
+      opacity: 0.95;
+    }
+
+    16% {
+      opacity: 0.98;
+    }
+
+    17% {
+      opacity: 0.9;
+    }
+
+    19% {
+      opacity: 0.93;
+    }
+
     20% {
-      --left: -0.00005;
+      opacity: 0.99;
     }
-    40% {
-      --left: -0.01;
-      --v-height: 17%;
-      --top: 3;
+
+    24% {
+      opacity: 1;
     }
+
+    26% {
+      opacity: 0.94;
+    }
+
+    28% {
+      opacity: 0.98;
+    }
+
+    37% {
+      opacity: 0.93;
+    }
+
+    38% {
+      opacity: 0.5;
+    }
+
+    39% {
+      opacity: 0.96;
+    }
+
+    42% {
+      opacity: 1;
+    }
+
+    44% {
+      opacity: 0.97;
+    }
+
+    46% {
+      opacity: 0.94;
+    }
+
+    56% {
+      opacity: 0.9;
+    }
+
+    58% {
+      opacity: 0.9;
+    }
+
     60% {
-      --left: -0.03;
-      --v-height: 35%;
-      --top: 6;
+      opacity: 0.99;
     }
-    80% {
-      --left: -0.07;
-      --v-height: 5%;
-      --top: 8;
+
+    68% {
+      opacity: 1;
     }
-    100% {
-      --left: -0.083;
-      --v-height: 30%;
-      --top: 1;
+
+    70% {
+      opacity: 0.9;
     }
+
+    72% {
+      opacity: 0.95;
+    }
+
+    93% {
+      opacity: 0.93;
+    }
+
+    95% {
+      opacity: 0.95;
+    }
+
+    97% {
+      opacity: 0.93;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 `;

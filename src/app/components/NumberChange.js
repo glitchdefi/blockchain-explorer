@@ -5,11 +5,23 @@ import tw, { theme } from "twin.macro";
 // Components
 import { Text } from "src/app/components/Text";
 import { UpDownIcon } from "src/app/components/Svg/Icons";
-
-export function NumberChange({ value, diff, ...props }) {
+import { NumberCount } from "./Text/NumberCount";
+export function NumberChange({
+  value,
+  values,
+  prefix,
+  diff,
+  decimals,
+  ...props
+}) {
   return (
-    <Wrapper {...props}>
-      <Text className="number-change-value">{value}</Text>
+    <Flex {...props}>
+      <NumberCount
+        value={value}
+        values={values}
+        prefix={prefix}
+        decimals={decimals}
+      />
       {diff && <UpDownIcon isUp />} {/* Up or down */}
       {diff && (
         <Text
@@ -20,13 +32,20 @@ export function NumberChange({ value, diff, ...props }) {
           {diff}
         </Text>
       )}
-    </Wrapper>
+    </Flex>
   );
 }
 
 NumberChange.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  values: PropTypes.array,
+  prefix: PropTypes.string,
+  decimals: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   diff: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-const Wrapper = tw.div`flex items-center`;
+const Flex = tw.div`flex items-center`;

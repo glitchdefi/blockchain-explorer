@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 // Hooks
 import { useWalletCount } from "src/state/wallet/hooks";
+import { useAllGlitchInfo } from "src/state/price/hooks";
 
 // Components
 import {
@@ -19,6 +20,8 @@ import { StatsCard } from "./StatsCard";
 export const StatsHistory = React.memo(() => {
   const { t } = useTranslation();
   const { walletCount } = useWalletCount();
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { current_price, market_cap } = allGlitchInfo || {};
 
   return (
     <Grid cols={2}>
@@ -40,7 +43,9 @@ export const StatsHistory = React.memo(() => {
       <StatsCard
         icon={<PriceIcon />}
         title={t("homePage.price_market_cap")}
-        value="--"
+        values={[current_price, market_cap]}
+        decimals={[2, 0]}
+        prefix="$"
       />
       <StatsCard icon={<LibIcon />} title={t("homePage.lib")} value="--" />
       <StatsCard

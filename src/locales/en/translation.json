@@ -109,7 +109,10 @@
         "the_glitch_block_count": "The Glitch Block Count and Rewards Chart shows the historical number of blocks produced daily on the Glitch network and the total block reward.",
         "the_glitch_network_hash_rate": "The Glitch Network Hash Rate Chart shows the historical measure of the processing power of the Glitch network.",
         "the_glitch_difficulty_chart": "The Glitch Network Difficulty Chart displays the mining difficulty and the historical value of the Glitch network.",
-        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network."
+        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network.",
+        "total_value": "Total Value",
+        "market_cap": "Market Cap",
+        "avg_price_glitch": "Avg Price/Glitch"
     },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",

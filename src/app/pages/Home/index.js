@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { theme } from "twin.macro";
 
 // Hooks
-import { useBlockSlice } from "src/state/block/hooks";
-import { useTxSlice } from "src/state/transaction/hooks";
 import { useWalletSlice } from "src/state/wallet/hooks";
 import { usePriceSlice } from "src/state/price/hooks";
 
@@ -17,8 +15,6 @@ import { StatsHistory } from "./components/StatsHistory";
 
 export function HomePage() {
   const { t } = useTranslation();
-  useBlockSlice();
-  useTxSlice();
   useWalletSlice();
   usePriceSlice();
 

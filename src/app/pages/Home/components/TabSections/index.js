@@ -17,8 +17,8 @@ export function TabSections() {
       <Tabs>
         <Tab evtKey="producer">Producer</Tab>
         <Tab evtKey="epoch">Epoch</Tab>
-        <Tab evtKey="transactions">Transactions</Tab>
-        <Tab evtKey="block">Block</Tab>
+        {/* <Tab evtKey="transactions">Transactions</Tab>
+        <Tab evtKey="block">Block</Tab> */}
       </Tabs>
 
       <TabPanel evtKey="producer">
@@ -27,12 +27,12 @@ export function TabSections() {
       <TabPanel evtKey="epoch">
         <EpochTable />
       </TabPanel>
-      <TabPanel evtKey="transactions">
+      {/* <TabPanel evtKey="transactions">
         <TransactionTable />
       </TabPanel>
       <TabPanel evtKey="block">
         <BlockTable />
-      </TabPanel>
+      </TabPanel> */}
     </TabContainer>
   );
 }
