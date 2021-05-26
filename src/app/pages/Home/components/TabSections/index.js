@@ -8,8 +8,6 @@ import {
 } from "src/app/components/Tab/Horizontal";
 import { ProducerTable } from "../Tables/Producer";
 import { EpochTable } from "../Tables/Epoch";
-import { TransactionTable } from "../Tables/Transactions";
-import { BlockTable } from "../Tables/Block";
 
 export function TabSections() {
   return (

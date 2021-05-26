@@ -69,7 +69,6 @@ export const fetchGlitchMarketData = () => async (dispatch) => {
       Object.keys(res.data).map((key) => {
         if (res.data[key]?.length) {
           data[key] = res.data[key].map((o, i) => {
-            console.log();
             return {
               date: moment(o[0]).format("DD.MMM"),
               fullStringDate: moment(o[0]).format("dddd, MMM DD, YYYY"),

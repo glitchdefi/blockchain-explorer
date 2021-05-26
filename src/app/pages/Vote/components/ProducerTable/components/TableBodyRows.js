@@ -22,11 +22,7 @@ export function TableBodyRows({ item }) {
         </TableCell>
         <TableCell>3.060%</TableCell>
         <TableCell>
-          <NumberChange
-            css={[numberChangeStyles]}
-            value="500,000,000"
-            diff="2,000"
-          />
+          <NumberChange css={[numberChangeStyles]} value="500,000,000" />
         </TableCell>
         <TableCell>982.4231</TableCell>
       </TableRow>

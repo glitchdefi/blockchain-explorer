@@ -22,7 +22,7 @@ export function ValueTokenCard() {
           </FlexLayout>
           <FlexLayout>
             <Title>{t("walletPage.value_in_usd")}</Title>
-            <NumberChange value="100,000" diff={"15%"} />
+            <NumberChange value="100,000" />
           </FlexLayout>
         </GridWrap>
       </CardLayout>

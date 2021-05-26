@@ -31,11 +31,13 @@ export const StatsCard = ({ icon, title, value, values, prefix, decimals }) => {
 StatsCard.propTypes = {
   icon: PropTypes.element,
   title: PropTypes.string,
+  prefix: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
     PropTypes.array,
   ]),
+  values: PropTypes.array,
   decimals: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
 

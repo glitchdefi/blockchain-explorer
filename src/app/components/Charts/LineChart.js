@@ -1,7 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { theme } from "twin.macro";
-import { formatDollarAmount } from "src/utils/numbers";
 
 import {
   LineChart as ReLineChart,
@@ -12,60 +10,43 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { TooltipTable } from "../Tooltip/TooltipTable";
+import { Spinner } from "../LoadingIndicator/Spinner";
 
-export function LineChart({ data }) {
-  const { t } = useTranslation();
-
-  return (
-    <ResponsiveContainer width="100%" height="100%">
-      <ReLineChart width={500} height={300} data={data} margin={chartMargin}>
-        <CartesianGrid vertical={false} strokeOpacity="15%" />
-        <XAxis
-          dataKey="date"
-          tickLine={false}
-          axisLine={false}
-          padding={{ left: 20, right: 20 }}
-          tickSize={16}
-          tick={tickStyles}
-        />
-        <YAxis
-          tickLine={false}
-          axisLine={false}
-          tickSize={10}
-          tick={tickStyles}
-        />
-        <Tooltip
-          cursor={false}
-          content={({ payload, active }) => {
-            if (active) {
-              const data = payload[0].payload;
-              return (
-                <TooltipTable>
-                  <TooltipTable.Text value={data.fullStringDate} />
-                  <TooltipTable.Text
-                    value={`${t("common.glitch_price")}: ${formatDollarAmount(
-                      data.price,
-                      2,
-                      true
-                    )}`}
-                  />
-                </TooltipTable>
-              );
-            }
-            return null;
-          }}
-        />
-        <Line
-          dataKey="price"
-          stroke={theme`colors.primary`}
-          strokeWidth={2}
-          activeDot={{ r: 5 }}
-        />
-      </ReLineChart>
-    </ResponsiveContainer>
-  );
-}
+export const LineChart = React.memo(
+  ({ loading, data, xAxis, yAxis, line, tooltipContent }) => {
+    if (loading) return <Spinner size="30px" />;
+    return (
+      <ResponsiveContainer width="100%" height="100%">
+        <ReLineChart width={500} height={300} data={data} margin={chartMargin}>
+          <CartesianGrid vertical={false} strokeOpacity="15%" />
+          <XAxis
+            tickLine={false}
+            axisLine={false}
+            padding={{ left: 20, right: 20 }}
+            tickSize={16}
+            tick={tickStyles}
+            {...xAxis}
+          />
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tickSize={10}
+            tick={tickStyles}
+            {...yAxis}
+          />
+          <Tooltip cursor={false} content={tooltipContent} />
+          <Line
+            stroke={theme`colors.primary`}
+            strokeWidth={2}
+            activeDot={{ r: 5 }}
+            {...line}
+          />
+        </ReLineChart>
+      </ResponsiveContainer>
+    );
+  },
+  (prev, current) => prev.data === current.data
+);
 
 const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };
 const tickStyles = {

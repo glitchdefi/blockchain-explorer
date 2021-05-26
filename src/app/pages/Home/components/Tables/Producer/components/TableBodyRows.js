@@ -25,11 +25,7 @@ export const TableBodyRows = React.memo(({ isLoading, data }) => {
           </TableCell>
           <TableCell>Test</TableCell>
           <TableCell>
-            <NumberChange
-              css={[numberChangeStyles]}
-              value="370,850,779"
-              diff="26,049,388"
-            />
+            <NumberChange css={[numberChangeStyles]} value="370,850,779" />
           </TableCell>
           <TableCell>Test</TableCell>
         </TableRow>

@@ -18,7 +18,7 @@ export function TableBodyRows({ item }) {
         <TableCell>100,000</TableCell>
         <TableCell>$1,197.72/ TK1</TableCell>
         <TableCell>
-          <NumberChange diff="25%"/>
+          <NumberChange />
         </TableCell>
         <TableCell>100,000</TableCell>
         <TableCell>100,000,000</TableCell>

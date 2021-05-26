@@ -27,7 +27,7 @@ function getAllGlitchInfo() {
  */
 function getGlitchMarketData() {
   return axios.get(
-    `${COINGEKO_API_URL}api/v3/coins/glitch-protocol/market_chart?vs_currency=usd&days=7&interval=daily`
+    `${COINGEKO_API_URL}api/v3/coins/glitch-protocol/market_chart?vs_currency=usd&days=365&interval=daily`
   );
 }
 
