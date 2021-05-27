@@ -40,7 +40,7 @@ export function SearchInput() {
       <InputWrapper>
         <Input
           value={text}
-          tw="flex-1 rounded py-3 text-sm md:text-base"
+          tw="flex-1 rounded py-3 text-sm md:text-base bg-bg1"
           placeholder={`${t("common.search_placeholder")}`}
           onChange={onTextChange}
         />

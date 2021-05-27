@@ -47,7 +47,7 @@ export const PriceChart = React.memo(() => {
 });
 
 const cardStyles = css`
-  height: 200px;
+  height: 300px;
   align-items: center;
   justify-content: center;
 
