@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   isLoading: true,
   blockList: [],
   error: null,
+  isFetchingBlockDetails: true,
 };
 
 export const slice = createSlice({
@@ -21,6 +22,7 @@ export const slice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+
     loadBlockCount: (state) => {
       state.blockCount = null;
     },
@@ -30,6 +32,7 @@ export const slice = createSlice({
     blockCountError: (state, action) => {
       state.blockCountError = action.payload;
     },
+
     loadBlockHeight: (state) => {
       state.blockHeight = null;
     },
@@ -39,6 +42,7 @@ export const slice = createSlice({
     blockHeightError: (state, action) => {
       state.blockHeightError = action.payload;
     },
+
     loadBlockLatest: (state) => {
       state.blockLatest = null;
     },
@@ -48,7 +52,18 @@ export const slice = createSlice({
     blockLatestError: (state, action) => {
       state.blockLatestError = action.payload;
     },
-    // ...
+
+    loadBlockDetails: (state) => {
+      state.isFetchingBlockDetails = true;
+    },
+    blockDetailsLoaded: (state, action) => {
+      state.isFetchingBlockDetails = false;
+      state.blockDetails = action.payload;
+    },
+    blockDetailsError: (state, action) => {
+      state.isFetchingBlockDetails = false;
+      state.blockDetailsError = action.payload;
+    },
   },
 });
 
@@ -69,4 +84,8 @@ export const {
   loadBlockLatest,
   blockLatestLoaded,
   blockLatestError,
+
+  loadBlockDetails,
+  blockDetailsLoaded,
+  blockDetailsError,
 } = slice.actions;

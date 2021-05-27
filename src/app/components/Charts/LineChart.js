@@ -44,8 +44,7 @@ export const LineChart = React.memo(
         </ReLineChart>
       </ResponsiveContainer>
     );
-  },
-  (prev, current) => prev.data === current.data
+  }
 );
 
 const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };

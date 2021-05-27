@@ -33,7 +33,7 @@ export const usePriceHistory = () => {
 
   useEffect(() => {
     if (priceHistoryError) {
-      toastError("Price Error", priceHistoryError);
+      toastError("Error", priceHistoryError);
     }
   }, [priceHistoryError]);
 
@@ -52,7 +52,7 @@ export const useAllGlitchInfo = () => {
 
   useEffect(() => {
     if (allGlitchInfoError) {
-      toastError("Price Error", allGlitchInfoError);
+      toastError("Error", allGlitchInfoError);
     }
   }, [allGlitchInfoError]);
 
@@ -74,7 +74,7 @@ export const useGlitchMarketData = () => {
 
   useEffect(() => {
     if (glitchMarketDataError) {
-      toastError("Price Error", glitchMarketDataError);
+      toastError("Error", glitchMarketDataError);
     }
   }, [glitchMarketDataError]);
 

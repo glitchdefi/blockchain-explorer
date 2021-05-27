@@ -1,26 +1,45 @@
 import React from "react";
-import tw from "twin.macro";
+import tw, { css } from "twin.macro";
 import { useTranslation } from "react-i18next";
+import moment from "moment";
 
 // Components
 import { TableContainer as Container } from "src/app/components/Table";
 import { TabPanel as Card } from "src/app/components/Tab/Horizontal";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Link } from "src/app/components/Link";
+import { Empty } from "src/app/components/Empty";
+import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 
-export function BlockDetailsCard() {
+export const BlockDetailsCard = React.memo(({ loading, blockId, data }) => {
   const { t } = useTranslation();
+  const { height, time, hash } = data || {};
+
+  if (loading)
+    return (
+      <Card css={[cardStyles]}>
+        <Spinner size="30px" />
+      </Card>
+    );
+
+  if (!data)
+    return (
+      <Card css={[cardStyles]}>
+        <Empty msg={`${t("blockDetails.empty", { id: blockId })}`} />
+      </Card>
+    );
 
   return (
     <Container>
       <Card>
         <Wrapper>
-          <InfoRow label={t("blockDetails.block_height")} value="11676248" />
+          <InfoRow label={t("blockDetails.block_height")} value={height} />
 
           <InfoRow
             label={t("common.timeStamp")}
-            value="1 hr 14 mins ago (Jan-17-2021 03:30:52 PM +UTC) | Confirmed within
-          30 secs"
+            value={`${moment(time).fromNow()} (${moment
+              .utc(time)
+              .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
           />
 
           <InfoRow label={t("common.transactions")} value="200" />
@@ -49,14 +68,19 @@ export function BlockDetailsCard() {
 
           <InfoRow label={t("common.size")} value="52,768 bytes" />
 
-          <InfoRow
-            label={t("blockDetails.hash")}
-            value="8854b325d7069805053399b6dba46612a54a98e872a2b45c6aaa3b3e2997d7c8"
-          />
+          <InfoRow label={t("blockDetails.hash")} value={hash} />
         </Wrapper>
       </Card>
     </Container>
   );
-}
+});
 
 export const Wrapper = tw.div`w-full px-1 py-3 lg:pl-6`;
+const cardStyles = css`
+  .inner {
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+`;

@@ -14,7 +14,7 @@ export function NotFoundPage() {
     <>
       <Container
         style={{
-          minHeight: "45vh",
+          minHeight: "34.375rem",
         }}
       >
         <Wrapper>

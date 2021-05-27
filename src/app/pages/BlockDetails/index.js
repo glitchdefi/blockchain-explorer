@@ -1,27 +1,40 @@
 import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
 
 // Components
 import { Text } from "src/app/components/Text";
 import { BlockDetailsCard } from "./components/BlockDetailsCard";
 import { BlockDetailsTable } from "./components/BlockDetailsTable";
+import { useBlockDetails, useBlockSlice } from "src/state/block/hooks";
 
 export function BlockDetailsPage() {
+  useBlockSlice();
   const { t } = useTranslation();
+  const { id } = useParams();
+  const { isFetchingBlockDetails, blockDetails } = useBlockDetails();
 
   return (
     <>
       <Wrapper>
         <HeadWrapper>
           <Heading>{t("blockDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#111111</Heading>
+          <Heading tw="text-textSecondary! ml-4">#{id}</Heading>
         </HeadWrapper>
 
-        <BlockDetailsCard />
+        <BlockDetailsCard
+          loading={isFetchingBlockDetails}
+          blockId={id}
+          data={blockDetails?.length ? blockDetails[0] : null}
+        />
 
-        <Heading tw="mt-8 lg:mt-12">{t("blockDetails.title")}</Heading>
-        <BlockDetailsTable data={[1, 2, 3]} />
+        {!isFetchingBlockDetails && blockDetails && (
+          <Heading tw="mt-8 lg:mt-12">{t("blockDetails.title")}</Heading>
+        )}
+        {!isFetchingBlockDetails && blockDetails && (
+          <BlockDetailsTable data={[1, 2, 3]} />
+        )}
       </Wrapper>
     </>
   );

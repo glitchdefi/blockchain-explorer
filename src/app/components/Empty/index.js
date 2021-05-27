@@ -2,11 +2,11 @@ import { React } from "react";
 import tw, { theme } from "twin.macro";
 import { Text } from "../Text";
 
-export function Empty() {
+export function Empty({ msg }) {
   return (
     <Wrapper>
-      <Text size={theme`fontSize.lg`} color={theme`colors.textSecondary`}>
-        Empty
+      <Text size={theme`fontSize.base`} color={theme`colors.textSecondary`}>
+        {msg}
       </Text>
     </Wrapper>
   );

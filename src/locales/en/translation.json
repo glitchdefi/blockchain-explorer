@@ -24,7 +24,8 @@
         "vote": "Vote",
         "miners": "Miners",
         "loading": "Loading ...",
-        "glitch_price": "Glitch price"
+        "glitch_price": "Glitch price",
+        "search_placeholder": "Search by Address / Txn Hash / Block Hash"
     },
     "pagination": {
         "prev": "Prev",
@@ -57,7 +58,8 @@
         "mined_by": "Mined by",
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
-        "hash": "Hash"
+        "hash": "Hash",
+        "empty": "Unable to locate block #{{id}}"
     },
     "epodDetails": {
         "title": "Epod Details",

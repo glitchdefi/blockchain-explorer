@@ -9,7 +9,7 @@ export const mainNav = [
   },
   {
     label: "Transactions",
-    href: "/transactions",
+    href: "/txs",
   },
   {
     label: "Vote",

@@ -12,11 +12,9 @@ import { EpochTable } from "../Tables/Epoch";
 export function TabSections() {
   return (
     <TabContainer tw="mt-12">
-      <Tabs>
+      <Tabs tw="grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
         <Tab evtKey="producer">Producer</Tab>
         <Tab evtKey="epoch">Epoch</Tab>
-        {/* <Tab evtKey="transactions">Transactions</Tab>
-        <Tab evtKey="block">Block</Tab> */}
       </Tabs>
 
       <TabPanel evtKey="producer">
@@ -25,12 +23,6 @@ export function TabSections() {
       <TabPanel evtKey="epoch">
         <EpochTable />
       </TabPanel>
-      {/* <TabPanel evtKey="transactions">
-        <TransactionTable />
-      </TabPanel>
-      <TabPanel evtKey="block">
-        <BlockTable />
-      </TabPanel> */}
     </TabContainer>
   );
 }

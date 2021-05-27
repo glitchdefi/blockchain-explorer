@@ -52,7 +52,7 @@ export const useBlockCount = () => {
 
   useEffect(() => {
     if (blockCountError) {
-      toastError("Blocks Error", blockCountError);
+      toastError("Error", blockCountError);
     }
   }, [blockCountError]);
 
@@ -70,9 +70,28 @@ export const useBlockLatest = () => {
 
   useEffect(() => {
     if (blockLatestError) {
-      toastError("Blocks Error", blockLatestError);
+      toastError("Error", blockLatestError);
     }
   }, [blockLatestError]);
 
   return { blockLatest };
+};
+
+export const useBlockDetails = () => {
+  const { isFetchingBlockDetails, blockDetails, blockDetailsError } =
+    useSelector((state) => state.block);
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(searchBlockById(params));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (blockDetailsError) {
+      toastError("Error", blockDetailsError);
+    }
+  }, [blockDetailsError]);
+
+  return { isFetchingBlockDetails, blockDetails };
 };

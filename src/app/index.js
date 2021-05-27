@@ -58,19 +58,14 @@ export function App() {
             <Page>
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                {/* <Route path="/wallet" component={WalletPage} /> */}
-                {/* <Route path="/token" component={TokenPage} /> */}
                 <Route path="/blocks" component={BlocksPage} />
-                <Route path="/transactions" component={TransactionsPage} />
+                <Route path="/txs" component={TransactionsPage} />
                 <Route path="/vote" component={VotePage} />
                 <Route path="/charts" component={ChartsStatsPage} />
                 <Route path="/topstat" component={TopStatisticsPage} />
-                <Route path="/user-detail" component={UserDetailPage} />
-                <Route
-                  path="/transaction-details"
-                  component={TransactionDetailsPage}
-                />
-                <Route path="/block" component={BlockDetailsPage} />
+                <Route path="/address/:address" component={UserDetailPage} />
+                <Route path="/tx/:id" component={TransactionDetailsPage} />
+                <Route path="/block/:id" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
                 <Route component={NotFoundPage} />
               </Switch>

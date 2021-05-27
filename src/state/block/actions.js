@@ -12,6 +12,9 @@ import {
   loadBlockLatest,
   blockLatestLoaded,
   blockLatestError,
+  loadBlockDetails,
+  blockDetailsLoaded,
+  blockDetailsError,
 } from "./reducer";
 
 export const fetchBlockList = (params) => async (dispatch) => {
@@ -57,3 +60,13 @@ export const fetchBlockLatest = () => async (dispatch) => {
     dispatch(blockLatestError(error));
   }
 };
+
+// export const searchBlockById = (params) => async (dispatch) => {
+//   try {
+//     dispatch(loadBlockDetails());
+//     const data = await BlockApis.searchBlockById(params);
+//     dispatch(blockDetailsLoaded(data ? data?.block : null));
+//   } catch (error) {
+//     dispatch(blockDetailsError(error));
+//   }
+// };
