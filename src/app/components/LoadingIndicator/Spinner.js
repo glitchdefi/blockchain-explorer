@@ -26,7 +26,7 @@ const StyledSVG = styled.svg(({ size, stroke }) => [
  * Takes in custom size and stroke for circle color, default to primary color as fill,
  * need ...rest for layered styles on top
  */
-export function Spinner({ size = "14px", stroke, ...rest }) {
+export const Spinner = React.memo(({ size = "14px", stroke, ...rest }) => {
   return (
     <StyledSVG
       viewBox="0 0 24 24"
@@ -44,4 +44,4 @@ export function Spinner({ size = "14px", stroke, ...rest }) {
       />
     </StyledSVG>
   );
-}
+});

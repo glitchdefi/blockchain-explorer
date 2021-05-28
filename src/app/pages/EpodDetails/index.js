@@ -2,6 +2,8 @@ import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 
+import { useBlockSlice } from "src/state/block/hooks";
+
 // Components
 import { Text } from "src/app/components/Text";
 import { EpodDetailsCard } from "./components/EpodDetailsCard";
@@ -9,6 +11,7 @@ import { EpodDetailsTable } from "./components/EpodDetailsTable";
 
 export function EpodDetailsPage() {
   const { t } = useTranslation();
+  useBlockSlice();
 
   return (
     <>

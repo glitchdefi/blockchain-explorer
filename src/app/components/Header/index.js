@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import tw from "twin.macro";
 
+// Hooks
+import { useGlobalSlice } from "src/state/global/hooks";
+
 // Components
 import { Logo } from "src/app/components/Logo";
 import { HorizontalMenu, VerticalMenu } from "./components/Menu";
@@ -13,6 +16,7 @@ import { SearchInput } from "./components/Menu/Horizontal/SearchInput";
 import { HamburgerIcon, CloseIcon } from "./icons";
 
 export function Header() {
+  useGlobalSlice();
   const [isShowVerticalMenu, setIsShowVerticalMenu] = useState(false);
   const location = useLocation();
 
@@ -29,11 +33,9 @@ export function Header() {
       <Wrapper>
         <PageElementWrap>
           <NavCols>
-            <Logo />
+            <Logo tw="lg:(absolute left-0)" />
             {/* Menu for Desktop */}
             <HorizontalMenu />
-            {/* Search bar */}
-            <SearchInput />
             {/* Toggle Menu Vertical */}
             <div tw="lg:hidden flex items-center">
               {!isShowVerticalMenu ? (
@@ -50,10 +52,14 @@ export function Header() {
         </PageElementWrap>
         {/* Menu for Mobile */}
         {isShowVerticalMenu && <VerticalMenu />}
+        
+        <PageElementWrap>
+          <SearchInput />
+        </PageElementWrap>
       </Wrapper>
     </>
   );
 }
 
 const Wrapper = tw.div`items-center py-3`;
-const NavCols = tw.div`flex flex-wrap w-full items-center justify-between`;
+const NavCols = tw.div`relative flex flex-wrap w-full items-center justify-between lg:justify-center`;

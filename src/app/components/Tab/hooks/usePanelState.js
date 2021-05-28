@@ -1,9 +1,11 @@
 import { useContext } from "react";
+import { useLocation } from "react-router";
 import useConstant from "use-constant";
 import { TabsContext } from "../TabContainer";
 
-export const usePanelState = () => {
+export const usePanelState = (evtKey) => {
   const tabsProps = useContext(TabsContext) || {};
+  const { hash } = useLocation();
 
   const panelIndex = useConstant(() => {
     const currentIndex = tabsProps.panelIndex;
@@ -12,5 +14,7 @@ export const usePanelState = () => {
     return currentIndex;
   });
 
-  return { isActive: panelIndex === tabsProps.activeTab };
+  return {
+    isActive: hash ? hash === `#${evtKey}` : panelIndex === tabsProps.activeTab,
+  };
 };

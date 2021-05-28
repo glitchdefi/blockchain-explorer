@@ -28,7 +28,7 @@ export function NavMenu() {
 }
 
 const Wrapper = styled.ul(() => [
-  tw`lg:flex flex-wrap items-center justify-center m-0 hidden`,
+  tw`lg:flex flex-wrap items-center justify-center m-0 hidden my-5`,
   css`
     .horizontal-menu-item:hover {
       .horizontal-menu-submenu {

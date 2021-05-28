@@ -5,33 +5,43 @@
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
-import React, { useEffect } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 // Hooks
 import { useEagerConnect } from "src/hooks/wallet";
 
 // Components
+import { ScrollToTop } from "./components/ScrollToTop";
 import { ToastListener } from "src/app/components/Toast/ToastListener";
+import { LocalLoader } from "src/app/components/LoadingIndicator/LocalLoader";
 
 // Main layout
 import { Page } from "./layouts/Page";
 
 // Pages
-import { HomePage } from "./pages/Home/Loadable";
-import { WalletPage } from "./pages/Wallet/Loadable";
-import { VotePage } from "./pages/Vote/Loadable";
-import { TokenPage } from "./pages/Token/Loadable";
-import { ChartsStatsPage } from "./pages/ChartsStarts/Loadable";
-import { TopStatisticsPage } from "./pages/TopStatistics/Loadable";
+import { HomePage } from "./pages/Home";
+// import { WalletPage } from "./pages/Wallet";
+// import { TokenPage } from "./pages/Token";
+import { BlocksPage } from "./pages/Blocks";
+import { TransactionsPage } from "./pages/Transactions";
+import { VotePage } from "./pages/Vote";
+import { ChartsStatsPage } from "./pages/ChartsStats";
+import { TopStatisticsPage } from "./pages/TopStatistics";
 
-import { UserDetailPage } from "./pages/UserDetail/Loadable";
-import { TransactionDetailsPage } from "./pages/TransactionDetails/Loadable";
-import { BlockDetailsPage } from "./pages/BlockDetails/Loadable";
-import { EpodDetailsPage } from "./pages/EpodDetails/Loadable";
-import { NotFoundPage } from "./pages/NotFound/Loadable";
+import { UserDetailPage } from "./pages/UserDetail";
+import { TransactionDetailsPage } from "./pages/TransactionDetails";
+import { BlockDetailsPage } from "./pages/BlockDetails";
+import { EpodDetailsPage } from "./pages/EpodDetails";
+import { NotFoundPage } from "./pages/NotFound";
+import { ContactPage } from "./pages/ContactUs";
 
 export function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 700);
+  }, []);
   // Monkey patch warn() because of web3 flood
   // To be removed when web3 1.3.5 is released
   useEffect(() => {
@@ -42,25 +52,33 @@ export function App() {
 
   return (
     <BrowserRouter>
-      <Page>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/wallet" component={WalletPage} />
-          <Route path="/vote" component={VotePage} />
-          <Route path="/token" component={TokenPage} />
-          <Route path="/charts" component={ChartsStatsPage} />
-          <Route path="/topstat" component={TopStatisticsPage} />
-          <Route path="/user-detail" component={UserDetailPage} />
-          <Route
-            path="/transaction-details"
-            component={TransactionDetailsPage}
-          />
-          <Route path="/block-details" component={BlockDetailsPage} />
-          <Route path="/epod-details" component={EpodDetailsPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </Page>
-      <ToastListener />
+      <Suspense fallback={null}>
+        {loading ? (
+          <LocalLoader fill={true} />
+        ) : (
+          <>
+            <Page>
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route path="/blocks" component={BlocksPage} />
+                <Route path="/txs" component={TransactionsPage} />
+                <Route path="/vote" component={VotePage} />
+                <Route path="/charts" component={ChartsStatsPage} />
+                <Route path="/topstat" component={TopStatisticsPage} />
+                <Route path="/address/:address" component={UserDetailPage} />
+                <Route path="/tx/:id" component={TransactionDetailsPage} />
+                <Route path="/block/:id" component={BlockDetailsPage} />
+                <Route path="/epod-details" component={EpodDetailsPage} />
+
+                <Route path="/contactus" component={ContactPage} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </Page>
+            <ScrollToTop />
+            <ToastListener />
+          </>
+        )}
+      </Suspense>
     </BrowserRouter>
   );
 }

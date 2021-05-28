@@ -26,6 +26,7 @@ module.exports = {
         textPrimary: "var(--text-primary)",
         textSecondary: "var(--text-secondary)",
         text1: "var(--text1)",
+        text2: "var(--text2)",
 
         bgPrimary: "var(--bg-primary)",
         bgSecondary: "var(--bg-secondary)",
@@ -36,6 +37,7 @@ module.exports = {
         bg5: "var(--bg-5)",
         bg6: "var(--bg-6)",
         bg7: "var(--bg-7)",
+        bg8: "var(--bg-8)",
       },
       maxWidth: {
         "1/4": "25%",

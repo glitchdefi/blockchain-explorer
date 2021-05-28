@@ -4,7 +4,6 @@ export { default as HeadBlockIcon } from "./HeadBlock";
 export { default as PriceIcon } from "./Price";
 export { default as LibIcon } from "./Lib";
 export { default as TotalAccountIcon } from "./TotalAccount";
-export { default as UpDownIcon } from "./UpDown";
 export { default as MoneyIcon } from "./Money";
 export { default as CopyIcon } from "./Copy";
 export { default as Copy24Icon } from "./Copy24";

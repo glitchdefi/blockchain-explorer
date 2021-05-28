@@ -1,8 +1,12 @@
 import React from "react";
 
-import { walletTabConfig } from "src/constants/walletTabConfig";
-
 // Components
+import {
+  AccManagementIcon,
+  AssetManagementIcon,
+  HistoryIcon,
+  WalletIcon,
+} from "src/app/components/Svg/Icons";
 import {
   Tabs,
   Tab,
@@ -13,35 +17,45 @@ import { AccountManagement } from "./AccountManagement";
 import { AssetManagement } from "./AssetManagement";
 import { History } from "./History";
 import { Wallets } from "./Wallets";
+import { useTranslation } from "react-i18next";
 
 export function TabSections() {
-  const renderTab = () => {
-    return walletTabConfig.map((tab, tabIndex) => {
-      return (
-        <Tab key={tabIndex} leftIcon={tab.icon}>
-          {tab?.label}
-        </Tab>
-      );
-    });
-  };
+  const { t } = useTranslation();
+
+  const renderTabs = () => (
+    <Tabs>
+      <Tab evtKey="accountManagement" leftIcon={<AccManagementIcon />}>
+        {t("walletPage.account_management")}
+      </Tab>
+      <Tab evtKey="assetManagement" leftIcon={<AssetManagementIcon />}>
+        {t("walletPage.asset_management")}
+      </Tab>
+      <Tab evtKey="history" leftIcon={<HistoryIcon />}>
+        {t("common.history")}
+      </Tab>
+      <Tab evtKey="wallet" leftIcon={<WalletIcon />}>
+        {t("walletPage.wallet")}
+      </Tab>
+    </Tabs>
+  );
 
   return (
     <TabContainer orientation="vertical">
-      <Tabs>{renderTab()}</Tabs>
+      {renderTabs()}
 
-      <TabPanel>
+      <TabPanel evtKey="accountManagement">
         <AccountManagement />
       </TabPanel>
 
-      <TabPanel>
+      <TabPanel evtKey="assetManagement">
         <AssetManagement />
       </TabPanel>
 
-      <TabPanel>
+      <TabPanel evtKey="history">
         <History />
       </TabPanel>
 
-      <TabPanel>
+      <TabPanel evtKey="wallet">
         <Wallets />
       </TabPanel>
     </TabContainer>

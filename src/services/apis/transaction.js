@@ -25,16 +25,15 @@ function getTxCount() {
 
 /**
  * Get the number of transactions
- * @param {Object} params
- * @param {number} params.hash - hash of transaction (required)
+ * @param {number} hash - hash of transaction (required)
  * @returns {Promise} - The response data
  */
-function getTxHash(params) {
-  return Request.get("tx/count", { params });
+function getTxByHash(hash) {
+  return Request.get(`tx/${hash}`);
 }
 
 export default {
   getTxList,
   getTxCount,
-  getTxHash,
+  getTxByHash,
 };

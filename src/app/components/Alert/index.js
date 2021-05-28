@@ -10,7 +10,7 @@ export const Alert = ({ title, children, variant, onClick }) => {
   const Icon = getIcon(variant);
 
   return (
-    <StyledAlert>
+    <StyledAlert variant={variant}>
       <IconLabel variant={variant} hasDescription={!!children}>
         <Icon color="currentColor" width="24px" />
       </IconLabel>
@@ -39,14 +39,16 @@ export const Alert = ({ title, children, variant, onClick }) => {
   );
 };
 
-const StyledAlert = styled.div`
-  display: flex;
-  position: relative;
-  background-color: ${theme`colors.bgPrimary`};
-  border-radius: 16px;
-  border: 1px solid ${getThemeColor({ variant: "warning" })};
-  box-shadow: 0px 20px 36px -8px ${theme`colors.bg7`};
-`;
+const StyledAlert = styled.div(({ variant }) => [
+  css`
+    display: flex;
+    position: relative;
+    background-color: ${theme`colors.bgPrimary`};
+    border-radius: 16px;
+    border: 1px solid ${getThemeColor({ variant })};
+    box-shadow: 0px 20px 36px -8px ${theme`colors.bg7`};
+  `,
+]);
 
 const IconLabel = styled.div(({ variant }) => [
   css`

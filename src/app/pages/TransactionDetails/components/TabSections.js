@@ -19,14 +19,14 @@ export function TabSections() {
     <Wrapper>
       <TabContainer>
         <Tabs tw="grid-cols-2 lg:grid-cols-4 mt-6">
-          <Tab>{t("common.overview")}</Tab>
-          <Tab>{t("common.state")}</Tab>
+          <Tab evtKey="overview">{t("common.overview")}</Tab>
+          <Tab evtKey="state">{t("common.state")}</Tab>
         </Tabs>
 
-        <TabPanel>
+        <TabPanel evtKey="overview">
           <InfoDetailCard />
         </TabPanel>
-        <TabPanel>
+        <TabPanel evtKey="state">
           <InfoDetailCard />
         </TabPanel>
       </TabContainer>

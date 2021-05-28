@@ -23,14 +23,22 @@
         "glitch": "Glitch",
         "vote": "Vote",
         "miners": "Miners",
-        "loading": "Loading ..."
+        "loading": "Loading ...",
+        "glitch_price": "Glitch price",
+        "search_placeholder": "Search by Address / Txn Hash / Block Hash"
     },
     "pagination": {
         "prev": "Prev",
         "next": "Next"
     },
-    "homepage": {
-        "7_day_GLCH_price_history": "7 day GLCH price history (USD)"
+    "homePage": {
+        "7_day_GLCH_price_history": "7 day GLCH price history (USD)",
+        "producer": "Producer",
+        "current_max": "Current/Max",
+        "head_block": "Head Block",
+        "price_market_cap": "Price | Market cap",
+        "lib": "LIB (Last Irreversible Block)",
+        "total_account": "Total Account"
     },
     "userDetails": {
         "more_info": "More Info",
@@ -50,7 +58,8 @@
         "mined_by": "Mined by",
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
-        "hash": "Hash"
+        "hash": "Hash",
+        "empty": "Unable to locate block #{{id}}"
     },
     "epodDetails": {
         "title": "Epod Details",
@@ -73,7 +82,10 @@
         "login": "Login",
         "scan_qr_code": "Scan the QR-Code with you application",
         "open_your_app": "Open your app",
-        "initializing": "Initializing..."
+        "initializing": "Initializing...",
+        "wallet": "Wallet",
+        "asset_management": "Asset Management",
+        "account_management": "Account Management"
     },
     "votePage": {
         "selected_producers": "Selected Producers"
@@ -99,7 +111,22 @@
         "the_glitch_block_count": "The Glitch Block Count and Rewards Chart shows the historical number of blocks produced daily on the Glitch network and the total block reward.",
         "the_glitch_network_hash_rate": "The Glitch Network Hash Rate Chart shows the historical measure of the processing power of the Glitch network.",
         "the_glitch_difficulty_chart": "The Glitch Network Difficulty Chart displays the mining difficulty and the historical value of the Glitch network.",
-        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network."
+        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network.",
+        "total_value": "Total Value",
+        "market_cap": "Market Cap",
+        "avg_price_glitch": "Avg Price/Glitch"
+    },
+    "contactPage": {
+        "contact_us": "Contact Us",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "your_message": "Your Message",
+        "submit": "Submit",
+        "thank_you": "Thank You!",
+        "create_success": "Your Message has been successfully sent.",
+        "error": "Error",
+        "create_error": "An error has occurred"
     },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",

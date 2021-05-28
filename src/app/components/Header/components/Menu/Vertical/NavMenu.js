@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation } from "react-router";
 import tw from "twin.macro";
 import { mainNav as links } from "src/constants/navConfig";
-import { SearchInput } from "./SearchInput";
 
 // Sub Components
 import { NavLink } from "./NavLink";
@@ -12,7 +11,6 @@ export function NavMenu() {
 
   return (
     <Wrapper>
-      <SearchInput />
       {/* Menu */}
       <UlWrapper>
         {links.map((link, i) => {
@@ -20,7 +18,7 @@ export function NavMenu() {
           const isActive = items?.length
             ? items.findIndex((sub) => sub.href === location.pathname) >= 0
             : link.href === location.pathname;
-            
+
           return (
             <NavLink key={i} isActive={isActive} link={link}>
               {link.label}
