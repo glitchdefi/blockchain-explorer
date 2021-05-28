@@ -116,6 +116,18 @@
         "market_cap": "Market Cap",
         "avg_price_glitch": "Avg Price/Glitch"
     },
+    "contactPage": {
+        "contact_us": "Contact Us",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "your_message": "Your Message",
+        "submit": "Submit",
+        "thank_you": "Thank You!",
+        "create_success": "Your Message has been successfully sent.",
+        "error": "Error",
+        "create_error": "An error has occurred"
+    },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",
         "glitch_info": "Glitch explorer is a Block producers explorer for Glitch, a decentralized smart contracts platform using DPOS protocol",

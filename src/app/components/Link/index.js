@@ -8,7 +8,6 @@ export function Link({ children, href, ...props }) {
     </StyledLink>
   );
 }
-
 Link.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   href: PropTypes.string,

@@ -14,11 +14,12 @@ export const TableBodyRows = React.memo(({ isLoading, data }) => {
     if (isEmpty(data)) return <TableEmpty />;
 
     return data.map((producer, i) => {
+      const { name } = producer;
       return (
         <TableRow key={i}>
           <TableCell>1</TableCell>
           <TableCell>
-            <BlockProducerName>Block Producer 1</BlockProducerName>
+            <BlockProducerName>{name}</BlockProducerName>
           </TableCell>
           <TableCell>
             <Tag color="success">Success</Tag>

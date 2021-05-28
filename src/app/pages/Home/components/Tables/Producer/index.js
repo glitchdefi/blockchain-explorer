@@ -6,19 +6,24 @@ import { usePagination } from "src/hooks/usePagination";
 import { Table, TableContainer } from "src/app/components/Table";
 import { Pagination } from "src/app/components/Pagination";
 import { TableBodyRows, TableHeaderRows } from "./components";
+import { useProducerList } from "src/state/producer/hooks";
 
 export function ProducerTable() {
   const { current, pParams, onChange } = usePagination();
+  const { isFetchingProducerList, producerList } = useProducerList(pParams);
 
   return (
     <>
       <TableContainer>
         <Table>
           <TableHeaderRows />
-          <TableBodyRows data={[1, 2, 3]} isLoading={false} />
+          <TableBodyRows
+            data={producerList}
+            isLoading={isFetchingProducerList}
+          />
         </Table>
       </TableContainer>
-      <Pagination current={current} total={20} onChange={onChange} />
+      <Pagination current={current} total={5} onChange={onChange} />
     </>
   );
 }

@@ -27,7 +27,7 @@ export const BlocksTable = React.memo(() => {
       {!isEmpty(blockList) && (
         <Pagination
           current={current}
-          total={blockList?.length + 10}
+          total={5}
           onChange={onChange}
         />
       )}

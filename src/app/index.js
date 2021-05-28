@@ -12,6 +12,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { useEagerConnect } from "src/hooks/wallet";
 
 // Components
+import { ScrollToTop } from "./components/ScrollToTop";
 import { ToastListener } from "src/app/components/Toast/ToastListener";
 import { LocalLoader } from "src/app/components/LoadingIndicator/LocalLoader";
 
@@ -33,6 +34,7 @@ import { TransactionDetailsPage } from "./pages/TransactionDetails";
 import { BlockDetailsPage } from "./pages/BlockDetails";
 import { EpodDetailsPage } from "./pages/EpodDetails";
 import { NotFoundPage } from "./pages/NotFound";
+import { ContactPage } from "./pages/ContactUs";
 
 export function App() {
   const [loading, setLoading] = useState(true);
@@ -67,9 +69,12 @@ export function App() {
                 <Route path="/tx/:id" component={TransactionDetailsPage} />
                 <Route path="/block/:id" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
+
+                <Route path="/contactus" component={ContactPage} />
                 <Route component={NotFoundPage} />
               </Switch>
             </Page>
+            <ScrollToTop />
             <ToastListener />
           </>
         )}

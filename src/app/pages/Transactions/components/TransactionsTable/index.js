@@ -27,7 +27,7 @@ export function TransactionTable() {
       {!isEmpty(txList) && (
         <Pagination
           current={current}
-          total={txList?.length}
+          total={5}
           onChange={onChange}
         />
       )}

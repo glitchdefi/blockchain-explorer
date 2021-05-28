@@ -1,4 +1,3 @@
-import { isEmpty } from "lodash";
 import WalletApis from "src/services/apis/wallet";
 import {
   loadWalletCount,
@@ -10,7 +9,7 @@ export const fetchWalletCount = () => async (dispatch) => {
   try {
     dispatch(loadWalletCount());
     const data = await WalletApis.getWalletCount();
-    dispatch(walletCountLoaded(!isEmpty(data) ? data[0]?.count : 0));
+    dispatch(walletCountLoaded(data));
   } catch (error) {
     dispatch(walletCountError(error));
   }

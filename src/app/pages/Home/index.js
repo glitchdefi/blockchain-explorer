@@ -5,6 +5,7 @@ import { theme } from "twin.macro";
 // Hooks
 import { useWalletSlice } from "src/state/wallet/hooks";
 import { usePriceSlice } from "src/state/price/hooks";
+import { useProducerSlice } from "src/state/producer/hooks";
 
 // Components
 import { Grid } from "src/app/components/Grid";
@@ -17,6 +18,7 @@ export function HomePage() {
   const { t } = useTranslation();
   useWalletSlice();
   usePriceSlice();
+  useProducerSlice();
 
   return (
     <>

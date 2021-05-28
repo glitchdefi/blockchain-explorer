@@ -1,5 +1,6 @@
 import React, { cloneElement, isValidElement } from "react";
-import tw, { styled } from "twin.macro";
+import tw, { styled, theme } from "twin.macro";
+import { Spinner } from "../LoadingIndicator/Spinner";
 import { StyledButton } from "./StyledButton";
 
 const StartIconWrapper = styled.div(() => [tw`mr-2`]);
@@ -12,6 +13,7 @@ export function Button(props) {
   return (
     <StyledButton isLoading={isLoading} disabled={isDisabled} {...rest}>
       <>
+        {isLoading && <Spinner tw="mr-2" stroke={theme`colors.white`} />}
         {isValidElement(startIcon) && (
           <StartIconWrapper>{cloneElement(startIcon)}</StartIconWrapper>
         )}
