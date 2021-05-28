@@ -4,7 +4,7 @@ import { css, theme } from "twin.macro";
 import { isEmpty } from "lodash";
 
 // Components
-import { TableRow, TableCell, TableBody } from "src/app/components/Table";
+import { TableRow, TableCell, TableBody, TableEmpty } from "src/app/components/Table";
 import { NumberChange } from "src/app/components/NumberChange";
 import { Tag } from "src/app/components/Tag";
 import { BlockProducerName } from "./BlockProducerName";
