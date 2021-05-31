@@ -1,29 +1,22 @@
-import React from "react";
-
-import { usePagination } from "src/hooks/usePagination";
+import React, { useState } from "react";
 
 // Components
-import { Table, TableContainer } from "src/app/components/Table";
-import { Pagination } from "src/app/components/Pagination";
+import { Table } from "src/app/components/Table";
 import { TableBodyRows, TableHeaderRows } from "./components";
 import { useProducerList } from "src/state/producer/hooks";
 
 export function ProducerTable() {
-  const { current, pParams, onChange } = usePagination();
-  const { isFetchingProducerList, producerList } = useProducerList(pParams);
+  const [params, setParams] = useState();
+  const { isFetchingProducerList, producerList } = useProducerList(params);
 
   return (
-    <>
-      <TableContainer>
-        <Table>
-          <TableHeaderRows />
-          <TableBodyRows
-            data={producerList}
-            isLoading={isFetchingProducerList}
-          />
-        </Table>
-      </TableContainer>
-      <Pagination current={current} total={5} onChange={onChange} />
-    </>
+    <Table
+      loading={isFetchingProducerList}
+      total={producerList?.length}
+      onChange={(p) => setParams(p)}
+    >
+      <TableHeaderRows />
+      <TableBodyRows data={producerList}/>
+    </Table>
   );
 }

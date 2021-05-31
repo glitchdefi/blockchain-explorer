@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import tw, { css } from "twin.macro";
-
 export default function TableHeaderCell({ children, ...props }) {
   return (
     <th
