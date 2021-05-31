@@ -52,17 +52,17 @@ export function TransactionsTable() {
               const { hash, value, to, from, time, height } = tx;
               return (
                 <TableRow key={i}>
-                  <TableCell isLink href={`/tx/${hash}`}>
+                  <TableCell isLink href={`/tx/${hash}`} dataTip={hash}>
                     {sliceString(hash)}
                   </TableCell>
                   <TableCell isLink href={`/block/${height}`}>
                     {height}
                   </TableCell>
                   <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
-                  <TableCell isLink href={`/address/${from}`}>
+                  <TableCell isLink href={`/address/${from}`} dataTip={from}>
                     {sliceString(from)}
                   </TableCell>
-                  <TableCell isLink href={`/address/${to}`}>
+                  <TableCell isLink href={`/address/${to}`} dataTip={to}>
                     {sliceString(to)}
                   </TableCell>
                   <TableCell>{value} GLCH</TableCell>
