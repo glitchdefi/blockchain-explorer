@@ -35,7 +35,7 @@ export function DailyPriceChart() {
 
       <CardLayout
         tw="mt-8 px-2 items-center justify-center"
-        style={{ height: "400px" }}
+        style={{ height: '440px' }}
       >
         <AreaChart
           loading={isFetchingPriceHistory}

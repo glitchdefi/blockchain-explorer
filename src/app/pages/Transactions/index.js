@@ -7,7 +7,7 @@ import { useTxSlice } from "src/state/transaction/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { TransactionTable } from "./components/TransactionsTable";
+import { TransactionsTable } from "./components/TransactionsTable";
 
 export function TransactionsPage() {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ export function TransactionsPage() {
     <>
       <Wrapper>
         <Text tw="text-lg">{t("common.transactions")}</Text>
-        <TransactionTable />
+        <TransactionsTable />
       </Wrapper>
     </>
   );

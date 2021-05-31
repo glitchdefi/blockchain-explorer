@@ -25,7 +25,7 @@ export default function TableEmpty({ colSpan }) {
   );
 }
 
-const Wrapper = tw.div`w-full h-full p-10 items-center justify-center`;
+const Wrapper = tw.div`w-full h-full p-10 items-center justify-center opacity-30`;
 
 TableEmpty.defaultProps = {
   colSpan: 6,

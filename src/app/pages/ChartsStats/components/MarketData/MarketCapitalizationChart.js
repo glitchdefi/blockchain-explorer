@@ -28,7 +28,7 @@ export function MarketCapitalizationChart() {
 
       <CardLayout
         tw="mt-8 px-2 items-center justify-center"
-        style={{ height: "400px" }}
+        style={{ height: "490px" }}
       >
         <AreaChart
           loading={isFetchingGlitchMarketData}

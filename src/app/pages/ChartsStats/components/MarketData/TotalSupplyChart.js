@@ -32,7 +32,10 @@ export function TotalSupplyChart() {
         </CardLayout>
       </Grid>
 
-      <CardLayout tw="mt-6 px-2 flex h-96 min-h-full">
+      <CardLayout
+        tw="mt-6 px-2 flex h-96 min-h-full"
+        style={{ height: "500px" }}
+      >
         <Text tw="text-textSecondary mt-5 text-tiny">
           {t("chartsAndStats.breakdown_by_supply_types")}
         </Text>

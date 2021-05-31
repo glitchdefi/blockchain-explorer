@@ -20,7 +20,9 @@ export const useProducerList = (params) => {
 
   useEffect(() => {
     if (params) {
-      dispatch(fetchProducerList(params));
+      setTimeout(() => {
+        dispatch(fetchProducerList(params));
+      }, 500);
     }
   }, [params, dispatch]);
 

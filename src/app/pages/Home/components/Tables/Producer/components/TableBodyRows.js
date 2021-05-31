@@ -4,12 +4,17 @@ import { css, theme } from "twin.macro";
 import { isEmpty } from "lodash";
 
 // Components
-import { TableRow, TableCell, TableBody, TableEmpty } from "src/app/components/Table";
+import {
+  TableRow,
+  TableCell,
+  TableBody,
+  TableEmpty,
+} from "src/app/components/Table";
 import { NumberChange } from "src/app/components/NumberChange";
 import { Tag } from "src/app/components/Tag";
 import { BlockProducerName } from "./BlockProducerName";
 
-export const TableBodyRows = React.memo(({ isLoading, data }) => {
+export const TableBodyRows = React.memo(({ data }) => {
   const renderBodyRows = () => {
     if (isEmpty(data)) return <TableEmpty />;
 
@@ -36,7 +41,7 @@ export const TableBodyRows = React.memo(({ isLoading, data }) => {
 
   return (
     <>
-      <TableBody loading={{ isShow: isLoading }}>{renderBodyRows()}</TableBody>
+      <TableBody>{renderBodyRows()}</TableBody>
     </>
   );
 });
@@ -50,6 +55,5 @@ const numberChangeStyles = css`
   }
 `;
 TableBodyRows.propTypes = {
-  isLoading: PropTypes.bool,
   data: PropTypes.array,
 };
