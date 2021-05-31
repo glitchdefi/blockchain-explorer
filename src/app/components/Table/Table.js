@@ -36,7 +36,7 @@ export default function Table({ children, loading, total, ...props }) {
             {children}
           </table>
         </TableContainer>
-        {total && renderPagination()}
+        {total ? renderPagination() : null}
       </div>
     </>
   );
