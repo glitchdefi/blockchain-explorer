@@ -15,8 +15,11 @@ export default function Table({ children, loading, total, ...props }) {
   }, [current]);
 
   const renderLoading = () => (
-    <div className="glch-spin-container">
-      <Spinner size="24px" />
+    <div>
+      <div css={[spinWrapStyles]}>
+        <Spinner size="30px" />
+      </div>
+      <div className="glch-spin-container" />
     </div>
   );
 
@@ -58,8 +61,22 @@ const glchNestedLoading = css`
     align-items: center;
     justify-content: center;
     display: flex;
-    pointer-events: none;
   }
+`;
+
+const spinWrapStyles = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 `;
 
 const tableStyles = css`
