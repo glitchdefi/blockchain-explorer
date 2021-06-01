@@ -17,6 +17,7 @@ import {
 // Hooks
 import { useBlockList } from "src/state/block/hooks";
 import { TabPanel } from "src/app/components/Tab/Horizontal";
+import { formatCurrencyAmount } from "src/utils/numbers";
 
 export const BlocksTable = React.memo(() => {
   const [params, setParams] = useState();
@@ -45,16 +46,20 @@ export const BlocksTable = React.memo(() => {
             <TableEmpty />
           ) : (
             blockList.map((block, i) => {
-              const { height, time } = block;
+              const { epoch, slot, block_size, height, time, reward } = block;
               return (
                 <TableRow key={i}>
-                  <TableCell>240/ 432860</TableCell>
+                  <TableCell>
+                    {epoch}/ {slot}
+                  </TableCell>
                   <TableCell isLink href={`/block/${height}`}>
                     {height}
                   </TableCell>
                   <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
-                  <TableCell>4,00 GLCH</TableCell>
-                  <TableCell>3</TableCell>
+                  <TableCell>
+                    {formatCurrencyAmount(reward, 2)} GLCH
+                  </TableCell>
+                  <TableCell>{block_size}</TableCell>
                   <TableCell>Julian</TableCell>
                 </TableRow>
               );

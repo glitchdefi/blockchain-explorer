@@ -46,7 +46,7 @@ const styles = css`
 
 const CustomLink = tw(Link)`text-textSecondary! whitespace-nowrap underline`;
 TableCell.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.any,
   isLink: PropTypes.bool,
   href: PropTypes.string,
 };

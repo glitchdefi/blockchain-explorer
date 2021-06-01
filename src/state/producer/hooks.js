@@ -6,7 +6,7 @@ import { useToast } from "src/hooks/useToast";
 
 // Redux
 import { slice } from "./reducer";
-import { fetchProducerList } from "./actions";
+import { fetchProducerList, resetLoadProducerList } from "./actions";
 
 export const useProducerSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
@@ -24,6 +24,10 @@ export const useProducerList = (params) => {
         dispatch(fetchProducerList(params));
       }, 500);
     }
+
+    return () => {
+      dispatch(resetLoadProducerList());
+    };
   }, [params, dispatch]);
 
   useEffect(() => {

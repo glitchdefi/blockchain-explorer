@@ -19,21 +19,22 @@ export const TableBodyRows = React.memo(({ data }) => {
     if (isEmpty(data)) return <TableEmpty />;
 
     return data.map((producer, i) => {
-      const { name } = producer;
+      const { rank, producer_name, status, total_rewards, total_votes, votes } =
+        producer;
       return (
         <TableRow key={i}>
-          <TableCell>1</TableCell>
+          <TableCell>{rank}</TableCell>
           <TableCell>
-            <BlockProducerName>{name}</BlockProducerName>
+            <BlockProducerName href="">{producer_name}</BlockProducerName>
           </TableCell>
           <TableCell>
-            <Tag color="success">Success</Tag>
+            <Tag color={status}>{status}</Tag>
           </TableCell>
-          <TableCell>Test</TableCell>
+          <TableCell>{votes}</TableCell>
           <TableCell>
-            <NumberChange css={[numberChangeStyles]} value="370,850,779" />
+            <NumberChange css={[numberChangeStyles]} value={total_votes} />
           </TableCell>
-          <TableCell>Test</TableCell>
+          <TableCell>{total_rewards}</TableCell>
         </TableRow>
       );
     });
