@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
@@ -7,7 +7,7 @@ import { useToast } from "src/hooks/useToast";
 // Actions
 import {
   fetchTxList,
-  resetTxList,
+  resetLoadTxList,
   fetchTxCount,
   fetchTxByHash,
 } from "./actions";
@@ -27,9 +27,9 @@ export const useTxList = (params) => {
   useEffect(() => {
     if (params) dispatch(fetchTxList(params));
 
-    // return () => {
-    //   dispatch(resetTxList());
-    // };
+    return () => {
+      dispatch(resetLoadTxList());
+    };
   }, [params, dispatch]);
 
   useEffect(() => {

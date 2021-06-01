@@ -2,7 +2,7 @@ import { theme } from "twin.macro";
 import { Types } from "./types";
 
 export const getColor = (type) => {
-  if (type === Types.success) {
+  if (type === Types.success || type === Types.top21) {
     return theme`colors.success`;
   }
 

@@ -3,4 +3,5 @@ export const Types = {
   pending: "pending",
   default: "default",
   processing: "processing",
+  top21: "Top 21",
 };

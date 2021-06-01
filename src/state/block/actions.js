@@ -9,9 +9,6 @@ import {
   loadBlockHeight,
   blockHeightLoaded,
   blockHeightError,
-  loadBlockLatest,
-  blockLatestLoaded,
-  blockLatestError,
   loadBlockDetails,
   blockDetailsLoaded,
   blockDetailsError,
@@ -48,16 +45,6 @@ export const fetchBlockByHeight = (params) => async (dispatch) => {
     dispatch(blockHeightLoaded(data));
   } catch (error) {
     dispatch(blockHeightError(error));
-  }
-};
-
-export const fetchBlockLatest = () => async (dispatch) => {
-  try {
-    dispatch(loadBlockLatest());
-    const data = await BlockApis.getLatestBlock();
-    dispatch(blockLatestLoaded(data));
-  } catch (error) {
-    dispatch(blockLatestError(error));
   }
 };
 

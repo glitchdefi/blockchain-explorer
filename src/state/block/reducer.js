@@ -12,6 +12,7 @@ export const slice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     loadBlockList: (state) => {
+      state.blockList = [];
       state.isLoading = true;
     },
     blockListLoaded: (state, action) => {
@@ -43,14 +44,12 @@ export const slice = createSlice({
       state.blockHeightError = action.payload;
     },
 
-    loadBlockLatest: (state) => {
-      state.blockLatest = null;
-    },
-    blockLatestLoaded: (state, action) => {
-      state.blockLatest = action.payload;
-    },
-    blockLatestError: (state, action) => {
-      state.blockLatestError = action.payload;
+    latestBlockLoaded: (state, action) => {
+      const latestBlock = action.payload;
+      if (state.blockList?.length) {
+        const newList = state.blockList.pop();
+        state.blockList = [latestBlock, ...newList];
+      }
     },
 
     loadBlockDetails: (state) => {
@@ -81,9 +80,7 @@ export const {
   blockHeightLoaded,
   blockHeightError,
 
-  loadBlockLatest,
-  blockLatestLoaded,
-  blockLatestError,
+  latestBlockLoaded,
 
   loadBlockDetails,
   blockDetailsLoaded,

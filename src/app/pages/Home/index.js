@@ -5,7 +5,6 @@ import { theme } from "twin.macro";
 // Hooks
 import { useWalletSlice } from "src/state/wallet/hooks";
 import { usePriceSlice } from "src/state/price/hooks";
-import { useProducerSlice } from "src/state/producer/hooks";
 
 // Components
 import { Grid } from "src/app/components/Grid";
@@ -13,12 +12,15 @@ import { Text } from "src/app/components/Text";
 import { PriceChart } from "./components/PriceChart";
 import { TabSections } from "./components/TabSections";
 import { StatsHistory } from "./components/StatsHistory";
+import { useBlockSlice } from "src/state/block/hooks";
+import { useTxSlice } from "src/state/transaction/hooks";
 
 export function HomePage() {
   const { t } = useTranslation();
   useWalletSlice();
   usePriceSlice();
-  useProducerSlice();
+  useBlockSlice();
+  useTxSlice();
 
   return (
     <>

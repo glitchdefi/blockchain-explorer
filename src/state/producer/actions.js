@@ -14,3 +14,7 @@ export const fetchProducerList = (params) => async (dispatch) => {
     dispatch(producerListError(error));
   }
 };
+
+export const resetLoadProducerList = () => async (dispatch) => {
+  dispatch(loadProducerList());
+};

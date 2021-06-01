@@ -6,22 +6,25 @@ import {
   Tab,
   TabPanel,
 } from "src/app/components/Tab/Horizontal";
-import { ProducerTable } from "../Tables/Producer";
-import { EpochTable } from "../Tables/Epoch";
+import { LatestBlocksPanel } from "./LatestBlocksPanel";
+import { LatestTxnsPanel } from "./LatestTxnsPanel";
+import { useTranslation } from "react-i18next";
 
 export function TabSections() {
+  const { t } = useTranslation();
+
   return (
     <TabContainer tw="mt-12">
       <Tabs tw="grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
-        <Tab evtKey="producer">Producer</Tab>
-        <Tab evtKey="epoch">Epoch</Tab>
+        <Tab evtKey="latestBlocks">{t("common.latest_blocks")}</Tab>
+        <Tab evtKey="latestTxns">{t("common.latest_txs")}</Tab>
       </Tabs>
 
-      <TabPanel evtKey="producer">
-        <ProducerTable />
+      <TabPanel evtKey="latestBlocks">
+        <LatestBlocksPanel />
       </TabPanel>
-      <TabPanel evtKey="epoch">
-        <EpochTable />
+      <TabPanel evtKey="latestTxns">
+        <LatestTxnsPanel />
       </TabPanel>
     </TabContainer>
   );

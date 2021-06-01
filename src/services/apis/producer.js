@@ -4,7 +4,7 @@ import { Request } from "../request";
  * @returns {Promise} - The response data
  */
 function getProducerList(params) {
-  return Request.get("validator/list", { params });
+  return Request.get("producer/list", { params });
 }
 
 export default {
