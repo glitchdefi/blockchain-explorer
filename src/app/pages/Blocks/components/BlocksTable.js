@@ -17,7 +17,7 @@ import {
 // Hooks
 import { useBlockList } from "src/state/block/hooks";
 import { TabPanel } from "src/app/components/Tab/Horizontal";
-import { formatCurrencyAmount } from "src/utils/numbers";
+import { formatAmount } from "src/utils/numbers";
 
 export const BlocksTable = React.memo(() => {
   const [params, setParams] = useState();
@@ -56,9 +56,7 @@ export const BlocksTable = React.memo(() => {
                     {height}
                   </TableCell>
                   <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
-                  <TableCell>
-                    {formatCurrencyAmount(reward, 2)} GLCH
-                  </TableCell>
+                  <TableCell>{formatAmount(Number(reward))} GLCH</TableCell>
                   <TableCell>{block_size}</TableCell>
                   <TableCell>Julian</TableCell>
                 </TableRow>
