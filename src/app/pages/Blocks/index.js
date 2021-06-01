@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 
 // Hooks
-import { useBlockSlice } from "src/state/block/hooks";
+import { useBlockSlice, useBlockList } from "src/state/block/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
 import { BlocksTable } from "./components/BlocksTable";
+import { TabPanel } from "src/app/components/Tab/Horizontal";
 
 export function BlocksPage() {
-  const { t } = useTranslation();
   useBlockSlice();
+  const { t } = useTranslation();
+  const [params, setParams] = useState();
+  const { isLoading, blockList } = useBlockList(params);
 
   return (
     <>
       <Wrapper>
         <Text tw="text-lg">{t("common.blocks")}</Text>
-        <BlocksTable />
+        <TabPanel tw="mt-5">
+          <BlocksTable
+            loading={isLoading}
+            total={blockList?.length}
+            data={blockList}
+            onChange={(p) => setParams(p)}
+          />
+        </TabPanel>
       </Wrapper>
     </>
   );

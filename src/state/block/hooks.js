@@ -61,24 +61,6 @@ export const useBlockCount = () => {
   return { blockCount };
 };
 
-export const useBlockLatest = () => {
-  const { blockLatest, blockLatestError } = useSelector((state) => state.block);
-  const { toastError } = useToast();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchBlockLatest());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (blockLatestError) {
-      toastError("Error", blockLatestError);
-    }
-  }, [blockLatestError]);
-
-  return { blockLatest };
-};
-
 export const useBlockDetails = () => {
   const { isFetchingBlockDetails, blockDetails, blockDetailsError } =
     useSelector((state) => state.block);

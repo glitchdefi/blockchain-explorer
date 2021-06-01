@@ -9,7 +9,7 @@ export function Link({ children, href, ...props }) {
   );
 }
 Link.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.any,
   href: PropTypes.string,
   props: PropTypes.object,
 };

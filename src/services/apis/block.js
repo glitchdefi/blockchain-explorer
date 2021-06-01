@@ -28,17 +28,8 @@ function getBlockByHeight(height) {
   return Request.get(`block/${height}`);
 }
 
-/**
- * Get a last block
- * @returns {Promise} - The response data
- */
-function getLatestBlock() {
-  return Request.get("block/latest");
-}
-
 export default {
   getBlockList,
   getBlockCount,
   getBlockByHeight,
-  getLatestBlock,
 };

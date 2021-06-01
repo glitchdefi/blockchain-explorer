@@ -5,8 +5,15 @@ import TableContainer from "./TableContainer";
 import { Spinner } from "../LoadingIndicator/Spinner";
 import { Pagination } from "../Pagination";
 import { usePagination } from "src/hooks/usePagination";
-export default function Table({ children, loading, total, ...props }) {
-  const { current, pParams, onChange } = usePagination();
+export default function Table({
+  children,
+  loading,
+  total,
+  showPagination = true,
+  pageSize,
+  ...props
+}) {
+  const { current, pParams, onChange } = usePagination({ pageSize });
 
   useEffect(() => {
     if (current) {
@@ -36,7 +43,7 @@ export default function Table({ children, loading, total, ...props }) {
             {children}
           </table>
         </TableContainer>
-        {total ? renderPagination() : null}
+        {total && showPagination ? renderPagination() : null}
       </div>
     </>
   );

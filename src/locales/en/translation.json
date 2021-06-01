@@ -25,7 +25,9 @@
         "miners": "Miners",
         "loading": "Loading ...",
         "glitch_price": "Glitch price",
-        "search_placeholder": "Search by Address / Txn Hash / Block Hash"
+        "search_placeholder": "Search by Address / Txn Hash / Block Hash",
+        "latest_blocks": "Latest Blocks",
+        "latest_txs": "Latest Transactions"
     },
     "pagination": {
         "prev": "Prev",
@@ -38,7 +40,9 @@
         "head_block": "Head Block",
         "price_market_cap": "Price | Market cap",
         "lib": "LIB (Last Irreversible Block)",
-        "total_account": "Total Account"
+        "total_account": "Total Account",
+        "view_all_blocks": "View all Blocks",
+        "view_all_txs": "View all Transactions"
     },
     "userDetails": {
         "more_info": "More Info",

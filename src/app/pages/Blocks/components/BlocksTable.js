@@ -15,56 +15,46 @@ import {
 } from "src/app/components/Table";
 
 // Hooks
-import { useBlockList } from "src/state/block/hooks";
-import { TabPanel } from "src/app/components/Tab/Horizontal";
 import { formatAmount } from "src/utils/numbers";
 
-export const BlocksTable = React.memo(() => {
-  const [params, setParams] = useState();
-  const { isLoading, blockList } = useBlockList(params);
-
+export const BlocksTable = React.memo((props) => {
+  const { loading, total, onChange, data, ...rest } = props;
   return (
-    <TabPanel tw="mt-5">
-      <Table
-        loading={isLoading}
-        total={blockList?.length}
-        onChange={(p) => setParams(p)}
-      >
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
-            <TableHeaderCell>Block</TableHeaderCell>
-            <TableHeaderCell>Create At</TableHeaderCell>
-            <TableHeaderCell>Reward (Glitch)</TableHeaderCell>
-            <TableHeaderCell>Size (Bytes)</TableHeaderCell>
-            <TableHeaderCell>Producer</TableHeaderCell>
-          </TableRow>
-        </TableHeader>
+    <Table loading={loading} total={total} onChange={onChange} {...rest}>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
+          <TableHeaderCell>Block</TableHeaderCell>
+          <TableHeaderCell>Create At</TableHeaderCell>
+          <TableHeaderCell>Reward (Glitch)</TableHeaderCell>
+          <TableHeaderCell>Size (Bytes)</TableHeaderCell>
+          <TableHeaderCell>Producer</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
 
-        <TableBody>
-          {isEmpty(blockList) ? (
-            <TableEmpty />
-          ) : (
-            blockList.map((block, i) => {
-              const { epoch, slot, block_size, height, time, reward } = block;
-              return (
-                <TableRow key={i}>
-                  <TableCell>
-                    {epoch}/ {slot}
-                  </TableCell>
-                  <TableCell isLink href={`/block/${height}`}>
-                    {height}
-                  </TableCell>
-                  <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
-                  <TableCell>{formatAmount(Number(reward))} GLCH</TableCell>
-                  <TableCell>{block_size}</TableCell>
-                  <TableCell>Julian</TableCell>
-                </TableRow>
-              );
-            })
-          )}
-        </TableBody>
-      </Table>
-    </TabPanel>
+      <TableBody>
+        {isEmpty(data) ? (
+          <TableEmpty />
+        ) : (
+          data.map((block, i) => {
+            const { epoch, slot, block_size, height, time, reward } = block;
+            return (
+              <TableRow key={i}>
+                <TableCell>
+                  {epoch}/ {slot}
+                </TableCell>
+                <TableCell isLink href={`/block/${height}`}>
+                  {height}
+                </TableCell>
+                <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
+                <TableCell>{formatAmount(Number(reward))} GLCH</TableCell>
+                <TableCell>{block_size}</TableCell>
+                <TableCell>Julian</TableCell>
+              </TableRow>
+            );
+          })
+        )}
+      </TableBody>
+    </Table>
   );
 });
