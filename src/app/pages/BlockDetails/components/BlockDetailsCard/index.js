@@ -25,7 +25,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockId, data }) => {
   if (!data)
     return (
       <Card css={[cardStyles]}>
-        <Empty msg={`${t("blockDetails.empty", { id: blockId })}`} />
+        <Empty title={`${t("blockDetails.empty", { id: blockId })}`} />
       </Card>
     );
 

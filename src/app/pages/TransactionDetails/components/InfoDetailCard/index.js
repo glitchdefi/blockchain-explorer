@@ -1,14 +1,24 @@
 import React from "react";
 import tw from "twin.macro";
+import moment from "moment";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router";
+
+// Hooks
+import { useTxByHash } from "src/state/transaction/hooks";
 
 // Components
-import { LinkExternal } from "src/app/components/Link/LinkExternal";
+import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
+import { Link } from "src/app/components/Link";
 import { InfoRow } from "src/app/components/InfoRow";
+import { Empty } from "src/app/components/Empty";
 import { Status } from "./Status";
 
 export function InfoDetailCard() {
+  const params = useParams();
   const { t } = useTranslation();
+  const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
+  const { hash, time, height, from, to } = txDetails || {};
 
   const renderInfoRow = ({ label, value, customValueComp }) => {
     return (
@@ -16,12 +26,17 @@ export function InfoDetailCard() {
     );
   };
 
+  if (isFetchingTxDetails)
+    return <LoadingPage title={t("transactionDetails.loading")} />;
+
+  if (!isFetchingTxDetails && !txDetails)
+    return <Empty title={t("transactionDetails.not_found")} />;
+
   return (
     <Wrapper>
       {renderInfoRow({
         label: t("transactionDetails.transaction_hash"),
-        value:
-          "0x8536eb2fd19553eba8ea82cd055a69d0ea94cfbe43a39cecea9f30cbc7ecf9eb",
+        value: hash,
       })}
 
       {renderInfoRow({
@@ -33,30 +48,31 @@ export function InfoDetailCard() {
 
       {renderInfoRow({
         label: t("common.block"),
-        value: "111111",
+        value: <Link tw="underline">{height}</Link>,
       })}
 
       {renderInfoRow({
         label: t("common.timeStamp"),
-        value:
-          "1 hr 14 mins ago (Jan-17-2021 03:30:52 PM +UTC) | Confirmed within 30 secs",
+        value: `${moment(time).fromNow()} (${moment
+          .utc(time)
+          .format("MMM-DD-YYYY HH:mm:ss A")} +UTC) | Confirmed within 30 secs`,
       })}
 
       {renderInfoRow({
         label: t("common.from"),
         customValueComp: (
-          <LinkExternal tw="underline">
-            5A0b54D5dc17e0AadC3832sdsads55858
-          </LinkExternal>
+          <Link href={`/address/${from}`} tw="underline">
+            {from}
+          </Link>
         ),
       })}
 
       {renderInfoRow({
         label: t("common.to"),
         customValueComp: (
-          <LinkExternal tw="underline">
-            5A0b54D5dc17e0AadC3832sdsads55858
-          </LinkExternal>
+          <Link href={`/address/${from}`} tw="underline">
+            {to}
+          </Link>
         ),
       })}
 

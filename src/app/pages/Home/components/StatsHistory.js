@@ -16,11 +16,13 @@ import {
 } from "src/app/components/Svg/Icons";
 import { Grid } from "src/app/components/Grid";
 import { StatsCard } from "./StatsCard";
+import { useHeadBlockNumber } from "src/state/block/hooks";
 
 export const StatsHistory = React.memo(() => {
   const { t } = useTranslation();
   const { walletCount } = useWalletCount();
   const { allGlitchInfo } = useAllGlitchInfo();
+  const { headBlock } = useHeadBlockNumber();
   const { current_price, market_cap } = allGlitchInfo || {};
 
   return (
@@ -38,7 +40,7 @@ export const StatsHistory = React.memo(() => {
       <StatsCard
         icon={<HeadBlockIcon />}
         title={t("homePage.head_block")}
-        value="--"
+        value={headBlock}
       />
       <StatsCard
         icon={<PriceIcon />}
@@ -51,7 +53,7 @@ export const StatsHistory = React.memo(() => {
       <StatsCard
         icon={<TotalAccountIcon />}
         title={t("homePage.total_account")}
-        value={walletCount >= 0 ? walletCount : "--"}
+        value={walletCount}
       />
     </Grid>
   );

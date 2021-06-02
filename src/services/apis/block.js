@@ -28,8 +28,16 @@ function getBlockByHeight(height) {
   return Request.get(`block/${height}`);
 }
 
+/**
+ *
+ */
+function getHeadBlockNumber() {
+  return Request.get("block/head_block_number");
+}
+
 export default {
   getBlockList,
   getBlockCount,
   getBlockByHeight,
+  getHeadBlockNumber,
 };

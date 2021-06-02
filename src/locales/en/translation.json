@@ -23,7 +23,7 @@
         "glitch": "Glitch",
         "vote": "Vote",
         "miners": "Miners",
-        "loading": "Loading ...",
+        "loading": "Loading, please wait...",
         "glitch_price": "Glitch price",
         "search_placeholder": "Search by Address / Txn Hash / Block Hash",
         "latest_blocks": "Latest Blocks",
@@ -54,7 +54,9 @@
     },
     "transactionDetails": {
         "title": "Transaction Details",
-        "transaction_hash": "Transaction hash"
+        "transaction_hash": "Transaction hash",
+        "loading": "Loading transaction",
+        "not_found": "Sorry, the transaction could not be found."
     },
     "blockDetails": {
         "title": "Block Details",

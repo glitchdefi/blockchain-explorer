@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   isLoading: true,
+  isFetchingTxDetails: true,
   txList: [],
   error: null,
 };
@@ -42,14 +43,17 @@ export const slice = createSlice({
       state.txCountError = action.payload;
     },
 
-    loadTxHash: (state) => {
-      state.txHash = null;
+    loadTxDetails: (state) => {
+      state.isFetchingTxDetails = true;
+      state.txDetails = null;
     },
-    txHashLoaded: (state, action) => {
-      state.txHash = action.payload;
+    txDetailsLoaded: (state, action) => {
+      state.isFetchingTxDetails = false;
+      state.txDetails = action.payload;
     },
-    txHashError: (state, action) => {
-      state.txHashError = action.payload;
+    txDetailsError: (state, action) => {
+      state.isFetchingTxDetails = false;
+      state.txDetailsError = action.payload;
     },
     // ...
   },
@@ -67,7 +71,7 @@ export const {
 
   latestTxLoaded,
 
-  loadTxHash,
-  txHashLoaded,
-  txHashError,
+  loadTxDetails,
+  txDetailsLoaded,
+  txDetailsError,
 } = slice.actions;
