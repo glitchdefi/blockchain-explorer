@@ -50,7 +50,7 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/block/${height}`}>
                   {height}
                 </TableCell>
-                <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
+                <TableCell>{moment(time).format("DD/MM/YYYY h:mm A")}</TableCell>
                 <TableCell isLink href={`/address/${from}`} dataTip={from}>
                   {sliceString(from)}
                 </TableCell>

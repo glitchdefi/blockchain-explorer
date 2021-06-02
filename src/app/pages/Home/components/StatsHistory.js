@@ -32,11 +32,11 @@ export const StatsHistory = React.memo(() => {
         title={t("homePage.producer")}
         value="--"
       />
-      <StatsCard
+      {/* <StatsCard
         icon={<CurrencyIcon />}
         title={t("homePage.current_max")}
         value="--"
-      />
+      /> */}
       <StatsCard
         icon={<HeadBlockIcon />}
         title={t("homePage.head_block")}
@@ -49,7 +49,7 @@ export const StatsHistory = React.memo(() => {
         decimals={[2, 0]}
         prefix="$"
       />
-      <StatsCard icon={<LibIcon />} title={t("homePage.lib")} value="--" />
+      {/* <StatsCard icon={<LibIcon />} title={t("homePage.lib")} value="--" /> */}
       <StatsCard
         icon={<TotalAccountIcon />}
         title={t("homePage.total_account")}

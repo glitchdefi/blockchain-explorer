@@ -65,7 +65,7 @@
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
         "hash": "Hash",
-        "empty": "Unable to locate block #{{id}}"
+        "empty": "Unable to locate block #{{height}}"
     },
     "epodDetails": {
         "title": "Epod Details",

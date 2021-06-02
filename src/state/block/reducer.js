@@ -34,13 +34,14 @@ export const slice = createSlice({
     latestBlockLoaded: (state, action) => {
       const latestBlock = action.payload;
       if (state.blockList?.length) {
-        const newList = state.blockList.pop();
+        let newList = state.blockList.pop();
         state.blockList = [latestBlock, ...newList];
       }
     },
 
     loadBlockDetails: (state) => {
       state.isFetchingBlockDetails = true;
+      state.blockDetails = null;
     },
     blockDetailsLoaded: (state, action) => {
       state.isFetchingBlockDetails = false;

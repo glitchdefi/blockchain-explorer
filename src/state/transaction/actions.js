@@ -15,7 +15,7 @@ export const fetchTxList = (params) => async (dispatch) => {
   try {
     dispatch(loadTxList());
     const data = await TxApis.getTxList(params);
-    dispatch(txListLoaded(data));
+    dispatch(txListLoaded(data?.data));
   } catch (error) {
     dispatch(txListError(error));
   }
