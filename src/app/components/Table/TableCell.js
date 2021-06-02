@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import tw, { css, theme } from "twin.macro";
+import ReactTooltip from "react-tooltip";
 
 import { Link } from "../Link";
 export default function TableCell({
@@ -12,9 +13,17 @@ export default function TableCell({
 }) {
   const getChildren = () => {
     if (isLink) {
-      return <CustomLink href={href}>{children}</CustomLink>;
+      return (
+        <CustomLink data-tip={dataTip} data-for={dataTip} href={href}>
+          {children}
+        </CustomLink>
+      );
     }
-    return <span>{children}</span>;
+    return (
+      <span data-tip={dataTip} data-for={dataTip}>
+        {children}
+      </span>
+    );
   };
 
   return (
@@ -23,6 +32,14 @@ export default function TableCell({
       {...props}
     >
       {getChildren()}
+      {dataTip && (
+        <ReactTooltip
+          id={dataTip}
+          place="top"
+          effect="solid"
+          backgroundColor={theme`colors.bg2`}
+        />
+      )}
     </td>
   );
 }
