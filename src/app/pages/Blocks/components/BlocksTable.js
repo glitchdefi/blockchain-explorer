@@ -34,7 +34,7 @@ export const BlocksTable = React.memo((props) => {
 
       <TableBody>
         {isEmpty(data) ? (
-          <TableEmpty />
+          <TableEmpty invisible={loading}/>
         ) : (
           data.map((block, i) => {
             const { epoch, slot, block_size, height, time, reward } = block;

@@ -6,11 +6,11 @@ import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { TableRow, TableCell } from "../Table";
 import { Text } from "../Text";
 
-export default function TableEmpty({ colSpan }) {
+export default function TableEmpty({ colSpan, invisible }) {
   return (
     <TableRow>
       <TableCell colSpan={colSpan}>
-        <Wrapper>
+        <Wrapper css={[invisible && tw`invisible`]}>
           <FontAwesomeIcon icon={faDatabase} size="3x" />
           <Text
             size={theme`fontSize.lg`}

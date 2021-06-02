@@ -38,7 +38,7 @@ export const TransactionsTable = React.memo((props) => {
 
       <TableBody>
         {isEmpty(data) ? (
-          <TableEmpty colSpan={8} />
+          <TableEmpty colSpan={8} invisible={loading}/>
         ) : (
           data.map((tx, i) => {
             const { hash, value, to, from, time, height } = tx;
