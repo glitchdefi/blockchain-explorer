@@ -24,24 +24,11 @@ export const slice = createSlice({
       state.isLoading = false;
     },
 
-    loadBlockCount: (state) => {
-      state.blockCount = null;
+    headBlockLoaded: (state, action) => {
+      state.headBlock = action.payload;
     },
-    blockCountLoaded: (state, action) => {
-      state.blockCount = action.payload;
-    },
-    blockCountError: (state, action) => {
-      state.blockCountError = action.payload;
-    },
-
-    loadBlockHeight: (state) => {
-      state.blockHeight = null;
-    },
-    blockHeightLoaded: (state, action) => {
-      state.blockHeight = action.payload;
-    },
-    blockHeightError: (state, action) => {
-      state.blockHeightError = action.payload;
+    headBlockError: (state, action) => {
+      state.headBlockError = action.payload;
     },
 
     latestBlockLoaded: (state, action) => {
@@ -72,13 +59,8 @@ export const {
   blockListLoaded,
   blockListError,
 
-  loadBlockCount,
-  blockCountLoaded,
-  blockCountError,
-
-  loadBlockHeight,
-  blockHeightLoaded,
-  blockHeightError,
+  headBlockLoaded,
+  headBlockError,
 
   latestBlockLoaded,
 

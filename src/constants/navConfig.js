@@ -11,10 +11,10 @@ export const mainNav = [
     label: "Transactions",
     href: "/txs",
   },
-  {
-    label: "Vote",
-    href: "/vote",
-  },
+  // {
+  //   label: "Vote",
+  //   href: "/vote",
+  // },
   {
     label: "Resources",
     href: "#",

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { isEmpty } from "lodash";
 import moment from "moment";
+import Web3Utils from 'web3-utils';
 import "twin.macro";
 
 // Components
@@ -34,7 +35,7 @@ export const BlocksTable = React.memo((props) => {
 
       <TableBody>
         {isEmpty(data) ? (
-          <TableEmpty invisible={loading}/>
+          <TableEmpty invisible={loading} />
         ) : (
           data.map((block, i) => {
             const { epoch, slot, block_size, height, time, reward } = block;
@@ -47,7 +48,7 @@ export const BlocksTable = React.memo((props) => {
                   {height}
                 </TableCell>
                 <TableCell>{moment(time).format("DD/MM/YYYY")}</TableCell>
-                <TableCell>{formatAmount(Number(reward))} GLCH</TableCell>
+                <TableCell>{formatAmount(Number(Web3Utils.fromWei(reward)))} GLCH</TableCell>
                 <TableCell>{block_size}</TableCell>
                 <TableCell>Julian</TableCell>
               </TableRow>

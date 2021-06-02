@@ -20,15 +20,15 @@ export function TabSections() {
       <TabContainer>
         <Tabs tw="grid-cols-2 lg:grid-cols-4 mt-6">
           <Tab evtKey="overview">{t("common.overview")}</Tab>
-          <Tab evtKey="state">{t("common.state")}</Tab>
+          {/* <Tab evtKey="state">{t("common.state")}</Tab> */}
         </Tabs>
 
         <TabPanel evtKey="overview">
           <InfoDetailCard />
         </TabPanel>
-        <TabPanel evtKey="state">
+        {/* <TabPanel evtKey="state">
           <InfoDetailCard />
-        </TabPanel>
+        </TabPanel> */}
       </TabContainer>
     </Wrapper>
   );

@@ -62,11 +62,11 @@ export function App() {
                 <Route exact path="/" component={HomePage} />
                 <Route path="/blocks" component={BlocksPage} />
                 <Route path="/txs" component={TransactionsPage} />
-                <Route path="/vote" component={VotePage} />
+                {/* <Route path="/vote" component={VotePage} /> */}
                 <Route path="/charts" component={ChartsStatsPage} />
                 <Route path="/topstat" component={TopStatisticsPage} />
                 <Route path="/address/:address" component={UserDetailPage} />
-                <Route path="/tx/:id" component={TransactionDetailsPage} />
+                <Route path="/tx/:hash" component={TransactionDetailsPage} />
                 <Route path="/block/:id" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
 

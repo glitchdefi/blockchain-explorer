@@ -3,15 +3,8 @@ import {
   loadBlockList,
   blockListLoaded,
   blockListError,
-  loadBlockCount,
-  blockCountLoaded,
-  blockCountError,
-  loadBlockHeight,
-  blockHeightLoaded,
-  blockHeightError,
-  loadBlockDetails,
-  blockDetailsLoaded,
-  blockDetailsError,
+  headBlockLoaded,
+  headBlockError,
 } from "./reducer";
 
 export const fetchBlockList = (params) => async (dispatch) => {
@@ -28,23 +21,12 @@ export const resetBlockList = () => async (dispatch) => {
   dispatch(loadBlockList());
 };
 
-export const fetchBlockCount = () => async (dispatch) => {
+export const fetchHeadBlock = () => async (dispatch) => {
   try {
-    dispatch(loadBlockCount());
-    const data = await BlockApis.getBlockCount();
-    dispatch(blockCountLoaded(data));
+    const data = await BlockApis.getHeadBlockNumber();
+    dispatch(headBlockLoaded(data ? data?.head_block_number : null));
   } catch (error) {
-    dispatch(blockCountError(error));
-  }
-};
-
-export const fetchBlockByHeight = (params) => async (dispatch) => {
-  try {
-    dispatch(loadBlockHeight());
-    const data = await BlockApis.getBlockByHeight(params);
-    dispatch(blockHeightLoaded(data));
-  } catch (error) {
-    dispatch(blockHeightError(error));
+    dispatch(headBlockError(error));
   }
 };
 

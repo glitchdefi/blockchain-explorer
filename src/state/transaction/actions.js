@@ -6,9 +6,9 @@ import {
   loadTxCount,
   txCountLoaded,
   txCountError,
-  loadTxHash,
-  txHashLoaded,
-  txHashError,
+  loadTxDetails,
+  txDetailsLoaded,
+  txDetailsError,
 } from "./reducer";
 
 export const fetchTxList = (params) => async (dispatch) => {
@@ -37,10 +37,14 @@ export const fetchTxCount = () => async (dispatch) => {
 
 export const fetchTxByHash = (hash) => async (dispatch) => {
   try {
-    dispatch(loadTxHash());
+    dispatch(loadTxDetails());
     const data = await TxApis.getTxByHash(hash);
-    dispatch(txHashLoaded(data));
+    dispatch(txDetailsLoaded(data?.length ? data[0] : null));
   } catch (error) {
-    dispatch(txHashError(error));
+    dispatch(txDetailsError(error));
   }
+};
+
+export const resetLoadTxDetails = () => async (dispatch) => {
+  dispatch(loadTxDetails());
 };

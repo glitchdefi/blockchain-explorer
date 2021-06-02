@@ -10,6 +10,7 @@ import {
   resetLoadTxList,
   fetchTxCount,
   fetchTxByHash,
+  resetLoadTxDetails,
 } from "./actions";
 import { slice } from "./reducer";
 
@@ -34,7 +35,7 @@ export const useTxList = (params) => {
 
   useEffect(() => {
     if (error) {
-      toastError("Tx Error", error);
+      toastError("Error", error);
     }
   }, [error]);
 
@@ -52,7 +53,7 @@ export const useTxCount = () => {
 
   useEffect(() => {
     if (txCountError) {
-      toastError("Tx Error", txCountError);
+      toastError("Error", txCountError);
     }
   }, [txCountError]);
 
@@ -60,19 +61,27 @@ export const useTxCount = () => {
 };
 
 export const useTxByHash = (hash) => {
-  const { txHash, txHashError } = useSelector((state) => state.transaction);
+  const { isFetchingTxDetails, txDetails, txDetailsError } = useSelector(
+    (state) => state.transaction
+  );
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTxByHash());
+    setTimeout(() => {
+      dispatch(fetchTxByHash(hash));
+    }, 500);
+
+    return () => {
+      dispatch(resetLoadTxDetails());
+    };
   }, [hash, dispatch]);
 
   useEffect(() => {
-    if (txHashError) {
-      toastError("Tx Error", txHashError);
+    if (txDetailsError) {
+      toastError("Error", txDetailsError);
     }
-  }, [txHashError]);
+  }, [txDetailsError]);
 
-  return { txHash };
+  return { isFetchingTxDetails, txDetails };
 };

@@ -39,6 +39,6 @@ InfoRow.propTypes = {
   label: PropTypes.string,
   labelWrapStyles: PropTypes.any,
   contentStyles: PropTypes.object,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.any,
   customValueComp: PropTypes.element,
 };
