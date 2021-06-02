@@ -6,7 +6,13 @@ import { useToast } from "src/hooks/useToast";
 
 // Redux
 import { slice } from "./reducer";
-import { fetchBlockList, fetchHeadBlock, resetBlockList } from "./actions";
+import {
+  fetchBlockList,
+  fetchHeadBlock,
+  resetBlockList,
+  fetchBlockDetails,
+  resetLoadBlockDetails,
+} from "./actions";
 
 export const useBlockSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
@@ -38,15 +44,21 @@ export const useBlockList = (params) => {
   return { isLoading, blockList };
 };
 
-export const useBlockDetails = () => {
+export const useBlockDetails = (height) => {
   const { isFetchingBlockDetails, blockDetails, blockDetailsError } =
     useSelector((state) => state.block);
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(searchBlockById(params));
-  }, [dispatch]);
+    setTimeout(() => {
+      dispatch(fetchBlockDetails(height));
+    }, 500);
+
+    return () => {
+      dispatch(resetLoadBlockDetails());
+    };
+  }, [height, dispatch]);
 
   useEffect(() => {
     if (blockDetailsError) {

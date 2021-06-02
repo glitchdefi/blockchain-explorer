@@ -67,7 +67,7 @@ export function App() {
                 <Route path="/topstat" component={TopStatisticsPage} />
                 <Route path="/address/:address" component={UserDetailPage} />
                 <Route path="/tx/:hash" component={TransactionDetailsPage} />
-                <Route path="/block/:id" component={BlockDetailsPage} />
+                <Route path="/block/:height" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
 
                 <Route path="/contactus" component={ContactPage} />

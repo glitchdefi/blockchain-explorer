@@ -49,7 +49,7 @@ export function BlockDetailsTable({ data }) {
             <TableBody>{renderBodyRows()}</TableBody>
           </Table>
         </TableContainer>
-        {renderPagination()}
+        {/* {renderPagination()} */}
       </TabPanel>
     </>
   );

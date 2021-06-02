@@ -12,21 +12,21 @@ import { useBlockDetails, useBlockSlice } from "src/state/block/hooks";
 export function BlockDetailsPage() {
   useBlockSlice();
   const { t } = useTranslation();
-  const { id } = useParams();
-  const { isFetchingBlockDetails, blockDetails } = useBlockDetails();
+  const { height } = useParams();
+  const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
 
   return (
     <>
       <Wrapper>
         <HeadWrapper>
           <Heading>{t("blockDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#{id}</Heading>
+          <Heading tw="text-textSecondary! ml-4">#{height}</Heading>
         </HeadWrapper>
 
         <BlockDetailsCard
           loading={isFetchingBlockDetails}
-          blockId={id}
-          data={blockDetails?.length ? blockDetails[0] : null}
+          blockHeight={height}
+          data={blockDetails}
         />
 
         {!isFetchingBlockDetails && blockDetails && (

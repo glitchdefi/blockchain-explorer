@@ -21,19 +21,19 @@ export function TabSections() {
     <TabContainer>
       <Tabs tw="grid-cols-3 lg:grid-cols-4">
         <Tab evtKey="txs">{t("common.transactions")}</Tab>
-        <Tab evtKey="grc20">{t("userDetails.grc20_token_txns")}</Tab>
-        <Tab evtKey="minedBlocks">{t("userDetails.mined_blocks")}</Tab>
+        {/* <Tab evtKey="grc20">{t("userDetails.grc20_token_txns")}</Tab>
+        <Tab evtKey="minedBlocks">{t("userDetails.mined_blocks")}</Tab> */}
       </Tabs>
 
       <TabPanel evtKey="txs">
         <TransactionTable data={[1, 2, 3, 4]} />
       </TabPanel>
-      <TabPanel evtKey="grc20">
+      {/* <TabPanel evtKey="grc20">
         <GRC20TokenTable data={[1, 2]} />
       </TabPanel>
       <TabPanel evtKey="minedBlocks">
         <MinedBlockTable data={[1, 2, 3, 5]} />
-      </TabPanel>
+      </TabPanel> */}
     </TabContainer>
   );
 }

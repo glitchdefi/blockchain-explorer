@@ -52,6 +52,6 @@ const cardStyles = css`
   justify-content: center;
 
   @media (min-width: 1024px) {
-    height: auto;
+    height: 220px;
   }
 `;

@@ -9,23 +9,24 @@ import { TabPanel as Card } from "src/app/components/Tab/Horizontal";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Link } from "src/app/components/Link";
 import { Empty } from "src/app/components/Empty";
-import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
+import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
 
-export const BlockDetailsCard = React.memo(({ loading, blockId, data }) => {
+export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
-  const { height, time, hash } = data || {};
+  const { block_size, num_txs, proposer_address, height, time, hash } =
+    data || {};
 
   if (loading)
     return (
       <Card css={[cardStyles]}>
-        <Spinner size="30px" />
+        <LoadingPage title={`Loading Block #${blockHeight}`} />
       </Card>
     );
 
   if (!data)
     return (
       <Card css={[cardStyles]}>
-        <Empty title={`${t("blockDetails.empty", { id: blockId })}`} />
+        <Empty title={`${t("blockDetails.empty", { height: blockHeight })}`} />
       </Card>
     );
 
@@ -42,12 +43,14 @@ export const BlockDetailsCard = React.memo(({ loading, blockId, data }) => {
               .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
           />
 
-          <InfoRow label={t("common.transactions")} value="200" />
+          <InfoRow label={t("common.transactions")} value={num_txs} />
 
           <InfoRow
             label={t("blockDetails.mined_by")}
             customValueComp={
-              <Link tw="underline">5A0b54D5dc17e0AadC3832sdsads55858</Link>
+              <Link href={`/address/${proposer_address}`} tw="underline">
+                {proposer_address}
+              </Link>
             }
           />
 
@@ -66,7 +69,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockId, data }) => {
             value="20,255,456,233,619,604,483,769"
           />
 
-          <InfoRow label={t("common.size")} value="52,768 bytes" />
+          <InfoRow label={t("common.size")} value={`${block_size} bytes`} />
 
           <InfoRow label={t("blockDetails.hash")} value={hash} />
         </Wrapper>
