@@ -18,7 +18,6 @@ export function useLatestTx() {
     });
 
     socketRef.current.on(LATEST_TX_EVENT, (latestTx) => {
-      console.log("latestTx", latestTx);
       dispatch(latestTxLoaded(latestTx));
     });
 

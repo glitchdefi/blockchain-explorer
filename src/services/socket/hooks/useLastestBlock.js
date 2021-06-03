@@ -18,7 +18,6 @@ export function useLatestBlock() {
     });
 
     socketRef.current.on(LATEST_BLOCKS_EVENT, (latestBlock) => {
-      console.log("latestBlock", latestBlock);
       dispatch(latestBlockLoaded(latestBlock));
     });
 
