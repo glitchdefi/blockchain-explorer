@@ -3,6 +3,8 @@ import {
   loadProducerList,
   producerListLoaded,
   producerListError,
+  producerNameLoaded,
+  producerNameError,
 } from "./reducer";
 
 export const fetchProducerList = (params) => async (dispatch) => {
@@ -17,4 +19,13 @@ export const fetchProducerList = (params) => async (dispatch) => {
 
 export const resetLoadProducerList = () => async (dispatch) => {
   dispatch(loadProducerList());
+};
+
+export const fetchProducerName = () => async (dispatch) => {
+  try {
+    const data = await ProducerApis.getProducerName();
+    dispatch(producerNameLoaded(data?.producer_name));
+  } catch (error) {
+    dispatch(producerNameError(error));
+  }
 };

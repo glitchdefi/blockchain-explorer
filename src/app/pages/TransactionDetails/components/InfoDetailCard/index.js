@@ -18,7 +18,7 @@ export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
-  const { hash, time, height, from, to } = txDetails || {};
+  const { hash, time, height, from, to, status } = txDetails || {};
 
   const renderInfoRow = ({ label, value, customValueComp }) => {
     return (
@@ -42,13 +42,17 @@ export function InfoDetailCard() {
       {renderInfoRow({
         label: t("common.status"),
         customValueComp: (
-          <Status status="Success" buttonLabel="100 Blocks Confirmations" />
+          <Status status={status} buttonLabel="100 Blocks Confirmations" />
         ),
       })}
 
       {renderInfoRow({
         label: t("common.block"),
-        value: <Link tw="underline">{height}</Link>,
+        value: (
+          <Link href={`/block/${height}`} tw="underline">
+            {height}
+          </Link>
+        ),
       })}
 
       {renderInfoRow({

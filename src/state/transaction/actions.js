@@ -42,7 +42,7 @@ export const fetchTxByHash = (hash) => async (dispatch) => {
   try {
     dispatch(loadTxDetails());
     const data = await TxApis.getTxByHash(hash);
-    dispatch(txDetailsLoaded(data?.length ? data[0] : null));
+    dispatch(txDetailsLoaded(data));
   } catch (error) {
     dispatch(txDetailsError(error));
   }
