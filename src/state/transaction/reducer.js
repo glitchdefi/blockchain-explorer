@@ -28,8 +28,8 @@ export const slice = createSlice({
     latestTxLoaded: (state, action) => {
       const latestTx = action.payload;
       if (state.txList?.length) {
-        const newList = state.txList.pop();
-        state.txList = [latestTx, ...newList];
+        state.txList.pop();
+        state.txList.unshift(latestTx);
       }
     },
 

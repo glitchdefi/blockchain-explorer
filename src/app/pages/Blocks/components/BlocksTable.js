@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
 import moment from "moment";
 import Web3Utils from "web3-utils";
@@ -20,11 +20,18 @@ import { formatAmount } from "src/utils/numbers";
 
 export const BlocksTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
+  const countUpdated = useRef(0);
+
+  useEffect(() => {
+    if (data?.length) {
+      countUpdated.current += 1;
+    }
+  }, [data]);
 
   return (
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
-        <TableRow>
+        <TableRow animation={false}>
           <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Create At</TableHeaderCell>
@@ -41,7 +48,11 @@ export const BlocksTable = React.memo((props) => {
           data.map((block, i) => {
             const { epoch, slot, block_size, height, time, reward } = block;
             return (
-              <TableRow key={i}>
+              <TableRow
+                key={i}
+                count={countUpdated.current}
+                animation={i === 0}
+              >
                 <TableCell>
                   {epoch}/ {slot}
                 </TableCell>

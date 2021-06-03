@@ -34,8 +34,8 @@ export const slice = createSlice({
     latestBlockLoaded: (state, action) => {
       const latestBlock = action.payload;
       if (state.blockList?.length) {
-        let newList = state.blockList.pop();
-        state.blockList = [latestBlock, ...newList];
+        state.blockList.pop();
+        state.blockList.unshift(latestBlock);
       }
     },
 

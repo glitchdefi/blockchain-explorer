@@ -12,7 +12,7 @@ import { useLatestBlock } from "src/services/socket/hooks/useLastestBlock";
 import { useTranslation } from "react-i18next";
 
 export function LatestBlocksPanel() {
-  // useLatestBlock();
+  useLatestBlock();
   const history = useHistory();
   const [params, setParams] = useState();
   const { t } = useTranslation();

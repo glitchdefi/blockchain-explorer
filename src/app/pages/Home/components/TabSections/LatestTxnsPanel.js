@@ -12,7 +12,7 @@ import { ViewAllButton } from "../ViewAllButton";
 import { useTranslation } from "react-i18next";
 
 export function LatestTxnsPanel() {
-  // useLatestTx();
+  useLatestTx();
   const history = useHistory();
   const [params, setParams] = useState();
   const { t } = useTranslation()
