@@ -14,7 +14,7 @@ export function TransactionsPage() {
   useTxSlice();
   const { t } = useTranslation();
   const [params, setParams] = useState();
-  const { isLoading, txList } = useTxList(params);
+  const { isLoading, data, total } = useTxList(params);
 
   return (
     <>
@@ -23,8 +23,8 @@ export function TransactionsPage() {
         <TabPanel tw="mt-5">
           <TransactionsTable
             loading={isLoading}
-            total={txList?.length}
-            data={txList}
+            total={total}
+            data={data}
             onChange={(p) => setParams(p)}
           />
         </TabPanel>

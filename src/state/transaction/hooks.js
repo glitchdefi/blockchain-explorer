@@ -7,7 +7,7 @@ import { useToast } from "src/hooks/useToast";
 // Actions
 import {
   fetchTxList,
-  resetLoadTxList,
+  resetTxList,
   fetchTxCount,
   fetchTxByHash,
   resetLoadTxDetails,
@@ -22,16 +22,19 @@ export const useTxList = (params) => {
   const { isLoading, txList, error } = useSelector(
     (state) => state.transaction
   );
+  const { data, total } = txList || {};
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (params) dispatch(fetchTxList(params));
-
-    return () => {
-      dispatch(resetLoadTxList());
-    };
   }, [params, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetTxList());
+    };
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -39,7 +42,7 @@ export const useTxList = (params) => {
     }
   }, [error]);
 
-  return { isLoading, txList, error };
+  return { isLoading, data, total };
 };
 
 export const useTxCount = () => {

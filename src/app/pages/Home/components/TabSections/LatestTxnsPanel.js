@@ -15,21 +15,20 @@ export function LatestTxnsPanel() {
   useLatestTx();
   const history = useHistory();
   const [params, setParams] = useState();
-  const { t } = useTranslation()
-  const { isLoading, txList } = useTxList(params);
+  const { t } = useTranslation();
+  const { isLoading, data } = useTxList(params);
 
   return (
     <>
       <TransactionsTable
         loading={isLoading}
-        total={txList?.length}
-        data={txList}
+        data={data}
         onChange={(p) => setParams(p)}
         pageSize={DEFAULT_PAGE_SIZE_WS}
         showPagination={false}
       />
       <ViewAllButton
-        title={t('homePage.view_all_txs')}
+        title={t("homePage.view_all_txs")}
         onClick={() => history.push("/txs")}
       />
     </>

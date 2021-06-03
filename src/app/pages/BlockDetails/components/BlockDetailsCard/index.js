@@ -46,7 +46,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           <InfoRow label={t("common.transactions")} value={num_txs} />
 
           <InfoRow
-            label={t("blockDetails.mined_by")}
+            label={t("blockDetails.produced_by")}
             customValueComp={
               <Link href={`/address/${proposer_address}`} tw="underline">
                 {proposer_address}

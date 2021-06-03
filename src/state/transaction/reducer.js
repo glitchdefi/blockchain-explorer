@@ -12,7 +12,6 @@ export const slice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     loadTxList: (state) => {
-      state.txList = [];
       state.isLoading = true;
     },
     txListLoaded: (state, action) => {
@@ -24,12 +23,16 @@ export const slice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    resetTxList: (state) => {
+      state.txList = [];
+      state.isLoading = true;
+    },
 
     latestTxLoaded: (state, action) => {
       const latestTx = action.payload;
-      if (state.txList?.length) {
-        state.txList.pop();
-        state.txList.unshift(latestTx);
+      if (state.txList?.data?.length) {
+        state.txList.data.pop();
+        state.txList.data.unshift(latestTx);
       }
     },
 
@@ -64,6 +67,7 @@ export const {
   loadTxList,
   txListLoaded,
   txListError,
+  resetTxList: actionResetTxList,
 
   loadTxCount,
   txCountLoaded,

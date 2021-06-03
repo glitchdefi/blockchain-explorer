@@ -61,7 +61,7 @@
     "blockDetails": {
         "title": "Block Details",
         "block_height": "Block Height",
-        "mined_by": "Mined by",
+        "produced_by": "Produced by",
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
         "hash": "Hash",

@@ -8,9 +8,9 @@ export default function TableRow({ children, count, animation, ...props }) {
   useEffect(() => {
     if (count && count > 0 && animation) {
       api.start({
-        to: { opacity: 1, y: 0 },
-        from: { opacity: 0, y: -30 },
-        config: config.stiff,
+        to: { opacity: 1 },
+        from: { opacity: 0 },
+        config: config.molasses,
       });
     }
   }, [count]);

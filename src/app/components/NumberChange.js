@@ -13,6 +13,7 @@ export function NumberChange({
   prefix,
   truncated,
   decimals,
+  separator,
   ...props
 }) {
   return (
@@ -22,6 +23,7 @@ export function NumberChange({
         values={values}
         prefix={prefix}
         decimals={decimals}
+        separator={separator}
       />
       {truncated > 0 && (
         <FontAwesomeIcon css={[upIconStyles]} icon={faSortUp} />

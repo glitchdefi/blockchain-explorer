@@ -16,20 +16,20 @@ export function LatestBlocksPanel() {
   const history = useHistory();
   const [params, setParams] = useState();
   const { t } = useTranslation();
-  const { isLoading, blockList } = useBlockList(params);
+  const { isLoading, data, total } = useBlockList(params);
 
   return (
     <>
       <BlocksTable
         loading={isLoading}
-        total={blockList?.length}
-        data={blockList}
+        total={total}
+        data={data}
         onChange={(p) => setParams(p)}
         showPagination={false}
         pageSize={DEFAULT_PAGE_SIZE_WS}
       />
       <ViewAllButton
-        title={t('homePage.view_all_blocks')}
+        title={t("homePage.view_all_blocks")}
         onClick={() => history.push("/blocks")}
       />
     </>

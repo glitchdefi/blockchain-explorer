@@ -14,7 +14,7 @@ export function BlocksPage() {
   useBlockSlice();
   const { t } = useTranslation();
   const [params, setParams] = useState();
-  const { isLoading, blockList } = useBlockList(params);
+  const { isLoading, data, total } = useBlockList(params);
 
   return (
     <>
@@ -23,8 +23,8 @@ export function BlocksPage() {
         <TabPanel tw="mt-5">
           <BlocksTable
             loading={isLoading}
-            total={blockList?.length}
-            data={blockList}
+            total={total}
+            data={data}
             onChange={(p) => setParams(p)}
           />
         </TabPanel>
