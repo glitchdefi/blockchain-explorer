@@ -45,8 +45,8 @@ export const BlocksTable = React.memo((props) => {
         {isEmpty(data) ? (
           <TableEmpty invisible={loading} />
         ) : (
-          data.map((block, i) => {
-            const { epoch, slot, block_size, height, time, reward } = block;
+          data.map((o, i) => {
+            const { epoch, slot, size, block, time, reward, producer } = o;
             return (
               <TableRow
                 key={i}
@@ -56,8 +56,8 @@ export const BlocksTable = React.memo((props) => {
                 <TableCell>
                   {epoch}/ {slot}
                 </TableCell>
-                <TableCell isLink href={`/block/${height}`}>
-                  {height}
+                <TableCell isLink href={`/block/${block}`}>
+                  {block}
                 </TableCell>
                 <TableCell>
                   {moment(time).format("DD/MM/YYYY h:mm A")}
@@ -66,8 +66,8 @@ export const BlocksTable = React.memo((props) => {
                   {formatAmount(Number(Web3Utils.fromWei(reward.toString())))}{" "}
                   GLCH
                 </TableCell>
-                <TableCell>{block_size}</TableCell>
-                <TableCell>Julian</TableCell>
+                <TableCell>{size}</TableCell>
+                <TableCell>{producer}</TableCell>
               </TableRow>
             );
           })

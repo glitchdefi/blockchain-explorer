@@ -14,8 +14,10 @@ import {
 export const fetchBlockList = (params) => async (dispatch) => {
   try {
     dispatch(loadBlockList());
-    const data = await BlockApis.getBlockList(params);
-    dispatch(blockListLoaded(data));
+    setTimeout(async () => {
+      const data = await BlockApis.getBlockList(params);
+      dispatch(blockListLoaded(data));
+    }, 200);
   } catch (error) {
     dispatch(blockListError(error));
   }

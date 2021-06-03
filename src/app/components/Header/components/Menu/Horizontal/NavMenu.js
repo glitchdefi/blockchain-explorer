@@ -15,7 +15,8 @@ export function NavMenu() {
         const items = link?.items;
         const isActive = items?.length
           ? items.findIndex((sub) => sub.href === location.pathname) >= 0
-          : link.href === location.pathname;
+          : link.href === location.pathname ||
+            location.pathname.includes(link.child);
 
         return (
           <NavLink key={i} isActive={isActive} link={link}>

@@ -8,7 +8,7 @@ export function LoadingPage({ title }) {
   const { t } = useTranslation();
 
   return (
-    <div tw="flex flex-col justify-center items-center h-60">
+    <div tw="flex flex-col justify-center items-center h-96">
       <Spinner size="30px" />
       <Text tw="mt-3 text-primary">{title || t("common.loading")}</Text>
     </div>
