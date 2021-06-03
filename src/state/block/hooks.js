@@ -20,20 +20,21 @@ export const useBlockSlice = () => {
 
 export const useBlockList = (params) => {
   const { isLoading, blockList, error } = useSelector((state) => state.block);
+  const { data, pagination, total } = blockList || {};
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (params) {
-      setTimeout(() => {
-        dispatch(fetchBlockList(params));
-      }, [500]);
+      dispatch(fetchBlockList(params));
     }
+  }, [params, dispatch]);
 
+  useEffect(() => {
     return () => {
       dispatch(resetBlockList());
     };
-  }, [params, dispatch]);
+  }, []);
 
   useEffect(() => {
     if (error) {
@@ -41,7 +42,7 @@ export const useBlockList = (params) => {
     }
   }, [error]);
 
-  return { isLoading, blockList };
+  return { isLoading, data, total: pagination * total };
 };
 
 export const useBlockDetails = (height) => {

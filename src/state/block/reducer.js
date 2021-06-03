@@ -12,7 +12,6 @@ export const slice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     loadBlockList: (state) => {
-      state.blockList = [];
       state.isLoading = true;
     },
     blockListLoaded: (state, action) => {
@@ -22,6 +21,10 @@ export const slice = createSlice({
     blockListError: (state, action) => {
       state.error = action.payload;
       state.isLoading = false;
+    },
+    resetBlockList: (state) => {
+      state.blockList = [];
+      state.isLoading = true;
     },
 
     headBlockLoaded: (state, action) => {
@@ -33,9 +36,9 @@ export const slice = createSlice({
 
     latestBlockLoaded: (state, action) => {
       const latestBlock = action.payload;
-      if (state.blockList?.length) {
-        state.blockList.pop();
-        state.blockList.unshift(latestBlock);
+      if (state.blockList?.data?.length) {
+        state.blockList.data.pop();
+        state.blockList.data.unshift(latestBlock);
       }
     },
 
@@ -59,6 +62,7 @@ export const {
   loadBlockList,
   blockListLoaded,
   blockListError,
+  resetBlockList,
 
   headBlockLoaded,
   headBlockError,

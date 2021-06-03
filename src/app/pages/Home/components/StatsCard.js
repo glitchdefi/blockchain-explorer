@@ -7,7 +7,7 @@ import { Card } from "src/app/components/Card";
 import { Text } from "src/app/components/Text";
 import { NumberChange } from "src/app/components/NumberChange";
 
-export const StatsCard = ({ icon, title, value, values, prefix, decimals }) => {
+export const StatsCard = ({ icon, title, value, values, prefix, decimals, separator }) => {
   return (
     <Card>
       <CardBody>
@@ -18,6 +18,7 @@ export const StatsCard = ({ icon, title, value, values, prefix, decimals }) => {
             values={values}
             prefix={prefix}
             decimals={decimals}
+            separator={separator}
           />
           <Text size={theme`fontSize.sm`} color={theme`colors.textSecondary`}>
             {title}

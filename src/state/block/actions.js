@@ -3,6 +3,7 @@ import {
   loadBlockList,
   blockListLoaded,
   blockListError,
+  resetBlockList as actionResetBlockList,
   headBlockLoaded,
   headBlockError,
   loadBlockDetails,
@@ -14,14 +15,14 @@ export const fetchBlockList = (params) => async (dispatch) => {
   try {
     dispatch(loadBlockList());
     const data = await BlockApis.getBlockList(params);
-    dispatch(blockListLoaded(data?.data));
+    dispatch(blockListLoaded(data));
   } catch (error) {
     dispatch(blockListError(error));
   }
 };
 
 export const resetBlockList = () => async (dispatch) => {
-  dispatch(loadBlockList());
+  dispatch(actionResetBlockList());
 };
 
 export const fetchHeadBlock = () => async (dispatch) => {

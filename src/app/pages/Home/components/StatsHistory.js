@@ -41,6 +41,7 @@ export const StatsHistory = React.memo(() => {
         icon={<HeadBlockIcon />}
         title={t("homePage.head_block")}
         value={headBlock}
+        separator={null}
       />
       <StatsCard
         icon={<PriceIcon />}
@@ -53,7 +54,7 @@ export const StatsHistory = React.memo(() => {
       <StatsCard
         icon={<TotalAccountIcon />}
         title={t("homePage.total_account")}
-        value={walletCount}
+        value={walletCount === 0 ? "0" : walletCount}
       />
     </Grid>
   );

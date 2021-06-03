@@ -30,7 +30,7 @@ export function BlockDetailsPage() {
         />
 
         {!isFetchingBlockDetails && blockDetails && (
-          <Heading tw="mt-8 lg:mt-12">{t("blockDetails.title")}</Heading>
+          <Heading tw="mt-8 lg:mt-12">{t("common.transactions")}</Heading>
         )}
         {!isFetchingBlockDetails && blockDetails && (
           <BlockDetailsTable data={[1, 2, 3]} />

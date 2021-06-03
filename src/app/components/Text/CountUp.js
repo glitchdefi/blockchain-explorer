@@ -3,12 +3,21 @@ import { useCountUp } from "react-countup";
 import { Text } from ".";
 
 export const CountUp = React.memo(
-  ({ value, size, bold, color, decimals, prefix, ...props }) => {
+  ({
+    value,
+    size,
+    bold,
+    color,
+    decimals,
+    prefix,
+    separator = ",",
+    ...props
+  }) => {
     const { countUp, update } = useCountUp({
       start: 0,
       end: value,
       duration: 1,
-      separator: ",",
+      separator: separator,
       decimals:
         // eslint-disable-next-line no-nested-ternary
         decimals !== undefined ? decimals : value < 0 ? 4 : value > 1e5 ? 0 : 3,

@@ -3,6 +3,7 @@ import {
   loadTxList,
   txListLoaded,
   txListError,
+  actionResetTxList,
   loadTxCount,
   txCountLoaded,
   txCountError,
@@ -15,14 +16,14 @@ export const fetchTxList = (params) => async (dispatch) => {
   try {
     dispatch(loadTxList());
     const data = await TxApis.getTxList(params);
-    dispatch(txListLoaded(data?.data));
+    dispatch(txListLoaded(data));
   } catch (error) {
     dispatch(txListError(error));
   }
 };
 
-export const resetLoadTxList = () => async (dispatch) => {
-  dispatch(loadTxList());
+export const resetTxList = () => async (dispatch) => {
+  dispatch(actionResetTxList());
 };
 
 export const fetchTxCount = () => async (dispatch) => {

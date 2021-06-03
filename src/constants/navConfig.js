@@ -15,20 +15,20 @@ export const mainNav = [
   //   label: "Vote",
   //   href: "/vote",
   // },
-  {
-    label: "Resources",
-    href: "#",
-    items: [
-      {
-        label: "Charts & Stats",
-        href: "/charts",
-      },
-      {
-        label: "Top Statistics",
-        href: "/topstat",
-      },
-    ],
-  },
+  // {
+  //   label: "Resources",
+  //   href: "#",
+  //   items: [
+  //     {
+  //       label: "Charts & Stats",
+  //       href: "/charts",
+  //     },
+  //     {
+  //       label: "Top Statistics",
+  //       href: "/topstat",
+  //     },
+  //   ],
+  // },
 ];
 
 // For footer
