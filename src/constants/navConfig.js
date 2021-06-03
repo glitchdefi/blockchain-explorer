@@ -6,10 +6,12 @@ export const mainNav = [
   {
     label: "Blocks",
     href: "/blocks",
+    child: "/block",
   },
   {
     label: "Transactions",
     href: "/txs",
+    child: "/tx",
   },
   // {
   //   label: "Vote",

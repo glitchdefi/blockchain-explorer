@@ -15,11 +15,15 @@ export default function TableRow({ children, count, animation, ...props }) {
     }
   }, [count]);
 
-  return (
-    <animated.tr style={styles} {...props}>
-      {children}
-    </animated.tr>
-  );
+  if (animation) {
+    return (
+      <animated.tr style={styles} {...props}>
+        {children}
+      </animated.tr>
+    );
+  }
+
+  return <tr {...props}>{children}</tr>;
 }
 
 TableRow.propTypes = {
