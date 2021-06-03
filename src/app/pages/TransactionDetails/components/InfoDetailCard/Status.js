@@ -11,7 +11,7 @@ import { Button as ButtonBase } from "src/app/components/Button";
 export function Status({ status, buttonLabel }) {
   return (
     <Wrapper>
-      <Text>{status}</Text>
+      <Text type={status?.toLowerCase()}>{status}</Text>
       <Button>{buttonLabel}</Button>
     </Wrapper>
   );
@@ -27,7 +27,7 @@ export const Text = styled(TextBase)((type) => [
 ]);
 
 const Button = styled(ButtonBase)(() => [
-  tw`bg-transparent border border-primary border-solid ml-2 lg:ml-10`
+  tw`bg-transparent border border-primary border-solid ml-2 lg:ml-10`,
 ]);
 
 Status.propTypes = {

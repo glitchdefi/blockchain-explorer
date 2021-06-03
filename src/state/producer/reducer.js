@@ -19,9 +19,21 @@ export const slice = createSlice({
       state.producerListError = action.payload;
       state.isFetchingProducerList = false;
     },
+
+    producerNameLoaded: (state, action) => {
+      state.producerName = action.payload;
+    },
+    producerNameError: (state, action) => {
+      state.producerNameError = action.payload;
+    },
   },
 });
 
 // Actions
-export const { loadProducerList, producerListLoaded, producerListError } =
-  slice.actions;
+export const {
+  loadProducerList,
+  producerListLoaded,
+  producerListError,
+  producerNameLoaded,
+  producerNameError,
+} = slice.actions;

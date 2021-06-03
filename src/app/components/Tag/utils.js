@@ -6,6 +6,10 @@ export const getColor = (type) => {
     return theme`colors.success`;
   }
 
+  if (type === Types.fail) {
+    return theme`colors.pending`;
+  }
+
   if (type === Types.pending) {
     return theme`colors.pending`;
   }
