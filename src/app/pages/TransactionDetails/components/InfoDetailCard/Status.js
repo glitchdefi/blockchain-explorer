@@ -12,7 +12,7 @@ export function Status({ status, buttonLabel }) {
   return (
     <Wrapper>
       <Text type={status?.toLowerCase()}>{status}</Text>
-      <Button>{buttonLabel}</Button>
+      {/* <Button>{buttonLabel}</Button> */}
     </Wrapper>
   );
 }

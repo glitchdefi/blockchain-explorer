@@ -1,7 +1,9 @@
 import React from "react";
 import tw, { css } from "twin.macro";
+import Web3Utils from "web3-utils";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
+import { isEmpty } from "lodash";
 
 // Components
 import { TableContainer as Container } from "src/app/components/Table";
@@ -10,11 +12,19 @@ import { InfoRow } from "src/app/components/InfoRow";
 import { Link } from "src/app/components/Link";
 import { Empty } from "src/app/components/Empty";
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
+import { formatAmount } from "src/utils/numbers";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
-  const { block_size, num_txs, proposer_address, height, time, hash } =
-    data || {};
+  const {
+    block_size,
+    total_txs,
+    proposer_address,
+    height,
+    time,
+    hash,
+    reward,
+  } = data || {};
 
   if (loading)
     return (
@@ -23,7 +33,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
       </Card>
     );
 
-  if (!data)
+  if (!loading && isEmpty(data))
     return (
       <Card css={[cardStyles]}>
         <Empty title={`${t("blockDetails.empty", { height: blockHeight })}`} />
@@ -43,7 +53,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
               .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
           />
 
-          <InfoRow label={t("common.transactions")} value={num_txs} />
+          <InfoRow label={t("common.transactions")} value={total_txs} />
 
           <InfoRow
             label={t("blockDetails.produced_by")}
@@ -56,7 +66,9 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
 
           <InfoRow
             label={t("blockDetails.block_reward")}
-            value="3.105465374371711284 Ether (2 + 1.105465374371711284)"
+            value={`${formatAmount(
+              Number(Web3Utils.fromWei(reward?.toString()))
+            )} GLCH`}
           />
 
           <InfoRow

@@ -11,21 +11,23 @@ export default function TableEmpty({ colSpan, invisible }) {
     <TableRow>
       <TableCell colSpan={colSpan}>
         <Wrapper css={[invisible && tw`invisible`]}>
-          <FontAwesomeIcon icon={faDatabase} size="3x" />
-          <Text
-            size={theme`fontSize.lg`}
-            color={theme`colors.textSecondary`}
-            tw="mt-2"
-          >
-            Empty
-          </Text>
+          <div>
+            <FontAwesomeIcon icon={faDatabase} size="3x" />
+            <Text
+              size={theme`fontSize.lg`}
+              color={theme`colors.textSecondary`}
+              tw="mt-2"
+            >
+              Empty
+            </Text>
+          </div>
         </Wrapper>
       </TableCell>
     </TableRow>
   );
 }
 
-const Wrapper = tw.div`w-full max-h-full p-10 items-center justify-center opacity-30 h-96`;
+const Wrapper = tw.div`w-full max-h-full p-10 items-center justify-center opacity-30 h-96 flex`;
 
 TableEmpty.defaultProps = {
   colSpan: 6,

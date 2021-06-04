@@ -1,5 +1,9 @@
 import React from "react";
+import { useParams } from "react-router";
 import "twin.macro";
+
+// Hooks
+import { useAddressDetails, useAddressSlice } from "src/state/address/hooks";
 
 // Components
 import { Grid } from "src/app/components/Grid";
@@ -9,14 +13,19 @@ import { MoreInfoCard } from "./components/MoreInfoCard";
 import { TabSections } from "./components/TabSections";
 
 export function UserDetailPage() {
+  useAddressSlice();
+  const { address } = useParams();
+  const { isFetchingAddressDetails, addressDetails } =
+    useAddressDetails(address);
+
   return (
     <>
       <InfoUser />
       <Grid cols={2} tw="mt-6 mb-12">
-        <OverviewCard />
-        <MoreInfoCard />
+        <OverviewCard loading={isFetchingAddressDetails} />
+        <MoreInfoCard loading={isFetchingAddressDetails} />
       </Grid>
-      <TabSections />
+      <TabSections address={address} />
     </>
   );
 }
