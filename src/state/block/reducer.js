@@ -54,6 +54,19 @@ export const slice = createSlice({
       state.isFetchingBlockDetails = false;
       state.blockDetailsError = action.payload;
     },
+
+    loadBlockTxs: (state) => {
+      state.isFetchingBlockTxs = true;
+      state.blockTxs = null;
+    },
+    blockTxsLoaded: (state, action) => {
+      state.isFetchingBlockTxs = false;
+      state.blockTxs = action.payload;
+    },
+    blockTxsError: (state, action) => {
+      state.isFetchingBlockTxs = false;
+      state.blockTxsError = action.payload;
+    },
   },
 });
 
@@ -68,6 +81,10 @@ export const {
   headBlockError,
 
   latestBlockLoaded,
+
+  loadBlockTxs,
+  blockTxsLoaded,
+  blockTxsError,
 
   loadBlockDetails,
   blockDetailsLoaded,

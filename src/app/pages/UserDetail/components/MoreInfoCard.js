@@ -4,21 +4,30 @@ import "twin.macro";
 
 // Components
 import { Card, Wrapper, Block, Text } from "./OverviewCard";
+import { Skeleton } from "src/app/components/Skeleton";
 
-export function MoreInfoCard() {
+export function MoreInfoCard({ loading }) {
   const { t } = useTranslation();
-  
+
   return (
     <Wrapper>
       <Card>
         <Text tw="text-base font-bold">{t("userDetails.more_info")}</Text>
         <Block tw="mt-6">
           <Text tw="w-1/4 mb-1 lg:mb-0">{t("userDetails.name_tag")}</Text>
-          <Text tw="text-primary!">julian1234abc</Text>
+          {loading ? (
+            <Skeleton tw="flex-grow" animation="waves" />
+          ) : (
+            <Text tw="text-primary!">julian1234abc</Text>
+          )}
         </Block>
         <Block>
           <Text tw="w-1/4 mb-1 lg:mb-0">{t("userDetails.mined")}</Text>
-          <Text>1,671,306 Blocks</Text>
+          {loading ? (
+            <Skeleton tw="flex-grow" animation="waves" />
+          ) : (
+            <Text>1,671,306 Blocks</Text>
+          )}
         </Block>
       </Card>
     </Wrapper>

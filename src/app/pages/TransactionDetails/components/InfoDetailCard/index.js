@@ -1,8 +1,10 @@
 import React from "react";
 import tw from "twin.macro";
 import moment from "moment";
+import Web3Utils from "web3-utils";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
+import { isEmpty } from "lodash";
 
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
@@ -18,7 +20,7 @@ export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
-  const { hash, time, height, from, to, status } = txDetails || {};
+  const { hash, time, height, from, to, status, gasused } = txDetails || {};
 
   const renderInfoRow = ({ label, value, customValueComp }) => {
     return (
@@ -29,7 +31,7 @@ export function InfoDetailCard() {
   if (isFetchingTxDetails)
     return <LoadingPage title={t("transactionDetails.loading")} />;
 
-  if (!isFetchingTxDetails && !txDetails)
+  if (!isFetchingTxDetails && isEmpty(txDetails))
     return <Empty title={t("transactionDetails.not_found")} />;
 
   return (
@@ -59,7 +61,7 @@ export function InfoDetailCard() {
         label: t("common.timeStamp"),
         value: `${moment(time).fromNow()} (${moment
           .utc(time)
-          .format("MMM-DD-YYYY HH:mm:ss A")} +UTC) | Confirmed within 30 secs`,
+          .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`,
       })}
 
       {renderInfoRow({
@@ -82,7 +84,7 @@ export function InfoDetailCard() {
 
       {renderInfoRow({
         label: t("common.txnFee"),
-        value: "0.0001 GLCH",
+        value: `${Web3Utils.fromWei(gasused?.toString())} GLCH`,
       })}
     </Wrapper>
   );

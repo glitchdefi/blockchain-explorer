@@ -35,9 +35,17 @@ function getHeadBlockNumber() {
   return Request.get("block/head_block_number");
 }
 
+/**
+ *
+ */
+function getBlockTxs(block) {
+  return Request.get(`block_tx/${block}`);
+}
+
 export default {
   getBlockList,
   getBlockCount,
   getBlockByHeight,
   getHeadBlockNumber,
+  getBlockTxs,
 };

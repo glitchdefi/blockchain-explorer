@@ -9,6 +9,9 @@ import {
   loadBlockDetails,
   blockDetailsLoaded,
   blockDetailsError,
+  loadBlockTxs,
+  blockTxsLoaded,
+  blockTxsError,
 } from "./reducer";
 
 export const fetchBlockList = (params) => async (dispatch) => {
@@ -48,4 +51,14 @@ export const fetchBlockDetails = (height) => async (dispatch) => {
 
 export const resetLoadBlockDetails = () => async (dispatch) => {
   dispatch(loadBlockDetails());
+};
+
+export const fetchBlockTxs = (block) => async (dispatch) => {
+  try {
+    dispatch(loadBlockTxs());
+    const data = await BlockApis.getBlockTxs(block);
+    dispatch(blockTxsLoaded(data));
+  } catch (error) {
+    dispatch(blockTxsError(error));
+  }
 };

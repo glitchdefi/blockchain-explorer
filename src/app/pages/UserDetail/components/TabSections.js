@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "twin.macro";
 import { useTranslation } from "react-i18next";
+
+import { useAddressTxs } from "src/state/address/hooks";
 
 // Components
 import {
@@ -9,13 +11,16 @@ import {
   Tab,
   TabPanel,
 } from "src/app/components/Tab/Horizontal";
+import { TransactionsTable } from "src/app/pages/Transactions/components/TransactionsTable";
 
-import { TransactionTable } from "./Tables/Transactions";
-import { GRC20TokenTable } from "./Tables/GRC20";
-import { MinedBlockTable } from "./Tables/MinedBlocks";
+// import { TransactionTable } from "./Tables/Transactions";
+// import { GRC20TokenTable } from "./Tables/GRC20";
+// import { MinedBlockTable } from "./Tables/MinedBlocks";
 
-export function TabSections() {
+export function TabSections({ address }) {
+  const [params, setParams] = useState();
   const { t } = useTranslation();
+  const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
 
   return (
     <TabContainer>
@@ -26,7 +31,12 @@ export function TabSections() {
       </Tabs>
 
       <TabPanel evtKey="txs">
-        <TransactionTable data={[1, 2, 3, 4]} />
+        <TransactionsTable
+          loading={isFetchingAddressTxs}
+          data={data}
+          total={total}
+          onChange={(p) => setParams(p)}
+        />
       </TabPanel>
       {/* <TabPanel evtKey="grc20">
         <GRC20TokenTable data={[1, 2]} />

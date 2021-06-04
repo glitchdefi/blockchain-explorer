@@ -12,6 +12,7 @@ import {
   resetBlockList,
   fetchBlockDetails,
   resetLoadBlockDetails,
+  fetchBlockTxs,
 } from "./actions";
 
 export const useBlockSlice = () => {
@@ -54,7 +55,7 @@ export const useBlockDetails = (height) => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(fetchBlockDetails(height));
-    }, 500);
+    }, 200);
 
     return () => {
       dispatch(resetLoadBlockDetails());
@@ -86,4 +87,26 @@ export const useHeadBlockNumber = () => {
   }, [headBlockError]);
 
   return { headBlock };
+};
+
+export const useBlockTxs = (block) => {
+  const { isFetchingBlockTxs, blockTxs, blockTxsError } = useSelector(
+    (state) => state.block
+  );
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(fetchBlockTxs(block));
+    }, 200);
+  }, [block, dispatch]);
+
+  useEffect(() => {
+    if (blockTxsError) {
+      toastError("Error", blockTxsError);
+    }
+  }, [blockTxsError]);
+
+  return { isFetchingBlockTxs, blockTxs };
 };

@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 
 // Components
 import { Text } from "src/app/components/Text";
+import { TabPanel } from "src/app/components/Tab/Horizontal";
 import { BlockDetailsCard } from "./components/BlockDetailsCard";
-import { BlockDetailsTable } from "./components/BlockDetailsTable";
-import { useBlockDetails, useBlockSlice } from "src/state/block/hooks";
+import {
+  useBlockDetails,
+  useBlockSlice,
+  useBlockTxs,
+} from "src/state/block/hooks";
+import { TransactionsTable } from "../Transactions/components/TransactionsTable";
 
 export function BlockDetailsPage() {
   useBlockSlice();
+  const [params, setParams] = useState();
   const { t } = useTranslation();
   const { height } = useParams();
   const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
+  const { isFetchingBlockTxs, blockTxs } = useBlockTxs(height);
 
   return (
     <>
@@ -29,12 +36,15 @@ export function BlockDetailsPage() {
           data={blockDetails}
         />
 
-        {!isFetchingBlockDetails && blockDetails && (
-          <Heading tw="mt-8 lg:mt-12">{t("common.transactions")}</Heading>
-        )}
-        {!isFetchingBlockDetails && blockDetails && (
-          <BlockDetailsTable data={[1, 2, 3]} />
-        )}
+        <Heading tw="mt-8 lg:mt-12">{t("common.transactions")}</Heading>
+
+        <TabPanel>
+          <TransactionsTable
+            loading={isFetchingBlockTxs}
+            data={[]}
+            onChange={(p) => setParams(p)}
+          />
+        </TabPanel>
       </Wrapper>
     </>
   );

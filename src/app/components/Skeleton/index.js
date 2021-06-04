@@ -29,7 +29,7 @@ const Root = styled.div(({ variant, height }) => [
   css`
     min-height: ${height ? `${height}px` : "16px"};
     display: block;
-    background-color: ${theme`colors.primary`};
+    background-color: ${theme`colors.bgSecondary`};
     border-radius: ${variant === VARIANT.CIRCLE ? "50%" : "5px"};
   `,
 ]);
@@ -49,7 +49,7 @@ const Waves = styled(Root)`
     background-image: linear-gradient(
       90deg,
       transparent,
-      rgba(243, 243, 243, 0.5),
+      #878889,
       transparent
     );
     top: 0;
