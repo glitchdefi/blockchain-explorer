@@ -76,7 +76,11 @@ export const TransactionsTable = React.memo((props) => {
                 </TableCell>
                 <TableCell>{formatAmount(Number(value))} GLCH</TableCell>
                 <TableCell>
-                  {formatAmount(Number(Web3Utils.fromWei(gasused?.toString())))}{" "}
+                  {gasused
+                    ? formatAmount(
+                        Number(Web3Utils.fromWei(gasused.toString()))
+                      )
+                    : 0}{" "}
                   GLCH
                 </TableCell>
                 <TableCell>
