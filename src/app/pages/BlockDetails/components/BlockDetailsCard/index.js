@@ -71,7 +71,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
             )} GLCH`}
           />
 
-          <InfoRow
+          {/* <InfoRow
             label={t("common.difficulty")}
             value="4,153,661,732,410,000"
           />
@@ -79,7 +79,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           <InfoRow
             label={t("blockDetails.total_difficulty")}
             value="20,255,456,233,619,604,483,769"
-          />
+          /> */}
 
           <InfoRow label={t("common.size")} value={`${block_size} bytes`} />
 

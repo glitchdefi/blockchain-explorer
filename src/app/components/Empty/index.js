@@ -2,9 +2,9 @@ import { React } from "react";
 import tw, { theme } from "twin.macro";
 import { Text } from "../Text";
 
-export function Empty({ title }) {
+export function Empty({ title, ...props }) {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Text size={theme`fontSize.base`} color={theme`colors.textSecondary`}>
         {title}
       </Text>

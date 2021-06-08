@@ -20,7 +20,8 @@ export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
-  const { hash, time, height, from, to, status, gasused } = txDetails || {};
+  const { hash, time, height, from, to, result_log, gasused } = txDetails || {};
+  const status = result_log === 1 ? "Success" : "Fail";
 
   const renderInfoRow = ({ label, value, customValueComp }) => {
     return (

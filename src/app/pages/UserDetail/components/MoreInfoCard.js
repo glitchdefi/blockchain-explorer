@@ -18,7 +18,7 @@ export function MoreInfoCard({ loading }) {
           {loading ? (
             <Skeleton tw="flex-grow" animation="waves" />
           ) : (
-            <Text tw="text-primary!">julian1234abc</Text>
+            <Text tw="text-primary!">--</Text>
           )}
         </Block>
         <Block>
@@ -26,7 +26,7 @@ export function MoreInfoCard({ loading }) {
           {loading ? (
             <Skeleton tw="flex-grow" animation="waves" />
           ) : (
-            <Text>1,671,306 Blocks</Text>
+            <Text>--</Text>
           )}
         </Block>
       </Card>

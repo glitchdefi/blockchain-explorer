@@ -18,9 +18,10 @@ import {
   TableRow,
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
+import { formatAmount } from "src/utils/numbers";
 
 export const TransactionsTable = React.memo((props) => {
-  const { loading, total, onChange, data, ...rest } = props;
+  const { loading, total, onChange, data, animation = false, ...rest } = props;
   const countUpdated = useRef(0);
 
   useEffect(() => {
@@ -49,20 +50,20 @@ export const TransactionsTable = React.memo((props) => {
           <TableEmpty colSpan={8} invisible={loading} />
         ) : (
           data.map((tx, i) => {
-            const { tx_hash, value, to, from, time, block, status, tx_fee } =
+            const { hash, value, to, from, time, height, result_log, gasused } =
               tx;
-
+            const status = result_log === 1 ? "Success" : "Fail";
             return (
               <TableRow
                 key={i}
                 count={countUpdated.current}
-                animation={i === 0}
+                animation={animation && i === 0}
               >
-                <TableCell isLink href={`/tx/${tx_hash}`} dataTip={tx_hash}>
-                  {sliceString(tx_hash)}
+                <TableCell isLink href={`/tx/${hash}`} dataTip={hash}>
+                  {sliceString(hash)}
                 </TableCell>
-                <TableCell isLink href={`/block/${block}`}>
-                  {block}
+                <TableCell isLink href={`/block/${height}`}>
+                  {height}
                 </TableCell>
                 <TableCell>
                   {moment(time).format("DD/MM/YYYY h:mm A")}
@@ -73,12 +74,13 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/address/${to}`} dataTip={to}>
                   {sliceString(to)}
                 </TableCell>
-                <TableCell>{value} GLCH</TableCell>
+                <TableCell>{formatAmount(Number(value))} GLCH</TableCell>
                 <TableCell>
-                  {Web3Utils.fromWei(tx_fee?.toString())} GLCH
+                  {formatAmount(Number(Web3Utils.fromWei(gasused?.toString())))}{" "}
+                  GLCH
                 </TableCell>
                 <TableCell>
-                  <Tag color={status?.toLowerCase()}>{status}</Tag>
+                  <Tag color={status.toLowerCase()}>{status}</Tag>
                 </TableCell>
               </TableRow>
             );

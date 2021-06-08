@@ -22,6 +22,7 @@ export function LatestTxnsPanel() {
     <>
       <TransactionsTable
         loading={isLoading}
+        animation={true}
         data={data}
         onChange={(p) => setParams(p)}
         pageSize={DEFAULT_PAGE_SIZE_WS}

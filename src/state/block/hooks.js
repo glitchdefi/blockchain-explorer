@@ -13,6 +13,7 @@ import {
   fetchBlockDetails,
   resetLoadBlockDetails,
   fetchBlockTxs,
+  resetBlockTxs,
 } from "./actions";
 
 export const useBlockSlice = () => {
@@ -89,18 +90,25 @@ export const useHeadBlockNumber = () => {
   return { headBlock };
 };
 
-export const useBlockTxs = (block) => {
+export const useBlockTxs = (block, params) => {
   const { isFetchingBlockTxs, blockTxs, blockTxsError } = useSelector(
     (state) => state.block
   );
+  const { data, pagination, total } = blockTxs || {};
+
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchBlockTxs(block));
-    }, 200);
-  }, [block, dispatch]);
+    if (block && params)
+      setTimeout(() => {
+        dispatch(fetchBlockTxs(block, params));
+      }, 200);
+  }, [block, params, dispatch]);
+
+  useEffect(() => {
+    dispatch(resetBlockTxs());
+  }, []);
 
   useEffect(() => {
     if (blockTxsError) {
@@ -108,5 +116,5 @@ export const useBlockTxs = (block) => {
     }
   }, [blockTxsError]);
 
-  return { isFetchingBlockTxs, blockTxs };
+  return { isFetchingBlockTxs, data, total };
 };

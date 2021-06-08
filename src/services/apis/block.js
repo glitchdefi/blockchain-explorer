@@ -38,8 +38,8 @@ function getHeadBlockNumber() {
 /**
  *
  */
-function getBlockTxs(block) {
-  return Request.get(`block_tx/${block}`);
+function getBlockTxs(block, params) {
+  return Request.get(`block_tx/${block}`, { params });
 }
 
 export default {

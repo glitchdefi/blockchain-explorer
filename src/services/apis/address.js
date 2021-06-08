@@ -11,7 +11,7 @@ function getAddressDetails(address) {
  *
  */
 function getTxsByAddress(address, params) {
-  return Request.get(`producer/${address}/tx_list`, { params });
+  return Request.get(`address/${address}/tx`, { params });
 }
 
 export default {

@@ -6,6 +6,7 @@ import { Text as TextBase } from "src/app/components/Text";
 import { Dropdown } from "src/app/components/Dropdown";
 import { DropdownItem } from "src/app/components/Dropdown/DropdownItem";
 import { useTranslation } from "react-i18next";
+import { Empty } from "src/app/components/Empty";
 
 export function TokenDropdown() {
   const { t } = useTranslation();
@@ -13,8 +14,8 @@ export function TokenDropdown() {
   const renderLabel = () => {
     return (
       <LabelWrapper>
-        <Text>$888,8888</Text>
-        <NumberTokens>102</NumberTokens>
+        <Text tw="mr-5">--</Text>
+        <NumberTokens>0</NumberTokens>
       </LabelWrapper>
     );
   };
@@ -44,7 +45,8 @@ export function TokenDropdown() {
         searchPlaceholder={t("userDetails.search_for_token_name")}
         customLabel={renderLabel()}
       >
-        {renderDropdownItems()}
+        <Empty title="Empty" tw="p-0"/>
+        {/* {renderDropdownItems()} */}
       </Dropdown>
     </>
   );
@@ -52,5 +54,5 @@ export function TokenDropdown() {
 
 const LabelWrapper = tw.div`flex flex-wrap items-center`;
 const FlexLayout = tw.div`flex flex-wrap justify-between items-center`;
-const NumberTokens = tw.div`rounded-sm ml-5 text-tiny px-3 py-1 bg-gradient-to-r from-primary to-info`;
+const NumberTokens = tw.div`rounded-sm text-tiny px-3 py-1 bg-gradient-to-r from-primary to-info`;
 const Text = tw(TextBase)`text-tiny`;

@@ -52,9 +52,7 @@ export const useAddressTxs = (address, params) => {
 
   useEffect(() => {
     if (params && address) {
-      setTimeout(() => {
-        dispatch(fetchAddressTxs(address));
-      }, 200);
+      dispatch(fetchAddressTxs(address, params));
     }
   }, [address, params, dispatch]);
 

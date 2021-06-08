@@ -20,7 +20,7 @@ export function BlockDetailsPage() {
   const { t } = useTranslation();
   const { height } = useParams();
   const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
-  const { isFetchingBlockTxs, blockTxs } = useBlockTxs(height);
+  const { isFetchingBlockTxs, data, total } = useBlockTxs(height, params);
 
   return (
     <>
@@ -41,7 +41,8 @@ export function BlockDetailsPage() {
         <TabPanel>
           <TransactionsTable
             loading={isFetchingBlockTxs}
-            data={[]}
+            data={data}
+            total={total}
             onChange={(p) => setParams(p)}
           />
         </TabPanel>

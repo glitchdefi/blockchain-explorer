@@ -46,7 +46,7 @@ export const BlocksTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { epoch, slot, size, block, time, reward, producer } = o;
+            const { epoch, slot, size, height, time, reward, producer } = o;
             return (
               <TableRow
                 key={i}
@@ -56,8 +56,8 @@ export const BlocksTable = React.memo((props) => {
                 <TableCell>
                   {epoch}/ {slot}
                 </TableCell>
-                <TableCell isLink href={`/block/${block}`}>
-                  {block}
+                <TableCell isLink href={`/block/${height}`}>
+                  {height}
                 </TableCell>
                 <TableCell>
                   {moment(time).format("DD/MM/YYYY h:mm A")}
