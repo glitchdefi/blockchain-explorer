@@ -3,14 +3,14 @@ import tw, { css, styled, theme } from "twin.macro";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import ReactTooltip from "react-tooltip";
 import PropTypes from "prop-types";
-
+import moment from "moment";
 // Components
 import { Avatar } from "src/app/components/Avatar";
 import { Text } from "src/app/components/Text";
 import { Button } from "src/app/components/Button";
 import { CopyIcon } from "src/app/components/Svg/Icons";
 
-export function InfoUser({ address }) {
+export function InfoUser({ address, data }) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export function InfoUser({ address }) {
       }, 1000);
     }
   }, [copied]);
-
+  
   return (
     <Wrapper>
       <Avatar
@@ -28,6 +28,7 @@ export function InfoUser({ address }) {
         width={60}
         height={60}
       />
+      {data &&
       <div tw="ml-6">
         <FlexLayout>
           <UserAddress>{address}</UserAddress>
@@ -49,8 +50,9 @@ export function InfoUser({ address }) {
             getContent={() => "Copy address to clipboard"}
           />
         </FlexLayout>
-        <Text tw="mt-1">created 3 years ago</Text>
+        <Text tw="mt-1">{`${moment(data.create_at).fromNow()}`}</Text>
       </div>
+      }
     </Wrapper>
   );
 }

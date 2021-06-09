@@ -10,6 +10,7 @@
         "txnFee": "Txn Fee",
         "timeStamp": "Timestamp",
         "transactions": "Transactions",
+        "total_txs": "Total txs",
         "difficulty": "Difficulty",
         "size": "Size",
         "started_at": "Started at",

@@ -20,7 +20,7 @@ export function UserDetailPage() {
 
   return (
     <>
-      <InfoUser address={address} />
+      <InfoUser address={address} data={addressDetails}/>
       <Grid cols={2} tw="mt-6 mb-12">
         <OverviewCard
           loading={isFetchingAddressDetails}

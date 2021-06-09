@@ -60,7 +60,7 @@ export const BlocksTable = React.memo((props) => {
                   {height}
                 </TableCell>
                 <TableCell>
-                  {moment(time).format("DD/MM/YYYY h:mm A")}
+                  {moment(time).format("DD/MM/YYYY HH:mm:ss")}
                 </TableCell>
                 <TableCell>
                   {formatAmount(Number(Web3Utils.fromWei(reward.toString())))}{" "}

@@ -19,7 +19,8 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const {
     block_size,
     total_txs,
-    proposer_address,
+    num_txs,
+    // proposer_address,
     height,
     time,
     hash,
@@ -53,16 +54,17 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
               .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
           />
 
-          <InfoRow label={t("common.transactions")} value={total_txs} />
+          <InfoRow label={t("common.transactions")} value={num_txs} />
+          <InfoRow label={t("common.total_txs")} value={total_txs} />
 
-          <InfoRow
+          {/* <InfoRow
             label={t("blockDetails.produced_by")}
             customValueComp={
               <Link href={`/address/${proposer_address}`} tw="underline">
                 {proposer_address}
               </Link>
             }
-          />
+          /> */}
 
           <InfoRow
             label={t("blockDetails.block_reward")}
