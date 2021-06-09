@@ -1,7 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
-import Web3Utils from 'web3-utils'
+import Web3Utils from "web3-utils";
 
 // Components
 import { Card as CardBase } from "src/app/components/Card";

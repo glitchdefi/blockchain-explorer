@@ -20,12 +20,18 @@ export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
-  const { hash, time, height, from, to, result_log, gasused } = txDetails || {};
+  const { hash, time, height, from, to, result_log, gasused, value } =
+    txDetails || {};
   const status = result_log === 1 ? "Success" : "Fail";
 
-  const renderInfoRow = ({ label, value, customValueComp }) => {
+  const renderInfoRow = ({ label, value, customValueComp, isCopy }) => {
     return (
-      <InfoRow label={label} value={value} customValueComp={customValueComp} />
+      <InfoRow
+        label={label}
+        value={value}
+        customValueComp={customValueComp}
+        isCopy={isCopy}
+      />
     );
   };
 
@@ -40,6 +46,7 @@ export function InfoDetailCard() {
       {renderInfoRow({
         label: t("transactionDetails.transaction_hash"),
         value: hash,
+        isCopy: true,
       })}
 
       {renderInfoRow({
@@ -72,15 +79,24 @@ export function InfoDetailCard() {
             {from}
           </Link>
         ),
+        isCopy: true,
+        value: from,
       })}
 
       {renderInfoRow({
         label: t("common.to"),
         customValueComp: (
-          <Link href={`/address/${from}`} tw="underline">
+          <Link href={`/address/${to}`} tw="underline">
             {to}
           </Link>
         ),
+        isCopy: true,
+        value: to,
+      })}
+
+      {renderInfoRow({
+        label: t("common.value"),
+        value: `${value} GLCH`,
       })}
 
       {renderInfoRow({

@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
-import tw, { css, styled, theme } from "twin.macro";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import ReactTooltip from "react-tooltip";
+import React from "react";
+import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
 import moment from "moment";
 // Components
 import { Avatar } from "src/app/components/Avatar";
 import { Text } from "src/app/components/Text";
-import { Button } from "src/app/components/Button";
-import { CopyIcon } from "src/app/components/Svg/Icons";
+import { CopyButton } from "src/app/components/CopyButton";
 
 export function InfoUser({ address, data }) {
-  const [copied, setCopied] = useState(false);
+  const { create_at } = data || {};
 
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 1000);
-    }
-  }, [copied]);
-  
   return (
     <Wrapper>
       <Avatar
@@ -28,31 +17,16 @@ export function InfoUser({ address, data }) {
         width={60}
         height={60}
       />
-      {data &&
+
       <div tw="ml-6">
         <FlexLayout>
           <UserAddress>{address}</UserAddress>
-          <CopyToClipboard
-            text={address}
-            onCopy={() => setCopied(true)}
-            data-tip
-            data-for="copy"
-          >
-            <Button tw="p-0 ml-5 md:ml-10">
-              <CopyIcon />
-            </Button>
-          </CopyToClipboard>
-
-          <ReactTooltip
-            id="copy"
-            effect="solid"
-            backgroundColor={theme`colors.bg2`}
-            getContent={() => "Copy address to clipboard"}
-          />
+          <CopyButton text={address} />
         </FlexLayout>
-        <Text tw="mt-1">{`${moment(data.create_at).fromNow()}`}</Text>
+        <Text tw="mt-1">
+          {create_at ? `${moment(create_at).fromNow()}` : "--"}
+        </Text>
       </div>
-      }
     </Wrapper>
   );
 }

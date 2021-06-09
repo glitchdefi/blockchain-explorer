@@ -5,16 +5,28 @@ import tw from "twin.macro";
 // Components
 import { InfoIcon } from "src/app/components/Svg/Icons";
 import { Text as TextBase } from "src/app/components/Text";
+import { CopyButton } from "../CopyButton";
 
 export function InfoRow(props) {
-  const { label, labelWrapStyles, value, customValueComp, ...rest } = props;
+  const { label, labelWrapStyles, value, customValueComp, isCopy, ...rest } =
+    props;
 
   const renderValue = () => {
     if (isValidElement(customValueComp)) {
-      return cloneElement(customValueComp);
+      return (
+        <div tw="flex items-center">
+          {cloneElement(customValueComp)}
+          {isCopy && <CopyButton text={value} tw="ml-3" />}
+        </div>
+      );
     }
 
-    return <Text>{value}</Text>;
+    return (
+      <div tw="flex items-center">
+        <Text>{value}</Text>
+        {isCopy && <CopyButton text={value} tw="ml-3" />}
+      </div>
+    );
   };
 
   return (
