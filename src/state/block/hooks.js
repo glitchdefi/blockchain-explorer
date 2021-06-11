@@ -22,7 +22,7 @@ export const useBlockSlice = () => {
 
 export const useBlockList = (params) => {
   const { isLoading, blockList, error } = useSelector((state) => state.block);
-  const { data, pagination, total } = blockList || {};
+  const { data, total } = blockList || {};
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ export const useBlockList = (params) => {
     }
   }, [error]);
 
-  return { isLoading, data, total: pagination * total };
+  return { isLoading, data, total };
 };
 
 export const useBlockDetails = (height) => {

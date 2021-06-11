@@ -29,7 +29,7 @@ import { VotePage } from "./pages/Vote";
 import { ChartsStatsPage } from "./pages/ChartsStats";
 import { TopStatisticsPage } from "./pages/TopStatistics";
 
-import { UserDetailPage } from "./pages/UserDetail";
+import { AddressDetailsPage } from "./pages/AddressDetails";
 import { TransactionDetailsPage } from "./pages/TransactionDetails";
 import { BlockDetailsPage } from "./pages/BlockDetails";
 import { EpodDetailsPage } from "./pages/EpodDetails";
@@ -65,7 +65,7 @@ export function App() {
                 {/* <Route path="/vote" component={VotePage} /> */}
                 <Route path="/charts" component={ChartsStatsPage} />
                 <Route path="/topstat" component={TopStatisticsPage} />
-                <Route path="/address/:address" component={UserDetailPage} />
+                <Route path="/address/:address" component={AddressDetailsPage} />
                 <Route path="/tx/:hash" component={TransactionDetailsPage} />
                 <Route path="/block/:height" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />

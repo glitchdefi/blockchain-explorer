@@ -40,6 +40,7 @@ export function CopyButton({ text, ...props }) {
         effect="solid"
         backgroundColor={theme`colors.bg2`}
         getContent={() => (copied ? "Copied" : "Copy")}
+        tw="w-24 text-center"
       />
     </>
   );
