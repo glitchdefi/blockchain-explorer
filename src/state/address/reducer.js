@@ -23,6 +23,7 @@ export const slice = createSlice({
     resetAddressDetails: (state) => {
       state.isFetchingAddressDetails = true;
       state.addressDetails = null;
+      state.addressDetailsError = null;
     },
 
     loadAddressTxs: (state) => {
@@ -39,6 +40,7 @@ export const slice = createSlice({
     resetAddressTxs: (state) => {
       state.isFetchingAddressTxs = true;
       state.addressTxs = null;
+      state.addressTxsError = null;
     },
   },
 });

@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
 import moment from "moment";
-import Web3Utils from "web3-utils";
-import "twin.macro";
 
 // Hooks
 import { sliceString } from "src/utils/strings";
+import { formatAmount, formatWei } from "src/utils/numbers";
 
 // Components
 import {
@@ -18,7 +17,6 @@ import {
   TableRow,
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
-import { formatAmount } from "src/utils/numbers";
 
 export const TransactionsTable = React.memo((props) => {
   const { loading, total, onChange, data, animation = false, ...rest } = props;
@@ -75,14 +73,7 @@ export const TransactionsTable = React.memo((props) => {
                   {sliceString(to)}
                 </TableCell>
                 <TableCell>{formatAmount(Number(value))} GLCH</TableCell>
-                <TableCell>
-                  {gasused
-                    ? formatAmount(
-                        Number(Web3Utils.fromWei(gasused.toString()))
-                      )
-                    : 0}{" "}
-                  GLCH
-                </TableCell>
+                <TableCell>{formatWei(gasused, true)} GLCH</TableCell>
                 <TableCell>
                   <Tag color={status.toLowerCase()}>{status}</Tag>
                 </TableCell>

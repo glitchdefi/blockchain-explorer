@@ -1,9 +1,11 @@
 import React from "react";
 import tw, { css } from "twin.macro";
-import Web3Utils from "web3-utils";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { isEmpty } from "lodash";
+
+// Utils
+import { formatWei } from "src/utils/numbers";
 
 // Components
 import { TableContainer as Container } from "src/app/components/Table";
@@ -12,7 +14,6 @@ import { InfoRow } from "src/app/components/InfoRow";
 // import { Link } from "src/app/components/Link";
 import { Empty } from "src/app/components/Empty";
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
-import { formatAmount } from "src/utils/numbers";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
@@ -47,7 +48,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           <InfoRow
             label={t("blockDetails.block_height")}
             value={height}
-            dataTip="Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block."
+            dataTip={t("blockDetails.height_tip")}
           />
 
           <InfoRow
@@ -55,14 +56,14 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
             value={`${moment(time).fromNow()} (${moment
               .utc(time)
               .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
-            dataTip="The date and time at which a block is mined."
+            dataTip={t("blockDetails.time_tip")}
           />
 
           {/* <InfoRow label={t("common.transactions")} value={num_txs} /> */}
           <InfoRow
             label={t("common.total_txs")}
             value={total_txs}
-            dataTip="The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves GLCH value."
+            dataTip={t("blockDetails.txs_tip")}
           />
 
           {/* <InfoRow
@@ -76,10 +77,8 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
 
           <InfoRow
             label={t("blockDetails.block_reward")}
-            value={`${formatAmount(
-              Number(Web3Utils.fromWei(reward?.toString()))
-            )} GLCH`}
-            dataTip="For each block, the miner is rewarded with a finite amount of GLCH on top of the fees paid for all transactions in the block."
+            value={`${formatWei(reward)} GLCH`}
+            dataTip={t("blockDetails.reward_tip")}
           />
 
           {/* <InfoRow
@@ -95,14 +94,14 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           <InfoRow
             label={t("common.size")}
             value={`${block_size} bytes`}
-            dataTip="The block size is actually determined by the block's gas limit."
+            dataTip={t("blockDetails.size_tip")}
           />
 
           <InfoRow
+            isCopy={true}
             label={t("blockDetails.hash")}
             value={hash}
-            isCopy
-            dataTip="The hash of the block header of the current block."
+            dataTip={t("blockDetails.hash_tip")}
           />
         </Wrapper>
       </Card>

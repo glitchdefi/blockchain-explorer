@@ -1,10 +1,12 @@
 import React from "react";
 import tw from "twin.macro";
 import moment from "moment";
-import Web3Utils from "web3-utils";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { isEmpty } from "lodash";
+
+// Utils
+import { formatWei } from "src/utils/numbers";
 
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
@@ -24,13 +26,20 @@ export function InfoDetailCard() {
     txDetails || {};
   const status = result_log === 1 ? "Success" : "Fail";
 
-  const renderInfoRow = ({ label, value, customValueComp, isCopy }) => {
+  const renderInfoRow = ({
+    label,
+    value,
+    customValueComp,
+    isCopy,
+    dataTip,
+  }) => {
     return (
       <InfoRow
         label={label}
         value={value}
         customValueComp={customValueComp}
         isCopy={isCopy}
+        dataTip={dataTip}
       />
     );
   };
@@ -44,9 +53,10 @@ export function InfoDetailCard() {
   return (
     <Wrapper>
       {renderInfoRow({
+        isCopy: true,
         label: t("transactionDetails.transaction_hash"),
         value: hash,
-        isCopy: true,
+        dataTip: t("transactionDetails.hash_tip"),
       })}
 
       {renderInfoRow({
@@ -54,6 +64,7 @@ export function InfoDetailCard() {
         customValueComp: (
           <Status status={status} buttonLabel="100 Blocks Confirmations" />
         ),
+        dataTip: t("transactionDetails.status_tip"),
       })}
 
       {renderInfoRow({
@@ -63,6 +74,7 @@ export function InfoDetailCard() {
             {height}
           </Link>
         ),
+        dataTip: t("transactionDetails.block_tip"),
       })}
 
       {renderInfoRow({
@@ -70,6 +82,7 @@ export function InfoDetailCard() {
         value: `${moment(time).fromNow()} (${moment
           .utc(time)
           .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`,
+        dataTip: t("transactionDetails.time_tip"),
       })}
 
       {renderInfoRow({
@@ -81,6 +94,7 @@ export function InfoDetailCard() {
         ),
         isCopy: true,
         value: from,
+        dataTip: t("transactionDetails.from_tip"),
       })}
 
       {renderInfoRow({
@@ -92,16 +106,19 @@ export function InfoDetailCard() {
         ),
         isCopy: true,
         value: to,
+        dataTip: t("transactionDetails.to_tip"),
       })}
 
       {renderInfoRow({
         label: t("common.value"),
         value: `${value} GLCH`,
+        dataTip: t("transactionDetails.value_tip"),
       })}
 
       {renderInfoRow({
         label: t("common.txnFee"),
-        value: `${Web3Utils.fromWei(gasused?.toString())} GLCH`,
+        value: `${formatWei(gasused)} GLCH`,
+        dataTip: t("transactionDetails.fee_tip"),
       })}
     </Wrapper>
   );

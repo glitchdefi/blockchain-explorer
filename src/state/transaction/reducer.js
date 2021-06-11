@@ -26,6 +26,7 @@ export const slice = createSlice({
     resetTxList: (state) => {
       state.txList = [];
       state.isLoading = true;
+      state.error = null;
     },
 
     latestTxLoaded: (state, action) => {
