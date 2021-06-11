@@ -28,7 +28,7 @@ export function CopyButton({ text, ...props }) {
           navigator.clipboard.writeText(text);
           setCopied(true);
         }}
-        data-tip
+        data-tip=""
         data-for={text}
         {...props}
       >
