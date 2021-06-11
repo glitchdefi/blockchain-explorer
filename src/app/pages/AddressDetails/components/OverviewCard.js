@@ -1,7 +1,9 @@
 import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
-import Web3Utils from "web3-utils";
+
+// Utils
+import { formatWei } from "src/utils/numbers";
 
 // Components
 import { Card as CardBase } from "src/app/components/Card";
@@ -22,9 +24,7 @@ export function OverviewCard({ loading, data }) {
           {loading ? (
             <Skeleton tw="flex-grow" animation="waves" />
           ) : (
-            <Text>
-              {balance ? Web3Utils.fromWei(balance?.toString()) : "--"} Glitch
-            </Text>
+            <Text>{formatWei(balance)} Glitch</Text>
           )}
         </Block>
         <Block>

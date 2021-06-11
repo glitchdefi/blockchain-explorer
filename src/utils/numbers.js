@@ -1,4 +1,5 @@
 import numbro from "numbro";
+import Web3Utils from "web3-utils";
 
 // using a currency library here in case we want to add more in future
 export const formatCurrencyAmount = (num, digits = 2, round = true) => {
@@ -10,7 +11,6 @@ export const formatCurrencyAmount = (num, digits = 2, round = true) => {
   return numbro(num).format({ average: round, mantissa: digits });
 };
 
-// using a currency library here in case we want to add more in future
 export const formatDollarAmount = (num, digits = 2, round = true) => {
   if (num === 0) return "$0.00";
   if (!num) return "-";
@@ -20,8 +20,6 @@ export const formatDollarAmount = (num, digits = 2, round = true) => {
   return numbro(num).formatCurrency({ average: round, mantissa: digits });
 };
 
-
-// using a currency library here in case we want to add more in future
 export const formatAmount = (num, digits = 2) => {
   if (num === 0) return "0";
   if (!num) return "-";
@@ -30,4 +28,12 @@ export const formatAmount = (num, digits = 2) => {
   }
   const nf = new Intl.NumberFormat();
   return nf.format(parseFloat(num.toFixed(num > 1000 ? 0 : digits)));
+};
+
+export const formatWei = (num, isFormatAmount) => {
+  if (!num) return "--";
+  const numToStr = num?.toString();
+  const numFromWei = Web3Utils.fromWei(numToStr);
+
+  return isFormatAmount ? formatAmount(Number(numFromWei)) : numFromWei;
 };

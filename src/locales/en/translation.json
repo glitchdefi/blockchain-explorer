@@ -57,7 +57,15 @@
         "title": "Transaction Details",
         "transaction_hash": "Transaction hash",
         "loading": "Loading transaction",
-        "not_found": "Sorry, the transaction could not be found."
+        "not_found": "Sorry, the transaction could not be found.",
+        "hash_tip": "A TxHash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "status_tip": "The status of the transaction.",
+        "block_tip": "The number of the block in which the transaction was recorded. Block confirmation indicate how many blocks since the transaction is mined.",
+        "time_tip": "The date and time at which a transaction is mined.",
+        "from_tip": "The sending party of the transaction (could be from a contract address).",
+        "to_tip": "The receiving party of the transaction (could be a contract address).",
+        "value_tip": "The value being transacted in GLCH and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction.",
+        "fee_tip": "Amount paid to the miner for processing the transaction."
     },
     "blockDetails": {
         "title": "Block Details",
@@ -66,7 +74,13 @@
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
         "hash": "Hash",
-        "empty": "Unable to locate block #{{height}}"
+        "empty": "Unable to locate block #{{height}}",
+        "height_tip": "Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block.",
+        "time_tip": "The date and time at which a block is mined.",
+        "txs_tip": "The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves GLCH value.",
+        "reward_tip": "For each block, the miner is rewarded with a finite amount of GLCH on top of the fees paid for all transactions in the block.",
+        "size_tip": "The block size is actually determined by the block's gas limit.",
+        "hash_tip": "The hash of the block header of the current block."
     },
     "epodDetails": {
         "title": "Epod Details",

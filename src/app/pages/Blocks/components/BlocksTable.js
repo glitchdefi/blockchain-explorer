@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
 import moment from "moment";
-import Web3Utils from "web3-utils";
 import "twin.macro";
 
 // Components
@@ -16,7 +15,7 @@ import {
 } from "src/app/components/Table";
 
 // Hooks
-import { formatAmount } from "src/utils/numbers";
+import { formatWei } from "src/utils/numbers";
 
 export const BlocksTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -62,10 +61,7 @@ export const BlocksTable = React.memo((props) => {
                 <TableCell>
                   {moment(time).format("DD/MM/YYYY HH:mm:ss")}
                 </TableCell>
-                <TableCell>
-                  {formatAmount(Number(Web3Utils.fromWei(reward.toString())))}{" "}
-                  GLCH
-                </TableCell>
+                <TableCell>{formatWei(reward)} GLCH</TableCell>
                 <TableCell>{size}</TableCell>
                 <TableCell>{producer}</TableCell>
               </TableRow>

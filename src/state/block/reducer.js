@@ -25,6 +25,7 @@ export const slice = createSlice({
     resetBlockList: (state) => {
       state.blockList = [];
       state.isLoading = true;
+      state.error = null;
     },
 
     headBlockLoaded: (state, action) => {
@@ -69,6 +70,7 @@ export const slice = createSlice({
     resetBlockTxs: (state) => {
       state.isFetchingBlockTxs = true;
       state.blockTxs = null;
+      state.blockTxsError = null;
     },
   },
 });
