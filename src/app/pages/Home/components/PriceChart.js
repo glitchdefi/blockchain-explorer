@@ -12,7 +12,7 @@ import { Card } from "src/app/components/Card";
 import { LineChart } from "src/app/components/Charts";
 import { TooltipTable } from "src/app/components/Tooltip/TooltipTable";
 
-export const PriceChart = React.memo(() => {
+export const PriceChart = () => {
   const { t } = useTranslation();
   const { isFetchingPriceHistory, priceHistory } = usePriceHistory();
 
@@ -44,7 +44,7 @@ export const PriceChart = React.memo(() => {
       />
     </Card>
   );
-});
+};
 
 const cardStyles = css`
   height: 300px;
