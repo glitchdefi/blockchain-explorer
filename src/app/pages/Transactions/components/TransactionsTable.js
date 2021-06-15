@@ -48,7 +48,7 @@ export const TransactionsTable = React.memo((props) => {
           <TableEmpty colSpan={8} invisible={loading} />
         ) : (
           data.map((tx, i) => {
-            const { hash, value, to, from, time, height, result_log, gasused } =
+            const { hash, value, to, from, create_at, height, result_log, gasused } =
               tx;
             const status = result_log === 1 ? "Success" : "Fail";
             return (
@@ -64,7 +64,7 @@ export const TransactionsTable = React.memo((props) => {
                   {height}
                 </TableCell>
                 <TableCell>
-                  {moment(time).format("DD/MM/YYYY HH:mm:ss")}
+                  {moment(create_at).format("DD/MM/YYYY HH:mm:ss")}
                 </TableCell>
                 <TableCell isLink href={`/address/${from}`} dataTip={from}>
                   {sliceString(from)}
