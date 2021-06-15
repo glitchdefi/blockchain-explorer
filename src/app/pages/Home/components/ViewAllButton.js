@@ -2,15 +2,18 @@ import React from "react";
 import { Button } from "src/app/components/Button";
 import tw, { css, theme } from "twin.macro";
 
-export function ViewAllButton({ title, onClick }) {
-  return (
-    <Wrapper>
-      <Button onClick={onClick} css={[styles]}>
-        {title}
-      </Button>
-    </Wrapper>
-  );
-}
+export const ViewAllButton = React.memo(
+  ({ title, onClick }) => {
+    return (
+      <Wrapper>
+        <Button onClick={onClick} css={[styles]}>
+          {title}
+        </Button>
+      </Wrapper>
+    );
+  },
+  () => true
+);
 
 const Wrapper = tw.div`w-full justify-end items-end flex mt-7 mb-2`;
 

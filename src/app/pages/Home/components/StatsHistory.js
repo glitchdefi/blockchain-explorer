@@ -19,7 +19,7 @@ import {
 import { Grid } from "src/app/components/Grid";
 import { StatsCard } from "./StatsCard";
 
-export const StatsHistory = React.memo(() => {
+export const StatsHistory = () => {
   const { t } = useTranslation();
   const { walletCount } = useWalletCount();
   const { allGlitchInfo } = useAllGlitchInfo();
@@ -60,4 +60,4 @@ export const StatsHistory = React.memo(() => {
       />
     </Grid>
   );
-});
+};

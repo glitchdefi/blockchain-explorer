@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
-import { useToast } from "src/hooks/useToast";
+import { useToastError } from "src/hooks/useToastError";
 
 // Redux
 import { slice } from "./reducer";
@@ -16,18 +16,12 @@ export const useWalletCount = () => {
   const { walletCount, walletCountError } = useSelector(
     (state) => state.wallet
   );
-  const { toastError } = useToast();
   const dispatch = useDispatch();
+  useToastError(null, walletCountError);
 
   useEffect(() => {
     dispatch(fetchWalletCount());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (walletCountError) {
-      toastError("Wallet Error", walletCountError);
-    }
-  }, [walletCountError]);
 
   return { walletCount };
 };

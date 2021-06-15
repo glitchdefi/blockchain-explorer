@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
-import { useToast } from "src/hooks/useToast";
+import { useToastError } from "src/hooks/useToastError";
 
 // Redux
 import { slice } from "./reducer";
@@ -24,18 +24,12 @@ export const usePriceSelector = () => {
 export const usePriceHistory = () => {
   const { isFetchingPriceHistory, priceHistory, priceHistoryError } =
     usePriceSelector();
-  const { toastError } = useToast();
   const dispatch = useDispatch();
+  useToastError(null, priceHistoryError);
 
   useEffect(() => {
     dispatch(fetchPriceHistory());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (priceHistoryError) {
-      toastError("Error", priceHistoryError);
-    }
-  }, [priceHistoryError]);
 
   return { isFetchingPriceHistory, priceHistory };
 };
@@ -43,18 +37,12 @@ export const usePriceHistory = () => {
 export const useAllGlitchInfo = () => {
   const { isFetchingAllGlitchInfo, allGlitchInfo, allGlitchInfoError } =
     usePriceSelector();
-  const { toastError } = useToast();
   const dispatch = useDispatch();
+  useToastError(null, allGlitchInfoError);
 
   useEffect(() => {
     dispatch(fetchAllGlitchInfo());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (allGlitchInfoError) {
-      toastError("Error", allGlitchInfoError);
-    }
-  }, [allGlitchInfoError]);
 
   return { isFetchingAllGlitchInfo, allGlitchInfo };
 };
@@ -65,18 +53,12 @@ export const useGlitchMarketData = () => {
     glitchMarketData,
     glitchMarketDataError,
   } = usePriceSelector();
-  const { toastError } = useToast();
   const dispatch = useDispatch();
+  useToastError(null, glitchMarketDataError);
 
   useEffect(() => {
     dispatch(fetchGlitchMarketData());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (glitchMarketDataError) {
-      toastError("Error", glitchMarketDataError);
-    }
-  }, [glitchMarketDataError]);
 
   return { isFetchingGlitchMarketData, glitchMarketData };
 };
