@@ -25,7 +25,7 @@ function getBlockCount() {
  * @returns {Promise} - The response data
  */
 function getBlockByHeight(height) {
-  return Request.get(`block/${height}`);
+  return Request.get(`block`, { params: { height } });
 }
 
 /**

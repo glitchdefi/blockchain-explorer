@@ -42,7 +42,7 @@ export const fetchBlockDetails = (height) => async (dispatch) => {
   try {
     dispatch(loadBlockDetails());
     const data = await BlockApis.getBlockByHeight(height);
-    dispatch(blockDetailsLoaded(data?.length ? data[0] : null));
+    dispatch(blockDetailsLoaded(data));
   } catch (error) {
     dispatch(blockDetailsError(error));
   }
