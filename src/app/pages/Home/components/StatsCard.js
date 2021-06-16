@@ -7,40 +7,42 @@ import { Card } from "src/app/components/Card";
 import { Text } from "src/app/components/Text";
 import { NumberChange } from "src/app/components/NumberChange";
 
-export const StatsCard = ({
-  icon,
-  title,
-  value,
-  values,
-  prefix,
-  decimals,
-  separator,
-}) => {
-  return (
-    <Card>
-      <CardBody>
-        {isValidElement(icon) && cloneElement(icon)}
-        <div tw="ml-5">
-          {typeof value === "string" ? (
-            <Text>{value}</Text>
-          ) : (
-            <NumberChange
-              value={value}
-              values={values}
-              prefix={prefix}
-              decimals={decimals}
-              separator={separator}
-            />
-          )}
+export const StatsCard = React.memo(
+  ({ icon, title, value, values, prefix, decimals, separator }) => {
+    return (
+      <Card>
+        <CardBody>
+          {isValidElement(icon) && cloneElement(icon)}
+          <div tw="ml-5">
+            {typeof value === "string" ? (
+              <Text>{value}</Text>
+            ) : (
+              <NumberChange
+                value={value}
+                values={values}
+                prefix={prefix}
+                decimals={decimals}
+                separator={separator}
+              />
+            )}
 
-          <Text size={theme`fontSize.sm`} color={theme`colors.textSecondary`}>
-            {title}
-          </Text>
-        </div>
-      </CardBody>
-    </Card>
+            <Text size={theme`fontSize.sm`} color={theme`colors.textSecondary`}>
+              {title}
+            </Text>
+          </div>
+        </CardBody>
+      </Card>
+    );
+  },
+  startCardsPropsAreEqual
+);
+
+function startCardsPropsAreEqual(prev, next) {
+  return (
+    prev.value === next.value &&
+    JSON.stringify(prev.values) === JSON.stringify(next.values)
   );
-};
+}
 
 StatsCard.propTypes = {
   icon: PropTypes.element,

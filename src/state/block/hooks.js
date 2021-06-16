@@ -54,9 +54,7 @@ export const useBlockDetails = (height) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchBlockDetails(height));
-    }, 200);
+    dispatch(fetchBlockDetails(height));
 
     return () => {
       dispatch(resetLoadBlockDetails());
@@ -94,16 +92,13 @@ export const useBlockTxs = (block, params) => {
   const { isFetchingBlockTxs, blockTxs, blockTxsError } = useSelector(
     (state) => state.block
   );
-  const { data, pagination, total } = blockTxs || {};
+  const { data, total } = blockTxs || {};
 
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (block && params)
-      setTimeout(() => {
-        dispatch(fetchBlockTxs(block, params));
-      }, 200);
+    if (block && params) dispatch(fetchBlockTxs(block, params));
   }, [block, params, dispatch]);
 
   useEffect(() => {

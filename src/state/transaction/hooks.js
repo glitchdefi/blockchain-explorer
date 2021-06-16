@@ -71,9 +71,7 @@ export const useTxByHash = (hash) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(fetchTxByHash(hash));
-    }, 200);
+    dispatch(fetchTxByHash(hash));
 
     return () => {
       dispatch(resetLoadTxDetails());

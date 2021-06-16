@@ -73,7 +73,7 @@ export const TransactionsTable = React.memo((props) => {
                   {sliceString(to)}
                 </TableCell>
                 <TableCell>{formatAmount(Number(value))} GLCH</TableCell>
-                <TableCell>{formatWei(gasused, true)} GLCH</TableCell>
+                <TableCell>{formatWei(gasused, false)} GLCH</TableCell>
                 <TableCell>
                   <Tag color={status.toLowerCase()}>{status}</Tag>
                 </TableCell>

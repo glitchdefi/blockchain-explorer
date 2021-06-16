@@ -24,9 +24,7 @@ export const useProducerList = (params) => {
 
   useEffect(() => {
     if (params) {
-      setTimeout(() => {
-        dispatch(fetchProducerList(params));
-      }, 500);
+      dispatch(fetchProducerList(params));
     }
 
     return () => {
