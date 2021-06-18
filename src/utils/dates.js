@@ -37,5 +37,8 @@ export function formatDateTimeUTC(dateTime, formatDate) {
       .utc(dateTime)
       .format(`${formatDate || "MMM-DD-YYYY"} h:mm:ss A`);
   }
-  return;
+
+  return moment()
+    .utc()
+    .format(`${formatDate || "MMM-DD-YYYY"} h:mm:ss A`);
 }
