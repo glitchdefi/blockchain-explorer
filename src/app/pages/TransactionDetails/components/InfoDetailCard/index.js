@@ -1,6 +1,5 @@
 import React from "react";
 import tw from "twin.macro";
-import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { isEmpty } from "lodash";
@@ -17,12 +16,17 @@ import { Link } from "src/app/components/Link";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Empty } from "src/app/components/Empty";
 import { Status } from "./Status";
+import {
+  D_FOR_DETAIL,
+  formatDateTimeUTC,
+  formatTimeAgo,
+} from "src/utils/dates";
 
 export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
-  const { hash, time, height, from, to, result_log, gasused, value } =
+  const { hash, create_at, height, from, to, result_log, gasused, value } =
     txDetails || {};
   const status = result_log === 1 ? "Success" : "Fail";
 
@@ -79,9 +83,10 @@ export function InfoDetailCard() {
 
       {renderInfoRow({
         label: t("common.timeStamp"),
-        value: `${moment(time).fromNow()} (${moment
-          .utc(time)
-          .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`,
+        value: `${formatTimeAgo(create_at)} (${formatDateTimeUTC(
+          create_at,
+          D_FOR_DETAIL
+        )} +UTC)`,
         dataTip: t("transactionDetails.time_tip"),
       })}
 

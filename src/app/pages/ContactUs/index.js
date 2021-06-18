@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import tw from "twin.macro";
 
 import { Card } from "src/app/components/Card";
@@ -24,8 +23,10 @@ export function ContactPage() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
+  const watchMessage = watch("message", null);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -97,10 +98,15 @@ export function ContactPage() {
             rows={10}
           />
           <p tw="block text-sm font-medium text-textSecondary">
-            0 of 300 max characters
+            {watchMessage?.length || 0} of 300 max characters
           </p>
           {errors.message?.type === "required" && (
             <FormError msg="Your message is required" />
+          )}
+
+          {(errors.message?.type === "maxLength" ||
+            watchMessage?.length > 300) && (
+            <FormError msg="Your message must be maximum 300 characters" />
           )}
         </Field>
 

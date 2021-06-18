@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
 import { DEFAULT_PAGE_SIZE } from "src/constants";
+import localeEN from "./locale";
 import "./styles/index.css";
 
 export const Pagination = React.memo((props) => {
@@ -29,6 +30,7 @@ export const Pagination = React.memo((props) => {
     <>
       <Wrapper css={containerStyles}>
         <RcPagination
+          locale={localeEN}
           current={current}
           total={total}
           pageSize={DEFAULT_PAGE_SIZE}

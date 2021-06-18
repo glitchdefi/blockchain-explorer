@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
-import moment from "moment";
 import "twin.macro";
 
 // Components
@@ -16,6 +15,7 @@ import {
 
 // Hooks
 import { formatWei } from "src/utils/numbers";
+import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
 
 export const BlocksTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -33,7 +33,7 @@ export const BlocksTable = React.memo((props) => {
         <TableRow animation={false}>
           <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
-          <TableHeaderCell>Create At</TableHeaderCell>
+          <TableHeaderCell>Age</TableHeaderCell>
           <TableHeaderCell>Reward (Glitch)</TableHeaderCell>
           <TableHeaderCell>Size (Bytes)</TableHeaderCell>
           <TableHeaderCell>Producer</TableHeaderCell>
@@ -47,6 +47,7 @@ export const BlocksTable = React.memo((props) => {
           data.map((o, i) => {
             const { epoch, slot, size, height, create_at, reward, producer } =
               o;
+
             return (
               <TableRow
                 key={i}
@@ -59,8 +60,8 @@ export const BlocksTable = React.memo((props) => {
                 <TableCell isLink href={`/block/${height}`}>
                   {height}
                 </TableCell>
-                <TableCell>
-                  {moment(create_at).format("DD/MM/YYYY HH:mm:ss")}
+                <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
+                  {formatTimeAgo(create_at)}
                 </TableCell>
                 <TableCell>{formatWei(reward)} GLCH</TableCell>
                 <TableCell>{size}</TableCell>

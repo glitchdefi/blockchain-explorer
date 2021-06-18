@@ -24,7 +24,7 @@ export const TableHeaderRows = React.memo(() => {
 const headers = [
   "Epoch/ Slot",
   "Block",
-  "Create At",
+  "Age",
   "Reward (Glitch)",
   "Size (Bytes)",
   "Producer",

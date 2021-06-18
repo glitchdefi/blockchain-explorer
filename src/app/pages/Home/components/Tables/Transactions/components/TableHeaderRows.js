@@ -24,7 +24,7 @@ export const TableHeaderRows = React.memo(() => {
 const headers = [
   "Txn Hash",
   "Block",
-  "Create At",
+  "Age",
   "From",
   "To",
   "Value (Glitch)",

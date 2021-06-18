@@ -35,24 +35,24 @@ export const mainNav = [
 
 // For footer
 export const footerNav = [
-  {
-    label: "ABOUT US",
-    href: "/aboutus",
-  },
-  {
-    label: "ADVERTISE",
-    href: "/advertise",
-  },
+  // {
+  //   label: "ABOUT US",
+  //   href: "/aboutus",
+  // },
+  // {
+  //   label: "ADVERTISE",
+  //   href: "/advertise",
+  // },
   {
     label: "CONTACT US",
     href: "/contactus",
   },
-  {
-    label: "BRAND ASSETS",
-    href: "/brandassets",
-  },
-  {
-    label: "TERMS OF SERVICE",
-    href: "/terms",
-  },
+  // {
+  //   label: "BRAND ASSETS",
+  //   href: "/brandassets",
+  // },
+  // {
+  //   label: "TERMS OF SERVICE",
+  //   href: "/terms",
+  // },
 ];

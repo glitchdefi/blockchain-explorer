@@ -1,7 +1,6 @@
 import React from "react";
 import tw, { css } from "twin.macro";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import { isEmpty } from "lodash";
 
 // Utils
@@ -14,6 +13,11 @@ import { InfoRow } from "src/app/components/InfoRow";
 // import { Link } from "src/app/components/Link";
 import { Empty } from "src/app/components/Empty";
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
+import {
+  D_FOR_DETAIL,
+  formatDateTimeUTC,
+  formatTimeAgo,
+} from "src/utils/dates";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
@@ -53,9 +57,10 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
 
           <InfoRow
             label={t("common.timeStamp")}
-            value={`${moment(time).fromNow()} (${moment
-              .utc(time)
-              .format("MMM-DD-YYYY HH:mm:ss A")} +UTC)`}
+            value={`${formatTimeAgo(time)} (${formatDateTimeUTC(
+              time,
+              D_FOR_DETAIL
+            )} +UTC)`}
             dataTip={t("blockDetails.time_tip")}
           />
 

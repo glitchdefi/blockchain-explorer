@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { isEmpty } from "lodash";
-import moment from "moment";
 
 // Hooks
 import { sliceString } from "src/utils/strings";
@@ -17,6 +16,7 @@ import {
   TableRow,
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
+import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
 
 export const TransactionsTable = React.memo((props) => {
   const { loading, total, onChange, data, animation = false, ...rest } = props;
@@ -34,7 +34,7 @@ export const TransactionsTable = React.memo((props) => {
         <TableRow>
           <TableHeaderCell>Txn Hash</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
-          <TableHeaderCell>Create At</TableHeaderCell>
+          <TableHeaderCell>Age</TableHeaderCell>
           <TableHeaderCell>From</TableHeaderCell>
           <TableHeaderCell>To</TableHeaderCell>
           <TableHeaderCell>Value (Glitch)</TableHeaderCell>
@@ -48,8 +48,16 @@ export const TransactionsTable = React.memo((props) => {
           <TableEmpty colSpan={8} invisible={loading} />
         ) : (
           data.map((tx, i) => {
-            const { hash, value, to, from, create_at, height, result_log, gasused } =
-              tx;
+            const {
+              hash,
+              value,
+              to,
+              from,
+              create_at,
+              height,
+              result_log,
+              gasused,
+            } = tx;
             const status = result_log === 1 ? "Success" : "Fail";
             return (
               <TableRow
@@ -63,8 +71,8 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/block/${height}`}>
                   {height}
                 </TableCell>
-                <TableCell>
-                  {moment(create_at).format("DD/MM/YYYY HH:mm:ss")}
+                <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
+                  {formatTimeAgo(create_at)}
                 </TableCell>
                 <TableCell isLink href={`/address/${from}`} dataTip={from}>
                   {sliceString(from)}
