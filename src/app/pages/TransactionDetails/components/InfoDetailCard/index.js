@@ -116,7 +116,7 @@ export function InfoDetailCard() {
 
       {renderInfoRow({
         label: t("common.value"),
-        value: `${value} GLCH`,
+        value: `${formatWei(value)} GLCH`,
         dataTip: t("transactionDetails.value_tip"),
       })}
 
