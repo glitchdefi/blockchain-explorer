@@ -80,7 +80,7 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/address/${to}`} dataTip={to}>
                   {sliceString(to)}
                 </TableCell>
-                <TableCell>{formatAmount(Number(value))} GLCH</TableCell>
+                <TableCell>{formatWei(value)} GLCH</TableCell>
                 <TableCell>{formatWei(gasused, false)} GLCH</TableCell>
                 <TableCell>
                   <Tag color={status.toLowerCase()}>{status}</Tag>
