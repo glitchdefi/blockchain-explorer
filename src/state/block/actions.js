@@ -52,10 +52,10 @@ export const resetLoadBlockDetails = () => async (dispatch) => {
   dispatch(loadBlockDetails());
 };
 
-export const fetchBlockTxs = (hash, params) => async (dispatch) => {
+export const fetchBlockTxs = (height, params) => async (dispatch) => {
   try {
     dispatch(loadBlockTxs());
-    const data = await BlockApis.getBlockTxs(hash, params);
+    const data = await BlockApis.getBlockTxs(height, params);
     dispatch(blockTxsLoaded(data));
   } catch (error) {
     dispatch(blockTxsError(error));

@@ -88,7 +88,7 @@ export const useHeadBlockNumber = () => {
   return { headBlock };
 };
 
-export const useBlockTxs = (hash, params) => {
+export const useBlockTxs = (height, params) => {
   const { isFetchingBlockTxs, blockTxs, blockTxsError } = useSelector(
     (state) => state.block
   );
@@ -98,8 +98,8 @@ export const useBlockTxs = (hash, params) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (hash && params) dispatch(fetchBlockTxs(hash, params));
-  }, [hash, params, dispatch]);
+    if (height && params) dispatch(fetchBlockTxs(height, params));
+  }, [height, params, dispatch]);
 
   useEffect(() => {
     dispatch(resetBlockTxs());

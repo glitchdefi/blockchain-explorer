@@ -20,8 +20,7 @@ export function BlockDetailsPage() {
   const { t } = useTranslation();
   const { height } = useParams();
   const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
-  const { hash } = blockDetails || {}
-  const { isFetchingBlockTxs, data, total } = useBlockTxs(hash, params);
+  const { isFetchingBlockTxs, data, total } = useBlockTxs(height, params);
 
   return (
     <>
