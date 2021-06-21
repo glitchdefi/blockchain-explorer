@@ -12,7 +12,7 @@ export function useSearch() {
 
   const onSearch = () => {
     if (text) {
-      dispatch(fetchSearchResult({ term: text }));
+      dispatch(fetchSearchResult({ term: text.trim() }));
     }
   };
 
