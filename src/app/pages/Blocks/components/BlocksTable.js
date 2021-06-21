@@ -14,7 +14,7 @@ import {
 } from "src/app/components/Table";
 
 // Hooks
-import { formatWei } from "src/utils/numbers";
+import { formatAmount, formatWei } from "src/utils/numbers";
 import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
 
 export const BlocksTable = React.memo((props) => {
@@ -58,13 +58,13 @@ export const BlocksTable = React.memo((props) => {
                   {epoch}/ {slot}
                 </TableCell>
                 <TableCell isLink href={`/block/${height}`}>
-                  {height}
+                  {formatAmount(height)}
                 </TableCell>
                 <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
                   {formatTimeAgo(create_at)}
                 </TableCell>
                 <TableCell>{formatWei(reward)} GLCH</TableCell>
-                <TableCell>{size}</TableCell>
+                <TableCell>{formatAmount(size)}</TableCell>
                 <TableCell>{producer}</TableCell>
               </TableRow>
             );

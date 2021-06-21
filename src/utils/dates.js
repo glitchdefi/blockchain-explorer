@@ -25,7 +25,13 @@ export const D_FOR_DETAIL = "MMM-DD-YYYY";
 
 export function formatTimeAgo(date) {
   if (date) {
-    return moment(date).fromNow(true);
+    const fromNow = moment(date).fromNow(true);
+
+    if (Number(fromNow.slice(0, 2)) > 1 && fromNow.includes("second")) {
+      return fromNow.replace("second", "seconds");
+    }
+
+    return fromNow;
   }
 
   return moment().fromNow(true);

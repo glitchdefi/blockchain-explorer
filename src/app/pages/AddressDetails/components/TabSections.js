@@ -32,6 +32,7 @@ export function TabSections({ address }) {
 
       <TabPanel evtKey="txs">
         <TransactionsTable
+          showTxType
           loading={isFetchingAddressTxs}
           data={data}
           total={total}

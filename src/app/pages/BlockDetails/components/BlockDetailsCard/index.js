@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { isEmpty } from "lodash";
 
 // Utils
-import { formatWei } from "src/utils/numbers";
+import { formatAmount, formatWei } from "src/utils/numbers";
 
 // Components
 import { TableContainer as Container } from "src/app/components/Table";
@@ -51,7 +51,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
         <Wrapper>
           <InfoRow
             label={t("blockDetails.block_height")}
-            value={height}
+            value={formatAmount(height)}
             dataTip={t("blockDetails.height_tip")}
           />
 
@@ -64,10 +64,9 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
             dataTip={t("blockDetails.time_tip")}
           />
 
-          {/* <InfoRow label={t("common.transactions")} value={num_txs} /> */}
           <InfoRow
             label={t("common.total_txs")}
-            value={num_txs}
+            value={formatAmount(num_txs)}
             dataTip={t("blockDetails.txs_tip")}
           />
 
@@ -98,7 +97,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
 
           <InfoRow
             label={t("common.size")}
-            value={`${block_size} bytes`}
+            value={`${formatAmount(block_size)} bytes`}
             dataTip={t("blockDetails.size_tip")}
           />
 

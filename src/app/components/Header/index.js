@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 
 // Hooks
 import { useGlobalSlice } from "src/state/global/hooks";
@@ -8,6 +8,7 @@ import { useGlobalSlice } from "src/state/global/hooks";
 // Components
 import { Logo } from "src/app/components/Logo";
 import { HorizontalMenu, VerticalMenu } from "./components/Menu";
+import { Text } from "../Text";
 import { Button } from "../Button";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
 import { SearchInput } from "./components/Menu/Horizontal/SearchInput";
@@ -52,8 +53,14 @@ export function Header() {
         </PageElementWrap>
         {/* Menu for Mobile */}
         {isShowVerticalMenu && <VerticalMenu />}
-        
+
         <PageElementWrap>
+          {location.pathname === "/searchNotFound" && (
+            <Text
+              tw="mt-8 lg:mt-16"
+              size={theme`fontSize.base`}
+            >{`Glitch Explorer > Search`}</Text>
+          )}
           <SearchInput />
         </PageElementWrap>
       </Wrapper>

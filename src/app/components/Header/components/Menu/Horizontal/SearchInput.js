@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import tw from "twin.macro";
@@ -9,6 +9,7 @@ import { useSearchResult } from "src/state/global/hooks";
 
 // Components
 import { Input } from "src/app/components/Input";
+import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 import { StyledButton as Button } from "src/app/components/Button/StyledButton";
 import { Image } from "src/app/components/Image";
 
@@ -18,6 +19,8 @@ import { Text } from "src/app/components/Text";
 
 export function SearchInput() {
   const history = useHistory();
+  const buttonRef = useRef();
+  
   const { t } = useTranslation();
   const { text, onTextChange, onSearch, onClearText } = useSearch();
   const { isSearching, searchResult, searchError } = useSearchResult();
@@ -32,8 +35,16 @@ export function SearchInput() {
 
     if (!isSearching && searchError) {
       onClearText();
+      history.push("/searchNotFound");
     }
   }, [isSearching]);
+
+  // Detect when user enter key
+  const onEnterPress = (event) => {
+    if (event.key === "Enter") {
+      onSearch();
+    }
+  };
 
   return (
     <Wrapper>
@@ -43,13 +54,26 @@ export function SearchInput() {
           tw="flex-1 rounded py-3 text-sm md:text-base bg-bg1"
           placeholder={`${t("common.search_placeholder")}`}
           onChange={onTextChange}
+          onKeyPress={onEnterPress}
         />
         <Button
+          ref={buttonRef}
           tw="relative bg-gradient-to-r from-primary to-info py-0 md:px-6 ml-5 md:ml-6"
           onClick={onSearch}
         >
-          <Image alt="gl-search-icon" src={searchIcon} width={16} height={16} />
-          <Text tw="ml-3 hidden md:block">{t("common.search")}</Text>
+          {isSearching ? (
+            <Spinner stroke="white" />
+          ) : (
+            <>
+              <Image
+                alt="gl-search-icon"
+                src={searchIcon}
+                width={16}
+                height={16}
+              />
+              <Text tw="ml-3 hidden md:block">{t("common.search")}</Text>
+            </>
+          )}
         </Button>
       </InputWrapper>
     </Wrapper>

@@ -34,6 +34,7 @@ import { TransactionDetailsPage } from "./pages/TransactionDetails";
 import { BlockDetailsPage } from "./pages/BlockDetails";
 import { EpodDetailsPage } from "./pages/EpodDetails";
 import { NotFoundPage } from "./pages/NotFound";
+import { SearchNotFoundPage } from "./pages/SearchNotFound";
 import { ContactPage } from "./pages/ContactUs";
 
 export function App() {
@@ -65,12 +66,16 @@ export function App() {
                 {/* <Route path="/vote" component={VotePage} /> */}
                 <Route path="/charts" component={ChartsStatsPage} />
                 <Route path="/topstat" component={TopStatisticsPage} />
-                <Route path="/address/:address" component={AddressDetailsPage} />
+                <Route
+                  path="/address/:address"
+                  component={AddressDetailsPage}
+                />
                 <Route path="/tx/:hash" component={TransactionDetailsPage} />
                 <Route path="/block/:height" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
 
                 <Route path="/contactus" component={ContactPage} />
+                <Route path="/searchNotFound" component={SearchNotFoundPage} />
                 <Route component={NotFoundPage} />
               </Switch>
             </Page>

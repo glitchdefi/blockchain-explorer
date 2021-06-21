@@ -3,6 +3,7 @@ import { isEmpty } from "lodash";
 
 // Hooks
 import { sliceString } from "src/utils/strings";
+import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
 import { formatAmount, formatWei } from "src/utils/numbers";
 
 // Components
@@ -16,10 +17,18 @@ import {
   TableRow,
 } from "src/app/components/Table";
 import { Tag } from "src/app/components/Tag";
-import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
+import { TxType } from "./TxType";
 
 export const TransactionsTable = React.memo((props) => {
-  const { loading, total, onChange, data, animation = false, ...rest } = props;
+  const {
+    loading,
+    total,
+    onChange,
+    data,
+    animation = false,
+    showTxType = false, // for transactions in address
+    ...rest
+  } = props;
   const countUpdated = useRef(0);
 
   useEffect(() => {
@@ -36,6 +45,7 @@ export const TransactionsTable = React.memo((props) => {
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
           <TableHeaderCell>From</TableHeaderCell>
+          {showTxType && <TableHeaderCell></TableHeaderCell>}
           <TableHeaderCell>To</TableHeaderCell>
           <TableHeaderCell>Value (Glitch)</TableHeaderCell>
           <TableHeaderCell>Txn Fee</TableHeaderCell>
@@ -57,8 +67,10 @@ export const TransactionsTable = React.memo((props) => {
               height,
               result_log,
               gasused,
+              type,
             } = tx;
             const status = result_log === 1 ? "Success" : "Fail";
+
             return (
               <TableRow
                 key={i}
@@ -69,7 +81,7 @@ export const TransactionsTable = React.memo((props) => {
                   {sliceString(hash)}
                 </TableCell>
                 <TableCell isLink href={`/block/${height}`}>
-                  {height}
+                  {formatAmount(height)}
                 </TableCell>
                 <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
                   {formatTimeAgo(create_at)}
@@ -77,6 +89,11 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/address/${from}`} dataTip={from}>
                   {sliceString(from)}
                 </TableCell>
+                {showTxType && (
+                  <TableCell>
+                    <TxType type={type} />
+                  </TableCell>
+                )}
                 <TableCell isLink href={`/address/${to}`} dataTip={to}>
                   {sliceString(to)}
                 </TableCell>

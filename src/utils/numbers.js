@@ -21,16 +21,18 @@ export const formatDollarAmount = (num, digits = 2, round = true) => {
 };
 
 export const formatAmount = (num, digits = 2) => {
-  if (num === 0) return "0";
-  if (!num) return "-";
-  if (num < 0.001) {
+  const cvNum = Number(num);
+  if (cvNum === 0) return "0";
+  if (!cvNum) return "-";
+  if (cvNum < 0.001) {
     return "<0.001";
   }
   const nf = new Intl.NumberFormat();
-  return nf.format(parseFloat(num.toFixed(num > 1000 ? 0 : digits)));
+  return nf.format(parseFloat(cvNum?.toFixed(cvNum > 1000 ? 0 : digits)));
 };
 
 export const formatWei = (num, isFormatAmount) => {
+  if (num == 0) return "0";
   if (!num) return "--";
   const numToStr = num?.toString();
   const numFromWei = Web3Utils.fromWei(numToStr);

@@ -1,11 +1,12 @@
 import React from "react";
 import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
-import moment from "moment";
+
 // Components
 import { Avatar } from "src/app/components/Avatar";
 import { Text } from "src/app/components/Text";
 import { CopyButton } from "src/app/components/CopyButton";
+import { formatTimeAgo } from "src/utils/dates";
 
 export function InfoUser({ address, data }) {
   const { create_at } = data || {};
@@ -24,7 +25,7 @@ export function InfoUser({ address, data }) {
           <CopyButton text={address} />
         </FlexLayout>
         <Text tw="mt-1">
-          {create_at ? `${moment(create_at).fromNow()}` : "--"}
+          {create_at ? `${formatTimeAgo(create_at)}` : "--"}
         </Text>
       </div>
     </Wrapper>

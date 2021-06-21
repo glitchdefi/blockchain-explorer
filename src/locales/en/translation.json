@@ -26,7 +26,7 @@
         "miners": "Miners",
         "loading": "Loading, please wait...",
         "glitch_price": "Glitch price",
-        "search_placeholder": "Search by Address / Txn Hash / Block Hash",
+        "search_placeholder": "Search by Address / Txn Hash / Block Height",
         "latest_blocks": "Latest Blocks",
         "latest_txs": "Latest Transactions"
     },
@@ -90,6 +90,10 @@
     },
     "notFoundPage": {
         "go_back_home_page":"Go back to the Home page"
+    },
+    "searchNotFoundPage": {
+        "oops": " Oops! We couldn't find what you are looking for.",
+        "please_enter": "Please enter an address, transaction hash, block height"
     },
     "walletPage": {
         "public_key": "Public key",
