@@ -40,7 +40,7 @@ export const formatWei = (num, isFormatAmount) => {
   if (num == 0) return "0";
   if (!num) return "--";
   const numToStr = num?.toString();
-  const numFromWei = Web3Utils.fromWei(Web3Utils.hexToNumberString(parseFloat(numToStr)));
+  const numFromWei = Web3Utils.fromWei(Web3Utils.hexToNumberString(parseInt(numToStr)));
   // Web3Utils.fromWei(
   return isFormatAmount ? formatAmount(Number(numFromWei)) : formatNumber(numFromWei);
 };
