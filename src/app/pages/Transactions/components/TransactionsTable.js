@@ -47,7 +47,7 @@ export const TransactionsTable = React.memo((props) => {
           <TableHeaderCell>From</TableHeaderCell>
           {showTxType && <TableHeaderCell></TableHeaderCell>}
           <TableHeaderCell>To</TableHeaderCell>
-          <TableHeaderCell>Value (Glitch)</TableHeaderCell>
+          <TableHeaderCell>Value (GLCH)</TableHeaderCell>
           <TableHeaderCell>Txn Fee</TableHeaderCell>
           <TableHeaderCell>Status</TableHeaderCell>
         </TableRow>
@@ -97,8 +97,8 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell isLink href={`/address/${to}`} dataTip={to}>
                   {sliceString(to)}
                 </TableCell>
-                <TableCell>{formatWei(value)} GLCH</TableCell>
-                <TableCell>{formatWei(gasused, false)} GLCH</TableCell>
+                <TableCell>{formatWei(value)}</TableCell>
+                <TableCell>{formatWei(gasused, false)}</TableCell>
                 <TableCell>
                   <Tag color={status.toLowerCase()}>{status}</Tag>
                 </TableCell>

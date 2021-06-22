@@ -34,7 +34,7 @@ export const BlocksTable = React.memo((props) => {
           <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
-          <TableHeaderCell>Reward (Glitch)</TableHeaderCell>
+          <TableHeaderCell>Reward (GLCH)</TableHeaderCell>
           <TableHeaderCell>Size (Bytes)</TableHeaderCell>
           <TableHeaderCell>Producer</TableHeaderCell>
         </TableRow>
@@ -63,7 +63,7 @@ export const BlocksTable = React.memo((props) => {
                 <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
                   {formatTimeAgo(create_at)}
                 </TableCell>
-                <TableCell>{formatWei(reward)} GLCH</TableCell>
+                <TableCell>{formatWei(reward)}</TableCell>
                 <TableCell>{formatAmount(size)}</TableCell>
                 <TableCell>{producer}</TableCell>
               </TableRow>

@@ -25,7 +25,7 @@ const headers = [
   "Epoch/ Slot",
   "Block",
   "Age",
-  "Reward (Glitch)",
+  "Reward (GLCH)",
   "Size (Bytes)",
   "Producer",
 ];
