@@ -58,7 +58,7 @@ export function SearchInput() {
           onKeyPress={onEnterPress}
         />
         <Button
-          ref={buttonRef}
+          refs={buttonRef}
           tw="relative bg-gradient-to-r from-primary to-info py-0 md:px-6 ml-5 md:ml-6"
           onClick={onSearch}
         >

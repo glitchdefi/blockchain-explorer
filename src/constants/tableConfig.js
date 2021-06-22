@@ -23,7 +23,7 @@ export const transWithActionTableHeader = [
   "Action",
   "From",
   "To",
-  "Value (GLCH)",
+  "Value",
   "Txn Fee",
   "Status",
 ];
@@ -34,7 +34,7 @@ export const blockDetailsTableHeader = [
   "Action",
   "From",
   "To",
-  "Value (GLCH)",
+  "Value",
   "Txn Fee",
   "Status",
 ];

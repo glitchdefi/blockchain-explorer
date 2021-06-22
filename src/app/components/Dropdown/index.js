@@ -55,7 +55,7 @@ export function Dropdown(props) {
 
   return (
     <>
-      <Wrapper ref={dropdownMenuRef}>
+      <Wrapper refs={dropdownMenuRef}>
         <DropdownLabel onClick={onToggle}>
           {renderLabel()}
           <FontAwesomeIcon

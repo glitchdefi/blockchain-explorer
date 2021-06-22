@@ -1,5 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+// Utils
+import { formatNumber } from "src/utils/numbers";
 
 // Hooks
 import { useWalletCount } from "src/state/wallet/hooks";
@@ -55,7 +57,7 @@ export const StatsHistory = () => {
       <StatsCard
         icon={<TotalAccountIcon />}
         title={t("homePage.total_account")}
-        value={walletCount === 0 ? "0" : walletCount}
+        value={walletCount === 0 ? "0" : formatNumber(walletCount)}
       />
     </Grid>
   );

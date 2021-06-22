@@ -21,7 +21,7 @@ export function CopyButton({ text, ...props }) {
   return (
     <>
       <Button
-        ref={tooltipRef}
+        refs={tooltipRef}
         tw="p-0 ml-5 md:ml-10"
         onClick={() => {
           ReactTooltip.show(tooltipRef.current);

@@ -48,7 +48,7 @@ export const Toast = ({ toast, onRemove, style, ttl, ...props }) => {
   return (
     <CSSTransition nodeRef={ref} timeout={250} style={style} {...props}>
       <StyledToast
-        ref={ref}
+        refs={ref}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

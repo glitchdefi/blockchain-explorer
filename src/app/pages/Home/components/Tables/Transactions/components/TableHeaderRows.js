@@ -27,7 +27,7 @@ const headers = [
   "Age",
   "From",
   "To",
-  "Value (GLCH)",
+  "Value",
   "Txn Fee",
   "Status",
 ];

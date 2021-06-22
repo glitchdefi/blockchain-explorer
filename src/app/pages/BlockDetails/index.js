@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
-
+// Utils
+import { formatNumber } from "src/utils/numbers";
 // Components
 import { Text } from "src/app/components/Text";
 import { TabPanel } from "src/app/components/Tab/Horizontal";
@@ -27,7 +28,7 @@ export function BlockDetailsPage() {
       <Wrapper>
         <HeadWrapper>
           <Heading>{t("blockDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#{height}</Heading>
+          <Heading tw="text-textSecondary! ml-4">#{formatNumber(height)}</Heading>
         </HeadWrapper>
 
         <BlockDetailsCard

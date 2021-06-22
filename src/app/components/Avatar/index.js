@@ -22,7 +22,7 @@ export function Avatar({ href, src, alt, width, height, ...props }) {
 }
 
 ImageLink.propTypes = {
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   width: PropTypes.number,
