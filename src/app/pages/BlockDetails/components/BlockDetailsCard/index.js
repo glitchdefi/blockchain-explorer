@@ -23,7 +23,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
   const {
     block_size,
-    num_txs,
+    total_txs,
     // proposer_address,
     height,
     time,
@@ -66,7 +66,7 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
 
           <InfoRow
             label={t("common.total_txs")}
-            value={formatAmount(num_txs)}
+            value={formatAmount(total_txs)}
             dataTip={t("blockDetails.txs_tip")}
           />
 
