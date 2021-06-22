@@ -8,11 +8,9 @@ import { useBlockList } from "src/state/block/hooks";
 // Components
 import { BlocksTable } from "src/app/pages/Blocks/components/BlocksTable";
 import { ViewAllButton } from "../ViewAllButton";
-import { useLatestBlock } from "src/services/socket/hooks/useLastestBlock";
 import { useTranslation } from "react-i18next";
 
 export function LatestBlocksPanel() {
-  useLatestBlock();
   const history = useHistory();
   const [params, setParams] = useState();
   const { t } = useTranslation();

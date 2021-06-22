@@ -8,6 +8,7 @@ import { usePriceSlice } from "src/state/price/hooks";
 import { useBlockSlice } from "src/state/block/hooks";
 import { useTxSlice } from "src/state/transaction/hooks";
 import { useProducerSlice } from "src/state/producer/hooks";
+import { useSocket } from "src/services/socket/hooks/useSocket";
 
 // Components
 import { Grid } from "src/app/components/Grid";
@@ -23,6 +24,7 @@ export function HomePage() {
   useBlockSlice();
   useProducerSlice();
   useTxSlice();
+  useSocket();
 
   return (
     <>

@@ -1,24 +1,46 @@
 import { useEffect, useRef } from "react";
-import io from "socket.io-client";
+import { useDispatch } from "react-redux";
+import { io } from "socket.io-client";
 
-/**
- * Init socket server's url
- *
- * @param {string} url
- * @param {Object} options
- * @param {Object} options.query
- * @returns
- */
-export function useSocket(url, options) {
-  let socket = useRef();
+import {
+  LATEST_BLOCKS_EVENT,
+  LATEST_HEAD_BLOCK_EVENT,
+  LATEST_TX_EVENT,
+  LATEST_HEAD_WALLET,
+} from "../events";
+import { latestBlockLoaded, headBlockLoaded } from "src/state/block/reducer";
+import { latestTxLoaded } from "src/state/transaction/reducer";
+import { walletCountLoaded } from "src/state/wallet/reducer";
+
+const SOCKET_URL = process.env.REACT_APP_BASE_URL;
+
+export function useSocket() {
+  const socketRef = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.current = io(url, options);
+    socketRef.current = io(SOCKET_URL, {
+      transports: ["websocket"],
+    });
+
+    socketRef.current.on(LATEST_BLOCKS_EVENT, (latestBlock) => {
+      dispatch(latestBlockLoaded(latestBlock));
+    });
+
+    socketRef.current.on(LATEST_HEAD_BLOCK_EVENT, (headBlock) => {
+      dispatch(headBlockLoaded(headBlock));
+    });
+
+    socketRef.current.on(LATEST_TX_EVENT, (latestTx) => {
+      dispatch(latestTxLoaded(latestTx));
+    });
+
+    socketRef.current.on(LATEST_HEAD_WALLET, (headWallet) => {
+      dispatch(walletCountLoaded(headWallet));
+    });
 
     return () => {
-      socket.current.disconnect();
+      socketRef.current.disconnect();
     };
-  }, [url, options]);
-
-  return { socket: socket.current };
+  }, []);
 }

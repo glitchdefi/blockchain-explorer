@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import { DEFAULT_PAGE_SIZE_WS } from "src/constants";
 
 // Hooks
-import { useLatestTx } from "src/services/socket/hooks/useLatestTx";
 import { useTxList } from "src/state/transaction/hooks";
 
 // Components
@@ -12,7 +11,6 @@ import { ViewAllButton } from "../ViewAllButton";
 import { useTranslation } from "react-i18next";
 
 export function LatestTxnsPanel() {
-  useLatestTx();
   const history = useHistory();
   const [params, setParams] = useState();
   const { t } = useTranslation();

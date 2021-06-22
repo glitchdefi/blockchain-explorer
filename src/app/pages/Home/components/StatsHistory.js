@@ -43,7 +43,6 @@ export const StatsHistory = () => {
         icon={<HeadBlockIcon />}
         title={t("homePage.head_block")}
         value={headBlock}
-        separator={null}
       />
       <StatsCard
         icon={<PriceIcon />}
