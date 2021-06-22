@@ -49,6 +49,7 @@ const styles = css`
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgba(255, 255, 255, 0.11);
+  padding-left: 0;
 `;
 
 const CustomLink = tw(Link)`text-textSecondary! whitespace-nowrap underline`;
