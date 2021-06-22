@@ -20,6 +20,8 @@ module.exports = {
 
         success: "var(--color-success)",
         pending: "var(--color-pending)",
+        out: "var(--color-out)",
+        in: "var(--color-in)",
         waiting: "var(--color-waiting)",
         info: "var(--color-info)",
 

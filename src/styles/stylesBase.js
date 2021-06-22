@@ -8,6 +8,8 @@ export const StylesBase = createGlobalStyle`
 
     --color-success: #24C6C9;
     --color-pending: #BF28E4;
+    --color-out: #FF52F6;
+    --color-in: #00D974;
     --color-waiting: rgba(255, 255, 255, 0.2);
     --color-info: #005FA9;
 
@@ -33,6 +35,8 @@ export const StylesBase = createGlobalStyle`
 
     --color-success: #24C6C9;
     --color-pending: #BF28E4;
+    --color-out: #FF52F6;
+    --color-in: #00D974;
     --color-waiting: rgba(255, 255, 255, 0.2);
     --color-info: #005FA9;
 
