@@ -4,6 +4,7 @@ import "twin.macro";
 
 // Hooks
 import { useAddressDetails, useAddressSlice } from "src/state/address/hooks";
+import { usePriceSlice } from "src/state/price/hooks";
 
 // Components
 import { Grid } from "src/app/components/Grid";
@@ -14,13 +15,14 @@ import { TabSections } from "./components/TabSections";
 
 export function AddressDetailsPage() {
   useAddressSlice();
+  usePriceSlice();
   const { address } = useParams();
   const { isFetchingAddressDetails, addressDetails } =
     useAddressDetails(address);
 
   return (
     <>
-      <InfoUser address={address} data={addressDetails}/>
+      <InfoUser address={address} data={addressDetails} />
       <Grid cols={2} tw="mt-6 mb-12">
         <OverviewCard
           loading={isFetchingAddressDetails}

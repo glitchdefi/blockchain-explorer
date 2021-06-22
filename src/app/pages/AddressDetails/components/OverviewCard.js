@@ -2,8 +2,11 @@ import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 
+// Hooks
+import { useAllGlitchInfo } from "src/state/price/hooks";
+
 // Utils
-import { formatWei } from "src/utils/numbers";
+import { formatDollarAmount, formatWei } from "src/utils/numbers";
 
 // Components
 import { Card as CardBase } from "src/app/components/Card";
@@ -13,7 +16,14 @@ import { Skeleton } from "src/app/components/Skeleton";
 
 export function OverviewCard({ loading, data }) {
   const { t } = useTranslation();
+  const { allGlitchInfo } = useAllGlitchInfo();
   const { balance } = data || {};
+  const { current_price } = allGlitchInfo || {};
+
+  const totalValue =
+    balance && current_price
+      ? formatDollarAmount(formatWei(balance) * current_price, 2, true)
+      : "--";
 
   return (
     <Wrapper>
@@ -32,7 +42,7 @@ export function OverviewCard({ loading, data }) {
           {loading ? (
             <Skeleton tw="flex-grow" animation="waves" />
           ) : (
-            <Text>--</Text>
+            <Text>{totalValue}</Text>
           )}
         </Block>
         <Block>
