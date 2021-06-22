@@ -15,7 +15,6 @@ export const fetchSearchResult = (params) => async (dispatch) => {
       const newData = {
         type: key?.length ? key[0] : null,
       };
-
       dispatch(searchResultLoaded(newData));
     } else {
       dispatch(searchResultError("Not found"));

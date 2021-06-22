@@ -16,6 +16,7 @@ import { Image } from "src/app/components/Image";
 // Icon
 import searchIcon from "../../../assets/search_icon.png";
 import { Text } from "src/app/components/Text";
+import { trim } from "lodash";
 
 export function SearchInput() {
   const history = useHistory();
@@ -27,9 +28,9 @@ export function SearchInput() {
 
   useEffect(() => {
     if (!isSearching && searchResult && !searchError) {
-      if (searchResult?.type === "tx") history.push(`/tx/${text}`);
-      if (searchResult?.type === "block") history.push(`/block/${text}`);
-      if (searchResult?.type === "wallet") history.push(`/address/${text}`);
+      if (searchResult?.type === "tx") history.push(`/tx/${text.trim()}`);
+      if (searchResult?.type === "block") history.push(`/block/${text.trim()}`);
+      if (searchResult?.type === "wallet") history.push(`/address/${text.trim()}`);
       onClearText();
     }
 
