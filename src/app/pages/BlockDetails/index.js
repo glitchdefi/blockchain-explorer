@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
-// Utils
-import { formatNumber } from "src/utils/numbers";
-// Components
-import { Text } from "src/app/components/Text";
-import { TabPanel } from "src/app/components/Tab/Horizontal";
-import { BlockDetailsCard } from "./components/BlockDetailsCard";
+
 import {
   useBlockDetails,
   useBlockSlice,
   useBlockTxs,
 } from "src/state/block/hooks";
+import { useProducerSlice } from "src/state/producer/hooks";
+
+// Components
+import { Text } from "src/app/components/Text";
+import { TabPanel } from "src/app/components/Tab/Horizontal";
+import { BlockDetailsCard } from "./components/BlockDetailsCard";
 import { TransactionsTable } from "../Transactions/components/TransactionsTable";
 
 export function BlockDetailsPage() {
   useBlockSlice();
+  useProducerSlice();
   const [params, setParams] = useState();
   const { t } = useTranslation();
   const { height } = useParams();

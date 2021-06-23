@@ -70,7 +70,7 @@
     "blockDetails": {
         "title": "Block Details",
         "block_height": "Block Height",
-        "produced_by": "Produced by",
+        "produced_by": "Producer",
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
         "hash": "Hash",
@@ -80,7 +80,8 @@
         "txs_tip": "The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves GLCH value.",
         "reward_tip": "For each block, the miner is rewarded with a finite amount of GLCH on top of the fees paid for all transactions in the block.",
         "size_tip": "The block size is actually determined by the block's gas limit.",
-        "hash_tip": "The hash of the block header of the current block."
+        "hash_tip": "The hash of the block header of the current block.",
+        "producer_tip": "Producer"
     },
     "epodDetails": {
         "title": "Epod Details",

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   isFetchingProducerList: true,
+  isFetchingProducerDetails: true,
 };
 
 export const slice = createSlice({
@@ -20,6 +21,20 @@ export const slice = createSlice({
       state.isFetchingProducerList = false;
     },
 
+    loadProducerDetails: (state) => {
+      state.isFetchingProducerDetails = true;
+      state.producerDetails = null;
+      state.producerDetailsError = null;
+    },
+    producerDetailsLoaded: (state, action) => {
+      state.isFetchingProducerDetails = false;
+      state.producerDetails = action.payload;
+    },
+    producerDetailsError: (state, action) => {
+      state.producerDetailsError = action.payload;
+      state.isFetchingProducerDetails = false;
+    },
+
     producerNameLoaded: (state, action) => {
       state.producerName = action.payload;
     },
@@ -36,4 +51,7 @@ export const {
   producerListError,
   producerNameLoaded,
   producerNameError,
+  loadProducerDetails,
+  producerDetailsLoaded,
+  producerDetailsError,
 } = slice.actions;
