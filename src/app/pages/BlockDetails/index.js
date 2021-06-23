@@ -28,7 +28,7 @@ export function BlockDetailsPage() {
       <Wrapper>
         <HeadWrapper>
           <Heading>{t("blockDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#{formatNumber(height)}</Heading>
+          <Heading tw="text-textSecondary! ml-4">#{height}</Heading>
         </HeadWrapper>
 
         <BlockDetailsCard
