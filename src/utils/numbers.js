@@ -36,11 +36,15 @@ export const formatNumber = (num) => {
   return numbro(num).format({thousandSeparated: true})
 }
 
+const toPrecise = (num) => {
+  return Number.parseFloat(num).toPrecision();
+}
+
 export const formatWei = (num, isFormatAmount) => {
   if (num == 0) return "0";
   if (!num) return "--";
   const numToStr = num?.toString();
-  const numFromWei = Web3Utils.fromWei(Web3Utils.hexToNumberString(parseInt(numToStr)));
-  // Web3Utils.fromWei(
+  let numStr = numToStr.includes('e') ? toPrecise(numToStr) : numToStr;
+  const numFromWei = Web3Utils.fromWei(numStr);
   return isFormatAmount ? formatAmount(Number(numFromWei)) : formatNumber(numFromWei);
 };
