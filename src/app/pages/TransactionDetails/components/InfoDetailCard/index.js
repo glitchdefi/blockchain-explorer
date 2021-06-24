@@ -6,7 +6,7 @@ import { isEmpty } from "lodash";
 
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
-
+import { formatWei } from "src/utils/numbers";
 // Components
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
 import { Link } from "src/app/components/Link";
