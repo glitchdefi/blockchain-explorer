@@ -12,6 +12,7 @@ export function InfoRow(props) {
     label,
     labelWrapStyles,
     value,
+    copyValue,
     customValueComp,
     isCopy,
     dataTip,
@@ -23,7 +24,12 @@ export function InfoRow(props) {
       return (
         <div tw="flex items-center">
           {cloneElement(customValueComp)}
-          {isCopy && <CopyButton text={value} tw="ml-3" />}
+          {isCopy && (
+            <CopyButton
+              text={copyValue || (typeof value !== "string" ? null : value)}
+              tw="ml-3"
+            />
+          )}
         </div>
       );
     }
@@ -31,7 +37,12 @@ export function InfoRow(props) {
     return (
       <div tw="flex items-center">
         <Text>{value}</Text>
-        {isCopy && <CopyButton text={value} tw="ml-3" />}
+        {isCopy && (
+          <CopyButton
+            text={copyValue || (typeof value !== "string" ? null : value)}
+            tw="ml-3"
+          />
+        )}
       </div>
     );
   };
@@ -73,6 +84,7 @@ InfoRow.propTypes = {
   value: PropTypes.any,
   customValueComp: PropTypes.element,
   dataTip: PropTypes.string,
+  copyValue: PropTypes.string,
 };
 
 InfoRow.defaultProps = {

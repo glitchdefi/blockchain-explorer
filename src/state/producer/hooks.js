@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
 import { useToast } from "src/hooks/useToast";
+import { useToastError } from "src/hooks/useToastError";
 
 // Redux
 import { slice } from "./reducer";
@@ -10,6 +11,7 @@ import {
   fetchProducerList,
   resetLoadProducerList,
   fetchProducerName,
+  fetchProducerDetails,
 } from "./actions";
 
 export const useProducerSlice = () => {
@@ -59,4 +61,20 @@ export const useProducerName = () => {
   }, [producerNameError]);
 
   return { producerName };
+};
+
+export const useProducerDetails = (address) => {
+  const { producerDetails, producerDetailsError } = useSelector(
+    (state) => state.producer
+  );
+  const dispatch = useDispatch();
+  useToastError(null, producerDetailsError);
+
+  useEffect(() => {
+    if (address) {
+      dispatch(fetchProducerDetails(address));
+    }
+  }, [address, dispatch]);
+
+  return { producerDetails };
 };

@@ -11,6 +11,7 @@ import {
 import { latestBlockLoaded, headBlockLoaded } from "src/state/block/reducer";
 import { latestTxLoaded } from "src/state/transaction/reducer";
 import { walletCountLoaded } from "src/state/wallet/reducer";
+import { producerNameLoaded } from "src/state/producer/reducer";
 
 const SOCKET_URL = process.env.REACT_APP_BASE_URL;
 
@@ -25,6 +26,7 @@ export function useSocket() {
 
     socketRef.current.on(LATEST_BLOCKS_EVENT, (latestBlock) => {
       dispatch(latestBlockLoaded(latestBlock));
+      dispatch(producerNameLoaded(latestBlock?.producer));
     });
 
     socketRef.current.on(LATEST_HEAD_BLOCK_EVENT, (headBlock) => {

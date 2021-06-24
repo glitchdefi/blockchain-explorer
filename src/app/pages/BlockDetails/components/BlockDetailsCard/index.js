@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { css } from "twin.macro";
+import tw, { css, theme } from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { isEmpty } from "lodash";
 
@@ -11,6 +11,7 @@ import { TableContainer as Container } from "src/app/components/Table";
 import { TabPanel as Card } from "src/app/components/Tab/Horizontal";
 import { InfoRow } from "src/app/components/InfoRow";
 // import { Link } from "src/app/components/Link";
+import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 import { Empty } from "src/app/components/Empty";
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
 import {
@@ -18,18 +19,21 @@ import {
   formatDateTimeUTC,
   formatTimeAgo,
 } from "src/utils/dates";
+import { useProducerDetails } from "src/state/producer/hooks";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
   const {
     block_size,
     total_txs,
-    // proposer_address,
+    proposer_address,
     height,
     time,
     hash,
     reward,
   } = data || {};
+  const { producerDetails } = useProducerDetails(proposer_address);
+  const { name } = producerDetails || {};
 
   if (loading)
     return (
@@ -65,19 +69,26 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           />
 
           <InfoRow
+            isCopy={name}
+            label={t("blockDetails.produced_by")}
+            value={
+              name || (
+                <Spinner
+                  tw="mt-1"
+                  size="12px"
+                  stroke={theme`colors.textSecondary`}
+                />
+              )
+            }
+            copyValue={proposer_address}
+            dataTip={t("blockDetails.producer_tip")}
+          />
+
+          <InfoRow
             label={t("common.total_txs")}
             value={formatAmount(total_txs)}
             dataTip={t("blockDetails.txs_tip")}
           />
-
-          {/* <InfoRow
-            label={t("blockDetails.produced_by")}
-            customValueComp={
-              <Link href={`/address/${proposer_address}`} tw="underline">
-                {proposer_address}
-              </Link>
-            }
-          /> */}
 
           <InfoRow
             label={t("blockDetails.block_reward")}
