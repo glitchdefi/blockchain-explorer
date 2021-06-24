@@ -12,6 +12,7 @@ import { latestBlockLoaded, headBlockLoaded } from "src/state/block/reducer";
 import { latestTxLoaded } from "src/state/transaction/reducer";
 import { walletCountLoaded } from "src/state/wallet/reducer";
 import { producerNameLoaded } from "src/state/producer/reducer";
+import { isEmpty } from "lodash";
 
 const SOCKET_URL = process.env.REACT_APP_BASE_URL;
 
@@ -38,7 +39,9 @@ export function useSocket() {
     });
 
     socketRef.current.on(LATEST_HEAD_WALLET, (headWallet) => {
-      dispatch(walletCountLoaded(headWallet));
+      if (!isEmpty(headWallet)) {
+        dispatch(walletCountLoaded(headWallet));
+      }
     });
 
     return () => {
