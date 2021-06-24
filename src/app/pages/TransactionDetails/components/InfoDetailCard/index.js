@@ -4,9 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { isEmpty } from "lodash";
 
-// Utils
-import { formatAmount, formatWei } from "src/utils/numbers";
-
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
 
@@ -75,7 +72,7 @@ export function InfoDetailCard() {
         label: t("common.block"),
         value: (
           <Link href={`/block/${height}`} tw="underline">
-            {formatAmount(height)}
+            {height}
           </Link>
         ),
         dataTip: t("transactionDetails.block_tip"),
