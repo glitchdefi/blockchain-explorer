@@ -33,23 +33,29 @@ export const formatAmount = (num, digits = 2) => {
 
 export const formatNumber = (num) => {
   if (num === 0) return "0";
-  return numbro(num).format({thousandSeparated: true})
-}
+  return numbro(num).format({ thousandSeparated: true });
+};
 
 const toPrecise = (num) => {
   return Number.parseFloat(num).toPrecision();
-}
+};
 
-export const formatWei = (num, isFormatAmount) => {
+const toNumber = (num) => {
+  const numToStr = num?.toString();
+
+  if (numToStr?.includes("e")) {
+    return Number(numToStr).toLocaleString().replaceAll(",", "");
+  }
+
+  return numToStr;
+};
+
+export const formatWei = (number, isFormatNumber = true) => {
+  const num = toNumber(number);
   if (num == 0) return "0";
   if (!num) return "--";
-  const numToStr = num?.toString();
-  let numStr = 0;
 
-  if (numToStr.includes('e')) { 
-    numStr = Number.parseFloat(numToStr) / 10 ** 18;
-  } else {
-    numStr = Web3Utils.fromWei(numToStr);
-  }
-  return isFormatAmount ? formatAmount(Number(numStr)) : formatNumber(numStr);
+  const numWei = Web3Utils.fromWei(num);
+
+  return isFormatNumber ? formatNumber(numWei) : numWei;
 };

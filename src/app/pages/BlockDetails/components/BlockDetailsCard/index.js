@@ -23,15 +23,8 @@ import { useProducerDetails } from "src/state/producer/hooks";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
-  const {
-    block_size,
-    total_txs,
-    proposer_address,
-    height,
-    time,
-    hash,
-    reward,
-  } = data || {};
+  const { block_size, num_txs, proposer_address, height, time, hash, reward } =
+    data || {};
   const { producerDetails } = useProducerDetails(proposer_address);
   const { name } = producerDetails || {};
 
@@ -69,7 +62,6 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
           />
 
           <InfoRow
-            isCopy={name}
             label={t("blockDetails.produced_by")}
             value={
               name || (
@@ -80,13 +72,12 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
                 />
               )
             }
-            copyValue={proposer_address}
             dataTip={t("blockDetails.producer_tip")}
           />
 
           <InfoRow
             label={t("common.total_txs")}
-            value={formatAmount(total_txs)}
+            value={formatAmount(num_txs)}
             dataTip={t("blockDetails.txs_tip")}
           />
 
