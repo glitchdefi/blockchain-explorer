@@ -44,7 +44,12 @@ export const formatWei = (num, isFormatAmount) => {
   if (num == 0) return "0";
   if (!num) return "--";
   const numToStr = num?.toString();
-  let numStr = numToStr.includes('e') ? toPrecise(numToStr) : numToStr;
-  const numFromWei = Web3Utils.fromWei(numStr);
-  return isFormatAmount ? formatAmount(Number(numFromWei)) : formatNumber(numFromWei);
+  let numStr = 0;
+
+  if (numToStr.includes('e')) { 
+    numStr = Number.parseFloat(numToStr) / 10 ** 18;
+  } else {
+    numStr = Web3Utils.fromWei(numToStr);
+  }
+  return isFormatAmount ? formatAmount(Number(numStr)) : formatNumber(numStr);
 };
