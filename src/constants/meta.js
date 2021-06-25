@@ -1,5 +1,5 @@
 export const DEFAULT_META = {
-  title: "Glitch Blockchain Explorer",
+  title: "Glitch - Explorer",
   description:
     "Glitch explorer is a Block producers explorer for Glitch, a decentralized smart contracts platform using DPOS protocol",
   image: "",
@@ -7,8 +7,8 @@ export const DEFAULT_META = {
 
 export const customMeta = {
   "/": {
-    title: "Glich - HomePage",
-    description: "...",
+    title: "Glitch - Explorer",
+    description: "Glitch - Explorer",
     image: "",
   },
 };
