@@ -39,7 +39,7 @@ export function useSocket() {
     });
 
     socketRef.current.on(LATEST_HEAD_WALLET, (headWallet) => {
-      if (!isEmpty(headWallet)) {
+      if (headWallet) {
         dispatch(walletCountLoaded(headWallet));
       }
     });

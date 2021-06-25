@@ -57,7 +57,9 @@ export const StatsHistory = () => {
       <StatsCard
         icon={<TotalAccountIcon />}
         title={t("homePage.total_account")}
-        value={walletCount === 0 ? "0" : formatNumber(walletCount)}
+        value={
+          walletCount === 0 || !walletCount ? "0" : formatNumber(walletCount)
+        }
       />
     </Grid>
   );
