@@ -11,6 +11,7 @@ import { Container } from "./Container";
 import { PageElementWrap } from "./PageElementWrap";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { NetworkBox } from "../components/NetworkBox";
 
 const PageMeta = (meta = {}) => {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ export function Page({ children, meta, ...props }) {
     <>
       <PageMeta meta={meta} />
       <Container>
+        <NetworkBox />
         <Header />
         <PageElementWrap tw="mt-4" {...props}>
           {children}

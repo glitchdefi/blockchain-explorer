@@ -28,7 +28,8 @@
         "glitch_price": "Glitch price",
         "search_placeholder": "Search by Address / Txn Hash / Block Height",
         "latest_blocks": "Latest Blocks",
-        "latest_txs": "Latest Transactions"
+        "latest_txs": "Latest Transactions",
+        "network_box": "Note: You are currently connected to the Glitch {{network}}"
     },
     "pagination": {
         "prev": "Prev",

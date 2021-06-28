@@ -12,16 +12,15 @@ import { Input } from "src/app/components/Input";
 import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 import { StyledButton as Button } from "src/app/components/Button/StyledButton";
 import { Image } from "src/app/components/Image";
+import { Text } from "src/app/components/Text";
 
 // Icon
 import searchIcon from "../../../assets/search_icon.png";
-import { Text } from "src/app/components/Text";
-import { trim } from "lodash";
 
 export function SearchInput() {
   const history = useHistory();
   const buttonRef = useRef();
-  
+
   const { t } = useTranslation();
   const { text, onTextChange, onSearch, onClearText } = useSearch();
   const { isSearching, searchResult, searchError } = useSearchResult();
@@ -30,13 +29,15 @@ export function SearchInput() {
     if (!isSearching && searchResult && !searchError) {
       if (searchResult?.type === "tx") history.push(`/tx/${text.trim()}`);
       if (searchResult?.type === "block") history.push(`/block/${text.trim()}`);
-      if (searchResult?.type === "wallet") history.push(`/address/${text.trim()}`);
+      if (searchResult?.type === "wallet")
+        history.push(`/address/${text.trim()}`);
       onClearText();
     }
 
     if (!isSearching && searchError) {
       onClearText();
-      history.push("/searchNotFound");
+      const route = text?.trim() ? "/searchNotFound" : "/txs";
+      history.push(route);
     }
   }, [isSearching]);
 
