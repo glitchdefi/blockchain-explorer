@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import tw from "twin.macro";
 
+import { CONTACT_US_IDS } from "src/constants/refIds";
+
 import { Card } from "src/app/components/Card";
 import { Text } from "src/app/components/Text";
 import { Input as InputBase } from "src/app/components/Input";
@@ -112,6 +114,7 @@ export function ContactPage() {
 
         <Field>
           <Button
+            id={CONTACT_US_IDS.submit}
             isLoading={isSubmitting}
             onClick={handleSubmit(onSubmit)}
             tw="bg-gradient-to-r from-primary to-secondary text-white text-base px-8"

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
+import { getHomeNavIds } from "src/constants/refIds";
+
 // Components
 import { Text as TextBase } from "src/app/components/Text";
 import { Link } from "src/app/components/Link";
@@ -24,7 +26,11 @@ export function NavLink({ isActive, link, children }) {
         {href === "#" ? (
           <Text isActive={isActive}>{children}</Text>
         ) : (
-          <CustomLink href={href} isActive={isActive}>
+          <CustomLink
+            id={getHomeNavIds(children?.toLowerCase())}
+            href={href}
+            isActive={isActive}
+          >
             {children}
           </CustomLink>
         )}
@@ -38,7 +44,7 @@ export function NavLink({ isActive, link, children }) {
 NavLink.propTypes = {
   isActive: PropTypes.bool,
   link: PropTypes.object,
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
 
 const Wrapper = tw.li`

@@ -1,5 +1,10 @@
 import React from "react";
 import "twin.macro";
+
+// Constants
+import { HOME_IDS } from "src/constants/refIds";
+
+// Components
 import {
   TabContainer,
   Tabs,
@@ -16,8 +21,12 @@ export function TabSections() {
   return (
     <TabContainer tw="mt-12">
       <Tabs tw="grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
-        <Tab evtKey="latestBlocks">{t("common.latest_blocks")}</Tab>
-        <Tab evtKey="latestTxns">{t("common.latest_txs")}</Tab>
+        <Tab id={HOME_IDS.blocksTab} evtKey="latestBlocks">
+          {t("common.latest_blocks")}
+        </Tab>
+        <Tab id={HOME_IDS.txsTab} evtKey="latestTxns">
+          {t("common.latest_txs")}
+        </Tab>
       </Tabs>
 
       <TabPanel evtKey="latestBlocks">

@@ -6,6 +6,7 @@ import tw from "twin.macro";
 // Hooks
 import { useSearch } from "src/hooks/useSearch";
 import { useSearchResult } from "src/state/global/hooks";
+import { getSearchQueryIds } from "src/constants/refIds";
 
 // Components
 import { Input } from "src/app/components/Input";
@@ -59,6 +60,7 @@ export function SearchInput() {
           onKeyPress={onEnterPress}
         />
         <Button
+          id={getSearchQueryIds(history.location.pathname)}
           refs={buttonRef}
           tw="relative bg-gradient-to-r from-primary to-info py-0 md:px-6 ml-5 md:ml-6"
           onClick={onSearch}
