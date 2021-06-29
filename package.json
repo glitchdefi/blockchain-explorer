@@ -24,6 +24,7 @@
     "@web3-react/portis-connector": "^6.1.9",
     "@web3-react/walletconnect-connector": "^6.2.0",
     "axios": "^0.21.1",
+    "env-cmd": "^10.1.0",
     "ethers": "^5.1.4",
     "fontfaceobserver": "^2.1.0",
     "i18next": "^20.1.0",
@@ -65,7 +66,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-dev": "env-cmd -f .env.development react-scripts start",
+    "build-dev": "env-cmd -f .env.development react-scripts build",
+    "start-prod": "env-cmd -f .env.production react-scripts start",
+    "build-prod": "env-cmd -f .env.production react-scripts build",
+    "start-test": "env-cmd -f .env.test react-scripts start",
+    "build-test": "env-cmd -f .env.test react-scripts build"
   },
   "eslintConfig": {
     "extends": [
