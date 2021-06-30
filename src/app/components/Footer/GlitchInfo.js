@@ -15,7 +15,7 @@ function GlitchInfo() {
       <Logo />
       <Text tw="mt-3">{t("footer.powered_by_glitch")}</Text>
       <Text tw="mt-3 text-white opacity-60">{t("footer.glitch_info")}</Text>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </Wrapper>
   );
 }

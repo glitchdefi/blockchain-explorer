@@ -1,10 +1,15 @@
 import React from "react";
 import RcPagination from "rc-pagination";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
+
+import { DEFAULT_PAGE_SIZE } from "src/constants";
+import localeEN from "./locale";
 import "./styles/index.css";
 
-export const Pagination = ({ containerStyles }) => {
+export const Pagination = React.memo((props) => {
+  const { containerStyles, total, current, onChange } = props;
   const { t } = useTranslation();
 
   /**
@@ -24,11 +29,18 @@ export const Pagination = ({ containerStyles }) => {
   return (
     <>
       <Wrapper css={containerStyles}>
-        <RcPagination total={100} itemRender={renderButtons} />
+        <RcPagination
+          locale={localeEN}
+          current={current}
+          total={total}
+          pageSize={DEFAULT_PAGE_SIZE}
+          onChange={onChange}
+          itemRender={renderButtons}
+        />
       </Wrapper>
     </>
   );
-};
+});
 
 const Wrapper = tw.div`
  flex 
@@ -39,3 +51,10 @@ const Wrapper = tw.div`
  lg:justify-end 
  w-full
 `;
+
+Pagination.propTypes = {
+  total: PropTypes.number,
+  current: PropTypes.number,
+  onChange: PropTypes.func,
+  containerStyles: PropTypes.object,
+};

@@ -2,8 +2,8 @@ import React from "react";
 import { theme, styled, css } from "twin.macro";
 import { usePanelState } from "../hooks/usePanelState";
 
-export function TabPanel({ children, isCard, ...props }) {
-  const { isActive } = usePanelState();
+export function TabPanel({ evtKey, children, isCard, ...props }) {
+  const { isActive } = usePanelState(evtKey);
 
   if (!isCard && !isActive) return null;
 

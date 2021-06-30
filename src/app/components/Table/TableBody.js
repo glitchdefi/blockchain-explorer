@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "twin.macro";
-
-export default function TableBody({ children, ...props }) {
+function TableBody({ children, ...props }) {
   return (
     <tbody tw="bg-bgPrimary" {...props}>
       {children}
@@ -10,6 +9,9 @@ export default function TableBody({ children, ...props }) {
   );
 }
 
+export default React.memo(TableBody);
 TableBody.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
 };
+
+TableBody.defaultProps = {};

@@ -2,11 +2,13 @@ import React from "react";
 import tw, { styled, css, theme } from "twin.macro";
 import PropTypes from "prop-types";
 
+// Constants
+import { getHomeNavIds } from "src/constants/refIds";
+
 // Components
 import { Link } from "src/app/components/Link";
 import { Submenu } from "./SubMenu";
 import { DropdownIcon } from "../../../icons";
-
 export function NavLink({ isActive, link, children }) {
   const { href, items } = link || {};
   const isSubmenu = items?.length;
@@ -14,7 +16,11 @@ export function NavLink({ isActive, link, children }) {
   return (
     <Wrapper isActive={isActive} className="horizontal-menu-item">
       <LinkWrapper>
-        <Link className="menu-item-link" href={href}>
+        <Link
+          id={getHomeNavIds(children?.toLowerCase())}
+          className="menu-item-link"
+          href={href}
+        >
           {children}
         </Link>
         {isSubmenu && <DropdownIcon tw="mb-1" />}

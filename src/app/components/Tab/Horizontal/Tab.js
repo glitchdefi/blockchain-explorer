@@ -4,8 +4,8 @@ import { Button } from "../../Button";
 import { Text } from "../../Text";
 import { useTabState } from "../hooks/useTabState";
 
-export function Tab({ children, onClick, labelStyles, ...props }) {
-  const { isActive, onChangeTab } = useTabState();
+export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
+  const { isActive, onChangeTab } = useTabState(evtKey);
   return (
     <Wrapper
       isActive={isActive}

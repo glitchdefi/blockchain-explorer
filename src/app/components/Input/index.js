@@ -8,10 +8,11 @@ export const Input = styled.input(() => [
   rounded
   block
   border-none
-  outline-none 
+  outline-none
   placeholder-textSecondary
   text-base
   text-textPrimary
   font-mono
+  focus:shadow-lg
   `,
 ]);

@@ -1,5 +1,8 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
+
+import { getFooterNavIds } from "src/constants/refIds";
+
 import { footerNav as links } from "../../../constants/navConfig";
 import { Link } from "../Link";
 
@@ -21,7 +24,9 @@ function NavBar() {
       {links.map((link, i) => {
         return (
           <LinkWrapper key={i}>
-            <Link href={link.href}>{link.label}</Link>
+            <Link id={getFooterNavIds(link.href)} href={link.href}>
+              {link.label}
+            </Link>
           </LinkWrapper>
         );
       })}

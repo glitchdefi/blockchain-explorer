@@ -11,7 +11,7 @@ export function LinkExternal({ children, href, ...props }) {
 }
 
 LinkExternal.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.any,
   href: PropTypes.string,
   props: PropTypes.object,
 };

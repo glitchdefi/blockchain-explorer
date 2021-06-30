@@ -10,6 +10,7 @@
         "txnFee": "Txn Fee",
         "timeStamp": "Timestamp",
         "transactions": "Transactions",
+        "total_txs": "Total txs",
         "difficulty": "Difficulty",
         "size": "Size",
         "started_at": "Started at",
@@ -23,14 +24,27 @@
         "glitch": "Glitch",
         "vote": "Vote",
         "miners": "Miners",
-        "loading": "Loading ..."
+        "loading": "Loading, please wait...",
+        "glitch_price": "Glitch price",
+        "search_placeholder": "Search by Address / Txn Hash / Block Height",
+        "latest_blocks": "Latest Blocks",
+        "latest_txs": "Latest Transactions",
+        "network_box": "Note: You are currently connected to the Glitch {{network}}"
     },
     "pagination": {
         "prev": "Prev",
         "next": "Next"
     },
-    "homepage": {
-        "7_day_GLCH_price_history": "7 day GLCH price history (USD)"
+    "homePage": {
+        "7_day_GLCH_price_history": "7 day GLCH price history (USD)",
+        "producer": "Producer",
+        "current_max": "Current/Max",
+        "head_block": "Head Block",
+        "price_market_cap": "Price | Market cap",
+        "lib": "LIB (Last Irreversible Block)",
+        "total_account": "Total Account",
+        "view_all_blocks": "View all Blocks",
+        "view_all_txs": "View all Transactions"
     },
     "userDetails": {
         "more_info": "More Info",
@@ -42,15 +56,33 @@
     },
     "transactionDetails": {
         "title": "Transaction Details",
-        "transaction_hash": "Transaction hash"
+        "transaction_hash": "Transaction hash",
+        "loading": "Loading transaction",
+        "not_found": "Sorry, the transaction could not be found.",
+        "hash_tip": "A TxHash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "status_tip": "The status of the transaction.",
+        "block_tip": "The number of the block in which the transaction was recorded. Block confirmation indicate how many blocks since the transaction is mined.",
+        "time_tip": "The date and time at which a transaction is mined.",
+        "from_tip": "The sending party of the transaction (could be from a contract address).",
+        "to_tip": "The receiving party of the transaction (could be a contract address).",
+        "value_tip": "The value being transacted in GLCH and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction.",
+        "fee_tip": "Amount paid to the miner for processing the transaction."
     },
     "blockDetails": {
         "title": "Block Details",
         "block_height": "Block Height",
-        "mined_by": "Mined by",
+        "produced_by": "Producer",
         "block_reward": "Block Reward",
         "total_difficulty":"Total Difficulty",
-        "hash": "Hash"
+        "hash": "Hash",
+        "empty": "Unable to locate block #{{height}}",
+        "height_tip": "Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block.",
+        "time_tip": "The date and time at which a block is mined.",
+        "txs_tip": "The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves GLCH value.",
+        "reward_tip": "For each block, the miner is rewarded with a finite amount of GLCH on top of the fees paid for all transactions in the block.",
+        "size_tip": "The block size is actually determined by the block's gas limit.",
+        "hash_tip": "The hash of the block header of the current block.",
+        "producer_tip": "Producer"
     },
     "epodDetails": {
         "title": "Epod Details",
@@ -60,6 +92,10 @@
     },
     "notFoundPage": {
         "go_back_home_page":"Go back to the Home page"
+    },
+    "searchNotFoundPage": {
+        "oops": " Oops! We couldn't find what you are looking for.",
+        "please_enter": "Please enter an address, transaction hash, block height"
     },
     "walletPage": {
         "public_key": "Public key",
@@ -73,7 +109,10 @@
         "login": "Login",
         "scan_qr_code": "Scan the QR-Code with you application",
         "open_your_app": "Open your app",
-        "initializing": "Initializing..."
+        "initializing": "Initializing...",
+        "wallet": "Wallet",
+        "asset_management": "Asset Management",
+        "account_management": "Account Management"
     },
     "votePage": {
         "selected_producers": "Selected Producers"
@@ -99,7 +138,22 @@
         "the_glitch_block_count": "The Glitch Block Count and Rewards Chart shows the historical number of blocks produced daily on the Glitch network and the total block reward.",
         "the_glitch_network_hash_rate": "The Glitch Network Hash Rate Chart shows the historical measure of the processing power of the Glitch network.",
         "the_glitch_difficulty_chart": "The Glitch Network Difficulty Chart displays the mining difficulty and the historical value of the Glitch network.",
-        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network."
+        "the_glitch_network_transaction": "The Glitch Network Transaction Fee Chart shows historical total number of Glitch paid as transaction fee for the Glitch network.",
+        "total_value": "Total Value",
+        "market_cap": "Market Cap",
+        "avg_price_glitch": "Avg Price/Glitch"
+    },
+    "contactPage": {
+        "contact_us": "Contact Us",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "your_message": "Your Message",
+        "submit": "Submit",
+        "thank_you": "Thank You!",
+        "create_success": "Your Message has been successfully sent.",
+        "error": "Error",
+        "create_error": "An error has occurred"
     },
     "footer": {
         "powered_by_glitch": "Powered by Glitch",

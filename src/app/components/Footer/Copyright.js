@@ -5,7 +5,7 @@ import moment from "moment";
 import { Text } from "../Text";
 
 const year = moment().year();
-const version = "22.0.9";
+const version = "0.0.1";
 
 function Copyrite() {
   const { t } = useTranslation();

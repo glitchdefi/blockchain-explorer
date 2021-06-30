@@ -7,8 +7,8 @@ import { StyledTab } from "./StyledTab";
 import { useTabState } from "../hooks/useTabState";
 
 export function Tab(props) {
-  const { children, tabStyles, leftIcon, onClick, ...rest } = props;
-  const { isActive, onChangeTab } = useTabState();
+  const { children, evtKey, tabStyles, leftIcon, onClick, ...rest } = props;
+  const { isActive, onChangeTab } = useTabState(evtKey);
 
   return (
     <StyledTab
@@ -45,6 +45,7 @@ Tab.propTypes = {
     }),
   }),
   onClick: PropTypes.func,
+  evtKey: PropTypes.string,
 };
 
 Tab.defaultProps = {

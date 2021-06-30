@@ -14,4 +14,4 @@ export function DropdownSearchInput({ placeholder, ...props }) {
   );
 }
 
-const Wrapper = tw.div`p-3 flex flex-col`;
+const Wrapper = tw.div`px-3 pt-3 flex flex-col`;

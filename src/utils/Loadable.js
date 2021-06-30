@@ -12,7 +12,7 @@ export const lazyLoad = (
       importFunc().then((module) => ({ default: selectorFunc(module) }));
   }
   const LazyComponent = lazy(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 350));
+    await new Promise((resolve) => setTimeout(resolve, 100000));
     return lazyFactory();
   });
 
