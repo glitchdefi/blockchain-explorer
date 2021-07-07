@@ -22,7 +22,7 @@ export function OverviewCard({ loading, data }) {
 
   const totalValue =
     balance && current_price
-      ? formatDollarAmount(formatWei(balance) * current_price, 2, false)
+      ? formatDollarAmount(formatWei(balance, false) * current_price, 2, false)
       : "--";
 
   return (
