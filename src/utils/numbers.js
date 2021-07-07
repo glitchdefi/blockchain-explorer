@@ -36,10 +36,6 @@ export const formatNumber = (num) => {
   return numbro(num).format({ thousandSeparated: true });
 };
 
-const toPrecise = (num) => {
-  return Number.parseFloat(num).toPrecision();
-};
-
 const toNumber = (num) => {
   const numToStr = num?.toString();
 
@@ -50,12 +46,12 @@ const toNumber = (num) => {
   return numToStr;
 };
 
-export const formatWei = (number, isFormatNumber = true) => {
+export const formatWei = (number) => {
   const num = toNumber(number);
   if (num == 0) return "0";
   if (!num) return "--";
 
   const numWei = Web3Utils.fromWei(num);
 
-  return isFormatNumber ? formatNumber(numWei) : numWei;
+  return numWei;
 };
