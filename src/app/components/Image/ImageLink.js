@@ -4,9 +4,9 @@ import { styled } from "twin.macro";
 
 import Image from "./Image";
 
-const ImageLink = ({ href, src, alt, width, height, ...props }) => {
+const ImageLink = ({ id, href, src, alt, width, height, ...props }) => {
   return (
-    <ImgLink href={href}>
+    <ImgLink id={id} href={href}>
       <Image src={src} alt={alt} width={width} height={height} {...props} />
     </ImgLink>
   );

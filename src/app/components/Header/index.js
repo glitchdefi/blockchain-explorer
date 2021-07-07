@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import tw, { theme } from "twin.macro";
 
+import { HOME_IDS } from "src/constants/refIds";
+
 // Hooks
 import { useGlobalSlice } from "src/state/global/hooks";
 
@@ -34,7 +36,7 @@ export function Header() {
       <Wrapper>
         <PageElementWrap>
           <NavCols>
-            <Logo tw="lg:(absolute left-0)" />
+            <Logo id={HOME_IDS.logo} tw="lg:(absolute left-0)" />
             {/* Menu for Desktop */}
             <HorizontalMenu />
             {/* Toggle Menu Vertical */}
