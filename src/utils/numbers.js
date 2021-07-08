@@ -36,10 +36,6 @@ export const formatNumber = (num) => {
   return numbro(num).format({ thousandSeparated: true });
 };
 
-const toPrecise = (num) => {
-  return Number.parseFloat(num).toPrecision();
-};
-
 const toNumber = (num) => {
   const numToStr = num?.toString();
 
@@ -50,6 +46,14 @@ const toNumber = (num) => {
   return numToStr;
 };
 
+function numberWithCommas(n) {
+  var parts = n.toString().split(".");
+  return (
+    parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+    (parts[1] ? "." + parts[1] : "")
+  );
+}
+
 export const formatWei = (number, isFormatNumber = true) => {
   const num = toNumber(number);
   if (num == 0) return "0";
@@ -57,5 +61,5 @@ export const formatWei = (number, isFormatNumber = true) => {
 
   const numWei = Web3Utils.fromWei(num);
 
-  return isFormatNumber ? formatNumber(numWei) : numWei;
+  return isFormatNumber ? numberWithCommas(numWei) : numWei;
 };

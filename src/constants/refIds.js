@@ -7,6 +7,7 @@ export const HOME_IDS = {
   searchQuery: `${NETWORK}_home_searchquery_1`,
   blocksTab: `${NETWORK}_home_blocks_2`,
   txsTab: `${NETWORK}_home_transactions_3`,
+  logo: `${NETWORK}_logo_tohomepage_1`,
 };
 
 const BLOCK_IDS = {
