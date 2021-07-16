@@ -5,7 +5,7 @@ import { ImageLink } from "src/app/components/Image";
 export function Logo({ id, ...props }) {
   return (
     <div className="gl-logo-blk" {...props}>
-      <ImageLink id={id} href="/" alt="gl-logo" src={glLogo} width={60} />
+      <ImageLink id={id} href="/" alt="gl-logo" src={glLogo} width={125} height={60}/>
       {/* <!-- Glitch LOGO --> */}
     </div>
   );

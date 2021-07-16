@@ -3,8 +3,20 @@ import { createGlobalStyle } from "styled-components";
 
 export const StylesBase = createGlobalStyle`
   .light {
-    --color-primary: #24C6C9;
-    --color-secondary: #BF28E4;
+    --color-primary: #00FFFF;
+    --color-secondary: #F100F5;
+    --color-success: #49AA19;
+    --color-pending: #D87A16;
+    --color-fail: #D32029;
+
+    --color-1: #151F23;
+    --color-2: #1C2A2F;
+    --color-3: #23353B;
+    --color-4: #395660;
+    --color-5: #4F7785;
+    --color-6: #A7C1CA;
+    --color-7: #E4ECEF;
+    --color-8: rgba(0, 76, 76, 0.3);
 
     --color-success: #24C6C9;
     --color-pending: #BF28E4;
@@ -32,11 +44,21 @@ export const StylesBase = createGlobalStyle`
     --bg-9: #00A7B3;
   }
   .dark {
-    --color-primary: #24C6C9;
-    --color-secondary: #BF28E4;
+    --color-primary: #00FFFF;
+    --color-secondary: #F100F5;
+    --color-success: #49AA19;
+    --color-pending: #D87A16;
+    --color-fail: #D32029;
 
-    --color-success: #24C6C9;
-    --color-pending: #BF28E4;
+    --color-1: #151F23;
+    --color-2: #1C2A2F;
+    --color-3: #23353B;
+    --color-4: #395660;
+    --color-5: #4F7785;
+    --color-6: #A7C1CA;
+    --color-7: #E4ECEF;
+    --color-8: rgba(0, 76, 76, 0.3);
+
     --color-out: #BF28E4;
     --color-in: #24C6C9;
     --color-waiting: rgba(255, 255, 255, 0.2);

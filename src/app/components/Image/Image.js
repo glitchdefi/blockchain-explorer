@@ -5,7 +5,7 @@ import observerOptions from "./options";
 
 const StyledImage = styled.img(({ width, height }) => [
   css`
-    height: ${height ? height : 'auto'};
+    height: ${height ? height + 'px' : 'auto'};
     width: ${width ? width + 'px' : 'auto'};
   `,
 ]);
@@ -35,13 +35,13 @@ const Image = ({ src, alt, ...otherProps }) => {
   }, [src]);
 
   return (
-    <span ref={imgRef}>
+    <div ref={imgRef}>
       {isLoaded ? (
         <StyledImage src={src} alt={alt} {...otherProps} />
       ) : (
         <Placeholder />
       )}
-    </span>
+    </div>
   );
 };
 

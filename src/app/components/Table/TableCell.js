@@ -1,26 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import tw, { css, theme } from "twin.macro";
-import ReactTooltip from "react-tooltip";
 
 import { Link } from "../Link";
-export default function TableCell({
-  children,
-  isLink,
-  href,
-  dataTip,
-  ...props
-}) {
+import { Tooltip } from "../Tooltip";
+export default function TableCell(props) {
+  const { id, children, isLink, href, tip, ...rest } = props;
+  const dataFor = `${tip} row-${id}`;
+
   const getChildren = () => {
     if (isLink) {
       return (
-        <CustomLink data-tip={dataTip} data-for={dataTip} href={href}>
+        <Link primary data-tip={tip} data-for={dataFor} href={href}>
           {children}
-        </CustomLink>
+        </Link>
       );
     }
     return (
-      <span data-tip={dataTip} data-for={dataTip}>
+      <span data-tip={tip} data-for={dataFor}>
         {children}
       </span>
     );
@@ -28,31 +25,19 @@ export default function TableCell({
 
   return (
     <td
-      css={[tw`p-4 text-tiny text-center whitespace-nowrap`, styles]}
-      {...props}
+      css={[tw`px-4 py-6 text-tiny text-left whitespace-nowrap`, styles]}
+      {...rest}
     >
       {getChildren()}
-      {dataTip && (
-        <ReactTooltip
-          id={dataTip}
-          place="top"
-          effect="solid"
-          backgroundColor={theme`colors.bg2`}
-        />
-      )}
+      {tip && <Tooltip id={dataFor} />}
     </td>
   );
 }
 
 const styles = css`
-  color: ${theme`colors.textSecondary`};
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(255, 255, 255, 0.11);
-  padding-left: 0;
+  color: ${theme`colors.color7`};
+  border-bottom: 1px solid ${theme`colors.color2`};
 `;
-
-const CustomLink = tw(Link)`text-textSecondary! whitespace-nowrap underline`;
 TableCell.propTypes = {
   children: PropTypes.any,
   isLink: PropTypes.bool,

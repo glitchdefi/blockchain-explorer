@@ -21,6 +21,7 @@ export function Dropdown(props) {
     customLabel,
     options,
     children,
+    ...rest
   } = props;
 
   const onToggle = () => {
@@ -55,7 +56,7 @@ export function Dropdown(props) {
 
   return (
     <>
-      <Wrapper refs={dropdownMenuRef}>
+      <Wrapper refs={dropdownMenuRef} {...rest}>
         <DropdownLabel onClick={onToggle}>
           {renderLabel()}
           <FontAwesomeIcon

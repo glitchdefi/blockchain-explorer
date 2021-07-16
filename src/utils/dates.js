@@ -22,6 +22,8 @@ moment.updateLocale("en", {
 
 export const D_FOR_TABLE = "YYYY-MM-DD";
 export const D_FOR_DETAIL = "MMM-DD-YYYY";
+export const FORMAT_1 = "ddd, DD MMM YYYY HH:mm:ss";
+export const FORMAT_2 = "MMM DD, YYYY - HH:mm:ss A"
 
 export function formatTimeAgo(date) {
   if (date) {
@@ -39,12 +41,8 @@ export function formatTimeAgo(date) {
 
 export function formatDateTimeUTC(dateTime, formatDate) {
   if (dateTime) {
-    return moment
-      .utc(dateTime)
-      .format(`${formatDate || "MMM-DD-YYYY"} h:mm:ss A`);
+    return moment.utc(dateTime).format(formatDate);
   }
 
-  return moment()
-    .utc()
-    .format(`${formatDate || "MMM-DD-YYYY"} h:mm:ss A`);
+  return moment().utc().format(formatDate);
 }

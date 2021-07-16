@@ -7,16 +7,15 @@ import { footerNav as links } from "../../../constants/navConfig";
 import { Link } from "../Link";
 
 const Wrapper = tw.ul`
-  mt-6 
   col-span-2 
   self-start 
   justify-end 
   list-none 
-  hidden 
+  hidden
   lg:flex
 `;
 
-const LinkWrapper = styled.li(() => [tw`pl-8`]);
+const LinkWrapper = styled.li(() => [tw`pl-0`]);
 
 function NavBar() {
   return (
@@ -24,7 +23,11 @@ function NavBar() {
       {links.map((link, i) => {
         return (
           <LinkWrapper key={i}>
-            <Link id={getFooterNavIds(link.href)} href={link.href}>
+            <Link
+              id={getFooterNavIds(link.href)}
+              href={link.href}
+              tw="text-primary"
+            >
               {link.label}
             </Link>
           </LinkWrapper>

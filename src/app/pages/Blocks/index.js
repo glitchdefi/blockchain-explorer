@@ -8,7 +8,6 @@ import { useBlockSlice, useBlockList } from "src/state/block/hooks";
 // Components
 import { Text } from "src/app/components/Text";
 import { BlocksTable } from "./components/BlocksTable";
-import { TabPanel } from "src/app/components/Tab/Horizontal";
 
 export function BlocksPage() {
   useBlockSlice();
@@ -20,17 +19,17 @@ export function BlocksPage() {
     <>
       <Wrapper>
         <Text tw="text-lg">{t("common.blocks")}</Text>
-        <TabPanel tw="mt-5">
+        <div tw="mt-4">
           <BlocksTable
             loading={isLoading}
             total={total}
             data={data}
             onChange={(p) => setParams(p)}
           />
-        </TabPanel>
+        </div>
       </Wrapper>
     </>
   );
 }
 
-const Wrapper = tw.div`mb-4`;
+const Wrapper = tw.div`mt-16`;

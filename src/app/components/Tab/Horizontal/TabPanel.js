@@ -1,5 +1,4 @@
 import React from "react";
-import { theme, styled, css } from "twin.macro";
 import { usePanelState } from "../hooks/usePanelState";
 
 export function TabPanel({ children, evtKey, isCard, ...props }) {
@@ -8,50 +7,8 @@ export function TabPanel({ children, evtKey, isCard, ...props }) {
   if (!isCard && !isActive) return null;
 
   return (
-    <Wrapper {...props}>
-      <div className="tab-panel">
-        <div className="inner">{children}</div>
-      </div>
-    </Wrapper>
+    <div {...props} className="tab-panel">
+      {children}
+    </div>
   );
 }
-
-const Wrapper = styled.div(() => [
-  css`
-    border-radius: 0 0px 5px 5px;
-    position: relative;
-    padding-left: 12px;
-    padding-right: 12px;
-    &:before {
-      content: "";
-      display: block;
-      width: 30px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      background: ${theme`colors.secondary`};
-      opacity: 16%;
-      border-radius: 0 0px 5px 5px;
-    }
-    &:after {
-      content: "";
-      display: block;
-      width: 30px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      background: ${theme`colors.primary`};
-      opacity: 30%;
-      border-radius: 0 0px 5px 5px;
-    }
-    .inner {
-      position: relative;
-      z-index: 2;
-      background-color: ${theme`colors.bgPrimary`};
-      padding: 20px;
-      border-radius: 0 0px 5px 5px;
-    }
-  `,
-]);

@@ -1,12 +1,12 @@
 import React, { cloneElement, isValidElement } from "react";
 import PropTypes from "prop-types";
-import ReactTooltip from "react-tooltip";
-import tw, { theme } from "twin.macro";
+import tw, { theme, styled, css } from "twin.macro";
 
 // Components
 import { InfoIcon } from "src/app/components/Svg/Icons";
 import { Text as TextBase } from "src/app/components/Text";
 import { CopyButton } from "../CopyButton";
+import { Tooltip } from "../Tooltip";
 export function InfoRow(props) {
   const {
     label,
@@ -36,7 +36,7 @@ export function InfoRow(props) {
 
     return (
       <div tw="flex items-center">
-        <Text>{value}</Text>
+        <Text tw="text-color7">{value}</Text>
         {isCopy && (
           <CopyButton
             text={copyValue || (typeof value !== "string" ? null : value)}
@@ -48,7 +48,7 @@ export function InfoRow(props) {
   };
 
   const renderInfoIcon = () => (
-    <div data-tip={dataTip} data-for={label} tw="items-center flex">
+    <div data-tip={dataTip} data-for={label} tw="flex items-start lg:items-center">
       <InfoIcon />
     </div>
   );
@@ -58,21 +58,21 @@ export function InfoRow(props) {
       {renderInfoIcon()}
       <Content className="info-row-content">
         <LabelWrapper css={[labelWrapStyles]}>
-          <Text tw="mb-1 lg:mb-0">{label}:</Text>
+          <Text tw="mb-1 lg:mb-0 text-color6">{label}:</Text>
         </LabelWrapper>
         {renderValue()}
       </Content>
-      <ReactTooltip
-        id={label}
-        effect="solid"
-        backgroundColor={theme`colors.bg2`}
-        tw="w-80 shadow-lg"
-      />
+      <Tooltip id={label} tw="w-80 shadow-lg" />
     </Container>
   );
 }
 
-const Container = tw.div`mt-6 first:mt-0 flex w-full lg:items-center`;
+const Container = styled.div(() => [
+  tw`first:mt-0 flex w-full lg:items-center p-4`,
+  css`
+    border-bottom: 1px solid ${theme`colors.color2`};
+  `,
+]);
 const Content = tw.div`flex flex-col ml-2 lg:flex-grow lg:flex-row lg:ml-6`;
 const LabelWrapper = tw.div`flex items-start lg:(items-center w-2/12)`;
 const Text = tw(TextBase)`text-base text-textSecondary`;

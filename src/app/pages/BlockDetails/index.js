@@ -12,7 +12,7 @@ import { useProducerSlice } from "src/state/producer/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { TabPanel } from "src/app/components/Tab/Horizontal";
+import { Breadcrumb } from "src/app/components/Breadcrumb";
 import { BlockDetailsCard } from "./components/BlockDetailsCard";
 import { TransactionsTable } from "../Transactions/components/TransactionsTable";
 
@@ -28,9 +28,13 @@ export function BlockDetailsPage() {
   return (
     <>
       <Wrapper>
+        <Breadcrumb>
+          <Breadcrumb.Link to="/blocks">Blocks</Breadcrumb.Link>
+          <Breadcrumb.Text>Block details</Breadcrumb.Text>
+        </Breadcrumb>
+
         <HeadWrapper>
           <Heading>{t("blockDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#{height}</Heading>
         </HeadWrapper>
 
         <BlockDetailsCard
@@ -39,21 +43,23 @@ export function BlockDetailsPage() {
           data={blockDetails}
         />
 
-        <Heading tw="mt-8 lg:mt-12">{t("common.transactions")}</Heading>
+        <Heading tw="mt-8 lg:mt-16">
+          {t("blockDetails.transaction_included_in")}{" "}
+        </Heading>
 
-        <TabPanel>
+        <div tw="mt-4">
           <TransactionsTable
             loading={isFetchingBlockTxs}
             data={data}
             total={total}
             onChange={(p) => setParams(p)}
           />
-        </TabPanel>
+        </div>
       </Wrapper>
     </>
   );
 }
 
-const Wrapper = tw.div`mb-4`;
-const HeadWrapper = tw.div`flex flex-wrap items-center`;
-const Heading = tw(Text)`text-base lg:text-lg mb-5`;
+const Wrapper = tw.div`mt-16`;
+const HeadWrapper = tw.div`flex flex-wrap items-center mt-8`;
+const Heading = tw(Text)`text-base lg:text-lg`;

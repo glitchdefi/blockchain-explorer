@@ -1,25 +1,15 @@
 import { React } from "react";
-import tw, { theme } from "twin.macro";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import tw from "twin.macro";
 
 import { TableRow, TableCell } from "../Table";
-import { Text } from "../Text";
-
+import { NotFoundIcon } from "../Svg/Icons";
 export default function TableEmpty({ colSpan, invisible }) {
   return (
     <TableRow>
       <TableCell colSpan={colSpan}>
         <Wrapper css={[invisible && tw`invisible`]}>
           <div>
-            <FontAwesomeIcon icon={faDatabase} size="3x" />
-            <Text
-              size={theme`fontSize.lg`}
-              color={theme`colors.textSecondary`}
-              tw="mt-2"
-            >
-              Empty
-            </Text>
+            <NotFoundIcon />
           </div>
         </Wrapper>
       </TableCell>

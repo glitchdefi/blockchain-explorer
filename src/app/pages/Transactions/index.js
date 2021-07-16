@@ -8,7 +8,6 @@ import { useTxList, useTxSlice } from "src/state/transaction/hooks";
 // Components
 import { Text } from "src/app/components/Text";
 import { TransactionsTable } from "./components/TransactionsTable";
-import { TabPanel } from "src/app/components/Tab/Horizontal";
 
 export function TransactionsPage() {
   useTxSlice();
@@ -20,17 +19,18 @@ export function TransactionsPage() {
     <>
       <Wrapper>
         <Text tw="text-lg">{t("common.transactions")}</Text>
-        <TabPanel tw="mt-5">
+
+        <div tw="mt-4">
           <TransactionsTable
             loading={isLoading}
             total={total}
             data={data}
             onChange={(p) => setParams(p)}
           />
-        </TabPanel>
+        </div>
       </Wrapper>
     </>
   );
 }
 
-const Wrapper = tw.div`mb-4`;
+const Wrapper = tw.div`mt-16`;

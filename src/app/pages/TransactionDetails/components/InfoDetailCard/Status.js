@@ -2,17 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 import tw, { css, styled } from "twin.macro";
 
-import { getColor } from "src/app/components/Tag/utils";
+import { getColor } from "src/app/components/Status/utils";
+import { Types } from "src/app/components/Status/types";
 
 // Components
 import { Text as TextBase } from "src/app/components/Text";
-import { Button as ButtonBase } from "src/app/components/Button";
+import {
+  Failed16Icon,
+  Pending16Icon,
+  Success16Icon,
+} from "src/app/components/Svg/Icons";
 
-export function Status({ status, buttonLabel }) {
+export function Status({ status }) {
+  
+  const getIcons = () => {
+    const statusLowerCase = status.toLowerCase();
+    return statusLowerCase === Types.success ? (
+      <Success16Icon />
+    ) : statusLowerCase === Types.fail ? (
+      <Failed16Icon />
+    ) : (
+      <Pending16Icon />
+    );
+  };
+
   return (
     <Wrapper>
+      {getIcons()}
       <Text type={status.toLowerCase()}>{status}</Text>
-      {/* <Button>{buttonLabel}</Button> */}
     </Wrapper>
   );
 }
@@ -20,17 +37,12 @@ export function Status({ status, buttonLabel }) {
 const Wrapper = tw.div`flex flex-wrap items-center`;
 
 export const Text = styled(TextBase)(({ type }) => [
-  tw`text-base`,
+  tw`text-base ml-3`,
   css`
     color: ${getColor(type)};
+    margin-top: 2.3px;
   `,
 ]);
-
-const Button = styled(ButtonBase)(() => [
-  tw`bg-transparent border border-primary border-solid ml-2 lg:ml-10`,
-]);
-
 Status.propTypes = {
   status: PropTypes.string,
-  buttonLabel: PropTypes.string,
 };

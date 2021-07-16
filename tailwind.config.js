@@ -18,8 +18,19 @@ module.exports = {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
 
+        // Base
+        color1: "var(--color-1)",
+        color2: "var(--color-2)",
+        color3: "var(--color-3)",
+        color4: "var(--color-4)",
+        color5: "var(--color-5)",
+        color6: "var(--color-6)",
+        color7: "var(--color-7)",
+        color8: "var(--color-8)",
+
         success: "var(--color-success)",
         pending: "var(--color-pending)",
+        fail: "var(--color-fail)",
         out: "var(--color-out)",
         in: "var(--color-in)",
         waiting: "var(--color-waiting)",

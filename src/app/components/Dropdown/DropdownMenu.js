@@ -20,8 +20,7 @@ const Container = tw.div`
     absolute 
     left-0 
     right-0 
-    mt-2 
-    rounded 
+    mt-2
     shadow-lg
     bg-bg2
     border 

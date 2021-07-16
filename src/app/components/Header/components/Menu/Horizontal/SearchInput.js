@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
-import tw from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 
 // Hooks
 import { useSearch } from "src/hooks/useSearch";
@@ -9,14 +9,13 @@ import { useSearchResult } from "src/state/global/hooks";
 import { getSearchQueryIds } from "src/constants/refIds";
 
 // Components
-import { Input } from "src/app/components/Input";
+import { Input as InputBase } from "src/app/components/Input";
 import { Spinner } from "src/app/components/LoadingIndicator/Spinner";
 import { StyledButton as Button } from "src/app/components/Button/StyledButton";
-import { Image } from "src/app/components/Image";
 import { Text } from "src/app/components/Text";
 
 // Icon
-import searchIcon from "../../../assets/search_icon.png";
+import { SearchIcon } from "src/app/components/Svg/Icons";
 
 export function SearchInput() {
   const history = useHistory();
@@ -36,9 +35,9 @@ export function SearchInput() {
     }
 
     if (!isSearching && searchError) {
+      const route = text?.trim() ? `/searchNotFound` : "/txs";
+      history.push(route, { keyword: text });
       onClearText();
-      const route = text?.trim() ? "/searchNotFound" : "/txs";
-      history.push(route);
     }
   }, [isSearching]);
 
@@ -51,38 +50,96 @@ export function SearchInput() {
 
   return (
     <Wrapper>
-      <InputWrapper>
-        <Input
-          value={text}
-          tw="flex-1 rounded py-3 text-sm md:text-base bg-bg1"
-          placeholder={`${t("common.search_placeholder")}`}
-          onChange={onTextChange}
-          onKeyPress={onEnterPress}
-        />
-        <Button
-          id={getSearchQueryIds(history.location.pathname)}
-          refs={buttonRef}
-          tw="relative bg-gradient-to-r from-primary to-info py-0 md:px-6 ml-5 md:ml-6"
-          onClick={onSearch}
-        >
-          {isSearching ? (
-            <Spinner stroke="white" />
-          ) : (
-            <>
-              <Image
-                alt="gl-search-icon"
-                src={searchIcon}
-                width={16}
-                height={16}
-              />
-              <Text tw="ml-3 hidden md:block">{t("common.search")}</Text>
-            </>
-          )}
-        </Button>
-      </InputWrapper>
+      <div>
+        <div tw="p-8 bg-color1">
+          <Title>The Glitch Explorer</Title>
+          <InputWrapper>
+            <Input
+              value={text}
+              placeholder={`${t("common.search_placeholder")}`}
+              onChange={onTextChange}
+              onKeyPress={onEnterPress}
+            />
+            <Button
+              shadow
+              id={getSearchQueryIds(history.location.pathname)}
+              refs={buttonRef}
+              tw="p-0"
+              onClick={onSearch}
+            >
+              <div tw="flex bg-color7 items-center py-3 px-5">
+                {isSearching ? (
+                  <Spinner stroke={theme`colors.color1`} />
+                ) : (
+                  <>
+                    <SearchIcon />
+                    <Text tw="ml-3 hidden md:block text-color1 font-bold">
+                      {t("common.search")}
+                    </Text>
+                  </>
+                )}
+              </div>
+            </Button>
+          </InputWrapper>
+        </div>
+      </div>
     </Wrapper>
   );
 }
+const Title = styled(Text)(() => [
+  css`
+    font-size: 36px;
+    background-image: linear-gradient(
+      45deg,
+      ${theme`colors.primary`} 0%,
+      ${theme`colors.secondary`} 40%
+    );
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 32px;
+  `,
+]);
 
-const Wrapper = tw.div`flex bg-bgPrimary items-center p-5 md:p-6 rounded mt-6`;
-const InputWrapper = tw.div`flex w-full`;
+const Input = styled(InputBase)(() => [
+  tw`flex-1 py-3 text-sm md:text-base bg-transparent`,
+  css`
+    border: 1px solid ${theme`colors.color3`};
+  `,
+]);
+
+const Wrapper = styled.div(() => [
+  tw`relative bg-color1 items-center mt-6 p-0`,
+  css`
+    div {
+      position: relative;
+      z-index: 2;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      transition: all ease-in-out 0.2s;
+    }
+
+    &:before {
+      background-color: ${theme`colors.secondary`};
+      top: -8px;
+      left: 8px;
+      opacity: 12%;
+    }
+
+    &:after {
+      background-color: ${theme`colors.primary`};
+      left: -8px;
+      top: 8px;
+      opacity: 12%;
+    }
+  `,
+]);
+const InputWrapper = tw.div`flex w-full items-center`;
