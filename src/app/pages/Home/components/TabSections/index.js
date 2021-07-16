@@ -19,8 +19,8 @@ export function TabSections() {
   const { t } = useTranslation();
 
   return (
-    <TabContainer tw="mt-12">
-      <Tabs tw="grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+    <TabContainer tw="mt-8">
+      <Tabs tw="grid-cols-2 lg:grid-cols-4">
         <Tab id={HOME_IDS.blocksTab} evtKey="latestBlocks">
           {t("common.latest_blocks")}
         </Tab>

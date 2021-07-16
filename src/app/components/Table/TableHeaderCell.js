@@ -1,14 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import tw, { css } from "twin.macro";
+import tw, { css, theme } from "twin.macro";
 export default function TableHeaderCell({ children, ...props }) {
   return (
     <th
       scope="col"
-      css={[
-        tw`p-4 text-center text-base font-medium text-white tracking-wider`,
-        styles,
-      ]}
+      css={[tw`p-4 text-left text-base text-color6 tracking-wider`, styles]}
       {...props}
     >
       {children}
@@ -17,9 +14,8 @@ export default function TableHeaderCell({ children, ...props }) {
 }
 
 const styles = css`
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid ${theme`colors.color2`};
+  background-color: ${theme`colors.color2`};
 `;
 
 TableHeaderCell.propTypes = {

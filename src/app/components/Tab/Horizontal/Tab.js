@@ -17,10 +17,7 @@ export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
     >
       <Text
         className="tab-label"
-        css={[
-          tw`text-sm md:text-tiny lg:text-base uppercase font-bold text-primary!`,
-          labelStyles,
-        ]}
+        css={[tw`text-sm md:text-tiny lg:text-base`, labelStyles]}
       >
         {children}
       </Text>
@@ -31,23 +28,27 @@ export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
 const Wrapper = styled(Button)(({ isActive }) => [
   tw`
     w-full
-    py-3
-    lg:py-4
+    py-5
+    rounded-none
   `,
 
   css`
-    border-radius: 5px 5px 0px 0px;
-    background-color: ${theme`colors.bg6`};
+    border: 1px solid ${theme`colors.color2`};
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
 
     .tab-label {
-      color: ${isActive ? "white" : theme`colors.primary`} !important;
-      opacity: ${isActive ? "100%" : "60%"};
+      color: ${isActive
+        ? theme`colors.primary`
+        : theme`colors.color6`} !important;
       word-break: inherit;
     }
   `,
 
-  isActive && tw`bg-gradient-to-r from-primary to-secondary text-white`,
+  isActive &&
+    css`
+      background-color: ${theme`colors.color2`};
+      border-bottom: 2px solid ${theme`colors.primary`};
+    `,
 ]);

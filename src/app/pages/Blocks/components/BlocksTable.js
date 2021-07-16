@@ -15,7 +15,9 @@ import {
 
 // Hooks
 import { formatAmount, formatWei, formatNumber } from "src/utils/numbers";
-import { D_FOR_TABLE, formatDateTimeUTC, formatTimeAgo } from "src/utils/dates";
+import { formatDateTimeUTC, formatTimeAgo, FORMAT_1 } from "src/utils/dates";
+import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
+import { Text } from "src/app/components/Text";
 
 export const BlocksTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -31,12 +33,12 @@ export const BlocksTable = React.memo((props) => {
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
         <TableRow animation={false}>
-          <TableHeaderCell>Epoch/ Slot</TableHeaderCell>
+          <TableHeaderCell tw="pl-5">Epoch/ Slot</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
-          <TableHeaderCell>Reward</TableHeaderCell>
-          <TableHeaderCell>Size (Bytes)</TableHeaderCell>
-          <TableHeaderCell>Producer</TableHeaderCell>
+          <TableHeaderCell tw="text-right">Reward</TableHeaderCell>
+          <TableHeaderCell tw="text-center">Size (Bytes)</TableHeaderCell>
+          <TableHeaderCell>Validator</TableHeaderCell>
         </TableRow>
       </TableHeader>
 
@@ -54,17 +56,22 @@ export const BlocksTable = React.memo((props) => {
                 count={countUpdated.current}
                 animation={i === 0}
               >
-                <TableCell>
+                <TableCell tw="pl-5">
                   {formatNumber(epoch)}/ {slot}
                 </TableCell>
                 <TableCell isLink href={`/block/${height}`}>
                   {formatAmount(height)}
                 </TableCell>
-                <TableCell dataTip={formatDateTimeUTC(create_at, D_FOR_TABLE)}>
+                <TableCell>
                   {formatTimeAgo(create_at)}
+                  <Text tw="mt-1 text-sm text-color5">
+                    {formatDateTimeUTC(create_at, FORMAT_1)} GMT
+                  </Text>
                 </TableCell>
-                <TableCell>{formatWei(reward)} GLCH</TableCell>
-                <TableCell>{formatAmount(size)}</TableCell>
+                <TableCell>
+                  <ValueWithPrefix tw="justify-end" value={formatWei(reward)} />
+                </TableCell>
+                <TableCell tw="text-center">{formatAmount(size)}</TableCell>
                 <TableCell>{producer}</TableCell>
               </TableRow>
             );

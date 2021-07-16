@@ -11,7 +11,7 @@ export function Grid({ children, cols, ...props }) {
 }
 
 const styles = {
-  container: ({ cols }) => [tw`grid gap-4 lg:gap-6`, colsVariants[cols]],
+  container: ({ cols }) => [tw`grid gap-2 lg:gap-3`, colsVariants[cols]],
 };
 
 const colsVariants = {

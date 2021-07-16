@@ -38,6 +38,6 @@ const pulse = keyframes`
 const AnimatedImg = styled.div`
   animation: ${pulse} 800ms linear infinite;
   & > * {
-    width: 72px;
+    width: 150px;
   }
 `;

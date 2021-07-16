@@ -54,7 +54,6 @@ export const LineChart = ({
 
 const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };
 const tickStyles = {
-  fill: "#fff",
-  fillOpacity: "70%",
+  fill: theme`colors.color6`,
   fontSize: theme`fontSize.sm`,
 };

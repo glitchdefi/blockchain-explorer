@@ -1,5 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import tw from "twin.macro";
+
 // Utils
 import { formatNumber } from "src/utils/numbers";
 
@@ -11,11 +13,9 @@ import { useProducerName } from "src/state/producer/hooks";
 
 // Components
 import {
-  ProducerIcon,
-  CurrencyIcon,
+  ValidatorIcon,
   HeadBlockIcon,
-  PriceIcon,
-  LibIcon,
+  MarketIcon,
   TotalAccountIcon,
 } from "src/app/components/Svg/Icons";
 import { Grid } from "src/app/components/Grid";
@@ -27,40 +27,40 @@ export const StatsHistory = () => {
   const { allGlitchInfo } = useAllGlitchInfo();
   const { headBlock } = useHeadBlockNumber();
   const { producerName } = useProducerName();
-  const { current_price, market_cap } = allGlitchInfo || {};
+  const { market_cap } = allGlitchInfo || {};
 
   return (
-    <Grid cols={2}>
-      <StatsCard
-        icon={<ProducerIcon />}
-        title={t("homePage.producer")}
-        value={producerName || "--"}
-      />
-      {/* <StatsCard
-        icon={<CurrencyIcon />}
-        title={t("homePage.current_max")}
-        value="--"
-      /> */}
-      <StatsCard
-        icon={<HeadBlockIcon />}
-        title={t("homePage.head_block")}
-        value={headBlock}
-      />
-      <StatsCard
-        icon={<PriceIcon />}
-        title={t("homePage.price_market_cap")}
-        values={[current_price, market_cap]}
-        decimals={[2, 0]}
-        prefix="$"
-      />
-      {/* <StatsCard icon={<LibIcon />} title={t("homePage.lib")} value="--" /> */}
-      <StatsCard
-        icon={<TotalAccountIcon />}
-        title={t("homePage.total_account")}
-        value={
-          walletCount === 0 || !walletCount ? "0" : formatNumber(walletCount)
-        }
-      />
-    </Grid>
+    <Wrapper>
+      <Grid cols={2}>
+        <StatsCard
+          icon={<MarketIcon />}
+          title={t("homePage.market_cap")}
+          value={market_cap}
+          prefix="$"
+        />
+
+        <StatsCard
+          icon={<TotalAccountIcon />}
+          title={t("homePage.total_accounts")}
+          value={walletCount === 0 || !walletCount ? "0" : walletCount}
+          separator={null}
+          decimals={0}
+        />
+
+        <StatsCard
+          icon={<ValidatorIcon />}
+          title={t("homePage.validator")}
+          value={producerName || "--"}
+        />
+        <StatsCard
+          icon={<HeadBlockIcon />}
+          title={t("homePage.head_block")}
+          value={Number(headBlock)}
+          separator={null}
+        />
+      </Grid>
+    </Wrapper>
   );
 };
+
+const Wrapper = tw.div`p-3 lg:(pl-0)`;

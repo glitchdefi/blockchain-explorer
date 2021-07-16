@@ -15,21 +15,10 @@ export const ViewAllButton = React.memo(
   () => true
 );
 
-const Wrapper = tw.div`w-full justify-end items-end flex mt-7 mb-2`;
+const Wrapper = tw.div`w-full justify-center items-center flex bg-color2`;
 
 const styles = css`
   display: inline-block;
-  background-color: transparent;
-  border: 1px solid ${theme`colors.primary`};
   color: ${theme`colors.primary`};
-  padding: 4px 10px;
-  line-height: 24px;
-  text-align: center;
-  vertical-align: middle;
-  list-style: none;
-  border-radius: 5px;
-  outline: 0;
-  cursor: pointer;
-  user-select: none;
-  align-self: end;
+  padding: 16px;
 `;

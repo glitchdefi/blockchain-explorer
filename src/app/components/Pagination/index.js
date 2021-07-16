@@ -1,30 +1,15 @@
 import React from "react";
 import RcPagination from "rc-pagination";
 import PropTypes from "prop-types";
-import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
-import { DEFAULT_PAGE_SIZE } from "src/constants";
+import { Options } from "./Options";
+
 import localeEN from "./locale";
 import "./styles/index.css";
 
 export const Pagination = React.memo((props) => {
-  const { containerStyles, total, current, onChange } = props;
-  const { t } = useTranslation();
-
-  /**
-   *
-   *
-   */
-  const renderButtons = (_, type, element) => {
-    if (type === "prev") {
-      return <button type="button">{t("pagination.prev")}</button>;
-    }
-    if (type === "next") {
-      return <button type="button">{t("pagination.next")}</button>;
-    }
-    return element;
-  };
+  const { containerStyles, total, current, pageSize, onChange } = props;
 
   return (
     <>
@@ -33,9 +18,13 @@ export const Pagination = React.memo((props) => {
           locale={localeEN}
           current={current}
           total={total}
-          pageSize={DEFAULT_PAGE_SIZE}
+          pageSize={pageSize}
           onChange={onChange}
-          itemRender={renderButtons}
+        />
+        <Options
+          onChange={(pageSize) =>
+            onChange({ page_index: 1, page_size: pageSize })
+          }
         />
       </Wrapper>
     </>

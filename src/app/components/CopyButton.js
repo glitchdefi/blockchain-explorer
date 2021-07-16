@@ -38,9 +38,9 @@ export function CopyButton({ text, ...props }) {
       <ReactTooltip
         id={text}
         effect="solid"
-        backgroundColor={theme`colors.bg2`}
+        backgroundColor={theme`colors.color2`}
         getContent={() => (copied ? "Copied" : "Copy")}
-        tw="w-24 text-center"
+        tw="w-24 text-center rounded-none!"
       />
     </>
   );

@@ -36,7 +36,7 @@ const Wrapper = tw.div`
   w-full 
   lg:hidden 
   mt-2
-  bg-bgPrimary
+  bg-color1
 `;
 
 const UlWrapper = tw.ul`
