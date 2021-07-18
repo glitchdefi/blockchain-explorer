@@ -9,6 +9,7 @@ import {
   useBlockTxs,
 } from "src/state/block/hooks";
 import { useProducerSlice } from "src/state/producer/hooks";
+import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
@@ -19,11 +20,14 @@ import { TransactionsTable } from "../Transactions/components/TransactionsTable"
 export function BlockDetailsPage() {
   useBlockSlice();
   useProducerSlice();
+  usePriceSlice();
   const [params, setParams] = useState();
   const { t } = useTranslation();
   const { height } = useParams();
   const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
   const { isFetchingBlockTxs, data, total } = useBlockTxs(height, params);
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { current_price } = allGlitchInfo || {};
 
   return (
     <>
@@ -41,6 +45,7 @@ export function BlockDetailsPage() {
           loading={isFetchingBlockDetails}
           blockHeight={height}
           data={blockDetails}
+          currentPrice={current_price}
         />
 
         <Heading tw="mt-8 lg:mt-16">

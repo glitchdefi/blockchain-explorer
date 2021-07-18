@@ -16,7 +16,7 @@ export function ValueWithPrefix({
       <Text tw="ml-2 text-color6" css={[prefixStyles]}>
         {prefix || "GLCH"}
       </Text>
-      {usd && <Text tw="ml-2 text-color5">~ {usd} USD</Text>}
+      {usd && <Text tw="ml-2 text-color5">~ {usd || 0} USD</Text>}
     </Wrapper>
   );
 }
