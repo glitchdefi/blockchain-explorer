@@ -23,7 +23,15 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Journey } from "./Journey";
 
 export const TransactionsTable = React.memo((props) => {
-  const { loading, total, onChange, data, animation = false, ...rest } = props;
+  const {
+    loading,
+    total,
+    onChange,
+    data,
+    animation = false,
+    showType,
+    ...rest
+  } = props;
   const countUpdated = useRef(0);
 
   useEffect(() => {
@@ -36,7 +44,7 @@ export const TransactionsTable = React.memo((props) => {
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell tw="pl-5">Type</TableHeaderCell>
+          {showType && <TableHeaderCell tw="pl-5">Type</TableHeaderCell>}
           <TableHeaderCell>Txn Hash</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Journey</TableHeaderCell>
@@ -61,9 +69,10 @@ export const TransactionsTable = React.memo((props) => {
               height,
               result_log,
               gasused,
-              type,
+              type: txType,
             } = tx;
             const status = result_log === 1 ? "Success" : "Fail";
+            const type = txType === "in" ? "Receive" : "Send";
 
             return (
               <TableRow
@@ -71,7 +80,7 @@ export const TransactionsTable = React.memo((props) => {
                 count={countUpdated.current}
                 animation={animation && i === 0}
               >
-                <TableCell tw="pl-5">Receive</TableCell>
+                {showType && <TableCell tw="pl-5">{type}</TableCell>}
                 <TableCell id={i} isLink href={`/tx/${hash}`} tip={hash}>
                   {truncateAddress(hash, 8, 8)}
                 </TableCell>

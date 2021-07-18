@@ -1,15 +1,16 @@
 import React from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
+import { useHistory, useLocation } from "react-router-dom";
 
 // Components
 import { Text } from "src/app/components/Text";
 import { Button } from "src/app/components/Button";
 import { NotFoundIcon } from "src/app/components/Svg/Icons";
-import { useLocation } from "react-router-dom";
 
 export function SearchNotFoundPage() {
   const location = useLocation();
+  const history = useHistory();
   const { t } = useTranslation();
   const { keyword } = location.state || {};
 
@@ -32,7 +33,7 @@ export function SearchNotFoundPage() {
           </Text>
         </div>
 
-        <Button shadow tw="p-0 mt-6">
+        <Button shadow tw="p-0 mt-6" onClick={() => history.push("/")}>
           <div tw="flex bg-color7 py-3 px-6">
             <Text tw="text-color1 text-lg">Back Home</Text>
           </div>

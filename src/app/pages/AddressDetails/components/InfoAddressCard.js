@@ -32,7 +32,7 @@ export function InfoAddressCard({
   return (
     <Wrapper>
       <div tw="flex-1">
-        <Flex>
+        <Flex tw="mb-4">
           <Address>{address}</Address>
           <CopyButton text={address} tw="ml-3" />
         </Flex>
@@ -41,11 +41,11 @@ export function InfoAddressCard({
           <SkeletonLoading />
         ) : (
           <>
-            <Text tw="text-sm text-color5 mt-2">Last transaction: --</Text>
+            {/* <Text tw="text-sm text-color5 mt-2">Last transaction: --</Text> */}
 
-            <Text tw="text-sm text-color5 mt-2 mb-4">
+            {/* <Text tw="text-sm text-color5 mt-2 mb-4">
               Transactions: {formatNumber(total)}
-            </Text>
+            </Text> */}
 
             <InfoRow
               label="Balance"
@@ -62,18 +62,18 @@ export function InfoAddressCard({
                 />
               }
             />
-            <InfoRow
+            {/* <InfoRow
               label="Total Received"
               customValueComp={<Value value="0" usd="$0" />}
             />
             <InfoRow
               label="Total Spend"
               customValueComp={<Value value="0" usd="$0" />}
-            />
+            /> */}
           </>
         )}
       </div>
-      <div tw="lg:ml-6 p-8">
+      {/* <div tw="lg:ml-6 p-8">
         {loading ? (
           <Skeleton tw="w-52 h-52" />
         ) : (
@@ -84,7 +84,7 @@ export function InfoAddressCard({
             <QRCode />
           </div>
         )}
-      </div>
+      </div> */}
     </Wrapper>
   );
 }
