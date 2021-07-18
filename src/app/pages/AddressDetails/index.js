@@ -49,6 +49,7 @@ export function AddressDetailsPage() {
         <Heading tw="mb-4">Transactions included in this Address</Heading>
 
         <TransactionsTable
+          showType
           loading={isFetchingAddressTxs}
           data={data}
           total={total}
