@@ -20,113 +20,121 @@ import { Text } from "src/app/components/Text";
 import { OverviewCard } from "../OverviewCard";
 import { BlockNavigation } from "../BlockNavigation";
 
-export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
-  const { t } = useTranslation();
-  const {
-    block_size,
-    num_txs,
-    proposer_address,
-    height,
-    time,
-    hash,
-    reward,
-    epoch,
-    slot,
-  } = data || {};
-  const { producerDetails } = useProducerDetails(proposer_address);
-  const { name } = producerDetails || {};
+export const BlockDetailsCard = React.memo(
+  ({ loading, currentPrice, blockHeight, data }) => {
+    const { t } = useTranslation();
+    const {
+      block_size,
+      num_txs,
+      proposer_address,
+      height,
+      time,
+      hash,
+      reward,
+      epoch,
+      slot,
+    } = data || {};
+    const { producerDetails } = useProducerDetails(proposer_address);
+    const { name } = producerDetails || {};
+    const rewardToUsd = formatWei(reward) * currentPrice;
+    
+    const getContent = () => {
+      if (loading)
+        return (
+          <div css={[cardStyles]}>
+            <LoadingPage title={`Loading Block #${blockHeight}`} />
+          </div>
+        );
 
-  const getContent = () => {
-    if (loading)
+      if (!loading && isEmpty(data))
+        return (
+          <div css={[cardStyles]}>
+            <Empty
+              title={`${t("blockDetails.empty", { height: blockHeight })}`}
+            />
+          </div>
+        );
       return (
-        <div css={[cardStyles]}>
-          <LoadingPage title={`Loading Block #${blockHeight}`} />
-        </div>
-      );
-
-    if (!loading && isEmpty(data))
-      return (
-        <div css={[cardStyles]}>
-          <Empty
-            title={`${t("blockDetails.empty", { height: blockHeight })}`}
+        <>
+          <BlockNavigation currentBlock={height} />
+          <InfoRow
+            isCopy={true}
+            label={t("blockDetails.hash")}
+            customValueComp={<Text color={theme`colors.primary`}>{hash}</Text>}
+            dataTip={t("blockDetails.hash_tip")}
           />
-        </div>
+
+          <InfoRow
+            label={t("blockDetails.block")}
+            value={formatNumber(height)}
+            dataTip={t("blockDetails.height_tip")}
+          />
+
+          <InfoRow
+            label={t("blockDetails.epoch_slot")}
+            value={`${formatNumber(epoch)} / ${slot}`}
+            dataTip={t("blockDetails.epoch_slot_tip")}
+          />
+
+          <InfoRow
+            label={t("common.timeStamp")}
+            value={`${formatTimeAgo(time)} • (${formatDateTimeUTC(
+              time,
+              FORMAT_2
+            )} +UTC)`}
+            dataTip={t("blockDetails.time_tip")}
+          />
+
+          <InfoRow
+            label={t("blockDetails.validator")}
+            value={
+              name || (
+                <Spinner
+                  tw="mt-1"
+                  size="12px"
+                  stroke={theme`colors.textSecondary`}
+                />
+              )
+            }
+            dataTip={t("blockDetails.validator_tip")}
+          />
+
+          <InfoRow
+            label={t("common.total_txs")}
+            value={formatNumber(num_txs)}
+            dataTip={t("blockDetails.txs_tip")}
+          />
+
+          <InfoRow
+            label={t("blockDetails.block_reward")}
+            customValueComp={
+              <ValueWithPrefix value={formatWei(reward)} usd={`$${rewardToUsd}`} />
+            }
+            dataTip={t("blockDetails.reward_tip")}
+          />
+
+          <InfoRow
+            label={t("common.size")}
+            customValueComp={
+              <ValueWithPrefix
+                value={formatNumber(block_size)}
+                prefix="bytes"
+              />
+            }
+            dataTip={t("blockDetails.size_tip")}
+          />
+        </>
       );
+    };
+
     return (
       <>
-        <BlockNavigation currentBlock={height} />
-        <InfoRow
-          isCopy={true}
-          label={t("blockDetails.hash")}
-          customValueComp={<Text color={theme`colors.primary`}>{hash}</Text>}
-          dataTip={t("blockDetails.hash_tip")}
-        />
-
-        <InfoRow
-          label={t("blockDetails.block")}
-          value={formatNumber(height)}
-          dataTip={t("blockDetails.height_tip")}
-        />
-
-        <InfoRow
-          label={t("blockDetails.epoch_slot")}
-          value={`${formatNumber(epoch)} / ${slot}`}
-          dataTip={t("blockDetails.epoch_slot_tip")}
-        />
-
-        <InfoRow
-          label={t("common.timeStamp")}
-          value={`${formatTimeAgo(time)} • (${formatDateTimeUTC(
-            time,
-            FORMAT_2
-          )} +UTC)`}
-          dataTip={t("blockDetails.time_tip")}
-        />
-
-        <InfoRow
-          label={t("blockDetails.validator")}
-          value={
-            name || (
-              <Spinner
-                tw="mt-1"
-                size="12px"
-                stroke={theme`colors.textSecondary`}
-              />
-            )
-          }
-          dataTip={t("blockDetails.validator_tip")}
-        />
-
-        <InfoRow
-          label={t("common.total_txs")}
-          value={formatNumber(num_txs)}
-          dataTip={t("blockDetails.txs_tip")}
-        />
-
-        <InfoRow
-          label={t("blockDetails.block_reward")}
-          customValueComp={<ValueWithPrefix value={formatWei(reward)} />}
-          dataTip={t("blockDetails.reward_tip")}
-        />
-
-        <InfoRow
-          label={t("common.size")}
-          customValueComp={
-            <ValueWithPrefix value={formatNumber(block_size)} prefix="bytes" />
-          }
-          dataTip={t("blockDetails.size_tip")}
-        />
+        <OverviewCard />
+        <Wrapper>{getContent()}</Wrapper>
       </>
     );
-  };
-
-  return (
-    <>
-      <OverviewCard />
-      <Wrapper>{getContent()}</Wrapper>
-    </>
-  );
-});
+  }
+);
 
 export const Wrapper = tw.div`w-full p-6 bg-color1`;
 const cardStyles = css`

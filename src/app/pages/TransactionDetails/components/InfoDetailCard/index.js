@@ -6,6 +6,7 @@ import { isEmpty } from "lodash";
 
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
+import { useAllGlitchInfo } from "src/state/price/hooks";
 import { formatWei } from "src/utils/numbers";
 
 // Components
@@ -21,9 +22,13 @@ export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { current_price } = allGlitchInfo || {};
   const { hash, create_at, height, from, to, result_log, gasused, value } =
     txDetails || {};
   const status = result_log === 1 ? "Success" : "Fail";
+  const valueToUsd = formatWei(value) * current_price;
+  const feeToUsd = formatWei(gasused) * current_price;
 
   const renderInfoRow = ({
     label,
@@ -121,7 +126,7 @@ export function InfoDetailCard() {
           customValueComp: (
             <ValueWithPrefix
               value={formatWei(value)}
-              usd="0.0001"
+              usd={`$${valueToUsd}`}
               valueStyles={tw`text-secondary`}
               prefixStyles={tw`text-secondary`}
             />
@@ -132,7 +137,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.txnFee"),
           customValueComp: (
-            <ValueWithPrefix value={formatWei(gasused)} usd="0.001" />
+            <ValueWithPrefix value={formatWei(gasused)} usd={`$${feeToUsd}`} />
           ),
           dataTip: t("transactionDetails.fee_tip"),
         })}

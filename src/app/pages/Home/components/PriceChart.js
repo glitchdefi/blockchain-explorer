@@ -8,7 +8,7 @@ import glLogoNoText from "src/assets/images/gl_logo_no_text.png";
 import { formatDollarAmount } from "src/utils/numbers";
 
 // Hooks
-import { usePriceHistory } from "src/state/price/hooks";
+import { useAllGlitchInfo, usePriceHistory } from "src/state/price/hooks";
 
 // Components
 import { Card } from "src/app/components/Card";
@@ -20,6 +20,8 @@ import { Image } from "src/app/components/Image";
 export const PriceChart = () => {
   const { t } = useTranslation();
   const { isFetchingPriceHistory, priceHistory } = usePriceHistory();
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { current_price } = allGlitchInfo || {};
 
   return (
     <Wrapper>
@@ -30,7 +32,7 @@ export const PriceChart = () => {
             {t("homePage.GLCH_price")}
           </Text>
           <Text bold tw="mt-1">
-            $0.42 USD
+            ${current_price?.toFixed(2) || "--"} USD
           </Text>
         </div>
       </div>
