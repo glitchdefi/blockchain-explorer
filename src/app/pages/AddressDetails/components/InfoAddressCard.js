@@ -30,9 +30,7 @@ export function InfoAddressCard({
 }) {
   const { balance } = data || {};
   const totalBalanceToUsd =
-    balance && currentPrice
-      ? formatDollarAmount(formatWei(balance, false) * currentPrice, 2, false)
-      : "--";
+    balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
 
   return (
     <Wrapper>
