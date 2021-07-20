@@ -1,5 +1,5 @@
 import React from "react";
-import "twin.macro";
+import { css, theme } from "twin.macro";
 
 // Hooks
 import { useWalletSlice } from "src/state/wallet/hooks";
@@ -25,7 +25,13 @@ export function HomePage() {
 
   return (
     <>
-      <Grid cols={2} tw="mt-8 bg-color1">
+      <Grid
+        cols={2}
+        tw="mt-8 bg-color1"
+        css={css`
+          border: 1px solid ${theme`colors.color2`};
+        `}
+      >
         <PriceChart />
         <div tw="p-3">
           <StatsHistory />

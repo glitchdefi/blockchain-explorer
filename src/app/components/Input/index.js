@@ -11,6 +11,5 @@ export const Input = styled.input(() => [
   text-base
   text-color7
   font-mono
-  focus:shadow-lg
   `,
 ]);

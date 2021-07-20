@@ -1,10 +1,11 @@
-import { styled, css } from "twin.macro";
-import bg from "./assets/g_bg.jpg";
+import tw, { styled, css } from "twin.macro";
 
-export const Container = styled.div(() => [
-  css`
-    background-image: url(${bg});
-    background-size: cover;
-    background-attachment: fixed;
-  `,
+export const Container = styled.div(({ isDark }) => [
+  isDark
+    ? css`
+        background-image: url(/images/g_bg.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+      `
+    : tw`bg-color9`,
 ]);

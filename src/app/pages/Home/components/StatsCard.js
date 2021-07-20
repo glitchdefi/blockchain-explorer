@@ -22,7 +22,7 @@ export const StatsCard = ({ icon, title, value, separator, prefix }) => {
           </Text>
 
           {typeof value === "string" ? (
-            <Text color={theme`colors.color7`}>{value}</Text>
+            <Text bold color={theme`colors.color7`}>{value}</Text>
           ) : (
             <NumberChange value={value} prefix={prefix} separator={separator} />
           )}

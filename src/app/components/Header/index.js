@@ -12,10 +12,11 @@ import { Logo } from "src/app/components/Logo";
 import { HorizontalMenu, VerticalMenu } from "./components/Menu";
 import { Button } from "../Button";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
-import { SearchInput } from "./components/Menu/Horizontal/SearchInput";
+import { SearchInput } from "./components/SearchInput";
 
 // Icon
 import { HamburgerIcon, CloseIcon } from "./icons";
+import ThemeToggle from "./components/ThemeToggle";
 
 export function Header() {
   useGlobalSlice();
@@ -36,19 +37,23 @@ export function Header() {
         <PageElementWrap>
           <NavCols>
             <Logo id={HOME_IDS.logo} />
-            {/* Menu for Desktop */}
-            <HorizontalMenu />
-            {/* Toggle Menu Vertical */}
-            <div tw="lg:hidden flex items-center">
-              {!isShowVerticalMenu ? (
-                <Button tw="p-0" onClick={toggleVerticalMenu}>
-                  <HamburgerIcon />
-                </Button>
-              ) : (
-                <Button tw="p-0" onClick={toggleVerticalMenu}>
-                  <CloseIcon />
-                </Button>
-              )}
+
+            <div tw="flex items-center">
+              {/* Menu for Desktop */}
+              <HorizontalMenu />
+              {/* Toggle Menu Vertical */}
+              <div tw="lg:hidden flex items-center">
+                {!isShowVerticalMenu ? (
+                  <Button tw="p-0" onClick={toggleVerticalMenu}>
+                    <HamburgerIcon />
+                  </Button>
+                ) : (
+                  <Button tw="p-0" onClick={toggleVerticalMenu}>
+                    <CloseIcon />
+                  </Button>
+                )}
+              </div>
+              <ThemeToggle />
             </div>
           </NavCols>
         </PageElementWrap>

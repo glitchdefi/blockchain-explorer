@@ -5,14 +5,14 @@ import { variants } from "./types";
 export const getThemeColor = ({ variant = variants.INFO }) => {
   switch (variant) {
     case variants.DANGER:
-      return theme`colors.secondary`;
+      return theme`colors.fail`;
     case variants.WARNING:
-      return theme`colors.secondary`;
+      return theme`colors.fail`;
     case variants.SUCCESS:
       return theme`colors.primary`;
     case variants.INFO:
     default:
-      return theme`colors.info`;
+      return theme`colors.pending`;
   }
 };
 

@@ -18,7 +18,7 @@ export function EpodDetailsPage() {
       <Wrapper>
         <HeadWrapper>
           <Heading>{t("epodDetails.title")}</Heading>
-          <Heading tw="text-textSecondary! ml-4">#111111</Heading>
+          <Heading tw="text-color7! ml-4">#111111</Heading>
         </HeadWrapper>
 
         <EpodDetailsCard />

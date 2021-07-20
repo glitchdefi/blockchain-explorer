@@ -21,7 +21,7 @@ export function NotFoundPage() {
           <div>
             <Text tw="text-8xl lg:text-8xl">404</Text>
             <Text tw="text-2xl lg:text-4xl">{t("common.not_found_page")}</Text>
-            <Button tw="mt-5 lg:mt-10 bg-gradient-to-r from-primary to-info">
+            <Button tw="mt-5 lg:mt-10">
               <Link tw="hover:text-white" href="/">
                 {t("notFoundPage.go_back_home_page")}
               </Link>

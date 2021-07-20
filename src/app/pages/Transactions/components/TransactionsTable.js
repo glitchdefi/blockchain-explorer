@@ -92,7 +92,7 @@ export const TransactionsTable = React.memo((props) => {
                 </TableCell>
                 <TableCell>
                   {formatTimeAgo(create_at)}
-                  <Text tw="mt-1 text-sm text-color5">
+                  <Text tw="mt-1 text-sm text-color6 dark:text-color5">
                     {formatDateTimeUTC(create_at, FORMAT_1)} GMT
                   </Text>
                 </TableCell>

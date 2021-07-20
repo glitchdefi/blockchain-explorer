@@ -3,12 +3,14 @@ import { css, styled, theme } from "twin.macro";
 import { useTranslation } from "react-i18next";
 
 import glLogoNoText from "src/assets/images/gl_logo_no_text.png";
+import glLogoNoTextLight from "src/assets/images/gl_logo_no_text_light.png";
 
 // Utils
 import { formatDollarAmount } from "src/utils/numbers";
 
 // Hooks
 import { useAllGlitchInfo, usePriceHistory } from "src/state/price/hooks";
+import { useTheme } from "src/hooks/useTheme";
 
 // Components
 import { Card } from "src/app/components/Card";
@@ -19,14 +21,15 @@ import { Image } from "src/app/components/Image";
 
 export const PriceChart = () => {
   const { t } = useTranslation();
+  const { isDark } = useTheme();
   const { isFetchingPriceHistory, priceHistory } = usePriceHistory();
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
 
   return (
     <Wrapper>
-      <div tw="flex items-center bg-color2 py-3 px-6">
-        <Image src={glLogoNoText} width={48} />
+      <div tw="flex items-center bg-color10 dark:bg-color2 py-3 px-6">
+        <Image src={isDark ? glLogoNoText : glLogoNoTextLight} width={48} />
         <div tw="ml-4 pb-1">
           <Text size={theme`fontSize.sm`} color={theme`colors.color6`}>
             {t("homePage.GLCH_price")}
@@ -56,7 +59,10 @@ export const PriceChart = () => {
               const data = payload?.length ? payload[0].payload : {};
               return (
                 <TooltipTable>
-                  <TooltipTable.Text value={data.fullStringDate} />
+                  <TooltipTable.Text
+                    tw="text-color6 dark:text-color7"
+                    value={data.fullStringDate}
+                  />
                   <div tw="flex items-center">
                     <TooltipTable.Text
                       value={`${t("common.glitch_price")}:`}

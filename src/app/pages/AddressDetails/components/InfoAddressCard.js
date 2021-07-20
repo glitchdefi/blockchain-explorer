@@ -97,7 +97,9 @@ const Value = ({ value, usd, price }) => {
         <ValueWithPrefix tw="ml-3" value={value} usd={usd} />
       </Flex>
 
-      {price && <Text tw="ml-2 text-color5">{`• ($${price}/GLCH)`}</Text>}
+      {price && (
+        <Text tw="ml-2 text-color6 dark:text-color5">{`• ($${price}/GLCH)`}</Text>
+      )}
     </Flex>
   );
 };

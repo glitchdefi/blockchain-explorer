@@ -24,7 +24,7 @@ export function Submenu({ isActive, items }) {
   );
 }
 
-const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-bg2`;
+const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-color1`;
 export const SubMenuItem = styled.li(({ isActive }) => [
   tw`
   grid 

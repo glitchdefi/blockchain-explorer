@@ -5,7 +5,7 @@ import { Text } from "../Text";
 export function Empty({ title, ...props }) {
   return (
     <Wrapper {...props}>
-      <Text size={theme`fontSize.base`} color={theme`colors.textSecondary`}>
+      <Text size={theme`fontSize.base`} color={theme`colors.color7`}>
         {title}
       </Text>
     </Wrapper>

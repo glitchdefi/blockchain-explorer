@@ -69,7 +69,7 @@ export function AreaChart(props) {
   );
 }
 
-const Label = tw(Text)`text-tiny text-textSecondary text-center mb-2`;
+const Label = tw(Text)`text-tiny text-color7 text-center mb-2`;
 const chartMargin = { top: 30, right: 30, bottom: 20, left: 5 };
 const tickStyles = { fill: "#fff", fillOpacity: "70%", fontSize: "12px" };
 

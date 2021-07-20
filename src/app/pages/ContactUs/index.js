@@ -99,7 +99,7 @@ export function ContactPage() {
             placeholder="Your Message"
             rows={10}
           />
-          <p tw="block text-sm font-medium text-textSecondary">
+          <p tw="block text-sm font-medium text-color7">
             {watchMessage?.length || 0} of 300 max characters
           </p>
           {errors.message?.type === "required" && (

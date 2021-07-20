@@ -59,7 +59,7 @@ export const PieChart = React.memo(() => {
 
 const LegendWrapper = tw.ul`list-none block md:flex items-center justify-center`;
 const LegendContent = styled.li(({ circleColor }) => [
-  tw`text-textSecondary! text-tiny mt-3 md:mr-12 items-center justify-center flex`,
+  tw`text-color7! text-tiny mt-3 md:mr-12 items-center justify-center flex`,
   css`
     &:before {
       content: "";

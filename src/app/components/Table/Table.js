@@ -77,6 +77,7 @@ const glchNestedLoading = css`
     align-items: center;
     justify-content: center;
     display: flex;
+    border: 1px solid ${theme`colors.color2`}
   }
 `;
 
@@ -97,6 +98,7 @@ const spinWrapStyles = css`
 
 const tableStyles = css`
   border-spacing: inherit;
+  border: 1px solid ${theme`colors.color2`}
 `;
 Table.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),

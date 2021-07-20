@@ -19,6 +19,7 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Text } from "src/app/components/Text";
 import { OverviewCard } from "../OverviewCard";
 import { BlockNavigation } from "../BlockNavigation";
+import styled from "styled-components";
 
 export const BlockDetailsCard = React.memo(
   ({ loading, currentPrice, blockHeight, data }) => {
@@ -92,7 +93,7 @@ export const BlockDetailsCard = React.memo(
                 <Spinner
                   tw="mt-1"
                   size="12px"
-                  stroke={theme`colors.textSecondary`}
+                  stroke={theme`colors.color2`}
                 />
               )
             }
@@ -136,7 +137,12 @@ export const BlockDetailsCard = React.memo(
   }
 );
 
-export const Wrapper = tw.div`w-full p-6 bg-color1`;
+export const Wrapper = styled.div(() => [
+  tw`w-full p-6 bg-color1`,
+  css`
+    border: 1px solid ${theme`colors.color2`}
+  `
+]);
 const cardStyles = css`
   min-height: 280px;
   align-items: center;

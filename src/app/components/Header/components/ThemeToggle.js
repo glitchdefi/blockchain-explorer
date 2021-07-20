@@ -2,7 +2,8 @@ import React from "react";
 import "twin.macro";
 
 import { ThemeContext } from "src/styles/theme/themeContext";
-import { Button } from "../Button";
+import { Tooltip } from "src/app/components/Tooltip";
+import { Button } from "../../Button";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = React.useContext(ThemeContext);
@@ -12,12 +13,18 @@ const ThemeToggle = () => {
   }
 
   return (
-    <Button
-      tw="mt-3 w-10 h-10 bg-color1 focus:outline-none fill-current text-primary hover:text-secondary"
-      onClick={() => setTheme(isDark() ? "light" : "dark")}
-    >
-      {isDark() ? <Sun /> : <Moon />}
-    </Button>
+    <>
+      <Button
+        tw="ml-2 lg:mb-3 w-8 h-8 p-1 bg-transparent focus:outline-none fill-current text-primary border border-solid border-color2"
+        onClick={() => setTheme(isDark() ? "light" : "dark")}
+        data-tip={`Switch to ${isDark() ? "Light" : "Dark"} mode`}
+        data-for="theme-toggle"
+      >
+        {isDark() ? <Sun /> : <Moon />}
+      </Button>
+
+      <Tooltip id="theme-toggle" />
+    </>
   );
 };
 
