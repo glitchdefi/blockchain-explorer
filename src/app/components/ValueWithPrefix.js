@@ -19,7 +19,7 @@ export function ValueWithPrefix({
       </Text>
       {usd && (
         <Text tw="ml-2 text-color6 dark:text-color5">
-          ~ {formatDollarAmount(usd) || 0} USD
+          ~ {usd ? formatDollarAmount(usd, 2, false) : 0} USD
         </Text>
       )}
     </Wrapper>
