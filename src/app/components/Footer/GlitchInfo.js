@@ -19,7 +19,7 @@ function GlitchInfo() {
     >
       <Logo />
       <Flex tw="mt-4">
-        <Text tw="text-color7">{t("footer.powered_by_glitch")}</Text>
+        <Text bold tw="text-color7">{t("footer.powered_by_glitch")}</Text>
         <NavBar />
       </Flex>
 

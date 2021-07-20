@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import { formatDollarAmount } from "src/utils/numbers";
 import { Text } from "./Text";
 
 export function ValueWithPrefix({
@@ -16,7 +17,11 @@ export function ValueWithPrefix({
       <Text tw="ml-2 text-color6" css={[prefixStyles]}>
         {prefix || "GLCH"}
       </Text>
-      {usd && <Text tw="ml-2 text-color6 dark:text-color5">~ {usd || 0} USD</Text>}
+      {usd && (
+        <Text tw="ml-2 text-color6 dark:text-color5">
+          ~ {formatDollarAmount(usd) || 0} USD
+        </Text>
+      )}
     </Wrapper>
   );
 }

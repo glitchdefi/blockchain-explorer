@@ -24,7 +24,7 @@ export function NetworkBox() {
 
   return (
     <Wrapper>
-      <Text bold tw="text-color7 dark:text-color1">
+      <Text tw="text-color7 dark:text-color1">
         {t("common.network_box", { network: "Testnet" })}
       </Text>
       <Button tw="p-2 absolute right-3" onClick={onClose}>

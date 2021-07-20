@@ -2,8 +2,6 @@ import React from "react";
 import { styled, css } from "twin.macro";
 import { keyframes } from "styled-components";
 
-import glLogo from "src/assets/images/gl_logo.png";
-import glLogoLight from "src/assets/images/gl_logo_light.png";
 import { useTheme } from "src/hooks/useTheme";
 
 export const LocalLoader = ({ fill }) => {
@@ -11,7 +9,10 @@ export const LocalLoader = ({ fill }) => {
   return (
     <Wrapper fill={fill ? 1 : 0} tw="bg-color2 dark:bg-color1">
       <AnimatedImg>
-        <img src={isDark ? glLogo : glLogoLight} alt="loading-icon" />
+        <img
+          src={isDark ? "/images/gl_logo.png" : "/images/gl_logo_light.png"}
+          alt="loading-icon"
+        />
       </AnimatedImg>
     </Wrapper>
   );

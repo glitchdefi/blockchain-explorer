@@ -18,7 +18,7 @@ export function BlocksPage() {
   return (
     <>
       <Wrapper>
-        <Text tw="text-lg">{t("common.blocks")}</Text>
+        <Text bold tw="text-lg">{t("common.blocks")}</Text>
         <div tw="mt-4">
           <BlocksTable
             loading={isLoading}

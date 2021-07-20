@@ -12,7 +12,7 @@ module.exports = {
         xl: "18px",
       },
       fontFamily: {
-        mono: ["PT Mono"],
+        mono: ["IBM Plex Mono"],
       },
       colors: {
         primary: "var(--color-primary)",

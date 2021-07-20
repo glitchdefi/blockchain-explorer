@@ -33,7 +33,6 @@ const PageMeta = (meta = {}) => {
 export function Page({ children, meta, ...props }) {
   const { isDark } = useTheme();
 
-  console.log(isDark)
   return (
     <>
       <PageMeta meta={meta} />

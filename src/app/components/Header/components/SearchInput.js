@@ -97,7 +97,7 @@ const Title = styled(Text)(({ isDark }) => [
     font-size: 36px;
     background-image: linear-gradient(
       45deg,
-      ${isDark ? theme`colors.primary` : theme`colors.secondary`} 0%,
+      ${isDark ? theme`colors.primary` : theme`colors.primary`} 0%,
       ${isDark ? theme`colors.secondary` : theme`colors.primary`} 40%
     );
     -webkit-background-clip: text;

@@ -38,7 +38,7 @@ export function BlockDetailsPage() {
         </Breadcrumb>
 
         <HeadWrapper>
-          <Heading>{t("blockDetails.title")}</Heading>
+          <Heading bold>{t("blockDetails.title")}</Heading>
         </HeadWrapper>
 
         <BlockDetailsCard
@@ -48,7 +48,7 @@ export function BlockDetailsPage() {
           currentPrice={current_price}
         />
 
-        <Heading tw="mt-8 lg:mt-16">
+        <Heading bold tw="mt-8 lg:mt-16">
           {t("blockDetails.transaction_included_in")}{" "}
         </Heading>
 

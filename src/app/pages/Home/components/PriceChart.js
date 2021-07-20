@@ -2,9 +2,6 @@ import React from "react";
 import { css, styled, theme } from "twin.macro";
 import { useTranslation } from "react-i18next";
 
-import glLogoNoText from "src/assets/images/gl_logo_no_text.png";
-import glLogoNoTextLight from "src/assets/images/gl_logo_no_text_light.png";
-
 // Utils
 import { formatDollarAmount } from "src/utils/numbers";
 
@@ -29,7 +26,14 @@ export const PriceChart = () => {
   return (
     <Wrapper>
       <div tw="flex items-center bg-color10 dark:bg-color2 py-3 px-6">
-        <Image src={isDark ? glLogoNoText : glLogoNoTextLight} width={48} />
+        <Image
+          src={
+            isDark
+              ? "/images/gl_logo_no_text.png"
+              : "/images/gl_logo_no_text_light.png"
+          }
+          width={48}
+        />
         <div tw="ml-4 pb-1">
           <Text size={theme`fontSize.sm`} color={theme`colors.color6`}>
             {t("homePage.GLCH_price")}
@@ -69,6 +73,7 @@ export const PriceChart = () => {
                       tw="text-color6 mr-2"
                     />
                     <TooltipTable.Text
+                      bold
                       value={`${formatDollarAmount(data.price, 2, true)} USD`}
                     />
                   </div>
