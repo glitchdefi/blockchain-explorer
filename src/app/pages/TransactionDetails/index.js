@@ -24,7 +24,7 @@ export function TransactionDetailsPage() {
           <Breadcrumb.Text>Transaction details</Breadcrumb.Text>
         </Breadcrumb>
 
-        <Text tw="text-base lg:text-lg mt-8">
+        <Text bold tw="text-base lg:text-lg mt-8">
           {t("transactionDetails.title")}
         </Text>
         <OverviewCard tw="mt-4" />

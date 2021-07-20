@@ -1,6 +1,4 @@
 import React from "react";
-import glLogo from "src/assets/images/gl_logo.png";
-import glLogoLight from "src/assets/images/gl_logo_light.png";
 import { ImageLink } from "src/app/components/Image";
 
 // Hooks
@@ -14,7 +12,7 @@ export function Logo({ id, ...props }) {
         id={id}
         href="/"
         alt="gl-logo"
-        src={isDark ? glLogo : glLogoLight}
+        src={isDark ? "/images/gl_logo.png" : "/images/gl_logo_light.png"}
         width={125}
       />
       {/* <!-- Glitch LOGO --> */}

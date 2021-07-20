@@ -1,11 +1,11 @@
 import React from "react";
-import tw, { css, theme } from "twin.macro";
+import tw, { css, theme, styled } from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { isEmpty } from "lodash";
 
 // Utils
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
-import { formatNumber, formatWei } from "src/utils/numbers";
+import { formatDollarAmount, formatNumber, formatWei } from "src/utils/numbers";
 
 // Hooks
 import { useProducerDetails } from "src/state/producer/hooks";
@@ -19,7 +19,6 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Text } from "src/app/components/Text";
 import { OverviewCard } from "../OverviewCard";
 import { BlockNavigation } from "../BlockNavigation";
-import styled from "styled-components";
 
 export const BlockDetailsCard = React.memo(
   ({ loading, currentPrice, blockHeight, data }) => {
@@ -90,11 +89,7 @@ export const BlockDetailsCard = React.memo(
             label={t("blockDetails.validator")}
             value={
               name || (
-                <Spinner
-                  tw="mt-1"
-                  size="12px"
-                  stroke={theme`colors.color2`}
-                />
+                <Spinner tw="mt-1" size="12px" stroke={theme`colors.color2`} />
               )
             }
             dataTip={t("blockDetails.validator_tip")}
@@ -109,7 +104,10 @@ export const BlockDetailsCard = React.memo(
           <InfoRow
             label={t("blockDetails.block_reward")}
             customValueComp={
-              <ValueWithPrefix value={formatWei(reward)} usd={`$${rewardToUsd}`} />
+              <ValueWithPrefix
+                value={formatWei(reward)}
+                usd={`${rewardToUsd}`}
+              />
             }
             dataTip={t("blockDetails.reward_tip")}
           />
@@ -140,8 +138,8 @@ export const BlockDetailsCard = React.memo(
 export const Wrapper = styled.div(() => [
   tw`w-full p-6 bg-color1`,
   css`
-    border: 1px solid ${theme`colors.color2`}
-  `
+    border: 1px solid ${theme`colors.color2`};
+  `,
 ]);
 const cardStyles = css`
   min-height: 280px;

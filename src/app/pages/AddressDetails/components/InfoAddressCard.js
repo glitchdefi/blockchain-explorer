@@ -4,17 +4,22 @@ import PropTypes from "prop-types";
 
 import QrCodeImg from "src/assets/images/qr_code.png";
 
+// Utils
+import { formatDollarAmount, formatNumber, formatWei } from "src/utils/numbers";
+import { formatTimeAgo } from "src/utils/dates";
+
+// Hooks
+import { useTheme } from "src/hooks/useTheme";
+
 // Components
 import { Text } from "src/app/components/Text";
 import { CopyButton } from "src/app/components/CopyButton";
-import { formatTimeAgo } from "src/utils/dates";
 import { InfoRow } from "src/app/components/InfoRow";
 import { LogoIcon, QRCode } from "src/app/components/Svg/Icons";
 import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
-import { formatDollarAmount, formatNumber, formatWei } from "src/utils/numbers";
-import { SkeletonLoading } from "./SkeletonLoading";
 import { Skeleton } from "src/app/components/Skeleton";
 import { Image } from "src/app/components/Image";
+import { SkeletonLoading } from "./SkeletonLoading";
 
 export function InfoAddressCard({
   loading,
@@ -90,10 +95,20 @@ export function InfoAddressCard({
 }
 
 const Value = ({ value, usd, price }) => {
+  const { isDark } = useTheme();
   return (
     <Flex tw="block lg:flex">
       <Flex>
-        <LogoIcon />
+        <Image
+          tw="mt-1"
+          src={
+            isDark
+              ? "/images/gl_logo_no_text.png"
+              : "/images/gl_logo_no_text_light.png"
+          }
+          resizeMode
+          width={24}
+        />
         <ValueWithPrefix tw="ml-3" value={value} usd={usd} />
       </Flex>
 

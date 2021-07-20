@@ -16,7 +16,7 @@ export const StylesBase = createGlobalStyle`
     --color-5: #BFBFBF;
     --color-6: #8C8C8C;
     --color-7: #000000;
-    --color-8: rgba(0, 76, 76, 0.3);
+    --color-8: #00CCCC;
     --color-9: #FAFAFA;
     --color-10: #F0F2F5;
     --color-11: #F5F5F5;

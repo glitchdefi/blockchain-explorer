@@ -8,6 +8,7 @@ import { isEmpty } from "lodash";
 import { useTxByHash } from "src/state/transaction/hooks";
 import { useAllGlitchInfo } from "src/state/price/hooks";
 import { formatWei } from "src/utils/numbers";
+import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 // Components
 import { LoadingPage } from "src/app/components/LoadingIndicator/LoadingPage";
@@ -15,12 +16,13 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Link } from "src/app/components/Link";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Empty } from "src/app/components/Empty";
+import { useTheme } from "src/hooks/useTheme";
 import { Status } from "./Status";
-import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
+  const { isDark } = useTheme();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
@@ -126,9 +128,9 @@ export function InfoDetailCard() {
           customValueComp: (
             <ValueWithPrefix
               value={formatWei(value)}
-              usd={`$${valueToUsd}`}
-              valueStyles={tw`text-secondary`}
-              prefixStyles={tw`text-secondary`}
+              usd={`${valueToUsd}`}
+              valueStyles={isDark ? tw`text-secondary`: tw`text-color8`}
+              prefixStyles={isDark ? tw`text-secondary`:tw`text-color8`}
             />
           ),
           dataTip: t("transactionDetails.amount_tip"),
@@ -137,7 +139,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.txnFee"),
           customValueComp: (
-            <ValueWithPrefix value={formatWei(gasused)} usd={`$${feeToUsd}`} />
+            <ValueWithPrefix value={formatWei(gasused)} usd={`${feeToUsd}`} />
           ),
           dataTip: t("transactionDetails.fee_tip"),
         })}

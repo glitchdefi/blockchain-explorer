@@ -18,7 +18,7 @@ export function TransactionsPage() {
   return (
     <>
       <Wrapper>
-        <Text tw="text-lg">{t("common.transactions")}</Text>
+        <Text bold tw="text-lg">{t("common.transactions")}</Text>
 
         <div tw="mt-4">
           <TransactionsTable

@@ -36,7 +36,9 @@ export function SearchNotFoundPage() {
 
         <Button shadow tw="p-0 mt-6" onClick={() => history.push("/")}>
           <div tw="flex bg-color1 dark:bg-color7 py-3 px-6">
-            <Text tw="text-color7 dark:text-color1 text-lg">Back Home</Text>
+            <Text bold tw="text-color7 dark:text-color1 text-base">
+              Back Home
+            </Text>
           </div>
         </Button>
       </div>
