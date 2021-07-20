@@ -54,11 +54,11 @@ export function MinersPanel({ data }) {
         <Text tw="mt-10 mb-4">Top Miners by Blocks Mined</Text>
         <CardLayout tw="block p-2">
           <TableContainer>
-            <Table tw="bg-bgSecondary">
+            <Table>
               <TableHeader>
                 <TableRow>{renderHeaders()}</TableRow>
               </TableHeader>
-              <TableBody tw="bg-bgSecondary">{renderBodyRows()}</TableBody>
+              <TableBody>{renderBodyRows()}</TableBody>
             </Table>
           </TableContainer>
         </CardLayout>

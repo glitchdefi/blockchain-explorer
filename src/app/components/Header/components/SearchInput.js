@@ -7,6 +7,7 @@ import tw, { styled, css, theme } from "twin.macro";
 import { useSearch } from "src/hooks/useSearch";
 import { useSearchResult } from "src/state/global/hooks";
 import { getSearchQueryIds } from "src/constants/refIds";
+import { useTheme } from "src/hooks/useTheme";
 
 // Components
 import { Input as InputBase } from "src/app/components/Input";
@@ -22,6 +23,7 @@ export function SearchInput() {
   const buttonRef = useRef();
 
   const { t } = useTranslation();
+  const { isDark } = useTheme();
   const { text, onTextChange, onSearch, onClearText } = useSearch();
   const { isSearching, searchResult, searchError } = useSearchResult();
 
@@ -49,10 +51,10 @@ export function SearchInput() {
   };
 
   return (
-    <Wrapper>
+    <Wrapper isDark={isDark}>
       <div>
         <div tw="p-8 bg-color1">
-          <Title>The Glitch Explorer</Title>
+          <Title isDark={isDark}>The Glitch Explorer</Title>
           <InputWrapper>
             <Input
               value={text}
@@ -67,13 +69,17 @@ export function SearchInput() {
               tw="p-0"
               onClick={onSearch}
             >
-              <div tw="flex bg-color7 items-center py-3 px-5">
+              <div tw="flex bg-color1 dark:bg-color7 items-center py-3 px-5">
                 {isSearching ? (
-                  <Spinner stroke={theme`colors.color1`} />
+                  <Spinner
+                    stroke={
+                      isDark ? theme`colors.color1` : theme`colors.color7`
+                    }
+                  />
                 ) : (
                   <>
                     <SearchIcon />
-                    <Text tw="ml-3 hidden md:block text-color1 font-bold">
+                    <Text tw="ml-3 hidden md:block text-color7 dark:text-color1 font-bold">
                       {t("common.search")}
                     </Text>
                   </>
@@ -86,13 +92,13 @@ export function SearchInput() {
     </Wrapper>
   );
 }
-const Title = styled(Text)(() => [
+const Title = styled(Text)(({ isDark }) => [
   css`
     font-size: 36px;
     background-image: linear-gradient(
       45deg,
-      ${theme`colors.primary`} 0%,
-      ${theme`colors.secondary`} 40%
+      ${isDark ? theme`colors.primary` : theme`colors.secondary`} 0%,
+      ${isDark ? theme`colors.secondary` : theme`colors.primary`} 40%
     );
     -webkit-background-clip: text;
     -webkit-background-clip: text;
@@ -109,7 +115,7 @@ const Input = styled(InputBase)(() => [
   `,
 ]);
 
-const Wrapper = styled.div(() => [
+const Wrapper = styled.div(({ isDark }) => [
   tw`relative bg-color1 items-center mt-6 p-0`,
   css`
     div {
@@ -128,14 +134,18 @@ const Wrapper = styled.div(() => [
     }
 
     &:before {
-      background-color: ${theme`colors.secondary`};
+      background-color: ${isDark
+        ? theme`colors.secondary`
+        : theme`colors.primary`};
       top: -8px;
       left: 8px;
       opacity: 12%;
     }
 
     &:after {
-      background-color: ${theme`colors.primary`};
+      background-color: ${isDark
+        ? theme`colors.primary`
+        : theme`colors.secondary`};
       left: -8px;
       top: 8px;
       opacity: 12%;

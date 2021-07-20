@@ -20,13 +20,13 @@ export function TotalSupplyChart() {
       <Grid cols={2}>
         <CardLayout>
           <NumberCount bold value={total_supply} decimals={0} />
-          <Text tw="text-sm text-textSecondary">
+          <Text tw="text-sm text-color7">
             {t("chartsAndStats.total_glitch_supply")}
           </Text>
         </CardLayout>
         <CardLayout>
           <NumberCount bold value={market_cap} decimals={0} prefix="$" />
-          <Text tw="text-sm text-textSecondary">
+          <Text tw="text-sm text-color7">
             {t("chartsAndStats.market_capitalization")}
           </Text>
         </CardLayout>
@@ -36,7 +36,7 @@ export function TotalSupplyChart() {
         tw="mt-6 px-2 flex h-96 min-h-full"
         style={{ height: "500px" }}
       >
-        <Text tw="text-textSecondary mt-5 text-tiny">
+        <Text tw="text-color7 mt-5 text-tiny">
           {t("chartsAndStats.breakdown_by_supply_types")}
         </Text>
         <PieChart />

@@ -7,12 +7,12 @@ export const TooltipTable = ({ children }) => {
   return <Wrapper>{children}</Wrapper>;
 };
 
-const Wrapper = tw.div`bg-color2 py-3 px-5`;
+const Wrapper = tw.div`bg-color1 dark:bg-color2 py-3 px-5 shadow-xl`;
 
 TooltipTable.Text = ({ value, ...props }) => (
   <TextBase
     bold
-    size={theme`fontSize.base`}
+    size={theme`fontSize.sm`}
     color={theme`colors.color7`}
     {...props}
   >

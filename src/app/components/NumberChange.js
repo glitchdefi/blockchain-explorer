@@ -16,7 +16,7 @@ export function NumberChange({
 }) {
   return (
     <Flex {...props}>
-      <NumberCount value={value} prefix={prefix} separator={separator} />
+      <NumberCount bold value={value} prefix={prefix} separator={separator}/>
       {truncated > 0 && (
         <FontAwesomeIcon css={[upIconStyles]} icon={faSortUp} />
       )}

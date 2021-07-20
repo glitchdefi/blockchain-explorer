@@ -39,4 +39,4 @@ export function Journey({ id, from, to }) {
 }
 
 const Flex = tw.div`flex items-center`;
-const Label = tw(Text)`mr-3 text-color5 w-8 text-left`;
+const Label = tw(Text)`mr-3 text-color6 dark:text-color5 w-8 text-left`;

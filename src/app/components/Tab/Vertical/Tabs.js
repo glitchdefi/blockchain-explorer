@@ -17,7 +17,7 @@ const Wrapper = tw.div`
  lg:overflow-hidden 
  whitespace-nowrap 
  rounded-t 
- lg:(block rounded-b bg-bgPrimary whitespace-normal)
+ lg:(block rounded-b bg-color1 whitespace-normal)
 `;
 
 Tabs.propTypes = {

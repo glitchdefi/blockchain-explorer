@@ -24,7 +24,7 @@ const NavigationItem = ({ label, height }) => {
       css={styles.container({ label })}
       onClick={() => history.push(`/block/${height}`)}
     >
-      <div tw="w-12 h-12 bg-color2 flex justify-center items-center rounded-full">
+      <div tw="w-12 h-12 bg-color12 dark:bg-color2 flex justify-center items-center rounded-full">
         <BlockIcon />
       </div>
       <div tw="ml-3 text-left">

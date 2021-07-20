@@ -16,15 +16,15 @@ export const StyledTab = styled(Button)(
 
     css`
       background-color: ${isActive
-        ? theme`colors.bg5`
-        : theme`colors.bgPrimary`};
+        ? theme`colors.primary`
+        : theme`colors.color1`};
       border-radius: 5px;
       margin-right: 5px;
 
       .tab-label {
         color: ${isActive
           ? activeColor || theme`colors.primary`
-          : theme`colors.textSecondary`} !important;
+          : theme`colors.color7`} !important;
         font-size: ${size || theme`fontSize.base`};
         font-weight: ${isActive ? 700 : "normal"};
       }
@@ -55,7 +55,7 @@ export const StyledTab = styled(Button)(
             width: 0;
             height: 0;
             border-top: 10px solid transparent;
-            border-right: 20px solid ${theme`colors.bgPrimary`};
+            border-right: 20px solid ${theme`colors.color1`};
             border-bottom: 10px solid transparent;
           }
         }

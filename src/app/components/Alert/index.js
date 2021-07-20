@@ -43,10 +43,10 @@ const StyledAlert = styled.div(({ variant }) => [
   css`
     display: flex;
     position: relative;
-    background-color: ${theme`colors.bgPrimary`};
+    background-color: ${theme`colors.color1`};
     border-radius: 16px;
     border: 1px solid ${getThemeColor({ variant })};
-    box-shadow: 0px 20px 36px -8px ${theme`colors.bg7`};
+    box-shadow: 0px 20px 36px -8px ${theme`colors.color2`};
   `,
 ]);
 

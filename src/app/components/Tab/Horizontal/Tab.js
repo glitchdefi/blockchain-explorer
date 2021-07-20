@@ -3,12 +3,16 @@ import tw, { styled, css, theme } from "twin.macro";
 import { Button } from "../../Button";
 import { Text } from "../../Text";
 import { useTabState } from "../hooks/useTabState";
+import { useTheme } from "src/hooks/useTheme";
 
 export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
   const { isActive, onChangeTab } = useTabState(evtKey);
+  const { isDark } = useTheme();
+
   return (
     <Wrapper
       isActive={isActive}
+      isDark={isDark}
       onClick={() => {
         onChangeTab();
         onClick && onClick();
@@ -25,11 +29,12 @@ export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
   );
 }
 
-const Wrapper = styled(Button)(({ isActive }) => [
+const Wrapper = styled(Button)(({ isActive, isDark }) => [
   tw`
     w-full
     py-5
     rounded-none
+    bg-transparent
   `,
 
   css`
@@ -48,7 +53,7 @@ const Wrapper = styled(Button)(({ isActive }) => [
 
   isActive &&
     css`
-      background-color: ${theme`colors.color2`};
+      background-color: ${isDark ? theme`colors.color2` : theme`colors.color1`};
       border-bottom: 2px solid ${theme`colors.primary`};
     `,
 ]);

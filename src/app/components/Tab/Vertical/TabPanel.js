@@ -16,7 +16,7 @@ export function TabPanel({ evtKey, children, isCard, ...props }) {
 
 const Wrapper = styled.div(() => [
   css`
-    background-color: ${theme`colors.bgPrimary`};
+    background-color: ${theme`colors.color1`};
     padding: 20px;
     border-radius: 0px 0px 5px 5px;
     max-width: 100%;

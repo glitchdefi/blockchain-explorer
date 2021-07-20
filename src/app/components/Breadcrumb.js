@@ -13,10 +13,10 @@ Breadcrumb.Text = ({ children }) => (
 
 Breadcrumb.Link = ({ children, to }) => (
   <div tw="flex items-center">
-    <Link href={to} tw="text-color5 hover:text-primary">
+    <Link href={to} tw="text-color6 dark:text-color5 hover:text-primary">
       {children}
     </Link>
-    <Text tw="mx-3" color={theme`colors.color5`}>
+    <Text tw="mx-3 text-color6 dark:text-color5">
       /
     </Text>
   </div>
@@ -26,6 +26,6 @@ const Wrapper = styled.div(() => [
   tw`flex flex-wrap items-center`,
   css`
     padding: 16px 0px;
-    border-bottom: 1px solid ${theme`colors.color2`};
+    border-bottom: 1px solid ${theme`colors.color3`};
   `,
 ]);

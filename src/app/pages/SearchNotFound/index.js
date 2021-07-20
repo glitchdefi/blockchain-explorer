@@ -1,5 +1,5 @@
 import React from "react";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -18,6 +18,7 @@ export function SearchNotFoundPage() {
     <Wrapper
       style={{
         minHeight: "25rem",
+        border: `1px solid ${theme`colors.color2`}`,
       }}
     >
       <div tw="w-3/4">
@@ -34,8 +35,8 @@ export function SearchNotFoundPage() {
         </div>
 
         <Button shadow tw="p-0 mt-6" onClick={() => history.push("/")}>
-          <div tw="flex bg-color7 py-3 px-6">
-            <Text tw="text-color1 text-lg">Back Home</Text>
+          <div tw="flex bg-color1 dark:bg-color7 py-3 px-6">
+            <Text tw="text-color7 dark:text-color1 text-lg">Back Home</Text>
           </div>
         </Button>
       </div>

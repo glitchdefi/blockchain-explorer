@@ -24,7 +24,7 @@ export function NetworkBox() {
 
   return (
     <Wrapper>
-      <Text bold tw="text-text3">
+      <Text bold tw="text-color7 dark:text-color1">
         {t("common.network_box", { network: "Testnet" })}
       </Text>
       <Button tw="p-2 absolute right-3" onClick={onClose}>
@@ -34,4 +34,4 @@ export function NetworkBox() {
   );
 }
 
-const Wrapper = tw.div`flex relative w-full p-5 bg-bg9 items-center justify-center`;
+const Wrapper = tw.div`flex relative w-full p-5 bg-primary items-center justify-center`;

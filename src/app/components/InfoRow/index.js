@@ -62,7 +62,7 @@ export function InfoRow(props) {
         </LabelWrapper>
         {renderValue()}
       </Content>
-      <Tooltip id={label} tw="w-80 shadow-lg" />
+      <Tooltip id={label} tw="w-80" />
     </Container>
   );
 }
@@ -75,7 +75,7 @@ const Container = styled.div(() => [
 ]);
 const Content = tw.div`flex flex-col ml-2 lg:flex-grow lg:flex-row lg:ml-6`;
 const LabelWrapper = tw.div`flex items-start lg:(items-center w-2/12)`;
-const Text = tw(TextBase)`text-base text-textSecondary`;
+const Text = tw(TextBase)`text-base`;
 
 InfoRow.propTypes = {
   label: PropTypes.string,
