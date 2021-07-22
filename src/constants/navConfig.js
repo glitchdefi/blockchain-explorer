@@ -45,7 +45,7 @@ export const footerNav = [
   // },
   {
     label: "CONTACT US",
-    href: "/contactus",
+    href: "/contact-us",
   },
   // {
   //   label: "BRAND ASSETS",

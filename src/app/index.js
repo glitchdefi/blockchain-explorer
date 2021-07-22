@@ -74,7 +74,7 @@ export function App() {
                 <Route path="/block/:height" component={BlockDetailsPage} />
                 <Route path="/epod-details" component={EpodDetailsPage} />
 
-                <Route path="/contactus" component={ContactPage} />
+                <Route path="/contact-us" component={ContactPage} />
                 <Route path="/searchNotFound" component={SearchNotFoundPage} />
                 <Route component={NotFoundPage} />
               </Switch>
