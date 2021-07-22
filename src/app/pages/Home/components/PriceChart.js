@@ -104,6 +104,7 @@ const cardStyles = css`
   align-items: center;
   justify-content: center;
   padding: 0px 16px 20px 0px;
+  border: none;
 
   @media (min-width: 1024px) {
     height: 220px;

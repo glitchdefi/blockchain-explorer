@@ -151,14 +151,14 @@
         "avg_price_glitch": "Avg Price/Glitch"
     },
     "contactPage": {
-        "contact_us": "Contact Us",
+        "contact_us": "Contact us",
         "first_name": "First Name",
         "last_name": "Last Name",
         "email": "Email",
         "your_message": "Your Message",
         "submit": "Submit",
-        "thank_you": "Thank You!",
-        "create_success": "Your Message has been successfully sent.",
+        "thank_you": "Thank you for contacting us!",
+        "create_success": "We have received your message. We will get in touch with you shortly.",
         "error": "Error",
         "create_error": "An error has occurred"
     },
