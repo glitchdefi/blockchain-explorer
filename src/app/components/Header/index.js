@@ -60,9 +60,11 @@ export function Header() {
         {/* Menu for Mobile */}
         {isShowVerticalMenu && <VerticalMenu />}
 
-        <PageElementWrap>
-          <SearchInput />
-        </PageElementWrap>
+        {location.pathname !== "/contactus" && (
+          <PageElementWrap>
+            <SearchInput />
+          </PageElementWrap>
+        )}
       </Wrapper>
     </>
   );

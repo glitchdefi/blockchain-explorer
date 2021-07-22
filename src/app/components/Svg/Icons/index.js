@@ -25,3 +25,6 @@ export { default as LogoIcon } from "./Logo";
 export { default as QRCode } from "./QRCode";
 export { default as NotFoundIcon } from "./NotFound";
 export { default as SearchIcon } from "./Search";
+export { default as MediumIcon } from "./Medium";
+export { default as TwitterIcon } from "./Twitter";
+export { default as TelegramIcon } from "./Telegram";

@@ -9,7 +9,7 @@ export const getThemeColor = ({ variant = variants.INFO }) => {
     case variants.WARNING:
       return theme`colors.fail`;
     case variants.SUCCESS:
-      return theme`colors.primary`;
+      return theme`colors.success`;
     case variants.INFO:
     default:
       return theme`colors.pending`;
