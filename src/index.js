@@ -39,11 +39,11 @@ import "./locales/i18n";
 
 import { App } from "./app";
 
-// Observe loading of PT Mono (to remove 'PT Mono', remove the <link> tag in
+// Observe loading of IBM Plex Mono (to remove 'IBM Plex Mono', remove the <link> tag in
 // the index.html file and this observer)
-const openSansObserver = new FontFaceObserver("PT Mono", {});
+const openSansObserver = new FontFaceObserver("IBM Plex Mono", {});
 
-// When PT Mono is loaded, add a font-family using PT Mono to the body
+// When IBM Plex Mono is loaded, add a font-family using IBM Plex Mono to the body
 openSansObserver.load().then(() => {
   document.body.classList.add("fontLoaded");
 });
