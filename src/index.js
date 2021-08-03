@@ -40,7 +40,7 @@ import "./locales/i18n";
 import { App } from "./app";
 
 // Observe loading of IBM Plex Mono (to remove 'IBM Plex Mono', remove the <link> tag in
-// the index.html file and this observer)
+// the index.html file and this observerr)
 const openSansObserver = new FontFaceObserver("IBM Plex Mono", {});
 
 // When IBM Plex Mono is loaded, add a font-family using IBM Plex Mono to the body
