@@ -72,7 +72,7 @@
     "start-prod": "env-cmd -f .env.production react-scripts start",
     "build-prod": "env-cmd -f .env.production react-scripts build",
     "start-test": "env-cmd -f .env.test react-scripts start",
-    "build-test": "env-cmd -f .env.test react-scripts build"
+    "build-test": "env-cmd -f .env.test CI=false react-scripts build"
   },
   "eslintConfig": {
     "extends": [
