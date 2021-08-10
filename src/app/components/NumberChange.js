@@ -9,22 +9,14 @@ import { Text } from "src/app/components/Text";
 import { NumberCount } from "./Text/NumberCount";
 export function NumberChange({
   value,
-  values,
   prefix,
-  truncated,
-  decimals,
   separator,
+  truncated,
   ...props
 }) {
   return (
     <Flex {...props}>
-      <NumberCount
-        value={value}
-        values={values}
-        prefix={prefix}
-        decimals={decimals}
-        separator={separator}
-      />
+      <NumberCount bold value={value} prefix={prefix} separator={separator}/>
       {truncated > 0 && (
         <FontAwesomeIcon css={[upIconStyles]} icon={faSortUp} />
       )}
@@ -46,9 +38,7 @@ NumberChange.propTypes = {
     PropTypes.string,
     PropTypes.array,
   ]),
-  values: PropTypes.array,
   prefix: PropTypes.string,
-  decimals: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   diff: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 

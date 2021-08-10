@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "twin.macro";
 function TableBody({ children, ...props }) {
   return (
-    <tbody tw="bg-bgPrimary" {...props}>
+    <tbody tw="bg-color1" {...props}>
       {children}
     </tbody>
   );

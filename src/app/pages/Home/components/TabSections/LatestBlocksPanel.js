@@ -24,10 +24,10 @@ export function LatestBlocksPanel() {
         data={data}
         onChange={(p) => setParams(p)}
         showPagination={false}
-        pageSize={DEFAULT_PAGE_SIZE_WS}
+        customPageSize={DEFAULT_PAGE_SIZE_WS}
       />
       <ViewAllButton
-        title={t("homePage.view_all_blocks")}
+        title={t("homePage.show_all_blocks")}
         onClick={() => history.push("/blocks")}
       />
     </>

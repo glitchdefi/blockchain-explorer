@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router";
 
 import { DEFAULT_META, customMeta } from "../../constants/meta";
+import { useTheme } from "src/hooks/useTheme";
 
 // Sub Components
 import { Container } from "./Container";
@@ -29,12 +30,13 @@ const PageMeta = (meta = {}) => {
     </Helmet>
   );
 };
-
 export function Page({ children, meta, ...props }) {
+  const { isDark } = useTheme();
+
   return (
     <>
       <PageMeta meta={meta} />
-      <Container>
+      <Container isDark={isDark}>
         <NetworkBox />
         <Header />
         <PageElementWrap tw="mt-4" {...props}>

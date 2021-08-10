@@ -13,7 +13,7 @@ export function Header() {
         <Text tw="text-base lg:text-lg">
           {t("votePage.selected_producers")}
         </Text>
-        <Text tw="text-base lg:text-lg text-textSecondary! ml-3">0/30</Text>
+        <Text tw="text-base lg:text-lg ml-3">0/30</Text>
       </div>
 
       <VoteButton>
@@ -26,4 +26,4 @@ export function Header() {
 const Wrapper = tw.div`flex flex-wrap justify-between items-center`;
 const VoteButton = tw(
   Button
-)`bg-gradient-to-r from-primary to-secondary px-10 py-2.5`;
+)`px-10 py-2.5`;

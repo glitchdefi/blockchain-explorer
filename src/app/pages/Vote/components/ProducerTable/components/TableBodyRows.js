@@ -5,7 +5,7 @@ import { css, theme } from "twin.macro";
 // Components
 import { TableRow, TableCell } from "src/app/components/Table";
 import { Checkbox } from "src/app/components/Checkbox";
-import { Tag } from "src/app/components/Tag";
+// import { Tag } from "src/app/components/Tag";
 import { NumberChange } from "src/app/components/NumberChange";
 
 export function TableBodyRows({ item }) {
@@ -17,9 +17,9 @@ export function TableBodyRows({ item }) {
         </TableCell>
         <TableCell>1</TableCell>
         <TableCell isLink>glitchabc1</TableCell>
-        <TableCell>
+        {/* <TableCell>
           <Tag color="pending">Pending</Tag>
-        </TableCell>
+        </TableCell> */}
         <TableCell>3.060%</TableCell>
         <TableCell>
           <NumberChange css={[numberChangeStyles]} value="500,000,000" />

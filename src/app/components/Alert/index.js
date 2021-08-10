@@ -5,22 +5,41 @@ import { Text } from "../Text";
 
 import { CloseIcon } from "./icons/Close";
 import { getThemeColor, getIcon } from "./utils";
+import { useTheme } from "src/hooks/useTheme";
 
 export const Alert = ({ title, children, variant, onClick }) => {
+  const { isDark } = useTheme();
   const Icon = getIcon(variant);
 
   return (
-    <StyledAlert variant={variant}>
+    <StyledAlert
+      isDark={isDark}
+      variant={variant}
+      tw="bg-color9 dark:bg-color1"
+    >
       <IconLabel variant={variant} hasDescription={!!children}>
         <Icon color="currentColor" width="24px" />
       </IconLabel>
 
       <Details hasHandler={!!onClick}>
-        <Text bold size={theme`fontSize.base`} tw="mb-1">
+        <Text
+          bold
+          size={theme`fontSize.base`}
+          tw="mb-1"
+          css={css`
+            color: ${getThemeColor({ variant })};
+          `}
+        >
           {title}
         </Text>
         {typeof children === "string" ? (
-          <Text size={theme`fontSize.sm`} as="p">
+          <Text
+            css={css`
+              color: ${getThemeColor({ variant })};
+              font-size: ${theme`fontSize.sm`};
+            `}
+            as="p"
+          >
             {children}
           </Text>
         ) : (
@@ -39,23 +58,20 @@ export const Alert = ({ title, children, variant, onClick }) => {
   );
 };
 
-const StyledAlert = styled.div(({ variant }) => [
+const StyledAlert = styled.div(({ isDark, variant }) => [
   css`
     display: flex;
     position: relative;
-    background-color: ${theme`colors.bgPrimary`};
-    border-radius: 16px;
+    background-color: ${theme`colors.color1`};
     border: 1px solid ${getThemeColor({ variant })};
-    box-shadow: 0px 20px 36px -8px ${theme`colors.bg7`};
+    box-shadow: 0px 20px 40px -8px ${isDark ? theme`colors.color1` : theme`colors.color3`};
   `,
 ]);
 
 const IconLabel = styled.div(({ variant }) => [
   css`
-    background-color: ${getThemeColor({ variant })};
-    border-radius: 15px 0 0 15px;
-    color: ${theme`colors.white`};
-    padding: 12px;
+    color: ${getThemeColor({ variant })};
+    padding: 12px 12px 12px 24px;
     justify-content: center;
     align-items: center;
     display: flex;

@@ -32,7 +32,7 @@ export function NavLink({ isActive, link, children }) {
 }
 
 const Wrapper = styled.li(({ isActive }) => [
-  tw`inline-block px-8 py-2 items-center justify-center`,
+  tw`inline-block px-6 py-2 items-center justify-center`,
   css`
     svg {
       transform: rotate(0deg);
@@ -43,18 +43,19 @@ const Wrapper = styled.li(({ isActive }) => [
       display: block;
       content: "";
       width: 0;
-      height: 4px;
+      height: 2px;
       background: ${theme`colors.primary`};
       transition: width 0.2s;
+      margin-top: 14px;
     }
 
     .menu-item-link:hover:after {
-      width: 80%;
+      width: 100%;
       transition: width 0.2s;
     }
 
     .menu-item-link:hover {
-      color: white;
+      color: ${theme`colors.primary`};;
     }
 
     &:hover {
@@ -74,9 +75,14 @@ const Wrapper = styled.li(({ isActive }) => [
       .menu-item-link:after {
         display: block;
         content: "";
-        width: 80%;
-        height: 4px;
+        width: 100%;
+        height: 2px;
         background: ${theme`colors.primary`};
+        margin-top: 14px;
+      }
+
+      .menu-item-link {
+        color: ${theme`colors.primary`};
       }
     `,
 ]);

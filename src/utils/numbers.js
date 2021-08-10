@@ -12,7 +12,7 @@ export const formatCurrencyAmount = (num, digits = 2, round = true) => {
 };
 
 export const formatDollarAmount = (num, digits = 2, round = true) => {
-  if (num === 0) return "$0.00";
+  if (num == 0) return "$0.00";
   if (!num) return "-";
   if (num < 0.001) {
     return "<$0.001";
@@ -32,7 +32,8 @@ export const formatAmount = (num, digits = 2) => {
 };
 
 export const formatNumber = (num) => {
-  if (num === 0) return "0";
+  if (!num) return "--";
+  if (num == 0) return "0";
   return numbro(num).format({ thousandSeparated: true });
 };
 

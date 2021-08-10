@@ -7,7 +7,7 @@
         "blocks": "Blocks",
         "from": "From",
         "to": "To",
-        "txnFee": "Txn Fee",
+        "txnFee": "Transaction fee",
         "timeStamp": "Timestamp",
         "transactions": "Transactions",
         "total_txs": "Total txs",
@@ -29,22 +29,26 @@
         "search_placeholder": "Search by Address / Txn Hash / Block Height",
         "latest_blocks": "Latest Blocks",
         "latest_txs": "Latest Transactions",
-        "network_box": "Note: You are currently connected to the Glitch {{network}}"
+        "network_box": "Note: You are currently connected to the Glitch {{network}}",
+        "amount": "Amount",
+        "type": "Type",
+        "hash": "Hash"
     },
     "pagination": {
         "prev": "Prev",
         "next": "Next"
     },
     "homePage": {
-        "7_day_GLCH_price_history": "7 day GLCH price history (USD)",
-        "producer": "Producer",
+        "GLCH_price": "GLCH Price",
+        "GLCH_price_history_7_days": "GLCH price history in 7 days",
+        "validator": "Validator",
         "current_max": "Current/Max",
         "head_block": "Head Block",
-        "price_market_cap": "Price | Market cap",
+        "market_cap": "Market cap",
         "lib": "LIB (Last Irreversible Block)",
-        "total_account": "Total Account",
-        "view_all_blocks": "View all Blocks",
-        "view_all_txs": "View all Transactions"
+        "total_accounts": "Total Accounts",
+        "show_all_blocks": "Show all Blocks",
+        "show_all_txs": "Show all Transactions"
     },
     "userDetails": {
         "more_info": "More Info",
@@ -55,34 +59,37 @@
         "search_for_token_name": "Search for Token Name"
     },
     "transactionDetails": {
-        "title": "Transaction Details",
-        "transaction_hash": "Transaction hash",
+        "title": "Transaction details",
         "loading": "Loading transaction",
         "not_found": "Sorry, the transaction could not be found.",
-        "hash_tip": "A TxHash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "hash_tip": "A Hash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
         "status_tip": "The status of the transaction.",
-        "block_tip": "The number of the block in which the transaction was recorded. Block confirmation indicate how many blocks since the transaction is mined.",
-        "time_tip": "The date and time at which a transaction is mined.",
+        "block_tip": "The number of the block in which the transaction was recorded.",
+        "time_tip": "The date and time at which a transaction is confirmed.",
         "from_tip": "The sending party of the transaction (could be from a contract address).",
         "to_tip": "The receiving party of the transaction (could be a contract address).",
-        "value_tip": "The value being transacted in GLCH and fiat value. Note: You can click the fiat value (if available) to see historical value at the time of transaction.",
+        "amount_tip": "The amount of GLCH is sent in the transaction.",
+        "type_tip": "The type of the transaction.",
         "fee_tip": "Amount paid to the miner for processing the transaction."
     },
     "blockDetails": {
         "title": "Block Details",
-        "block_height": "Block Height",
-        "produced_by": "Producer",
-        "block_reward": "Block Reward",
+        "block": "Block",
+        "epoch_slot": "Epoch/ Slot",
+        "validator": "Validator",
+        "block_reward": "Block rewards",
         "total_difficulty":"Total Difficulty",
+        "transaction_included_in": "Transactions included in this Block",
         "hash": "Hash",
         "empty": "Unable to locate block #{{height}}",
         "height_tip": "Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block.",
-        "time_tip": "The date and time at which a block is mined.",
-        "txs_tip": "The number of transactions in the block. Internal transaction is transactions as a result of contract execution that involves GLCH value.",
-        "reward_tip": "For each block, the miner is rewarded with a finite amount of GLCH on top of the fees paid for all transactions in the block.",
-        "size_tip": "The block size is actually determined by the block's gas limit.",
-        "hash_tip": "The hash of the block header of the current block.",
-        "producer_tip": "Producer"
+        "epoch_slot_tip": "It’s the period of time it takes for a specific number of blocks to be finalized on the chain.",
+        "time_tip": "The date and time at which a transaction is confirmed.",
+        "txs_tip": "Total confirmed transactions in this block.",
+        "reward_tip": "The block reward is shared for the validator which confirms this block successfully and stakers who vote for this validator as defined in consensus of Glitch network. ",
+        "size_tip": "The maximum limit a block can be filled up with transactions.",
+        "hash_tip": "A Hash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "validator_tip": "The person who successfully validates transactions and confirms this block in Glitch network."
     },
     "epodDetails": {
         "title": "Epod Details",
@@ -94,8 +101,8 @@
         "go_back_home_page":"Go back to the Home page"
     },
     "searchNotFoundPage": {
-        "oops": " Oops! We couldn't find what you are looking for.",
-        "please_enter": "Please enter an address, transaction hash, block height"
+        "oops": " Oops! We couldn't find",
+        "oops2": "among the information stored on blockchains. Recheck the phrase and try again."
     },
     "walletPage": {
         "public_key": "Public key",
@@ -144,14 +151,14 @@
         "avg_price_glitch": "Avg Price/Glitch"
     },
     "contactPage": {
-        "contact_us": "Contact Us",
+        "contact_us": "Contact us",
         "first_name": "First Name",
         "last_name": "Last Name",
         "email": "Email",
         "your_message": "Your Message",
         "submit": "Submit",
-        "thank_you": "Thank You!",
-        "create_success": "Your Message has been successfully sent.",
+        "thank_you": "Thank you for contacting us!",
+        "create_success": "We have received your message. We will get in touch with you shortly.",
         "error": "Error",
         "create_error": "An error has occurred"
     },

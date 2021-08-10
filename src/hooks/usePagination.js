@@ -2,11 +2,12 @@ import { useCallback, useMemo, useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 import { DEFAULT_PAGE_SIZE } from "src/constants";
 
-export function usePagination({ pageSize }) {
+export function usePagination({ customPageSize }) {
   const { search, hash } = useLocation();
   const [currentPage, setCurrentPage] = useState(
     search && search.startsWith("p", 1) ? Number(search.slice(3)) : 1
   );
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
   const history = useHistory();
 
   useEffect(() => {
@@ -16,10 +17,14 @@ export function usePagination({ pageSize }) {
   }, [search]);
 
   const onChange = useCallback((current, _) => {
-    setCurrentPage(current);
+    const { page_index, page_size } = current || {};
+
+    setCurrentPage(page_index || current);
+    page_size && setPageSize(page_size);
+
     history.push({
       hash,
-      search: `?p=${current}`,
+      search: `?p=${page_index || current}`,
     });
   }, []);
 
@@ -27,10 +32,11 @@ export function usePagination({ pageSize }) {
     return {
       current: currentPage,
       pParams: {
-        page_size: pageSize || DEFAULT_PAGE_SIZE,
+        page_size: customPageSize || pageSize,
         page_index: currentPage,
       },
+      pageSize,
       onChange,
     };
-  }, [currentPage]);
+  }, [currentPage, pageSize]);
 }

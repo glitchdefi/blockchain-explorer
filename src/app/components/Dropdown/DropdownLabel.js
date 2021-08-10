@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { styled } from "twin.macro";
+import tw, { styled, css } from "twin.macro";
 import { Button as ButtonBase } from "../Button";
 
 export function DropdownLabel({ children, onClick, ...props }) {
@@ -12,11 +12,14 @@ export function DropdownLabel({ children, onClick, ...props }) {
 
 const ButtonWrapper = styled(ButtonBase)(() => [
   tw`border
-  border-primary
+  border-color3
   border-solid
   px-5
-  py-2
+  rounded-none
   `,
+  css`
+    padding: 9.5px 16px;
+  `
 ]);
 
 const Wrapper = tw.div`
@@ -25,5 +28,4 @@ const Wrapper = tw.div`
  flex-wrap
  items-center
  justify-between
- w-64
 `;

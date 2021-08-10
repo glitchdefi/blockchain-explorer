@@ -1,3 +1,9 @@
-export function sliceString(str) {
-  return str && str?.length > 16 ? `${str.slice(0, 16)}...` : str;
+export const truncateAddress = (address, startLength = 6, endLength = 6) => {
+  return `${address.substring(0, startLength)}...${address.substring(
+    address.length - endLength
+  )}`;
+};
+
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

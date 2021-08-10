@@ -10,16 +10,18 @@ export default function Table({
   loading,
   total,
   showPagination = true,
-  pageSize,
+  customPageSize,
   ...props
 }) {
-  const { current, pParams, onChange } = usePagination({ pageSize });
+  const { current, pageSize, pParams, onChange } = usePagination({
+    customPageSize,
+  });
 
   useEffect(() => {
     if (current) {
       props.onChange && props.onChange(pParams);
     }
-  }, [current]);
+  }, [current, pageSize]);
 
   const renderLoading = () => (
     <div>
@@ -31,7 +33,14 @@ export default function Table({
   );
 
   const renderPagination = () => {
-    return <Pagination current={current} total={total} onChange={onChange} />;
+    return (
+      <Pagination
+        current={current}
+        total={total}
+        pageSize={pageSize}
+        onChange={onChange}
+      />
+    );
   };
 
   return (
@@ -39,12 +48,12 @@ export default function Table({
       <div css={[glchNestedLoading]}>
         {loading && renderLoading()}
         <TableContainer>
-          <table css={[tw`w-full bg-bgPrimary`, tableStyles]} {...props}>
+          <table css={[tw`w-full bg-color1`, tableStyles]} {...props}>
             {children}
           </table>
         </TableContainer>
-        {total && showPagination ? renderPagination() : null}
       </div>
+      {total && showPagination ? renderPagination() : null}
     </>
   );
 }
@@ -61,13 +70,14 @@ const glchNestedLoading = css`
     z-index: 10;
     width: 100%;
     height: 100%;
-    background: ${theme`colors.bgPrimary`};
+    background: ${theme`colors.color1`};
     opacity: 0.6;
     transition: opacity 0.5s;
     pointer-events: none;
     align-items: center;
     justify-content: center;
     display: flex;
+    border: 1px solid ${theme`colors.color2`}
   }
 `;
 
@@ -88,6 +98,7 @@ const spinWrapStyles = css`
 
 const tableStyles = css`
   border-spacing: inherit;
+  border: 1px solid ${theme`colors.color2`}
 `;
 Table.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),

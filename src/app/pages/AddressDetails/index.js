@@ -1,36 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
-import "twin.macro";
+import tw from "twin.macro";
 
 // Hooks
-import { useAddressDetails, useAddressSlice } from "src/state/address/hooks";
-import { usePriceSlice } from "src/state/price/hooks";
+import {
+  useAddressDetails,
+  useAddressSlice,
+  useAddressTxs,
+} from "src/state/address/hooks";
+import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
 // Components
-import { Grid } from "src/app/components/Grid";
-import { InfoUser } from "./components/InfoUser";
-import { OverviewCard } from "./components/OverviewCard";
-import { MoreInfoCard } from "./components/MoreInfoCard";
-import { TabSections } from "./components/TabSections";
+import { Text } from "src/app/components/Text";
+import { Breadcrumb } from "src/app/components/Breadcrumb";
+import { InfoAddressCard } from "./components/InfoAddressCard";
+import { TransactionsTable } from "../Transactions/components/TransactionsTable";
 
 export function AddressDetailsPage() {
   useAddressSlice();
   usePriceSlice();
+  const [params, setParams] = useState();
   const { address } = useParams();
   const { isFetchingAddressDetails, addressDetails } =
     useAddressDetails(address);
+  const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { current_price } = allGlitchInfo || {};
 
   return (
-    <>
-      <InfoUser address={address} data={addressDetails} />
-      <Grid cols={2} tw="mt-6 mb-12">
-        <OverviewCard
-          loading={isFetchingAddressDetails}
-          data={addressDetails}
+    <div tw="mt-16">
+      <Breadcrumb>
+        <Breadcrumb.Link to="/txs">Transactions</Breadcrumb.Link>
+        <Breadcrumb.Link>Transaction details</Breadcrumb.Link>
+        <Breadcrumb.Text>Address details</Breadcrumb.Text>
+      </Breadcrumb>
+
+      <Heading>Address details</Heading>
+
+      <InfoAddressCard
+        loading={isFetchingAddressDetails}
+        address={address}
+        data={addressDetails}
+        currentPrice={current_price}
+        total={total}
+      />
+
+      <div tw="mt-16">
+        <Heading tw="mb-4">Transactions included in this Address</Heading>
+
+        <TransactionsTable
+          showType
+          loading={isFetchingAddressTxs}
+          data={data}
+          total={total}
+          onChange={(p) => setParams(p)}
         />
-        <MoreInfoCard loading={isFetchingAddressDetails} />
-      </Grid>
-      <TabSections address={address} />
-    </>
+      </div>
+    </div>
   );
 }
+
+const Heading = tw(Text)`text-base lg:text-lg mt-8`;

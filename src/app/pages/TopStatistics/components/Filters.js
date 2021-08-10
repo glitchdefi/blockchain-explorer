@@ -15,7 +15,7 @@ export function Filters() {
     return configs.map((o, i) => {
       return (
         <ButtonFilter isActive={i === 0} key={i}>
-          <Text className="label" tw="font-bold text-textSecondary!">
+          <Text className="label" tw="font-bold text-color7">
             {o.label}
           </Text>
         </ButtonFilter>
@@ -29,14 +29,14 @@ export function Filters() {
 const ButtonFilter = styled(Button)(({ isActive }) => [
   tw`py-3`,
   css`
-    background-color: ${theme`colors.bg1`};
+    background-color: ${theme`colors.color1`};
   `,
   isActive &&
     css`
       background-color: ${theme`colors.primary`};
 
       .label {
-        color: ${theme`colors.textPrimary`} !important;
+        color: ${theme`colors.primary`} !important;
         opacity: 100% !important;
       }
     `,

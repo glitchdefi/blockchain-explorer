@@ -1,14 +1,18 @@
 import React from "react";
-import { styled, css, theme } from "twin.macro";
+import { styled, css } from "twin.macro";
 import { keyframes } from "styled-components";
 
-import glLogo from "src/assets/images/gl_logo.png";
+import { useTheme } from "src/hooks/useTheme";
 
 export const LocalLoader = ({ fill }) => {
+  const { isDark } = useTheme();
   return (
-    <Wrapper fill={fill ? 1 : 0}>
+    <Wrapper fill={fill ? 1 : 0} tw="bg-color2 dark:bg-color1">
       <AnimatedImg>
-        <img src={glLogo} alt="loading-icon" />
+        <img
+          src={isDark ? "/images/gl_logo.png" : "/images/gl_logo_light.png"}
+          alt="loading-icon"
+        />
       </AnimatedImg>
     </Wrapper>
   );
@@ -20,7 +24,6 @@ const Wrapper = styled.div(({ fill }) => [
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${fill ? "black" : theme`colors.bgPrimary`};
     width: 100%;
   `,
   fill &&
@@ -38,6 +41,6 @@ const pulse = keyframes`
 const AnimatedImg = styled.div`
   animation: ${pulse} 800ms linear infinite;
   & > * {
-    width: 72px;
+    width: 150px;
   }
 `;

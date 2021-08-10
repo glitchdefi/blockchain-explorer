@@ -1,6 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
-import { theme } from "twin.macro";
+import { css, theme } from "twin.macro";
 
 // Hooks
 import { useWalletSlice } from "src/state/wallet/hooks";
@@ -12,13 +11,11 @@ import { useSocket } from "src/services/socket/hooks/useSocket";
 
 // Components
 import { Grid } from "src/app/components/Grid";
-import { Text } from "src/app/components/Text";
 import { PriceChart } from "./components/PriceChart";
 import { TabSections } from "./components/TabSections";
 import { StatsHistory } from "./components/StatsHistory";
 
 export function HomePage() {
-  const { t } = useTranslation();
   useWalletSlice();
   usePriceSlice();
   useBlockSlice();
@@ -28,12 +25,17 @@ export function HomePage() {
 
   return (
     <>
-      <Text size={theme`fontSize.lg`}>
-        {t("homePage.7_day_GLCH_price_history")}
-      </Text>
-      <Grid cols={2} tw="mt-3">
+      <Grid
+        cols={2}
+        tw="mt-8 bg-color1"
+        css={css`
+          border: 1px solid ${theme`colors.color2`};
+        `}
+      >
         <PriceChart />
-        <StatsHistory />
+        <div tw="p-3">
+          <StatsHistory />
+        </div>
       </Grid>
       <TabSections />
     </>

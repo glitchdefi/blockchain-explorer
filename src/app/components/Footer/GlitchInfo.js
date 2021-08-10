@@ -1,29 +1,40 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import tw from "twin.macro";
+import tw, { css, theme } from "twin.macro";
 
 // Components
 import { Text } from "../Text";
 import { Logo } from "src/app/components/Logo";
-import ThemeToggle from "./ThemeToggle";
+import NavBar from "./NavBar";
+import Copyrite from "./Copyright";
 
 function GlitchInfo() {
   const { t } = useTranslation();
 
   return (
-    <Wrapper>
+    <Wrapper
+      css={css`
+        border-top: 1px solid ${theme`colors.color15`};
+      `}
+    >
       <Logo />
-      <Text tw="mt-3">{t("footer.powered_by_glitch")}</Text>
-      <Text tw="mt-3 text-white opacity-60">{t("footer.glitch_info")}</Text>
-      {/* <ThemeToggle /> */}
+      <Flex tw="mt-4">
+        <Text bold tw="text-color7">{t("footer.powered_by_glitch")}</Text>
+        <NavBar />
+      </Flex>
+
+      <Flex>
+        <Text tw="text-sm text-color6">{t("footer.glitch_info")}</Text>
+        <Copyrite />
+      </Flex>
     </Wrapper>
   );
 }
 
-const Wrapper = tw.div`
-  text-center 
-  lg:(text-left max-w-1/4) 
-  xl:max-w-md
+const Wrapper = tw.div`text-center lg:text-left pt-6`;
+
+const Flex = tw.div`
+   mt-1 text-center items-center lg:(flex justify-between text-left)
 `;
 
 export default GlitchInfo;

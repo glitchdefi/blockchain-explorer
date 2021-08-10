@@ -1,21 +1,20 @@
-import tw, { styled, css } from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 import { Link } from "react-router-dom";
 
-export const StyledLink = styled(Link)(() => [
+export const StyledLink = styled(Link)(({ primary }) => [
   tw`
   relative
-  text-base 
-  text-textPrimary
+  text-base
   font-normal
   normal-case
   inline-block
   cursor-pointer
   select-none
   no-underline
-  hover:text-gray-400
   `,
 
   css`
     word-break: break-word;
+    color: ${primary ? theme`colors.primary` : theme`colors.color7`};
   `,
 ]);

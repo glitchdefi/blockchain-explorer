@@ -11,7 +11,7 @@ function Copyrite() {
   const { t } = useTranslation();
   return (
     <Wrapper>
-      <Text tw="text-sm lg:text-base">
+      <Text tw="text-sm text-color6">
         {t("footer.copyrite", { year, version })}
       </Text>
     </Wrapper>
@@ -20,11 +20,6 @@ function Copyrite() {
 
 const Wrapper = styled.div(() => [
   tw`text-center flex w-full py-4 justify-center lg:justify-end`,
-  css`
-    border-top-width: 1px;
-    border-top-color: rgba(255, 255, 255, 0.11);
-    border-top-style: solid;
-  `,
 ]);
 
 export default Copyrite;

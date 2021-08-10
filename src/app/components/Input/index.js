@@ -1,18 +1,19 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 
 export const Input = styled.input(() => [
   tw`
-  bg-bg3
   py-2
   px-4
-  rounded
   block
-  border-none
   outline-none
-  placeholder-textSecondary
+  placeholder-color4
   text-base
-  text-textPrimary
+  text-color7
+  bg-transparent
   font-mono
-  focus:shadow-lg
+  `,
+
+  css`
+    border: 1px solid ${theme`colors.color3`};
   `,
 ]);

@@ -13,10 +13,10 @@ const ThemeToggle = () => {
 
   return (
     <Button
-      tw="mt-3 w-10 h-10 bg-bgSecondary focus:outline-none fill-current text-primary hover:text-secondary"
+      tw="mt-3 w-10 h-10 bg-color1 focus:outline-none fill-current text-primary hover:text-secondary"
       onClick={() => setTheme(isDark() ? "light" : "dark")}
     >
-      {isDark() ? <Moon /> : <Sun />}
+      {isDark() ? <Sun /> : <Moon />}
     </Button>
   );
 };
