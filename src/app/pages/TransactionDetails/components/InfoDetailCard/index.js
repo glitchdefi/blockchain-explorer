@@ -128,9 +128,9 @@ export function InfoDetailCard() {
           customValueComp: (
             <ValueWithPrefix
               value={formatWei(value)}
-              usd={`${valueToUsd}`}
-              valueStyles={isDark ? tw`text-secondary`: tw`text-color8`}
-              prefixStyles={isDark ? tw`text-secondary`:tw`text-color8`}
+              usd={valueToUsd}
+              valueStyles={isDark ? tw`text-secondary` : tw`text-color8`}
+              prefixStyles={isDark ? tw`text-secondary` : tw`text-color8`}
             />
           ),
           dataTip: t("transactionDetails.amount_tip"),
@@ -139,7 +139,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.txnFee"),
           customValueComp: (
-            <ValueWithPrefix value={formatWei(gasused)} usd={`${feeToUsd}`} />
+            <ValueWithPrefix value={formatWei(gasused)} usd={feeToUsd} />
           ),
           dataTip: t("transactionDetails.fee_tip"),
         })}

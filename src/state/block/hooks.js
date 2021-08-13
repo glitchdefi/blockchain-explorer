@@ -40,7 +40,7 @@ export const useBlockList = (params) => {
 
   useEffect(() => {
     if (error) {
-      toastError("Blocks Error", error);
+      toastError("Blocks Error", error?.message);
     }
   }, [error]);
 
@@ -63,7 +63,7 @@ export const useBlockDetails = (height) => {
 
   useEffect(() => {
     if (blockDetailsError) {
-      toastError("Error", blockDetailsError);
+      toastError("Error", blockDetailsError?.message);
     }
   }, [blockDetailsError]);
 
@@ -107,7 +107,7 @@ export const useBlockTxs = (height, params) => {
 
   useEffect(() => {
     if (blockTxsError) {
-      toastError("Error", blockTxsError);
+      toastError("Error", blockTxsError?.message);
     }
   }, [blockTxsError]);
 
