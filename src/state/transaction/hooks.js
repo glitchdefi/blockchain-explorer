@@ -38,7 +38,7 @@ export const useTxList = (params) => {
 
   useEffect(() => {
     if (error) {
-      toastError("Error", error);
+      toastError("Error", error?.message);
     }
   }, [error]);
 
@@ -56,7 +56,7 @@ export const useTxCount = () => {
 
   useEffect(() => {
     if (txCountError) {
-      toastError("Error", txCountError);
+      toastError("Error", txCountError?.message);
     }
   }, [txCountError]);
 
@@ -80,7 +80,7 @@ export const useTxByHash = (hash) => {
 
   useEffect(() => {
     if (txDetailsError) {
-      toastError("Error", txDetailsError);
+      toastError("Error", txDetailsError?.message);
     }
   }, [txDetailsError]);
 

@@ -5,7 +5,7 @@ import { isEmpty } from "lodash";
 
 // Utils
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
-import { formatDollarAmount, formatNumber, formatWei } from "src/utils/numbers";
+import { formatNumber, formatWei } from "src/utils/numbers";
 
 // Hooks
 import { useProducerDetails } from "src/state/producer/hooks";
@@ -37,7 +37,6 @@ export const BlockDetailsCard = React.memo(
     const { producerDetails } = useProducerDetails(proposer_address);
     const { name } = producerDetails || {};
     const rewardToUsd = formatWei(reward) * currentPrice;
-    
     const getContent = () => {
       if (loading)
         return (
@@ -104,10 +103,7 @@ export const BlockDetailsCard = React.memo(
           <InfoRow
             label={t("blockDetails.block_reward")}
             customValueComp={
-              <ValueWithPrefix
-                value={formatWei(reward)}
-                usd={`${rewardToUsd}`}
-              />
+              <ValueWithPrefix value={formatWei(reward)} usd={rewardToUsd} />
             }
             dataTip={t("blockDetails.reward_tip")}
           />
