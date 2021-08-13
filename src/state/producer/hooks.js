@@ -36,7 +36,7 @@ export const useProducerList = (params) => {
 
   useEffect(() => {
     if (producerListError) {
-      toastError("Error", producerListError);
+      toastError("Error", producerListError?.message);
     }
   }, [producerListError]);
 
@@ -56,7 +56,7 @@ export const useProducerName = () => {
 
   useEffect(() => {
     if (producerNameError) {
-      toastError("Error", producerNameError);
+      toastError("Error", producerNameError?.message);
     }
   }, [producerNameError]);
 

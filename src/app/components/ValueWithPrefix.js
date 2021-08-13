@@ -17,11 +17,11 @@ export function ValueWithPrefix({
       <Text tw="ml-2 text-color6" css={[prefixStyles]}>
         {prefix || "GLCH"}
       </Text>
-      {usd && (
+      {usd ? (
         <Text tw="ml-2 text-color6 dark:text-color5">
           ~ {usd ? formatDollarAmount(usd, 2, false) : 0} USD
         </Text>
-      )}
+      ) : null}
     </Wrapper>
   );
 }

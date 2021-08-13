@@ -35,7 +35,7 @@ export const useAddressDetails = (address) => {
 
   useEffect(() => {
     if (addressDetailsError) {
-      toastError("Error", addressDetailsError);
+      toastError("Error", addressDetailsError?.message);
     }
   }, [addressDetailsError]);
 
@@ -62,7 +62,7 @@ export const useAddressTxs = (address, params) => {
 
   useEffect(() => {
     if (addressTxsError) {
-      toastError("Error", addressTxsError);
+      toastError("Error", addressTxsError?.message);
     }
   }, [addressTxsError]);
 

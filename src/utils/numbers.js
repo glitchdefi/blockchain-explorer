@@ -38,6 +38,9 @@ export const formatNumber = (num) => {
 };
 
 const toNumber = (num) => {
+  if (num == 0) return "0";
+  if (!num) return null;
+
   const numToStr = num?.toString();
 
   if (numToStr?.includes("e")) {
@@ -48,9 +51,9 @@ const toNumber = (num) => {
 };
 
 function numberWithCommas(n) {
-  var parts = n.toString().split(".");
+  var parts = n?.toString()?.split(".");
   return (
-    parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+    parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
     (parts[1] ? "." + parts[1] : "")
   );
 }

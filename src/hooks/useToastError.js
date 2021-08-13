@@ -6,7 +6,7 @@ export function useToastError(title, error) {
 
   useEffect(() => {
     if (error) {
-      toastError(title || "Error", error);
+      toastError(title || "Error", error?.message);
     }
   }, [error]);
 }
