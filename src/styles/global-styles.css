@@ -18,10 +18,6 @@ li {
   padding: 0;
 }
 
-code {
-  font-family: "PT Mono", monospace;
-}
-
 ::-webkit-scrollbar {
   height: 5px;
   width: 5px;

@@ -18,5 +18,21 @@ const Select = styled.select(() => [
     border: 1px solid ${theme`colors.color3`};
     padding-top: 7px;
     padding-bottom: 7px;
+
+    option[value="25"] {
+      background-color: ${theme`colors.color1`} !important;
+    }
+
+    option[value="50"] {
+      background-color: ${theme`colors.color1`} !important;
+    }
+
+    option[value="75"] {
+      background-color: ${theme`colors.color1`} !important;
+    }
+
+    option[value="100"] {
+      background-color: ${theme`colors.color1`} !important;
+    }
   `,
 ]);
