@@ -4,11 +4,6 @@
   font-size: 14px;
 }
 
-button,
-a {
-  font-family: "PT Mono";
-}
-
 .rc-pagination ul,
 .rc-pagination ol {
   margin: 0;
