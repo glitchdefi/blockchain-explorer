@@ -43,7 +43,7 @@ export const StatsHistory = () => {
           icon={<TotalAccountIcon />}
           title={t("homePage.total_accounts")}
           value={walletCount === 0 || !walletCount ? "0" : walletCount}
-          separator={null}
+          separator=","
           decimals={0}
         />
 
