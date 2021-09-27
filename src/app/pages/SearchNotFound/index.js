@@ -26,9 +26,11 @@ export function SearchNotFoundPage() {
 
         <div>
           <Text tw="text-lg lg:text-xl mt-8 text-color6">
-            {`${t("searchNotFoundPage.oops")} "`}
+            {`${t("searchNotFoundPage.oops")}`}
+            <span tw="ml-2">"</span>
             <span tw="text-lg lg:text-xl text-primary">{keyword}</span>
-            <span tw="text-lg lg:text-xl mt-8 ml-2 text-color6">{`"${t(
+            <span tw="mr-2">"</span>
+            <span tw="text-lg lg:text-xl mt-8 text-color6">{`${t(
               "searchNotFoundPage.oops2"
             )}`}</span>
           </Text>
