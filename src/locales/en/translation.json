@@ -101,7 +101,7 @@
         "go_back_home_page":"Go back to the Home page"
     },
     "searchNotFoundPage": {
-        "oops": " Oops! We couldn't find",
+        "oops": "Oops! We couldn't find",
         "oops2": "among the information stored on blockchains. Recheck the phrase and try again."
     },
     "walletPage": {

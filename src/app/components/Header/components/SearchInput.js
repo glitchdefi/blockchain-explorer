@@ -38,7 +38,7 @@ export function SearchInput() {
 
     if (!isSearching && searchError) {
       const route = text?.trim() ? `/searchNotFound` : "/txs";
-      history.push(route, { keyword: text });
+      history.push(route, { keyword: text?.trim() });
       onClearText();
     }
   }, [isSearching]);

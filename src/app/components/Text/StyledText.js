@@ -6,6 +6,7 @@ export const StyledText = styled.div(({ size, color, bold, textTransform }) => [
     font-size: ${size || theme`fontSize.base`};
     font-weight: ${bold ? 600 : 400};
     word-break: break-word;
+    font-family: IBM Plex Mono;
   `,
 
   textTransform &&

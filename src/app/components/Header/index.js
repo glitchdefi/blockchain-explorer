@@ -60,7 +60,7 @@ export function Header() {
         {/* Menu for Mobile */}
         {isShowVerticalMenu && <VerticalMenu />}
 
-        {location.pathname !== "/contactus" && (
+        {location.pathname !== "/contact-us" && (
           <PageElementWrap>
             <SearchInput />
           </PageElementWrap>

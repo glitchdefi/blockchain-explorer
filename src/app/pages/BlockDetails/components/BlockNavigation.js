@@ -11,7 +11,6 @@ export function BlockNavigation({ currentBlock }) {
     <div tw="lg:(flex w-2/5 justify-between) mb-6">
       <NavigationItem label="Previous" height={currentBlock - 1} />
       <NavigationItem label="Current" height={currentBlock} />
-      {/* <NavigationItem label="Next" height="686,686" /> */}
     </div>
   );
 }

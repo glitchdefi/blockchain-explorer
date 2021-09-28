@@ -7,7 +7,7 @@ import { isEmpty } from "lodash";
 // Hooks
 import { useTxByHash } from "src/state/transaction/hooks";
 import { useAllGlitchInfo } from "src/state/price/hooks";
-import { formatWei } from "src/utils/numbers";
+import { formatAmount, formatWei } from "src/utils/numbers";
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 // Components
@@ -78,7 +78,7 @@ export function InfoDetailCard() {
           label: t("common.block"),
           value: (
             <Link primary href={`/block/${height}`}>
-              {height}
+              {formatAmount(height)}
             </Link>
           ),
           dataTip: t("transactionDetails.block_tip"),
