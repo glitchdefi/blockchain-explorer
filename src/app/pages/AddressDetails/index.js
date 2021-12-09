@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
+import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
 // Hooks
@@ -12,13 +13,24 @@ import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { Breadcrumb } from "src/app/components/Breadcrumb";
 import { InfoAddressCard } from "./components/InfoAddressCard";
 import { TransactionsTable } from "../Transactions/components/TransactionsTable";
+import {
+  TabContainer,
+  Tabs,
+  Tab,
+  TabPanel,
+} from "src/app/components/Tab/Horizontal";
+import { BalanceTransferTable } from "src/app/components/Shared/BalanceTransferTable";
+import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTable";
+import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
+import { RolesTable } from "src/app/components/Shared/RolesTable";
+import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
 
 export function AddressDetailsPage() {
   useAddressSlice();
   usePriceSlice();
+  const { t } = useTranslation();
   const [params, setParams] = useState();
   const { address } = useParams();
   const { isFetchingAddressDetails, addressDetails } =
@@ -29,12 +41,6 @@ export function AddressDetailsPage() {
 
   return (
     <div tw="mt-16">
-      <Breadcrumb>
-        <Breadcrumb.Link to="/txs">Transactions</Breadcrumb.Link>
-        <Breadcrumb.Link>Transaction details</Breadcrumb.Link>
-        <Breadcrumb.Text>Address details</Breadcrumb.Text>
-      </Breadcrumb>
-
       <Heading>Address details</Heading>
 
       <InfoAddressCard
@@ -48,13 +54,53 @@ export function AddressDetailsPage() {
       <div tw="mt-16">
         <Heading tw="mb-4">Transactions included in this Address</Heading>
 
-        <TransactionsTable
-          showType
-          loading={isFetchingAddressTxs}
-          data={data}
-          total={total}
-          onChange={(p) => setParams(p)}
-        />
+        <TabContainer>
+          <Tabs tw="grid-cols-2 lg:grid-cols-4">
+            <Tab evtKey="transactions">{t("common.transactions")}</Tab>
+            <Tab evtKey="balance-transfers">Balance transfer</Tab>
+            <Tab evtKey="authored-blocks">Authored blocks</Tab>
+            <Tab evtKey="account-lifecycle">Authored blocks</Tab>
+            <Tab evtKey="roles">Roles</Tab>
+            <Tab evtKey="balance-history">Balance history</Tab>
+          </Tabs>
+
+          <TabPanel evtKey="transactions">
+            <TransactionsTable
+              showType
+              loading={isFetchingAddressTxs}
+              data={data}
+              total={total}
+              onChange={(p) => setParams(p)}
+            />
+          </TabPanel>
+          <TabPanel evtKey="balance-transfers">
+            <BalanceTransferTable
+              loading={false}
+              total={20}
+              data={[1, 2, 3, 4, 5, 6]}
+            />
+          </TabPanel>
+          <TabPanel evtKey="authored-blocks">
+            <AuthoredBlocksTable
+              loading={false}
+              total={20}
+              data={[1, 2, 3, 4, 5, 6]}
+            />
+          </TabPanel>
+          <TabPanel evtKey="account-lifecycle">
+            <AccountLifeCycleTable
+              loading={false}
+              total={20}
+              data={[1, 2, 3, 4, 5, 6]}
+            />
+          </TabPanel>
+          <TabPanel evtKey="roles">
+            <RolesTable loading={false} total={20} data={[1, 2, 3, 4, 5, 6]} />
+          </TabPanel>
+          <TabPanel evtKey="balance-history">
+            <BalanceHistoryChart />
+          </TabPanel>
+        </TabContainer>
       </div>
     </div>
   );

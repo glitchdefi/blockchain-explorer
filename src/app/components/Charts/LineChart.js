@@ -19,12 +19,21 @@ export const LineChart = ({
   yAxis,
   line,
   tooltipContent,
+  chartMargin,
 }) => {
   if (loading) return <Spinner size="30px" />;
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <ReLineChart width={500} height={300} data={data} margin={chartMargin}>
-        <CartesianGrid vertical={false} strokeOpacity="15%" />
+      <ReLineChart
+        width={500}
+        height={300}
+        data={data}
+        margin={chartMargin || chartMarginStyles}
+      >
+        <CartesianGrid
+          vertical={false}
+          stroke={theme`colors.color3`}
+        />
         <XAxis
           tickLine={false}
           axisLine={false}
@@ -52,7 +61,7 @@ export const LineChart = ({
   );
 };
 
-const chartMargin = { top: 16, right: 10, bottom: 5, left: 5 };
+const chartMarginStyles = { top: 16, left: -32, bottom: 5 };
 const tickStyles = {
   fill: theme`colors.color6`,
   fontSize: theme`fontSize.sm`,

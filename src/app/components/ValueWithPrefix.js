@@ -13,10 +13,10 @@ export function ValueWithPrefix({
 }) {
   return (
     <Wrapper {...props}>
-      <Text css={[valueStyles]}>{value}</Text>
-      <Text tw="ml-2 text-color6" css={[prefixStyles]}>
+      <Text css={[valueStyles]}>{`${value} GLCH`}</Text>
+      {/* <Text tw="ml-2 text-color6" css={[prefixStyles]}>
         {prefix || "GLCH"}
-      </Text>
+      </Text> */}
       {usd ? (
         <Text tw="ml-2 text-color6 dark:text-color5">
           ~ {usd ? formatDollarAmount(usd, 2, false) : 0} USD

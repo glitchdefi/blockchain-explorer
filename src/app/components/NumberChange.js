@@ -16,7 +16,13 @@ export function NumberChange({
 }) {
   return (
     <Flex {...props}>
-      <NumberCount bold value={value} prefix={prefix} separator={separator}/>
+      <NumberCount
+        color={theme`colors.textColor1`}
+        bold
+        value={value}
+        prefix={prefix}
+        separator={separator}
+      />
       {truncated > 0 && (
         <FontAwesomeIcon css={[upIconStyles]} icon={faSortUp} />
       )}

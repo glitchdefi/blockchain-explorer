@@ -85,7 +85,7 @@ export const TransactionsTable = React.memo((props) => {
                   {truncateAddress(hash, 8, 8)}
                 </TableCell>
                 <TableCell isLink href={`/block/${height}`}>
-                  {formatAmount(height)}
+                  {height}
                 </TableCell>
                 <TableCell>
                   <Journey id={i} from={from} to={to} />

@@ -28,4 +28,5 @@ const styles = css`
   display: inline-block;
   color: ${theme`colors.primary`};
   padding: 16px;
+  font-weight: 600;
 `;

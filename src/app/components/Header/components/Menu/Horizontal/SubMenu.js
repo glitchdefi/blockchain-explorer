@@ -13,7 +13,7 @@ export function Submenu({ isActive, items }) {
           const { label, href } = item;
           return (
             <SubMenuItem isActive={href === location.pathname} key={i}>
-              <Link tw="pl-6 pr-2 py-2" href={href}>
+              <Link tw="pl-4 pr-2 py-2" href={href}>
                 {label}
               </Link>
             </SubMenuItem>
@@ -24,7 +24,7 @@ export function Submenu({ isActive, items }) {
   );
 }
 
-const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden rounded shadow-lg bg-color1`;
+const Wrapper = tw.ul`absolute mt-2 w-full md:w-48 hidden shadow-lg bg-bgColor1 z-50`;
 export const SubMenuItem = styled.li(({ isActive }) => [
   tw`
   grid 
@@ -35,13 +35,15 @@ export const SubMenuItem = styled.li(({ isActive }) => [
   transition duration-200
 `,
   css`
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.15);
+    a:hover {
+      color: ${theme`colors.primary`};
     }
   `,
   isActive &&
     css`
-      background-color: rgba(255, 255, 255, 0.15);
+      a {
+        color: ${theme`colors.primary`};
+      }
     `,
 ]);
 Submenu.propTypes = {

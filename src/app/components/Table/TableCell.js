@@ -35,7 +35,7 @@ export default function TableCell(props) {
 }
 
 const styles = css`
-  color: ${theme`colors.color7`};
+  color: ${theme`colors.textColor1`};
   border-bottom: 1px solid ${theme`colors.color2`};
 `;
 TableCell.propTypes = {

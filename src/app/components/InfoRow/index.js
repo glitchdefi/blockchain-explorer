@@ -36,7 +36,7 @@ export function InfoRow(props) {
 
     return (
       <div tw="flex items-center">
-        <Text tw="text-color7">{value}</Text>
+        <Text tw="text-textColor1">{value}</Text>
         {isCopy && (
           <CopyButton
             text={copyValue || (typeof value !== "string" ? null : value)}

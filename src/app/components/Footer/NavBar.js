@@ -26,7 +26,7 @@ function NavBar() {
             <Link
               id={getFooterNavIds(link.href)}
               href={link.href}
-              tw="text-primary"
+              tw="text-primary font-semibold underline"
             >
               {link.label}
             </Link>

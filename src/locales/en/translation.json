@@ -32,7 +32,9 @@
         "network_box": "Note: You are currently connected to the Glitch {{network}}",
         "amount": "Amount",
         "type": "Type",
-        "hash": "Hash"
+        "hash": "Hash",
+        "logs": "Logs",
+        "all_accounts": "All Accounts"
     },
     "pagination": {
         "prev": "Prev",
@@ -47,8 +49,13 @@
         "market_cap": "Market cap",
         "lib": "LIB (Last Irreversible Block)",
         "total_accounts": "Total Accounts",
+        "active_accounts": "Active accounts",
+        "finalized_block": "Finalized block",
         "show_all_blocks": "Show all Blocks",
-        "show_all_txs": "Show all Transactions"
+        "show_all_txs": "Show all Transactions",
+        "daily_txn_count": "Daily txn count",
+        "daily_new_account": "Daily new account",
+        "daily_average_blocktime": "Daily average blocktime"
     },
     "userDetails": {
         "more_info": "More Info",
@@ -80,6 +87,7 @@
         "block_reward": "Block rewards",
         "total_difficulty":"Total Difficulty",
         "transaction_included_in": "Transactions included in this Block",
+        "include_in_block": "Included in Block",
         "hash": "Hash",
         "empty": "Unable to locate block #{{height}}",
         "height_tip": "Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block.",

@@ -1,12 +1,11 @@
 import React from "react";
-import tw, { css, styled, theme } from "twin.macro";
+import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
 
 import QrCodeImg from "src/assets/images/qr_code.png";
 
 // Utils
-import { formatDollarAmount, formatNumber, formatWei } from "src/utils/numbers";
-import { formatTimeAgo } from "src/utils/dates";
+import { formatWei } from "src/utils/numbers";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -15,7 +14,7 @@ import { useTheme } from "src/hooks/useTheme";
 import { Text } from "src/app/components/Text";
 import { CopyButton } from "src/app/components/CopyButton";
 import { InfoRow } from "src/app/components/InfoRow";
-import { LogoIcon, QRCode } from "src/app/components/Svg/Icons";
+import { QRCode } from "src/app/components/Svg/Icons";
 import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Skeleton } from "src/app/components/Skeleton";
 import { Image } from "src/app/components/Image";
@@ -44,19 +43,15 @@ export function InfoAddressCard({
           <SkeletonLoading />
         ) : (
           <>
-            {/* <Text tw="text-sm text-color5 mt-2">Last transaction: --</Text> */}
-
-            {/* <Text tw="text-sm text-color5 mt-2 mb-4">
-              Transactions: {formatNumber(total)}
-            </Text> */}
+            <InfoRow
+              isCopy
+              label="EVM address"
+              value="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
+              dataTip="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
+            />
 
             <InfoRow
               label="Balance"
-              css={[
-                css`
-                  border-top: 1px solid ${theme`colors.color2`};
-                `,
-              ]}
               customValueComp={
                 <Value
                   value={formatWei(balance)}
@@ -65,18 +60,25 @@ export function InfoAddressCard({
                 />
               }
             />
-            {/* <InfoRow
+            <InfoRow
               label="Total Received"
               customValueComp={<Value value="0" usd="$0" />}
             />
             <InfoRow
-              label="Total Spend"
+              label="Total Spent"
               customValueComp={<Value value="0" usd="$0" />}
-            /> */}
+            />
+
+            <InfoRow label="Current role" value="Nominator" />
+            <InfoRow label="Transactions" value="1 Txn" />
+            <InfoRow
+              label="Last transaction"
+              value="12 days ago (Jul 11, 2021 - 09:51:54 AM +UTC)"
+            />
           </>
         )}
       </div>
-      {/* <div tw="lg:ml-6 p-8">
+      <div tw="lg:ml-6">
         {loading ? (
           <Skeleton tw="w-52 h-52" />
         ) : (
@@ -87,7 +89,7 @@ export function InfoAddressCard({
             <QRCode />
           </div>
         )}
-      </div> */}
+      </div>
     </Wrapper>
   );
 }
@@ -117,11 +119,11 @@ const Value = ({ value, usd, price }) => {
   );
 };
 
-const Wrapper = tw.div`lg:flex items-center p-6 mt-4 bg-color1`;
+const Wrapper = tw.div`lg:flex p-6 mt-4 bg-color1`;
 const Flex = tw.div`flex items-center`;
 
 const Address = styled(Text)(() => [
-  tw`text-lg lg:text-xl`,
+  tw`text-lg text-primary lg:text-xl xl:text-3xl`,
   css`
     word-break: break-word;
   `,

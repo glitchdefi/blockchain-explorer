@@ -57,10 +57,10 @@ export const BlocksTable = React.memo((props) => {
                 animation={i === 0}
               >
                 <TableCell tw="pl-5">
-                  {formatNumber(epoch)}/ {slot}
+                  {formatNumber(epoch)} / {slot}
                 </TableCell>
                 <TableCell isLink href={`/block/${height}`}>
-                  {formatAmount(height)}
+                  {height}
                 </TableCell>
                 <TableCell>
                   {formatTimeAgo(create_at)}

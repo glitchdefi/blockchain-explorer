@@ -5,8 +5,8 @@ import observerOptions from "./options";
 
 const StyledImage = styled.img(({ width, height }) => [
   css`
-    height: ${height ? height + 'px' : 'auto'};
-    width: ${width ? width + 'px' : 'auto'};
+    height: ${height ? height + "px" : "auto"};
+    width: ${width ? width + "px" : "auto"};
   `,
 ]);
 
@@ -35,7 +35,7 @@ const Image = ({ src, alt, ...otherProps }) => {
   }, [src]);
 
   return (
-    <div ref={imgRef}>
+    <div tw="flex" ref={imgRef}>
       {isLoaded ? (
         <StyledImage src={src} alt={alt} {...otherProps} />
       ) : (

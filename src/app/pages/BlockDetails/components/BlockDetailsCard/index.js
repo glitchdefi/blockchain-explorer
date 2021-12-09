@@ -65,7 +65,7 @@ export const BlockDetailsCard = React.memo(
 
           <InfoRow
             label={t("blockDetails.block")}
-            value={formatNumber(height)}
+            value={height}
             dataTip={t("blockDetails.height_tip")}
           />
 

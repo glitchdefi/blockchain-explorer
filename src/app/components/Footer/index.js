@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { css, theme } from "twin.macro";
+import tw from "twin.macro";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
 
 // Sub Components

@@ -1,17 +1,43 @@
 export const mainNav = [
   {
-    label: "Home",
+    label: "Dashboard",
     href: "/",
   },
   {
-    label: "Blocks",
-    href: "/blocks",
-    child: "/block",
+    label: "Chain",
+    href: "#",
+    items: [
+      {
+        label: "Blocks",
+        href: "/blocks",
+      },
+      {
+        label: "Transactions",
+        href: "/txs",
+      },
+      {
+        label: "Logs",
+        href: "/logs",
+      },
+    ],
   },
   {
-    label: "Transactions",
-    href: "/txs",
-    child: "/tx",
+    label: "Account",
+    href: "#",
+    items: [
+      {
+        label: "All accounts",
+        href: "/accounts",
+      },
+      {
+        label: "Validators",
+        href: "/validators",
+      },
+      {
+        label: "Nominators",
+        href: "/nominators",
+      },
+    ],
   },
   // {
   //   label: "Vote",

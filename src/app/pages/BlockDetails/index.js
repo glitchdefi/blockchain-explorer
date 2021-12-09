@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import tw from "twin.macro";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 import {
   useBlockDetails,
@@ -13,9 +13,17 @@ import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
-import { Breadcrumb } from "src/app/components/Breadcrumb";
 import { BlockDetailsCard } from "./components/BlockDetailsCard";
+import { LeftArrowIcon } from "src/app/components/Svg/Icons";
+import { Button } from "src/app/components/Button";
+import {
+  TabContainer,
+  Tabs,
+  Tab,
+  TabPanel,
+} from "src/app/components/Tab/Horizontal";
 import { TransactionsTable } from "../Transactions/components/TransactionsTable";
+import { LogsTable } from "./components/LogsTable";
 
 export function BlockDetailsPage() {
   useBlockSlice();
@@ -24,6 +32,7 @@ export function BlockDetailsPage() {
   const [params, setParams] = useState();
   const { t } = useTranslation();
   const { height } = useParams();
+  const history = useHistory();
   const { isFetchingBlockDetails, blockDetails } = useBlockDetails(height);
   const { isFetchingBlockTxs, data, total } = useBlockTxs(height, params);
   const { allGlitchInfo } = useAllGlitchInfo();
@@ -32,12 +41,10 @@ export function BlockDetailsPage() {
   return (
     <>
       <Wrapper>
-        <Breadcrumb>
-          <Breadcrumb.Link to="/blocks">Blocks</Breadcrumb.Link>
-          <Breadcrumb.Text>Block details</Breadcrumb.Text>
-        </Breadcrumb>
-
         <HeadWrapper>
+          <Button tw="p-0 pr-3" onClick={() => history.push("/blocks")}>
+            <LeftArrowIcon />
+          </Button>
           <Heading bold>{t("blockDetails.title")}</Heading>
         </HeadWrapper>
 
@@ -49,17 +56,27 @@ export function BlockDetailsPage() {
         />
 
         <Heading bold tw="mt-8 lg:mt-16">
-          {t("blockDetails.transaction_included_in")}{" "}
+          {`${t("blockDetails.include_in_block")} #${height}`}
         </Heading>
 
-        <div tw="mt-4">
-          <TransactionsTable
-            loading={isFetchingBlockTxs}
-            data={data}
-            total={total}
-            onChange={(p) => setParams(p)}
-          />
-        </div>
+        <TabContainer>
+          <Tabs tw="grid-cols-2 lg:grid-cols-4">
+            <Tab evtKey="transactions">{t("common.transactions")}</Tab>
+            <Tab evtKey="logs">{t("common.logs")}</Tab>
+          </Tabs>
+
+          <TabPanel evtKey="transactions">
+            <TransactionsTable
+              loading={isFetchingBlockTxs}
+              data={data}
+              total={total}
+              onChange={(p) => setParams(p)}
+            />
+          </TabPanel>
+          <TabPanel evtKey="logs">
+            <LogsTable data={[1, 2, 3, 4, 5]} />
+          </TabPanel>
+        </TabContainer>
       </Wrapper>
     </>
   );

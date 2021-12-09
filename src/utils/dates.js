@@ -22,7 +22,7 @@ moment.updateLocale("en", {
 
 export const D_FOR_TABLE = "YYYY-MM-DD";
 export const D_FOR_DETAIL = "MMM-DD-YYYY";
-export const FORMAT_1 = "ddd, DD MMM YYYY HH:mm:ss";
+export const FORMAT_1 = "DD MMM, YYYY | HH:mm:ss";
 export const FORMAT_2 = "MMM DD, YYYY - HH:mm:ss A"
 
 export function formatTimeAgo(date) {

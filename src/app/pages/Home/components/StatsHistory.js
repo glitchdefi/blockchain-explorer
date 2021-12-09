@@ -63,4 +63,4 @@ export const StatsHistory = () => {
   );
 };
 
-const Wrapper = tw.div`p-3 lg:(pl-0)`;
+const Wrapper = tw.div`lg:(pl-0)`;

@@ -63,13 +63,13 @@ export function SearchInput() {
               onKeyPress={onEnterPress}
             />
             <Button
-              shadow
+              primary
               id={getSearchQueryIds(history.location.pathname)}
               refs={buttonRef}
               tw="p-0"
               onClick={onSearch}
             >
-              <div tw="flex bg-color1 dark:bg-color7 items-center py-3 px-5">
+              <div tw="flex bg-secondary dark:bg-primary items-center py-2 px-4">
                 {isSearching ? (
                   <Spinner
                     stroke={
@@ -79,7 +79,7 @@ export function SearchInput() {
                 ) : (
                   <>
                     <SearchIcon />
-                    <Text tw="ml-3 hidden md:block text-color7 dark:text-color1 font-bold">
+                    <Text tw="ml-3 hidden md:block text-color7 dark:text-color1 text-lg font-bold">
                       {t("common.search")}
                     </Text>
                   </>
@@ -94,22 +94,23 @@ export function SearchInput() {
 }
 const Title = styled(Text)(({ isDark }) => [
   css`
-    font-size: 36px;
+    font-size: 24px;
     background-image: linear-gradient(
       45deg,
       ${isDark ? theme`colors.primary` : theme`colors.primary`} 0%,
-      ${isDark ? theme`colors.secondary` : theme`colors.primary`} 40%
+      ${isDark ? theme`colors.secondary` : theme`colors.primary`} 25%
     );
     -webkit-background-clip: text;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     margin-bottom: 32px;
+    font-weight: bold;
   `,
 ]);
 
 const Input = styled(InputBase)(() => [
-  tw`flex-1 py-3 text-sm md:text-base bg-transparent`,
+  tw`flex-1 py-2 text-sm md:text-base lg:text-lg bg-transparent`,
   css`
     border: 1px solid ${theme`colors.color3`};
   `,

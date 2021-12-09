@@ -39,23 +39,8 @@ const Wrapper = styled.li(({ isActive }) => [
       transition: transform 300ms;
     }
 
-    .menu-item-link:after {
-      display: block;
-      content: "";
-      width: 0;
-      height: 2px;
-      background: ${theme`colors.primary`};
-      transition: width 0.2s;
-      margin-top: 14px;
-    }
-
-    .menu-item-link:hover:after {
-      width: 100%;
-      transition: width 0.2s;
-    }
-
     .menu-item-link:hover {
-      color: ${theme`colors.primary`};;
+      color: ${theme`colors.primary`};
     }
 
     &:hover {
@@ -72,15 +57,6 @@ const Wrapper = styled.li(({ isActive }) => [
 
   isActive &&
     css`
-      .menu-item-link:after {
-        display: block;
-        content: "";
-        width: 100%;
-        height: 2px;
-        background: ${theme`colors.primary`};
-        margin-top: 14px;
-      }
-
       .menu-item-link {
         color: ${theme`colors.primary`};
       }

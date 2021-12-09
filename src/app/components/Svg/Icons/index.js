@@ -28,3 +28,7 @@ export { default as SearchIcon } from "./Search";
 export { default as MediumIcon } from "./Medium";
 export { default as TwitterIcon } from "./Twitter";
 export { default as TelegramIcon } from "./Telegram";
+export { default as TransactionIcon } from "./Transaction";
+export { default as VolumnIcon } from "./Volumn";
+export { default as LeftArrowIcon } from "./LeftArrow";
+export { default as CloseCircleIcon } from "./CloseCircle";

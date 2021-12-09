@@ -16,6 +16,7 @@ function GlitchInfo() {
       css={css`
         border-top: 1px solid ${theme`colors.color15`};
       `}
+      tw="pb-8"
     >
       <Logo />
       <Flex tw="mt-4">
@@ -24,7 +25,7 @@ function GlitchInfo() {
       </Flex>
 
       <Flex>
-        <Text tw="text-sm text-color6">{t("footer.glitch_info")}</Text>
+        <Text tw="text-sm text-color5">{t("footer.glitch_info")}</Text>
         <Copyrite />
       </Flex>
     </Wrapper>

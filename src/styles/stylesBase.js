@@ -24,6 +24,9 @@ export const StylesBase = createGlobalStyle`
     --color-13: #280029;
     --color-14: #510052;
     --color-15: #EFB3F0;
+
+    --text-color1: #000000;
+    --bg-color1: #131629;
   }
   .dark {
     --color-primary: #00FFFF;
@@ -40,6 +43,9 @@ export const StylesBase = createGlobalStyle`
     --color-6: #A7C1CA;
     --color-7: #E4ECEF;
     --color-8: rgba(0, 76, 76, 0.3);
+
+    --text-color1: #E5ECEF;
+    --bg-color1: #131629;
   }
   body {
     ${tw`transition-all duration-200`}

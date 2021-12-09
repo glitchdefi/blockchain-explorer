@@ -1,5 +1,5 @@
 import React from "react";
-import { css, theme } from "twin.macro";
+import "twin.macro";
 
 // Hooks
 import { useWalletSlice } from "src/state/wallet/hooks";
@@ -10,10 +10,9 @@ import { useProducerSlice } from "src/state/producer/hooks";
 import { useSocket } from "src/services/socket/hooks/useSocket";
 
 // Components
-import { Grid } from "src/app/components/Grid";
-import { PriceChart } from "./components/PriceChart";
 import { TabSections } from "./components/TabSections";
-import { StatsHistory } from "./components/StatsHistory";
+import { LeftInfoSection } from "./components/LeftInfoSection";
+import { RightInfoSection } from "./components/RightInfoSection";
 
 export function HomePage() {
   useWalletSlice();
@@ -25,18 +24,16 @@ export function HomePage() {
 
   return (
     <>
-      <Grid
-        cols={2}
-        tw="mt-8 bg-color1"
-        css={css`
-          border: 1px solid ${theme`colors.color2`};
-        `}
-      >
-        <PriceChart />
-        <div tw="p-3">
-          <StatsHistory />
+      <div tw="grid grid-cols-1 xl:grid-cols-3 xl:gap-4">
+        <div tw="order-2 xl:order-1 xl:col-span-2">
+          <LeftInfoSection />
         </div>
-      </Grid>
+
+        <div tw="order-1 xl:order-2 mb-6 xl:mb-0">
+          <RightInfoSection />
+        </div>
+      </div>
+
       <TabSections />
     </>
   );

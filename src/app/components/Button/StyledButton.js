@@ -1,7 +1,7 @@
 import tw, { css, styled, theme } from "twin.macro";
 
 export const StyledButton = styled.button(
-  ({ isDark, isLoading, disabled, shadow }) => [
+  ({ isDark, isLoading, disabled, shadow, primary }) => [
     tw`
   text-color7 
   text-sm 
@@ -21,6 +21,12 @@ export const StyledButton = styled.button(
     css`
       transition: background-color 0.2s;
     `,
+
+    primary &&
+      css`
+        line-height: initial;
+        border: 1px solid ${theme`colors.primary`};
+      `,
 
     shadow &&
       css`

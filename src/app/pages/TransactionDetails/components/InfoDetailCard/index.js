@@ -78,7 +78,7 @@ export function InfoDetailCard() {
           label: t("common.block"),
           value: (
             <Link primary href={`/block/${height}`}>
-              {formatAmount(height)}
+              {height}
             </Link>
           ),
           dataTip: t("transactionDetails.block_tip"),
@@ -118,20 +118,9 @@ export function InfoDetailCard() {
         })}
 
         {renderInfoRow({
-          label: t("common.type"),
-          value: `Send`,
-          dataTip: t("transactionDetails.type_tip"),
-        })}
-
-        {renderInfoRow({
           label: t("common.amount"),
           customValueComp: (
-            <ValueWithPrefix
-              value={formatWei(value)}
-              usd={valueToUsd}
-              valueStyles={isDark ? tw`text-secondary` : tw`text-color8`}
-              prefixStyles={isDark ? tw`text-secondary` : tw`text-color8`}
-            />
+            <ValueWithPrefix value={formatWei(value)} usd={valueToUsd} />
           ),
           dataTip: t("transactionDetails.amount_tip"),
         })}

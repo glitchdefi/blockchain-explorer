@@ -21,21 +21,21 @@ import { Page } from "./layouts/Page";
 
 // Pages
 import { HomePage } from "./pages/Home";
-// import { WalletPage } from "./pages/Wallet";
-// import { TokenPage } from "./pages/Token";
 import { BlocksPage } from "./pages/Blocks";
 import { TransactionsPage } from "./pages/Transactions";
-import { VotePage } from "./pages/Vote";
-import { ChartsStatsPage } from "./pages/ChartsStats";
-import { TopStatisticsPage } from "./pages/TopStatistics";
 
 import { AddressDetailsPage } from "./pages/AddressDetails";
 import { TransactionDetailsPage } from "./pages/TransactionDetails";
 import { BlockDetailsPage } from "./pages/BlockDetails";
-import { EpodDetailsPage } from "./pages/EpodDetails";
 import { NotFoundPage } from "./pages/NotFound";
 import { SearchNotFoundPage } from "./pages/SearchNotFound";
 import { ContactPage } from "./pages/ContactUs";
+import { LogsPage } from "./pages/Logs";
+import { AllAccountsPage } from "./pages/AllAcounts";
+import { NominatorsPage } from "./pages/Nominators";
+import { NominatorDetailsPage } from "./pages/NominatorDetails";
+import { ValidatorsPage } from "./pages/Validators";
+import { ValidatorDetailsPage } from "./pages/ValidatorDetails";
 
 export function App() {
   const [loading, setLoading] = useState(true);
@@ -63,19 +63,27 @@ export function App() {
                 <Route exact path="/" component={HomePage} />
                 <Route path="/blocks" component={BlocksPage} />
                 <Route path="/txs" component={TransactionsPage} />
-                {/* <Route path="/vote" component={VotePage} /> */}
-                <Route path="/charts" component={ChartsStatsPage} />
-                <Route path="/topstat" component={TopStatisticsPage} />
                 <Route
                   path="/address/:address"
                   component={AddressDetailsPage}
                 />
                 <Route path="/tx/:hash" component={TransactionDetailsPage} />
                 <Route path="/block/:height" component={BlockDetailsPage} />
-                <Route path="/epod-details" component={EpodDetailsPage} />
 
                 <Route path="/contact-us" component={ContactPage} />
                 <Route path="/searchNotFound" component={SearchNotFoundPage} />
+                <Route path="/logs" component={LogsPage} />
+                <Route path="/accounts" component={AllAccountsPage} />
+                <Route path="/nominators" component={NominatorsPage} />
+                <Route
+                  path="/nominator/:address"
+                  component={NominatorDetailsPage}
+                />
+                <Route path="/validators" component={ValidatorsPage} />
+                <Route
+                  path="/validator/:address"
+                  component={ValidatorDetailsPage}
+                />
                 <Route component={NotFoundPage} />
               </Switch>
             </Page>

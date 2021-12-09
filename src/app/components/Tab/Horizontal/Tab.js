@@ -31,7 +31,6 @@ export function Tab({ children, evtKey, onClick, labelStyles, ...props }) {
 
 const Wrapper = styled(Button)(({ isActive, isDark }) => [
   tw`
-    w-full
     py-5
     rounded-none
     bg-transparent
