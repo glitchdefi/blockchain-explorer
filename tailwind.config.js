@@ -24,6 +24,7 @@ module.exports = {
         // Base
         textColor1: "var(--text-color1)",
         bgColor1: "var(--bg-color1)",
+        bgColor2: "var(--bg-color2)",
         color1: "var(--color-1)",
         color2: "var(--color-2)",
         color3: "var(--color-3)",

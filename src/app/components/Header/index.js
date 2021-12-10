@@ -10,12 +10,11 @@ import { useGlobalSlice } from "src/state/global/hooks";
 // Components
 import { Logo } from "src/app/components/Logo";
 import { HorizontalMenu, VerticalMenu } from "./components/Menu";
-import { Button } from "../Button";
 import { PageElementWrap } from "../../layouts/PageElementWrap";
 import { SearchInput } from "./components/SearchInput";
 
 // Icon
-import { HamburgerIcon, CloseIcon } from "./icons";
+import { HamburgerIcon } from "./icons";
 import ThemeToggle from "./components/ThemeToggle";
 
 export function Header() {
@@ -43,15 +42,10 @@ export function Header() {
               <HorizontalMenu />
               {/* Toggle Menu Vertical */}
               <div tw="lg:hidden flex items-center">
-                {!isShowVerticalMenu ? (
-                  <Button tw="p-0" onClick={toggleVerticalMenu}>
-                    <HamburgerIcon />
-                  </Button>
-                ) : (
-                  <Button tw="p-0" onClick={toggleVerticalMenu}>
-                    <CloseIcon />
-                  </Button>
-                )}
+                <HamburgerIcon
+                  isOpen={isShowVerticalMenu}
+                  onClick={toggleVerticalMenu}
+                />
               </div>
               <ThemeToggle />
             </div>

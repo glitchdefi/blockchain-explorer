@@ -26,7 +26,8 @@ export const StylesBase = createGlobalStyle`
     --color-15: #EFB3F0;
 
     --text-color1: #000000;
-    --bg-color1: #131629;
+    --bg-color1: #FFFFFF;
+    --bg-color2: #CA00CE;
   }
   .dark {
     --color-primary: #00FFFF;
@@ -46,6 +47,7 @@ export const StylesBase = createGlobalStyle`
 
     --text-color1: #E5ECEF;
     --bg-color1: #131629;
+    --bg-color2: #F100F5;
   }
   body {
     ${tw`transition-all duration-200`}

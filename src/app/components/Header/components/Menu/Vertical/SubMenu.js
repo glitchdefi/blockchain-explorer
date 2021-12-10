@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import { Link } from "src/app/components/Link";
 import { useLocation } from "react-router";
 
-export function Submenu({ items }) {
+export function Submenu({ items, open }) {
   const location = useLocation();
 
   return (
     <>
-      <Wrapper>
+      <Wrapper open={open}>
         {items.map((item, i) => {
           const { label, href } = item;
           return (
@@ -23,19 +23,18 @@ export function Submenu({ items }) {
   );
 }
 
-Submenu.propTypes = {
-  items: PropTypes.array,
-};
-
-Submenu.defaultProps = {
-  items: [],
-};
-
-const Wrapper = tw.ul`
-  w-full 
-  shadow-lg 
+const Wrapper = styled.ul(({ open }) => [
+  tw`
+  w-full
   bg-color1
-`;
+`,
+
+  css`
+    transition: all 0.3s ease-in-out;
+    height: ${open ? "135px" : "0px"};
+    overflow: hidden;
+  `,
+]);
 
 export const SubMenuItem = styled.li(({ isActive }) => [
   tw`
@@ -51,8 +50,24 @@ export const SubMenuItem = styled.li(({ isActive }) => [
     border-left-width: 4px;
     border-left-style: solid;
 
-    a {
-      color: ${isActive ? theme`colors.primary` : "white"} !important;
+    &:hover {
+      a {
+        color: ${theme`colors.primary`};
+      }
     }
   `,
+
+  isActive &&
+    css`
+      a {
+        color: ${theme`colors.primary`};
+      }
+    `,
 ]);
+Submenu.propTypes = {
+  items: PropTypes.array,
+};
+
+Submenu.defaultProps = {
+  items: [],
+};

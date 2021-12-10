@@ -21,8 +21,8 @@ export function NavLink({ isActive, link, children }) {
   };
 
   return (
-    <Wrapper>
-      <LinkWrapper onClick={onToggle}>
+    <Wrapper isActive={isActive}>
+      <div tw="flex pr-8 items-center cursor-pointer" onClick={onToggle}>
         {href === "#" ? (
           <Text isActive={isActive}>{children}</Text>
         ) : (
@@ -35,8 +35,8 @@ export function NavLink({ isActive, link, children }) {
           </CustomLink>
         )}
         {isSubmenu && <DropdownIcon />}
-      </LinkWrapper>
-      {isSubmenu && isShowSubMenu && <Submenu items={items} />}
+      </div>
+      {isSubmenu && <Submenu items={items} open={isShowSubMenu} />}
     </Wrapper>
   );
 }
@@ -47,17 +47,40 @@ NavLink.propTypes = {
   children: PropTypes.any,
 };
 
-const Wrapper = tw.li`
+const Wrapper = styled.li(({ isActive }) => [
+  tw`
   relative 
   w-full 
   inline-block 
   items-center 
   justify-center
-  hover:bg-color2
-`;
+`,
+
+  css`
+    &:hover {
+      svg {
+        color: ${theme`colors.primary`};
+      }
+    }
+  `,
+
+  isActive &&
+    css`
+      svg {
+        color: ${theme`colors.primary`};
+      }
+    `,
+]);
 
 const CustomLink = styled(Link)(({ isActive }) => [
-  tw`flex w-full items-center px-6 py-3 hover:text-white`,
+  tw`flex w-full items-center px-6 py-3`,
+  css`
+    &:hover {
+      a {
+        color: ${theme`colors.primary`};
+      }
+    }
+  `,
   isActive &&
     css`
       color: ${theme`colors.primary`} !important;
@@ -65,11 +88,9 @@ const CustomLink = styled(Link)(({ isActive }) => [
 ]);
 
 const Text = styled(TextBase)(({ isActive }) => [
-  tw`flex w-full items-center px-6 py-3 hover:text-white cursor-pointer`,
+  tw`flex w-full items-center px-6 py-3 hover:text-primary`,
   isActive &&
     css`
       color: ${theme`colors.primary`} !important;
     `,
 ]);
-
-const LinkWrapper = tw.div`flex pr-8 items-center`;

@@ -69,17 +69,13 @@ export function SearchInput() {
               tw="p-0"
               onClick={onSearch}
             >
-              <div tw="flex bg-secondary dark:bg-primary items-center py-2 px-4">
+              <div tw="flex bg-primary dark:bg-primary items-center py-2 px-4">
                 {isSearching ? (
-                  <Spinner
-                    stroke={
-                      isDark ? theme`colors.color1` : theme`colors.color7`
-                    }
-                  />
+                  <Spinner stroke={theme`colors.color1`} />
                 ) : (
                   <>
                     <SearchIcon />
-                    <Text tw="ml-3 hidden md:block text-color7 dark:text-color1 text-lg font-bold">
+                    <Text tw="ml-3 hidden md:block text-color1 dark:text-color1 text-lg font-bold">
                       {t("common.search")}
                     </Text>
                   </>

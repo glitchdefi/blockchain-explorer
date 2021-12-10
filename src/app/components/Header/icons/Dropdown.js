@@ -6,7 +6,7 @@ const Dropdown = (props) => (
   <FontAwesomeIcon
     tw="h-3 w-3! ml-2"
     icon={faCaretDown}
-    color="white"
+    color="var(--text-color1)"
     {...props}
   />
 );

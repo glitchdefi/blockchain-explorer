@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import { mainNav as links } from "src/constants/navConfig";
 
 // Sub Components
@@ -30,14 +30,16 @@ export function NavMenu() {
   );
 }
 
-const Wrapper = tw.div`
+const Wrapper = styled.div(() => [
+  tw`
   flex
   flex-col
   w-full 
   lg:hidden 
   mt-2
   bg-color1
-`;
+`,
+]);
 
 const UlWrapper = tw.ul`
   flex 

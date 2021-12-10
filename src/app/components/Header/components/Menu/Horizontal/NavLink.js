@@ -15,7 +15,7 @@ export function NavLink({ isActive, link, children }) {
 
   return (
     <Wrapper isActive={isActive} className="horizontal-menu-item">
-      <LinkWrapper>
+      <LinkWrapper isActive={isActive}>
         <Link
           id={getHomeNavIds(children?.toLowerCase())}
           className="menu-item-link"
@@ -31,26 +31,30 @@ export function NavLink({ isActive, link, children }) {
   );
 }
 
-const Wrapper = styled.li(({ isActive }) => [
+const Wrapper = styled.li(() => [
   tw`inline-block px-6 py-2 items-center justify-center`,
+]);
+
+const LinkWrapper = styled.div(({ isActive }) => [
+  tw`flex items-center!`,
   css`
+    transition: all 0.3s ease;
+    cursor: pointer;
+
     svg {
       transform: rotate(0deg);
       transition: transform 300ms;
-    }
-
-    .menu-item-link:hover {
-      color: ${theme`colors.primary`};
+      color: ${theme`colors.color7`};
     }
 
     &:hover {
+      .menu-item-link {
+        color: ${theme`colors.primary`};
+      }
+
       svg {
         color: ${theme`colors.primary`} !important;
         transform: rotate(-180deg);
-      }
-
-      .horizontal-menu-submenu a {
-        color: white;
       }
     }
   `,
@@ -60,10 +64,12 @@ const Wrapper = styled.li(({ isActive }) => [
       .menu-item-link {
         color: ${theme`colors.primary`};
       }
+
+      svg {
+        color: ${theme`colors.primary`} !important;
+      }
     `,
 ]);
-
-const LinkWrapper = tw.div`flex items-center!`;
 NavLink.propTypes = {
   isActive: PropTypes.bool,
   link: PropTypes.object,

@@ -4,14 +4,14 @@ import "twin.macro";
 
 import { LineChart } from "src/app/components/Charts";
 import { TooltipTable } from "src/app/components/Tooltip/TooltipTable";
-import { CardLayout } from "src/app/pages/Wallet/components/CardLayout";
+import { Card } from "src/app/components/Card";
 import { formatCurrencyAmount } from "src/utils/numbers";
 
 export const BalanceHistoryChart = React.memo(() => {
   const { t } = useTranslation();
 
   return (
-    <CardLayout tw="px-5 lg:px-10 py-5 h-96 border-t-0 bg-color2">
+    <Card tw="px-5 lg:px-10 py-5 h-96 border-t-0 bg-color2">
       <LineChart
         loading={false}
         data={[
@@ -66,6 +66,6 @@ export const BalanceHistoryChart = React.memo(() => {
         }}
         chartMargin={{ top: 16, left: -16, right: 12, bottom: 5 }}
       />
-    </CardLayout>
+    </Card>
   );
 });

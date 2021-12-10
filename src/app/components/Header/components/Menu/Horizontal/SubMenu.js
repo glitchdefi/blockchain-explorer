@@ -35,8 +35,10 @@ export const SubMenuItem = styled.li(({ isActive }) => [
   transition duration-200
 `,
   css`
-    a:hover {
-      color: ${theme`colors.primary`};
+    &:hover {
+      a {
+        color: ${theme`colors.primary`};
+      }
     }
   `,
   isActive &&
