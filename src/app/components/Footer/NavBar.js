@@ -7,11 +7,10 @@ import { footerNav as links } from "../../../constants/navConfig";
 import { Link } from "../Link";
 
 const Wrapper = tw.ul`
-  col-span-2 
-  self-start 
+  flex-1
+  items-end
   justify-end 
-  list-none 
-  hidden
+  list-none
   lg:flex
 `;
 
@@ -26,7 +25,7 @@ function NavBar() {
             <Link
               id={getFooterNavIds(link.href)}
               href={link.href}
-              tw="text-primary font-semibold underline"
+              tw="text-primary font-semibold underline w-32 my-4 text-center lg:my-0 lg:text-right"
             >
               {link.label}
             </Link>

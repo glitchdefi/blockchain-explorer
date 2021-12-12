@@ -19,7 +19,7 @@ li {
 }
 
 ::-webkit-scrollbar {
-  height: 5px;
+  height: 1px;
   width: 5px;
 }
 

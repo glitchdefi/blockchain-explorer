@@ -5,7 +5,8 @@ export const Input = styled.input(() => [
   py-2
   px-4
   block
-  outline-none
+  outline-none!
+  shadow-none!
   placeholder-color4
   text-base
   text-color7
@@ -15,5 +16,7 @@ export const Input = styled.input(() => [
 
   css`
     border: 1px solid ${theme`colors.color3`};
+    border-radius: 0px;
+    background-clip: padding-box;
   `,
 ]);

@@ -9,6 +9,7 @@ import { Image } from "src/app/components/Image";
 import { Text } from "src/app/components/Text";
 import { Difference } from "src/app/components/Difference";
 import { InfoItem } from "./InfoItem";
+import { SineWave } from "src/app/components/SineWave";
 
 export const RightInfoSection = React.memo(() => {
   const { t } = useTranslation();
@@ -17,15 +18,11 @@ export const RightInfoSection = React.memo(() => {
   return (
     <Wrapper>
       <GlitchPriceInfo tw="flex items-center justify-between py-10 px-6">
-        <Image
-          className="wave-bg"
-          src="/images/wave.png"
-          resizeMode
-          width="100%"
-          height={88}
-        />
+        <div tw="overflow-hidden absolute left-0 right-0 bottom-0">
+          <SineWave />
+        </div>
 
-        <div tw="flex items-center absolute left-6">
+        <div tw="flex items-center z-10 left-6">
           <Image
             src={
               isDark
@@ -84,13 +81,5 @@ const Wrapper = styled.div(() => [
 const GlitchPriceInfo = styled.div(() => [
   css`
     position: relative;
-
-    .wave-bg {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      overflow: hidden;
-    }
   `,
 ]);

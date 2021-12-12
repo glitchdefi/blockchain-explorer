@@ -33,14 +33,18 @@ export function InfoAddressCard({
 
   return (
     <Wrapper>
-      <div tw="flex-1">
+      <div tw="flex-1 order-2 lg:order-1">
         <Flex tw="mb-4">
           <Address>{address}</Address>
           <CopyButton text={address} tw="ml-3" />
         </Flex>
 
         {loading ? (
-          <SkeletonLoading />
+          <>
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+          </>
         ) : (
           <>
             <InfoRow
@@ -78,9 +82,11 @@ export function InfoAddressCard({
           </>
         )}
       </div>
-      <div tw="lg:ml-6">
+      <div tw="mb-6 order-1 lg:ml-6 lg:mb-0 lg:order-2">
         {loading ? (
-          <Skeleton tw="w-52 h-52" />
+          <div tw="flex items-center justify-center">
+            <Skeleton tw="w-52 h-52" />
+          </div>
         ) : (
           <div tw="flex items-center justify-center relative">
             <div tw="absolute top-4 bottom-0">
@@ -119,7 +125,7 @@ const Value = ({ value, usd, price }) => {
   );
 };
 
-const Wrapper = tw.div`lg:flex p-6 mt-4 bg-color1`;
+const Wrapper = tw.div`flex flex-col lg:flex-row p-6 mt-4 bg-color1`;
 const Flex = tw.div`flex items-center`;
 
 const Address = styled(Text)(() => [

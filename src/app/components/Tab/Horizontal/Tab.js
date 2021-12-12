@@ -34,19 +34,17 @@ const Wrapper = styled(Button)(({ isActive, isDark }) => [
     py-5
     rounded-none
     bg-transparent
+    m-0
   `,
 
   css`
     border: 1px solid ${theme`colors.color2`};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
 
     .tab-label {
       color: ${isActive
         ? theme`colors.primary`
         : theme`colors.color6`} !important;
-      word-break: inherit;
+      word-break: initial;
     }
   `,
 

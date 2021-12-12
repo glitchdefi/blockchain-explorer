@@ -15,7 +15,7 @@ const ThemeToggle = () => {
   return (
     <>
       <Button
-        tw="ml-2 lg:mb-3 w-8 h-8 p-1 bg-transparent focus:outline-none fill-current text-primary border border-solid border-color2"
+        tw="w-8 h-8 p-1 bg-transparent focus:outline-none fill-current text-primary border border-solid border-color2"
         onClick={() => setTheme(isDark() ? "light" : "dark")}
         data-tip={`Switch to ${isDark() ? "Light" : "Dark"} mode`}
         data-for="theme-toggle"

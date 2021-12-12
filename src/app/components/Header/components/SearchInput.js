@@ -66,10 +66,10 @@ export function SearchInput() {
               primary
               id={getSearchQueryIds(history.location.pathname)}
               refs={buttonRef}
-              tw="p-0"
+              tw="p-0 m-0"
               onClick={onSearch}
             >
-              <div tw="flex bg-primary dark:bg-primary items-center py-2 px-4">
+              <div tw="flex bg-primary dark:bg-primary items-center py-2 px-4 h-full">
                 {isSearching ? (
                   <Spinner stroke={theme`colors.color1`} />
                 ) : (
@@ -109,6 +109,7 @@ const Input = styled(InputBase)(() => [
   tw`flex-1 py-2 text-sm md:text-base lg:text-lg bg-transparent`,
   css`
     border: 1px solid ${theme`colors.color3`};
+    margin: 0px;
   `,
 ]);
 
@@ -149,4 +150,4 @@ const Wrapper = styled.div(({ isDark }) => [
     }
   `,
 ]);
-const InputWrapper = tw.div`flex w-full items-center`;
+const InputWrapper = tw.div`flex w-full items-stretch`;

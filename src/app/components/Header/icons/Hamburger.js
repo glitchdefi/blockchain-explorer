@@ -26,6 +26,7 @@ const Wrapper = styled.div(({ open }) => [
       cursor: pointer;
       padding: 0;
       z-index: 10;
+      user-select: none;
 
       &:focus {
         outline: none;

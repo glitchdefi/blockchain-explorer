@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router";
-import tw, { styled } from "twin.macro";
+import tw, { styled, css, theme } from "twin.macro";
 import { mainNav as links } from "src/constants/navConfig";
 
 // Sub Components
@@ -39,6 +39,9 @@ const Wrapper = styled.div(() => [
   mt-2
   bg-color1
 `,
+  css`
+    box-shadow: 0 1px 10px rgb(151 164 175 / 10%);
+  `,
 ]);
 
 const UlWrapper = tw.ul`

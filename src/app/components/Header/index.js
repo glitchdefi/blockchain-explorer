@@ -47,6 +47,7 @@ export function Header() {
                   onClick={toggleVerticalMenu}
                 />
               </div>
+              <div tw="px-2 lg:pl-2 lg:pr-8 text-color4">|</div>
               <ThemeToggle />
             </div>
           </NavCols>

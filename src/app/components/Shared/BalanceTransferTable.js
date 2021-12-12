@@ -1,6 +1,8 @@
 import React from "react";
 import { isEmpty } from "lodash";
-import tw from "twin.macro";
+import tw, { styled, css } from "twin.macro";
+
+import { truncateAddress } from "src/utils/strings";
 
 // Components
 import {
@@ -12,11 +14,9 @@ import {
   TableEmpty,
   TableCell,
 } from "src/app/components/Table";
-
 import { Text } from "src/app/components/Text";
 import { Link } from "src/app/components/Link";
 import { Tooltip } from "src/app/components/Tooltip";
-import { truncateAddress } from "src/utils/strings";
 
 export const BalanceTransferTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -90,10 +90,16 @@ const FromCellView = ({ id, from, to }) => {
         <Text tw="ml-1 text-color5 text-sm">(EVM address)</Text>
       </Flex>
 
-      <Tooltip id={fromId} />
-      <Tooltip id={toId} />
+      <StyledTooltip className="tooltip" id={fromId} />
+      <StyledTooltip id={toId} />
     </>
   );
 };
 
 const Flex = tw.div`flex items-center`;
+const StyledTooltip = styled(Tooltip)(() => [
+  css`
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 2%),
+      0 10px 10px -5px rgb(0 0 0 / 2%);
+  `,
+]);

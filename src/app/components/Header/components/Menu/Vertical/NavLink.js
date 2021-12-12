@@ -54,6 +54,7 @@ const Wrapper = styled.li(({ isActive }) => [
   inline-block 
   items-center 
   justify-center
+  select-none
 `,
 
   css`

@@ -102,7 +102,7 @@ const Wrapper = styled.div(() => [
 
 const Flex = styled.div(() => [
   css`
-    border-bottom: 2px solid ${theme`colors.color3`};
+    border-bottom: 1px solid ${theme`colors.color3`};
   `,
   tw`py-6 flex flex-col items-center md:flex-row`,
 ]);

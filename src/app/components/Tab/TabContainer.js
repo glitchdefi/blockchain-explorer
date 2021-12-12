@@ -4,7 +4,9 @@ import tw, { styled } from "twin.macro";
 
 export const TabsContext = createContext();
 export function TabContainer({ children, orientation, ...props }) {
-  const [activeTab, setActiveTab] = useState(Number(process.env.REACT_APP_ACTIVE_TAB));
+  const [activeTab, setActiveTab] = useState(
+    Number(process.env.REACT_APP_ACTIVE_TAB)
+  );
 
   return (
     <TabsContext.Provider
@@ -18,7 +20,7 @@ export function TabContainer({ children, orientation, ...props }) {
 }
 
 const Wrapper = styled.div(({ orientation }) => [
-  tw`block max-w-full`,
+  tw`block overflow-y-scroll`,
   orientation === "vertical" && tw`lg:flex`,
 ]);
 

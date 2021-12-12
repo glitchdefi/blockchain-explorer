@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
@@ -26,11 +26,14 @@ import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTab
 import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
 import { RolesTable } from "src/app/components/Shared/RolesTable";
 import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
+import { LeftArrowIcon } from "src/app/components/Svg/Icons";
+import { Button } from "src/app/components/Button";
 
 export function NominatorDetailsPage() {
   useAddressSlice();
   usePriceSlice();
   const { t } = useTranslation();
+  const history = useHistory();
   const [params, setParams] = useState();
   const { address } = useParams();
   const { isFetchingAddressDetails, addressDetails } =
@@ -41,7 +44,12 @@ export function NominatorDetailsPage() {
 
   return (
     <div tw="mt-16">
-      <Heading>Nominator details</Heading>
+      <HeadWrapper>
+        <Button tw="p-0 pr-4" onClick={() => history.push("/nominators")}>
+          <LeftArrowIcon />
+        </Button>
+        <Heading bold>Nominator details</Heading>
+      </HeadWrapper>
 
       <InfoNominatorCard
         loading={isFetchingAddressDetails}
@@ -106,4 +114,5 @@ export function NominatorDetailsPage() {
   );
 }
 
-const Heading = tw(Text)`text-base lg:text-lg mt-8`;
+const Heading = tw(Text)`text-base lg:text-lg`;
+const HeadWrapper = tw.div`flex flex-wrap items-center mt-8`;
