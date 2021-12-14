@@ -2,7 +2,7 @@ import React from "react";
 import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
 
-import QrCodeImg from "src/assets/images/qr_code.png";
+import QRCode from "qrcode.react";
 
 // Utils
 import { formatWei } from "src/utils/numbers";
@@ -14,7 +14,7 @@ import { useTheme } from "src/hooks/useTheme";
 import { Text } from "src/app/components/Text";
 import { CopyButton } from "src/app/components/CopyButton";
 import { InfoRow } from "src/app/components/InfoRow";
-import { QRCode } from "src/app/components/Svg/Icons";
+import { QRCode as QRCodeBorder } from "src/app/components/Svg/Icons";
 import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Skeleton } from "src/app/components/Skeleton";
 import { Image } from "src/app/components/Image";
@@ -90,9 +90,9 @@ export function InfoAddressCard({
         ) : (
           <div tw="flex items-center justify-center relative">
             <div tw="absolute top-4 bottom-0">
-              <Image src={QrCodeImg} tw="w-40 h-40" />
+              <QRCode value={address} tw="w-40! h-40!" />
             </div>
-            <QRCode />
+            <QRCodeBorder />
           </div>
         )}
       </div>

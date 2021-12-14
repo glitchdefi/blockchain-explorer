@@ -9,9 +9,9 @@ const QRCode = (props) => {
           width="192"
           height="192"
           transform="translate(3 1)"
-          fill="#151F23"
+          fill="var(--color-1)"
         />
-        <rect x="19" y="17" width="160" height="160" fill="#151F23" />
+        <rect x="19" y="17" width="160" height="160" fill="var(--color-1)" />
       </g>
       <defs>
         <filter
