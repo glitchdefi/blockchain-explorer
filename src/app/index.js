@@ -64,7 +64,7 @@ export function App() {
                 <Route path="/blocks" component={BlocksPage} />
                 <Route path="/txs" component={TransactionsPage} />
                 <Route
-                  path="/address/:address"
+                  path="/account/:address"
                   component={AddressDetailsPage}
                 />
                 <Route path="/tx/:hash" component={TransactionDetailsPage} />

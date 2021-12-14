@@ -96,7 +96,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.from"),
           customValueComp: (
-            <Link primary href={`/address/${from}`}>
+            <Link primary href={`/account/${from}`}>
               {from}
             </Link>
           ),
@@ -108,7 +108,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.to"),
           customValueComp: (
-            <Link primary href={`/address/${to}`}>
+            <Link primary href={`/account/${to}`}>
               {to}
             </Link>
           ),

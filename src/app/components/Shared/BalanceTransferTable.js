@@ -75,7 +75,7 @@ const FromCellView = ({ id, from, to }) => {
       <Flex>
         <Link
           primary
-          href={`/address/${from}`}
+          href={`/account/${from}`}
           data-tip={from}
           data-for={fromId}
         >

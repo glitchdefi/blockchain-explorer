@@ -17,7 +17,7 @@ export function Journey({ id, from, to }) {
         <Label>From</Label>
         <Link
           primary
-          href={`/address/${from}`}
+          href={`/account/${from}`}
           data-tip={from}
           data-for={fromId}
         >
@@ -27,7 +27,7 @@ export function Journey({ id, from, to }) {
 
       <Flex>
         <Label>To</Label>
-        <Link primary href={`/address/${to}`} data-tip={to} data-for={toId}>
+        <Link primary href={`/account/${to}`} data-tip={to} data-for={toId}>
           {truncateAddress(to)}
         </Link>
       </Flex>

@@ -39,7 +39,7 @@ export const AllAccountsTable = React.memo((props) => {
                 <TableCell>{i + 1}</TableCell>
                 <TableCell>
                   <div>
-                    <Link primary href={`/address/tglc1elnpa4avu4nd5auu2m7tyz5qdynrfs3qsz8x7a`}>
+                    <Link primary href={`/account/tglc1elnpa4avu4nd5auu2m7tyz5qdynrfs3qsz8x7a`}>
                       0x11a9f2119ade1ef6394579b95d1c60df106bbc9f
                     </Link>
                     <div tw="flex items-center">

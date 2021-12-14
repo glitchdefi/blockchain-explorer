@@ -32,7 +32,7 @@ export function SearchInput() {
       if (searchResult?.type === "tx") history.push(`/tx/${text.trim()}`);
       if (searchResult?.type === "block") history.push(`/block/${text.trim()}`);
       if (searchResult?.type === "wallet")
-        history.push(`/address/${text.trim()}`);
+        history.push(`/account/${text.trim()}`);
       onClearText();
     }
 
