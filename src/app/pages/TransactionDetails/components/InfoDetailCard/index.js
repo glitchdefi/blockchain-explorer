@@ -16,21 +16,17 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Link } from "src/app/components/Link";
 import { InfoRow } from "src/app/components/InfoRow";
 import { Empty } from "src/app/components/Empty";
-import { useTheme } from "src/hooks/useTheme";
 import { Status } from "./Status";
 
 export function InfoDetailCard() {
   const params = useParams();
   const { t } = useTranslation();
-  const { isDark } = useTheme();
   const { isFetchingTxDetails, txDetails } = useTxByHash(params?.hash);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
-  const { hash, create_at, height, from, to, result_log, gasused, value } =
-    txDetails || {};
-  const status = result_log === 1 ? "Success" : "Fail";
+  const { hash, time, height, from, to, status, fee, value } = txDetails || {};
   const valueToUsd = formatWei(value) * current_price;
-  const feeToUsd = formatWei(gasused) * current_price;
+  const feeToUsd = formatWei(0) * current_price;
 
   const renderInfoRow = ({
     label,
@@ -86,8 +82,8 @@ export function InfoDetailCard() {
 
         {renderInfoRow({
           label: t("common.timeStamp"),
-          value: `${formatTimeAgo(create_at)} • (${formatDateTimeUTC(
-            create_at,
+          value: `${formatTimeAgo(time)} • (${formatDateTimeUTC(
+            time,
             FORMAT_2
           )} +UTC)`,
           dataTip: t("transactionDetails.time_tip"),
@@ -128,7 +124,7 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.txnFee"),
           customValueComp: (
-            <ValueWithPrefix value={formatWei(gasused)} usd={feeToUsd} />
+            <ValueWithPrefix value={formatWei(0)} usd={feeToUsd} />
           ),
           dataTip: t("transactionDetails.fee_tip"),
         })}

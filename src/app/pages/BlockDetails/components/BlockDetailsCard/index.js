@@ -23,17 +23,9 @@ import { BlockNavigation } from "../BlockNavigation";
 export const BlockDetailsCard = React.memo(
   ({ loading, currentPrice, blockHeight, data }) => {
     const { t } = useTranslation();
-    const {
-      block_size,
-      num_txs,
-      proposer_address,
-      height,
-      time,
-      hash,
-      reward,
-      epoch,
-      slot,
-    } = data || {};
+    const { txNum, proposer_address, index, time, hash, reward, epoch } =
+      data || {};
+
     const { producerDetails } = useProducerDetails(proposer_address);
     const { name } = producerDetails || {};
     const rewardToUsd = formatWei(reward) * currentPrice;
@@ -55,7 +47,7 @@ export const BlockDetailsCard = React.memo(
         );
       return (
         <>
-          <BlockNavigation currentBlock={height} />
+          <BlockNavigation currentBlock={index} />
           <InfoRow
             isCopy={true}
             label={t("blockDetails.hash")}
@@ -65,13 +57,13 @@ export const BlockDetailsCard = React.memo(
 
           <InfoRow
             label={t("blockDetails.block")}
-            value={height}
+            value={index}
             dataTip={t("blockDetails.height_tip")}
           />
 
           <InfoRow
             label={t("blockDetails.epoch_slot")}
-            value={`${formatNumber(epoch)} / ${slot}`}
+            value={`${formatNumber(epoch)}`}
             dataTip={t("blockDetails.epoch_slot_tip")}
           />
 
@@ -96,7 +88,7 @@ export const BlockDetailsCard = React.memo(
 
           <InfoRow
             label={t("common.total_txs")}
-            value={formatNumber(num_txs)}
+            value={formatNumber(txNum)}
             dataTip={t("blockDetails.txs_tip")}
           />
 
@@ -106,17 +98,6 @@ export const BlockDetailsCard = React.memo(
               <ValueWithPrefix value={formatWei(reward)} usd={rewardToUsd} />
             }
             dataTip={t("blockDetails.reward_tip")}
-          />
-
-          <InfoRow
-            label={t("common.size")}
-            customValueComp={
-              <ValueWithPrefix
-                value={formatNumber(block_size)}
-                prefix="bytes"
-              />
-            }
-            dataTip={t("blockDetails.size_tip")}
           />
         </>
       );

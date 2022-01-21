@@ -65,13 +65,12 @@ export const TransactionsTable = React.memo((props) => {
               value,
               to,
               from,
-              create_at,
+              time,
               height,
-              result_log,
-              gasused,
+              fee,
+              status,
               type: txType,
             } = tx;
-            const status = result_log === 1 ? "Success" : "Fail";
             const type = txType === "in" ? "Receive" : "Send";
 
             return (
@@ -91,9 +90,9 @@ export const TransactionsTable = React.memo((props) => {
                   <Journey id={i} from={from} to={to} />
                 </TableCell>
                 <TableCell>
-                  {formatTimeAgo(create_at)}
+                  {formatTimeAgo(time)}
                   <Text tw="mt-1 text-sm text-color6 dark:text-color5">
-                    {formatDateTimeUTC(create_at, FORMAT_1)} GMT
+                    {formatDateTimeUTC(time, FORMAT_1)} GMT
                   </Text>
                 </TableCell>
 
@@ -101,10 +100,7 @@ export const TransactionsTable = React.memo((props) => {
                   <ValueWithPrefix tw="justify-end" value={formatWei(value)} />
                 </TableCell>
                 <TableCell>
-                  <ValueWithPrefix
-                    tw="justify-end"
-                    value={formatWei(gasused)}
-                  />
+                  <ValueWithPrefix tw="justify-end" value={formatWei(0)} />
                 </TableCell>
                 <TableCell tw="text-center">
                   <Status

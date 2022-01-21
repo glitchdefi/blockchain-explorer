@@ -33,11 +33,10 @@ export const BlocksTable = React.memo((props) => {
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
         <TableRow animation={false}>
-          <TableHeaderCell tw="pl-5">Epoch/ Slot</TableHeaderCell>
+          <TableHeaderCell tw="pl-5">Epoch</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
           <TableHeaderCell tw="text-right">Reward</TableHeaderCell>
-          <TableHeaderCell tw="text-center">Size (Bytes)</TableHeaderCell>
           <TableHeaderCell>Validator</TableHeaderCell>
         </TableRow>
       </TableHeader>
@@ -47,8 +46,7 @@ export const BlocksTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { epoch, slot, size, height, create_at, reward, producer } =
-              o;
+            const { epoch, time, reward, index, validator } = o;
 
             return (
               <TableRow
@@ -56,23 +54,20 @@ export const BlocksTable = React.memo((props) => {
                 count={countUpdated.current}
                 animation={i === 0}
               >
-                <TableCell tw="pl-5">
-                  {formatNumber(epoch)} / {slot}
-                </TableCell>
-                <TableCell isLink href={`/block/${height}`}>
-                  {height}
+                <TableCell tw="pl-5">{formatNumber(epoch)}</TableCell>
+                <TableCell isLink href={`/block/${index}`}>
+                  {index}
                 </TableCell>
                 <TableCell>
-                  {formatTimeAgo(create_at)}
+                  {formatTimeAgo(time)}
                   <Text tw="mt-1 text-sm text-color6 dark:text-color5">
-                    {formatDateTimeUTC(create_at, FORMAT_1)} GMT
+                    {formatDateTimeUTC(time, FORMAT_1)} GMT
                   </Text>
                 </TableCell>
                 <TableCell>
                   <ValueWithPrefix tw="justify-end" value={formatWei(reward)} />
                 </TableCell>
-                <TableCell tw="text-center">{formatAmount(size)}</TableCell>
-                <TableCell>{producer}</TableCell>
+                <TableCell>{validator}</TableCell>
               </TableRow>
             );
           })

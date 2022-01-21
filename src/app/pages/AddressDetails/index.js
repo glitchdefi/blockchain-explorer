@@ -61,14 +61,14 @@ export function AddressDetailsPage() {
       />
 
       <div tw="mt-16">
-        <Heading tw="mb-4">Transactions included in this Address</Heading>
+        <Heading tw="mb-2">Included in this Account</Heading>
 
         <TabContainer>
           <Tabs>
             <Tab evtKey="transactions">{t("common.transactions")}</Tab>
             <Tab evtKey="balance-transfers">Balance transfer</Tab>
             <Tab evtKey="authored-blocks">Authored blocks</Tab>
-            <Tab evtKey="account-lifecycle">Authored blocks</Tab>
+            <Tab evtKey="account-lifecycle">Authored lifecycle</Tab>
             <Tab evtKey="roles">Roles</Tab>
             <Tab evtKey="balance-history">Balance history</Tab>
           </Tabs>

@@ -25,8 +25,7 @@ export const LeftInfoSection = React.memo(() => {
             icon={<TransactionIcon />}
             title={t("common.transactions")}
             tooltipLabel="View transactions"
-            value={100000}
-            prefix="$"
+            value={10000000}
           />
         </Box>
 

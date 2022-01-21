@@ -10,10 +10,15 @@ import { Text } from "src/app/components/Text";
 import { Difference } from "src/app/components/Difference";
 import { InfoItem } from "./InfoItem";
 import { SineWave } from "src/app/components/SineWave";
+import { useAllGlitchInfo } from "src/state/price/hooks";
 
 export const RightInfoSection = React.memo(() => {
   const { t } = useTranslation();
   const { isDark } = useTheme();
+  const { allGlitchInfo } = useAllGlitchInfo();
+  const { market_cap, current_price, price_change_percentage_24h, market_cap_change_percentage_24h } = allGlitchInfo || {};
+
+  console.log(allGlitchInfo);
 
   return (
     <Wrapper>
@@ -40,9 +45,9 @@ export const RightInfoSection = React.memo(() => {
 
         <div tw="flex items-center z-10">
           <Text tw="ml-4 font-semibold" size="20px">
-            $1.68
+            {current_price || "--"}
           </Text>
-          <Difference tw="ml-2" value={10} />
+          <Difference tw="ml-2" value={price_change_percentage_24h} />
         </div>
       </GlitchPriceInfo>
 
@@ -50,18 +55,18 @@ export const RightInfoSection = React.memo(() => {
         <InfoItem
           icon={<MarketIcon />}
           title={t("homePage.market_cap")}
-          value={132618285}
+          value={market_cap}
           prefix="$"
-          diff={45}
+          diff={market_cap_change_percentage_24h}
         />
 
         <div tw="mt-9">
           <InfoItem
             icon={<VolumnIcon />}
-            title={t("homePage.market_cap")}
-            value={4000000}
+            title={t("homePage.volumn_24h")}
+            value={0}
             prefix="$"
-            diff={117}
+            diff={null}
           />
         </div>
       </div>

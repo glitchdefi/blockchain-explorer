@@ -55,7 +55,8 @@
         "show_all_txs": "Show all Transactions",
         "daily_txn_count": "Daily txn count",
         "daily_new_account": "Daily new account",
-        "daily_average_blocktime": "Daily average blocktime"
+        "daily_average_blocktime": "Daily average blocktime",
+        "volumn_24h": "Volume 24h"
     },
     "userDetails": {
         "more_info": "More Info",
@@ -82,7 +83,7 @@
     "blockDetails": {
         "title": "Block Details",
         "block": "Block",
-        "epoch_slot": "Epoch/ Slot",
+        "epoch_slot": "Epoch",
         "validator": "Validator",
         "block_reward": "Block rewards",
         "total_difficulty":"Total Difficulty",

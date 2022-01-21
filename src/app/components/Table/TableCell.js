@@ -11,7 +11,7 @@ export default function TableCell(props) {
   const getChildren = () => {
     if (isLink) {
       return (
-        <Link primary data-tip={tip} data-for={dataFor} href={href}>
+        <Link primary={1} data-tip={tip} data-for={dataFor} href={href}>
           {children}
         </Link>
       );

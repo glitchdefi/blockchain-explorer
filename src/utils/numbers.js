@@ -32,8 +32,8 @@ export const formatAmount = (num, digits = 2) => {
 };
 
 export const formatNumber = (num) => {
-  if (!num) return "--";
   if (num == 0) return "0";
+  if (!num) return "--";
   return numbro(num).format({ thousandSeparated: true });
 };
 
