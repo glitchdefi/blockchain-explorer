@@ -2,6 +2,9 @@ import React from "react";
 import tw, { css, theme } from "twin.macro";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+
+import { useDashboardData } from "src/state/dashboard/hooks";
 
 import { InfoItem } from "./InfoItem";
 import { Text } from "src/app/components/Text";
@@ -15,7 +18,10 @@ import { DailyNewAccount } from "./Charts/DailyNewAccount";
 import { DailyAverageBlockTime } from "./Charts/DailyAverageBlockTime";
 
 export const LeftInfoSection = React.memo(() => {
+  const history = useHistory();
   const { t } = useTranslation();
+  const { dashboardData } = useDashboardData();
+  const { active_account_count, tx_count } = dashboardData || {};
 
   return (
     <Wrapper>
@@ -25,7 +31,7 @@ export const LeftInfoSection = React.memo(() => {
             icon={<TransactionIcon />}
             title={t("common.transactions")}
             tooltipLabel="View transactions"
-            value={10000000}
+            value={tx_count}
           />
         </Box>
 
@@ -34,7 +40,8 @@ export const LeftInfoSection = React.memo(() => {
             icon={<TotalAccountIcon />}
             title={t("homePage.active_accounts")}
             tooltipLabel="View all accounts"
-            value={100000}
+            value={active_account_count}
+            onValueClick={() => history.push("/accounts")}
           />
         </Box>
 

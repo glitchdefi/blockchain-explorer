@@ -13,8 +13,10 @@ import { useSocket } from "src/services/socket/hooks/useSocket";
 import { TabSections } from "./components/TabSections";
 import { LeftInfoSection } from "./components/LeftInfoSection";
 import { RightInfoSection } from "./components/RightInfoSection";
+import { useDashboardSlice } from "src/state/dashboard/hooks";
 
 export function HomePage() {
+  useDashboardSlice();
   useWalletSlice();
   usePriceSlice();
   useBlockSlice();

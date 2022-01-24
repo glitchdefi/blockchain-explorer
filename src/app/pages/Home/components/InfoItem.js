@@ -7,7 +7,16 @@ import { Difference } from "src/app/components/Difference";
 import { Tooltip } from "src/app/components/Tooltip";
 
 export const InfoItem = React.memo(
-  ({ icon, title, value, separator, prefix, diff, tooltipLabel }) => {
+  ({
+    icon,
+    title,
+    value,
+    separator,
+    prefix,
+    diff,
+    tooltipLabel,
+    onValueClick,
+  }) => {
     return (
       <Wrapper hasHoverStyle={tooltipLabel}>
         {isValidElement(icon) && cloneElement(icon)}
@@ -21,7 +30,7 @@ export const InfoItem = React.memo(
             {title}
           </Text>
 
-          <div tw="flex items-center justify-between">
+          <div tw="flex items-center justify-between" onClick={onValueClick}>
             <div
               className="info-value"
               data-tip={tooltipLabel}
