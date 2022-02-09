@@ -22,13 +22,13 @@ import {
   Tab,
   TabPanel,
 } from "src/app/components/Tab/Horizontal";
-import { BalanceTransferTable } from "src/app/components/Shared/BalanceTransferTable";
 import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTable";
 import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
 import { RolesTable } from "src/app/components/Shared/RolesTable";
 import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
 import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
+import { BalanceTransferPanel } from "./components/BalanceTransferPanel";
 
 export function AddressDetailsPage() {
   useAddressSlice();
@@ -57,7 +57,6 @@ export function AddressDetailsPage() {
         address={address}
         data={addressDetails}
         currentPrice={current_price}
-        total={total}
       />
 
       <div tw="mt-16">
@@ -83,11 +82,7 @@ export function AddressDetailsPage() {
             />
           </TabPanel>
           <TabPanel evtKey="balance-transfers">
-            <BalanceTransferTable
-              loading={false}
-              total={20}
-              data={[1, 2, 3, 4, 5, 6]}
-            />
+            <BalanceTransferPanel />
           </TabPanel>
           <TabPanel evtKey="authored-blocks">
             <AuthoredBlocksTable

@@ -2,13 +2,36 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   isFetchingAddressDetails: true,
+  isFetchingAddressList: true,
   addressDetails: null,
+  addressListError: null,
+  addressList: [],
 };
 
 export const slice = createSlice({
   name: "address",
   initialState: INITIAL_STATE,
   reducers: {
+    // address list
+    loadAddressList: (state) => {
+      state.isFetchingAddressList = true;
+    },
+    addressListLoaded: (state, action) => {
+      state.isFetchingAddressList = false;
+      state.addressList = action.payload;
+      state.addressListError = null;
+    },
+    addressListError: (state, action) => {
+      state.addressListError = action.payload;
+      state.isFetchingAddressList = false;
+    },
+    resetAddressList: (state) => {
+      state.addressList = [];
+      state.isFetchingAddressList = true;
+      state.addressListError = null;
+    },
+
+    // address details
     loadAddressDetails: (state) => {
       state.isFetchingAddressDetails = true;
     },
@@ -26,6 +49,7 @@ export const slice = createSlice({
       state.addressDetailsError = null;
     },
 
+    // address/tx
     loadAddressTxs: (state) => {
       state.isFetchingAddressTxs = true;
     },
@@ -42,11 +66,34 @@ export const slice = createSlice({
       state.addressTxs = null;
       state.addressTxsError = null;
     },
+
+    // address/balance_tx
+    loadAddressBalanceTx: (state) => {
+      state.isFetchingAddressBalanceTx = true;
+    },
+    addressBalanceTxLoaded: (state, action) => {
+      state.isFetchingAddressBalanceTx = false;
+      state.addressBalanceTx = action.payload;
+    },
+    addressBalanceTxError: (state, action) => {
+      state.isFetchingAddressBalanceTx = false;
+      state.addressBalanceTxError = action.payload;
+    },
+    resetAddressBalanceTx: (state) => {
+      state.isFetchingAddressBalanceTx = true;
+      state.addressTxs = null;
+      state.addressBalanceTxError = null;
+    },
   },
 });
 
 // Actions
 export const {
+  loadAddressList,
+  addressListLoaded,
+  addressListError,
+  resetAddressList: actionResetAddressList,
+
   loadAddressDetails,
   addressDetailsLoaded,
   addressDetailsError,
@@ -56,4 +103,9 @@ export const {
   addressTxsLoaded,
   addressTxsError,
   resetAddressTxs,
+
+  loadAddressBalanceTx,
+  addressBalanceTxLoaded,
+  addressBalanceTxError,
+  resetAddressBalanceTx: actionResetAddressBalanceTx,
 } = slice.actions;

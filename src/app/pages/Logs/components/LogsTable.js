@@ -31,13 +31,14 @@ export const LogsTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
+            const { block, id, title } = o || {};
             return (
               <TableRow key={i}>
-                <TableCell>152805-0</TableCell>
-                <TableCell isLink href={`/block/152805`}>
-                  152805
+                <TableCell>{id}</TableCell>
+                <TableCell isLink href={`/block/${block}`}>
+                  {block}
                 </TableCell>
-                <TableCell>PreRuntime</TableCell>
+                <TableCell>{title}</TableCell>
               </TableRow>
             );
           })

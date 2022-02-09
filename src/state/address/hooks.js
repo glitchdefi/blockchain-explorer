@@ -7,14 +7,46 @@ import { useToast } from "src/hooks/useToast";
 // Redux
 import { slice } from "./reducer";
 import {
+  fetchAddressList,
+  resetAddressList,
   fetchAddressDetails,
   resetAddressDetails,
   fetchAddressTxs,
   resetAddressTxs,
+  fetchAddressBalanceTx,
+  resetAddressBalanceTx,
 } from "./actions";
 
 export const useAddressSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
+};
+
+export const useAddressList = (params) => {
+  const { isFetchingAddressList, addressList, addressListError } = useSelector(
+    (state) => state.address
+  );
+
+  const { data, total } = addressList || {};
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (params) dispatch(fetchAddressList(params));
+  }, [params, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAddressList());
+    };
+  }, []);
+
+  useEffect(() => {
+    if (addressListError) {
+      toastError("Error", addressListError?.message);
+    }
+  }, [addressListError]);
+
+  return { isFetchingAddressList, data, total };
 };
 
 export const useAddressDetails = (address) => {
@@ -67,4 +99,33 @@ export const useAddressTxs = (address, params) => {
   }, [addressTxsError]);
 
   return { isFetchingAddressTxs, data, total };
+};
+
+export const useAddressBalanceTx = (address, params) => {
+  const {
+    isFetchingAddressBalanceTx,
+    addressBalanceTx,
+    addressBalanceTxError,
+  } = useSelector((state) => state.address);
+  const { data, total } = addressBalanceTx || {};
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (params && address) {
+      dispatch(fetchAddressBalanceTx(address, params));
+    }
+  }, [address, params, dispatch]);
+
+  useEffect(() => {
+    dispatch(resetAddressBalanceTx());
+  }, []);
+
+  useEffect(() => {
+    if (addressBalanceTxError) {
+      toastError("Error", addressBalanceTxError?.message);
+    }
+  }, [addressBalanceTxError]);
+
+  return { isFetchingAddressBalanceTx, data, total };
 };

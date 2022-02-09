@@ -6,6 +6,7 @@ import QRCode from "qrcode.react";
 
 // Utils
 import { formatWei } from "src/utils/numbers";
+import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -20,16 +21,25 @@ import { Skeleton } from "src/app/components/Skeleton";
 import { Image } from "src/app/components/Image";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoAddressCard({
-  loading,
-  address,
-  data,
-  currentPrice,
-  total,
-}) {
-  const { balance } = data || {};
+export function InfoAddressCard({ loading, address, data, currentPrice }) {
+  const {
+    evmAddress,
+    balance,
+    totalReceived,
+    totalSpend,
+    totalTx,
+    lastTxDate,
+  } = data || {};
   const totalBalanceToUsd =
     balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
+  const totalReceivedToUsd =
+    totalReceived && currentPrice
+      ? formatWei(totalReceived, false) * currentPrice
+      : "0";
+  const totalSpentToUsd =
+    totalSpend && currentPrice
+      ? formatWei(totalSpend, false) * currentPrice
+      : "0";
 
   return (
     <Wrapper>
@@ -48,10 +58,10 @@ export function InfoAddressCard({
         ) : (
           <>
             <InfoRow
-              isCopy
+              isCopy={!!evmAddress}
               label="EVM address"
-              value="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
-              dataTip="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
+              value={evmAddress}
+              dataTip={evmAddress}
             />
 
             <InfoRow
@@ -66,18 +76,28 @@ export function InfoAddressCard({
             />
             <InfoRow
               label="Total Received"
-              customValueComp={<Value value="0" usd="$0" />}
+              customValueComp={
+                <Value
+                  value={formatWei(totalReceived)}
+                  usd={totalReceivedToUsd}
+                />
+              }
             />
             <InfoRow
               label="Total Spent"
-              customValueComp={<Value value="0" usd="$0" />}
+              customValueComp={
+                <Value value={formatWei(totalSpend)} usd={totalSpentToUsd} />
+              }
             />
 
             <InfoRow label="Current role" value="Nominator" />
-            <InfoRow label="Transactions" value="1 Txn" />
+            <InfoRow label="Transactions" value={`${totalTx} Txn`} />
             <InfoRow
               label="Last transaction"
-              value="12 days ago (Jul 11, 2021 - 09:51:54 AM +UTC)"
+              value={`${formatTimeAgo(lastTxDate)} • (${formatDateTimeUTC(
+                lastTxDate,
+                FORMAT_2
+              )} +UTC)`}
             />
           </>
         )}

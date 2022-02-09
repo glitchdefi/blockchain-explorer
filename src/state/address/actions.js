@@ -1,6 +1,10 @@
 import AddressApis from "src/services/apis/address";
 import {
+  loadAddressList,
+  addressListLoaded,
+  addressListError,
   loadAddressDetails,
+  actionResetAddressList,
   addressDetailsLoaded,
   addressDetailsError,
   loadAddressTxs,
@@ -8,7 +12,25 @@ import {
   addressTxsError,
   resetAddressTxs as acResetAddressTxs,
   resetAddressDetails as acResetAddressDetails,
+  loadAddressBalanceTx,
+  addressBalanceTxLoaded,
+  addressBalanceTxError,
+  actionResetAddressBalanceTx,
 } from "./reducer";
+
+export const fetchAddressList = (params) => async (dispatch) => {
+  try {
+    dispatch(loadAddressList());
+    const data = await AddressApis.getAddressList(params);
+    dispatch(addressListLoaded(data));
+  } catch (error) {
+    dispatch(addressListError(error));
+  }
+};
+
+export const resetAddressList = () => async (dispatch) => {
+  dispatch(actionResetAddressList());
+};
 
 export const fetchAddressDetails = (address) => async (dispatch) => {
   try {
@@ -36,4 +58,18 @@ export const fetchAddressTxs = (address, params) => async (dispatch) => {
 
 export const resetAddressTxs = () => async (dispatch) => {
   dispatch(acResetAddressTxs());
+};
+
+export const fetchAddressBalanceTx = (address, params) => async (dispatch) => {
+  try {
+    dispatch(loadAddressBalanceTx());
+    const data = await AddressApis.getBalanceTransferByAddress(address, params);
+    dispatch(addressBalanceTxLoaded(data));
+  } catch (error) {
+    dispatch(addressBalanceTxError(error));
+  }
+};
+
+export const resetAddressBalanceTx = () => async (dispatch) => {
+  dispatch(actionResetAddressBalanceTx());
 };
