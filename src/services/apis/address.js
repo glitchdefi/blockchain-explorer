@@ -33,9 +33,17 @@ function getBalanceTransferByAddress(address, params) {
   return Request.get(`address/${address}/balance_tx`, { params });
 }
 
+/**
+ *
+ */
+function getBalanceHistoryByAddress(address) {
+  return Request.get(`address/${address}/balance_history`);
+}
+
 export default {
   getAddressList,
   getAddressDetails,
   getTxsByAddress,
   getBalanceTransferByAddress,
+  getBalanceHistoryByAddress,
 };

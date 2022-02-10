@@ -73,6 +73,7 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
                   price={currentPrice}
                 />
               }
+              dataTip="Sum of the value of all tokens in the account."
             />
             <InfoRow
               label="Total Received"
@@ -82,22 +83,33 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
                   usd={totalReceivedToUsd}
                 />
               }
+              dataTip="The amount received on this address."
             />
             <InfoRow
               label="Total Spent"
               customValueComp={
                 <Value value={formatWei(totalSpend)} usd={totalSpentToUsd} />
               }
+              dataTip="The amount spent on this address."
             />
 
-            <InfoRow label="Current role" value="Nominator" />
-            <InfoRow label="Transactions" value={`${totalTx} Txn`} />
+            <InfoRow
+              label="Current role"
+              value={null}
+              dataTip="Validator or Nomidator of this address. (the person who successfully validates transactions and confirms this block in Glitch network)"
+            />
+            <InfoRow
+              label="Transactions"
+              value={`${totalTx} Txn`}
+              dataTip="The number of transactions related to this address."
+            />
             <InfoRow
               label="Last transaction"
               value={`${formatTimeAgo(lastTxDate)} • (${formatDateTimeUTC(
                 lastTxDate,
                 FORMAT_2
               )} +UTC)`}
+              dataTip="The last time in which the address did transaction."
             />
           </>
         )}

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { BalanceTransferTable } from "src/app/components/Shared/BalanceTransferTable";
 import { useAddressBalanceTx } from "src/state/address/hooks";
 
-export const BalanceTransferPanel = () => {
+export const BalanceTransferPanel = React.memo(() => {
   const [params, setParams] = useState();
 
   const { address } = useParams();
@@ -21,4 +21,4 @@ export const BalanceTransferPanel = () => {
       onChange={(p) => setParams(p)}
     />
   );
-};
+});

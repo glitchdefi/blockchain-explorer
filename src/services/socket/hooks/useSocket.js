@@ -30,19 +30,19 @@ export function useSocket() {
       dispatch(producerNameLoaded(latestBlock?.producer));
     });
 
-    socketRef.current.on(LATEST_HEAD_BLOCK_EVENT, (headBlock) => {
-      dispatch(headBlockLoaded(headBlock));
-    });
+    // socketRef.current.on(LATEST_HEAD_BLOCK_EVENT, (headBlock) => {
+    //   dispatch(headBlockLoaded(headBlock));
+    // });
 
     socketRef.current.on(LATEST_TX_EVENT, (latestTx) => {
       dispatch(latestTxLoaded(latestTx));
     });
 
-    socketRef.current.on(LATEST_HEAD_WALLET, (headWallet) => {
-      if (headWallet) {
-        dispatch(walletCountLoaded(headWallet));
-      }
-    });
+    // socketRef.current.on(LATEST_HEAD_WALLET, (headWallet) => {
+    //   if (headWallet) {
+    //     dispatch(walletCountLoaded(headWallet));
+    //   }
+    // });
 
     return () => {
       socketRef.current.disconnect();

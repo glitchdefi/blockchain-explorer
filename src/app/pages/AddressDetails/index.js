@@ -25,10 +25,10 @@ import {
 import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTable";
 import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
 import { RolesTable } from "src/app/components/Shared/RolesTable";
-import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
 import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
 import { BalanceTransferPanel } from "./components/BalanceTransferPanel";
+import { BalanceHistoryPanel } from "./components/BalanceHistoryPanel";
 
 export function AddressDetailsPage() {
   useAddressSlice();
@@ -102,7 +102,7 @@ export function AddressDetailsPage() {
             <RolesTable loading={false} total={20} data={[1, 2, 3, 4, 5, 6]} />
           </TabPanel>
           <TabPanel evtKey="balance-history">
-            <BalanceHistoryChart />
+            <BalanceHistoryPanel />
           </TabPanel>
         </TabContainer>
       </div>

@@ -17,6 +17,7 @@ import {
 import { Text } from "src/app/components/Text";
 import { Link } from "src/app/components/Link";
 import { Tooltip } from "src/app/components/Tooltip";
+import { formatWei } from "src/utils/numbers";
 
 export const BalanceTransferTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -37,26 +38,19 @@ export const BalanceTransferTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
+            const { block, from, to, value } = o || {};
             return (
               <TableRow key={i}>
-                <TableCell isLink href={`/block/152805`}>
-                  152805
+                <TableCell isLink href={`/block/${block}`}>
+                  {block}
                 </TableCell>
                 <TableCell>
-                  <FromCellView
-                    id={i}
-                    from="0x6460777cDa22AD67bBb97536FFC446D65761197E"
-                    to="0x6460777cDa22AD67bBb97536FFC446D65761197E"
-                  />
+                  <AddressCell id={i} address={from} evmAddress={null} />
                 </TableCell>
                 <TableCell>
-                  <FromCellView
-                    id={i}
-                    from="0x6460777cDa22AD67bBb97536FFC446D65761197E"
-                    to="0x6460777cDa22AD67bBb97536FFC446D65761197E"
-                  />
+                  <AddressCell id={i} address={to} evmAddress={null} />
                 </TableCell>
-                <TableCell>127408.23227 GLCH</TableCell>
+                <TableCell>{formatWei(value)} GLCH</TableCell>
               </TableRow>
             );
           })
@@ -66,32 +60,38 @@ export const BalanceTransferTable = React.memo((props) => {
   );
 });
 
-const FromCellView = ({ id, from, to }) => {
-  const fromId = `${from} row-${id}`;
-  const toId = `${to} row-${id}`;
+const AddressCell = ({ id, address, evmAddress }) => {
+  const addressId = `${address} row-${id}`;
+  const evmAddressId = `${evmAddress} row-${id}`;
 
   return (
     <>
       <Flex>
         <Link
           primary
-          href={`/account/${from}`}
-          data-tip={from}
-          data-for={fromId}
+          href={`/account/${address}`}
+          data-tip={address}
+          data-for={addressId}
         >
-          {truncateAddress(from)}
+          {truncateAddress(address)}
         </Link>
       </Flex>
 
-      <Flex>
-        <Text tw="text-color6 text-sm" data-tip={to} data-for={toId}>
-          {truncateAddress(to)}
-        </Text>
-        <Text tw="ml-1 text-color5 text-sm">(EVM address)</Text>
-      </Flex>
+      {evmAddress && (
+        <Flex>
+          <Text
+            tw="text-color6 text-sm"
+            data-tip={evmAddress}
+            data-for={evmAddressId}
+          >
+            {truncateAddress(evmAddress)}
+          </Text>
+          <Text tw="ml-1 text-color5 text-sm">(EVM address)</Text>
+        </Flex>
+      )}
 
-      <StyledTooltip className="tooltip" id={fromId} />
-      <StyledTooltip id={toId} />
+      <StyledTooltip className="tooltip" id={addressId} />
+      {evmAddress && <StyledTooltip id={evmAddressId} />}
     </>
   );
 };

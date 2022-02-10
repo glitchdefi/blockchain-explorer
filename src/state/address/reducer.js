@@ -84,6 +84,24 @@ export const slice = createSlice({
       state.addressTxs = null;
       state.addressBalanceTxError = null;
     },
+
+    // address/balance_history
+    loadAddressBalanceHistory: (state) => {
+      state.isFetchingAddressBalanceHistory = true;
+    },
+    addressBalanceHistoryLoaded: (state, action) => {
+      state.isFetchingAddressBalanceHistory = false;
+      state.addressBalanceHistory = action.payload;
+    },
+    addressBalanceHistoryError: (state, action) => {
+      state.isFetchingAddressBalanceHistory = false;
+      state.addressBalanceHistoryError = action.payload;
+    },
+    resetAddressBalanceHistory: (state) => {
+      state.isFetchingAddressBalanceHistory = true;
+      state.addressHistorys = null;
+      state.addressBalanceHistoryError = null;
+    },
   },
 });
 
@@ -108,4 +126,9 @@ export const {
   addressBalanceTxLoaded,
   addressBalanceTxError,
   resetAddressBalanceTx: actionResetAddressBalanceTx,
+
+  loadAddressBalanceHistory,
+  addressBalanceHistoryLoaded,
+  addressBalanceHistoryError,
+  resetAddressBalanceHistory: actionResetAddressBalanceHistory,
 } = slice.actions;

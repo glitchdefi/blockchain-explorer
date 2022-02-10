@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import { Text } from "src/app/components/Text";
+import { formatAmount } from "src/utils/numbers";
 
 export const Difference = React.memo(({ value, ...props }) => {
+  if (!value) return null;
+
   return (
     <div tw="flex items-end justify-end" {...props}>
       {value > 0 && <FontAwesomeIcon css={[upIconStyles]} icon={faSortUp} />}
@@ -17,7 +20,7 @@ export const Difference = React.memo(({ value, ...props }) => {
         size={theme`fontSize.sm`}
         color={value > 0 ? theme`colors.success` : theme`colors.fail`}
       >
-        {`${value}%`}
+        {`${formatAmount(value)}%`}
       </Text>
     </div>
   );

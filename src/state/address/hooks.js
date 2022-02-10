@@ -15,6 +15,8 @@ import {
   resetAddressTxs,
   fetchAddressBalanceTx,
   resetAddressBalanceTx,
+  fetchAddressBalanceHistory,
+  resetAddressBalanceHistory,
 } from "./actions";
 
 export const useAddressSlice = () => {
@@ -128,4 +130,30 @@ export const useAddressBalanceTx = (address, params) => {
   }, [addressBalanceTxError]);
 
   return { isFetchingAddressBalanceTx, data, total };
+};
+
+export const useAddressBalanceHistory = (address) => {
+  const {
+    isFetchingAddressBalanceHistory,
+    addressBalanceHistory,
+    addressBalanceHistoryError,
+  } = useSelector((state) => state.address);
+  const { toastError } = useToast();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAddressBalanceHistory(address));
+  }, [address, dispatch]);
+
+  useEffect(() => {
+    dispatch(resetAddressBalanceHistory());
+  }, []);
+
+  useEffect(() => {
+    if (addressBalanceHistoryError) {
+      toastError("Error", addressBalanceHistoryError?.message);
+    }
+  }, [addressBalanceHistoryError]);
+
+  return { isFetchingAddressBalanceHistory, addressBalanceHistory };
 };

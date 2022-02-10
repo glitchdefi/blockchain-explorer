@@ -1,37 +1,17 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import moment from "moment";
 import "twin.macro";
 
 import { LineChart } from "src/app/components/Charts";
 import { TooltipTable } from "src/app/components/Tooltip/TooltipTable";
 
-export const DailyAverageBlockTime = React.memo(() => {
-  const { t } = useTranslation();
-
+export const DailyAverageBlockTime = React.memo(({ loading, data }) => {
   return (
     <LineChart
-      loading={false}
-      data={[
-        {
-          date: moment("20-11-2021", "DD-MM-YYYY").format("DD.MMM"),
-          price: 10,
-        },
-        {
-          date: moment("21-11-2021", "DD-MM-YYYY").format("DD.MMM"),
-          price: 5,
-        },
-        {
-          date: moment("22-11-2021", "DD-MM-YYYY").format("DD.MMM"),
-          price: 8,
-        },
-        {
-          date: moment("23-11-2021", "DD-MM-YYYY").format("DD.MMM"),
-          price: 6,
-        },
-      ]}
-      xAxis={{ dataKey: "date" }}
-      line={{ dataKey: "price" }}
+      loading={loading}
+      data={data}
+      xAxis={{ dataKey: "formatTime" }}
+      line={{ dataKey: "aveBlockTime" }}
       tooltipContent={({ payload, active }) => {
         if (active) {
           const data = payload?.length ? payload[0].payload : {};
@@ -39,11 +19,11 @@ export const DailyAverageBlockTime = React.memo(() => {
             <TooltipTable>
               <TooltipTable.Text
                 tw="text-color6 dark:text-color7"
-                value={data.date}
+                value={moment(data.time).format("MMM DD, YYYY")}
               />
               <div tw="flex items-center">
                 <TooltipTable.Text
-                  value={123}
+                  value={data.aveBlockTime}
                   tw="text-color6 mr-2"
                 />
               </div>

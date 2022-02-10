@@ -16,6 +16,10 @@ import {
   addressBalanceTxLoaded,
   addressBalanceTxError,
   actionResetAddressBalanceTx,
+  loadAddressBalanceHistory,
+  addressBalanceHistoryLoaded,
+  addressBalanceHistoryError,
+  actionResetAddressBalanceHistory,
 } from "./reducer";
 
 export const fetchAddressList = (params) => async (dispatch) => {
@@ -72,4 +76,18 @@ export const fetchAddressBalanceTx = (address, params) => async (dispatch) => {
 
 export const resetAddressBalanceTx = () => async (dispatch) => {
   dispatch(actionResetAddressBalanceTx());
+};
+
+export const fetchAddressBalanceHistory = (address) => async (dispatch) => {
+  try {
+    dispatch(loadAddressBalanceHistory());
+    const data = await AddressApis.getBalanceHistoryByAddress(address);
+    dispatch(addressBalanceHistoryLoaded(data));
+  } catch (error) {
+    dispatch(addressBalanceHistoryError(error));
+  }
+};
+
+export const resetAddressBalanceHistory = () => async (dispatch) => {
+  dispatch(actionResetAddressBalanceHistory());
 };

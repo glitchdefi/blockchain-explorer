@@ -5,7 +5,7 @@ import "twin.macro";
 // Hooks
 import { truncateAddress } from "src/utils/strings";
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_1 } from "src/utils/dates";
-import { formatAmount, formatWei } from "src/utils/numbers";
+import { formatWei } from "src/utils/numbers";
 
 // Components
 import {
@@ -66,8 +66,8 @@ export const TransactionsTable = React.memo((props) => {
               to,
               from,
               time,
-              height,
               fee,
+              block,
               status,
               type: txType,
             } = tx;
@@ -83,8 +83,8 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell id={i} isLink href={`/tx/${hash}`} tip={hash}>
                   {truncateAddress(hash, 8, 8)}
                 </TableCell>
-                <TableCell isLink href={`/block/${height}`}>
-                  {height}
+                <TableCell isLink href={`/block/${block}`}>
+                  {block}
                 </TableCell>
                 <TableCell>
                   <Journey id={i} from={from} to={to} />
@@ -100,7 +100,7 @@ export const TransactionsTable = React.memo((props) => {
                   <ValueWithPrefix tw="justify-end" value={formatWei(value)} />
                 </TableCell>
                 <TableCell>
-                  <ValueWithPrefix tw="justify-end" value={formatWei(0)} />
+                  <ValueWithPrefix tw="justify-end" value={formatWei(fee)} />
                 </TableCell>
                 <TableCell tw="text-center">
                   <Status

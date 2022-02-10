@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
+import moment from "moment";
 
 import { useToast } from "src/hooks/useToast";
 
 // Redux
 import { slice } from "./reducer";
-import { fetchDashboardData } from "./actions";
+import { fetchDashboardDaily, fetchDashboardData } from "./actions";
 
 export const useDashboardSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
@@ -38,8 +39,10 @@ export const useDashboardDaily = () => {
   const { toastError } = useToast();
   const dispatch = useDispatch();
 
+  const [chartsData, setChartsData] = useState({});
+
   useEffect(() => {
-    dispatch(fetchDashboardData());
+    dispatch(fetchDashboardDaily());
   }, [dispatch]);
 
   useEffect(() => {
@@ -48,5 +51,35 @@ export const useDashboardDaily = () => {
     }
   }, [dashboardDailyError]);
 
-  return { isDashboardDailyFetching, dashboardDaily };
+  useEffect(() => {
+    if (dashboardDaily?.length) {
+      const txCount = dashboardDaily.map((o) => {
+        return {
+          txCount: o?.txCount,
+          formatTime: moment(o?.time).format("DD.MMM"),
+          time: o?.time,
+        };
+      });
+
+      const dailyNewAccount = dashboardDaily.map((o) => {
+        return {
+          newAcc: o?.newAcc,
+          formatTime: moment(o?.time).format("DD.MMM"),
+          time: o?.time,
+        };
+      });
+
+      const dailyAverageBlockTime = dashboardDaily.map((o) => {
+        return {
+          aveBlockTime: o?.aveBlockTime,
+          formatTime: moment(o?.time).format("DD.MMM"),
+          time: o?.time,
+        };
+      });
+
+      setChartsData({ txCount, dailyNewAccount, dailyAverageBlockTime });
+    }
+  }, [dashboardDaily]);
+
+  return { isDashboardDailyFetching, chartsData };
 };

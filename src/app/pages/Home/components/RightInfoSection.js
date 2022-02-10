@@ -16,9 +16,12 @@ export const RightInfoSection = React.memo(() => {
   const { t } = useTranslation();
   const { isDark } = useTheme();
   const { allGlitchInfo } = useAllGlitchInfo();
-  const { market_cap, current_price, price_change_percentage_24h, market_cap_change_percentage_24h } = allGlitchInfo || {};
-
-  console.log(allGlitchInfo);
+  const {
+    market_cap,
+    current_price,
+    price_change_percentage_24h,
+    market_cap_change_percentage_24h,
+  } = allGlitchInfo || {};
 
   return (
     <Wrapper>

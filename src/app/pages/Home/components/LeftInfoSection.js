@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
-import { useDashboardData } from "src/state/dashboard/hooks";
+import { useDashboardDaily, useDashboardData } from "src/state/dashboard/hooks";
 
 import { InfoItem } from "./InfoItem";
 import { Text } from "src/app/components/Text";
@@ -21,7 +21,9 @@ export const LeftInfoSection = React.memo(() => {
   const history = useHistory();
   const { t } = useTranslation();
   const { dashboardData } = useDashboardData();
+  const { isDashboardDailyFetching, chartsData } = useDashboardDaily();
   const { active_account_count, tx_count } = dashboardData || {};
+  const { txCount, dailyNewAccount, dailyAverageBlockTime } = chartsData || {};
 
   return (
     <Wrapper>
@@ -50,7 +52,7 @@ export const LeftInfoSection = React.memo(() => {
             icon={<HeadBlockIcon />}
             title={t("homePage.finalized_block")}
             tooltipLabel="View blocks"
-            value={100000}
+            value={null}
           />
         </Box>
       </Flex>
@@ -62,7 +64,7 @@ export const LeftInfoSection = React.memo(() => {
           </Text>
 
           <div tw="flex mt-4 h-32">
-            <DailyTxnCount />
+            <DailyTxnCount loading={isDashboardDailyFetching} data={txCount} />
           </div>
         </Box>
 
@@ -72,7 +74,10 @@ export const LeftInfoSection = React.memo(() => {
           </Text>
 
           <div tw="flex mt-4 h-32">
-            <DailyNewAccount />
+            <DailyNewAccount
+              loading={isDashboardDailyFetching}
+              data={dailyNewAccount}
+            />
           </div>
         </Box>
 
@@ -82,7 +87,10 @@ export const LeftInfoSection = React.memo(() => {
           </Text>
 
           <div tw="flex mt-4 h-32">
-            <DailyAverageBlockTime />
+            <DailyAverageBlockTime
+              loading={isDashboardDailyFetching}
+              data={dailyAverageBlockTime}
+            />
           </div>
         </Box>
       </Flex>

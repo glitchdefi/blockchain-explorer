@@ -70,15 +70,14 @@
         "title": "Transaction details",
         "loading": "Loading transaction",
         "not_found": "Sorry, the transaction could not be found.",
-        "hash_tip": "A Hash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "hash_tip": "The hash of the block header of the current block.The hash of the block header of the current block.",
         "status_tip": "The status of the transaction.",
         "block_tip": "The number of the block in which the transaction was recorded.",
-        "time_tip": "The date and time at which a transaction is confirmed.",
+        "time_tip": "The date and time at which a block is validated.The date and time at which a block is validated.",
         "from_tip": "The sending party of the transaction (could be from a contract address).",
         "to_tip": "The receiving party of the transaction (could be a contract address).",
-        "amount_tip": "The amount of GLCH is sent in the transaction.",
-        "type_tip": "The type of the transaction.",
-        "fee_tip": "Amount paid to the miner for processing the transaction."
+        "amount_tip": "The amount being transacted in GLCH and fiat value.",
+        "fee_tip": "The amount paid to the miner for processing the transaction."
     },
     "blockDetails": {
         "title": "Block Details",
@@ -91,13 +90,13 @@
         "include_in_block": "Included in Block",
         "hash": "Hash",
         "empty": "Unable to locate block #{{height}}",
-        "height_tip": "Also known as Block Number. The block height, which indicates the length of the blockchain, increases after the addition of the new block.",
+        "height_tip": "The number of the block in which the transaction was recorded.",
         "epoch_slot_tip": "It’s the period of time it takes for a specific number of blocks to be finalized on the chain.",
-        "time_tip": "The date and time at which a transaction is confirmed.",
+        "time_tip": "The date and time at which a block is validated.",
         "txs_tip": "Total confirmed transactions in this block.",
         "reward_tip": "The block reward is shared for the validator which confirms this block successfully and stakers who vote for this validator as defined in consensus of Glitch network. ",
         "size_tip": "The maximum limit a block can be filled up with transactions.",
-        "hash_tip": "A Hash or transaction hash is a unique 66 characters identifier that is generated whenever a transaction is executed.",
+        "hash_tip": "The hash of the block header of the current block.",
         "validator_tip": "The person who successfully validates transactions and confirms this block in Glitch network."
     },
     "epodDetails": {

@@ -21,7 +21,12 @@ export const LineChart = ({
   tooltipContent,
   chartMargin,
 }) => {
-  if (loading) return <Spinner size="30px" />;
+  if (loading)
+    return (
+      <div tw="flex w-full h-full items-center justify-center">
+        <Spinner size="30px" />
+      </div>
+    );
   return (
     <ResponsiveContainer width="100%" height="100%">
       <ReLineChart
@@ -30,10 +35,7 @@ export const LineChart = ({
         data={data}
         margin={chartMargin || chartMarginStyles}
       >
-        <CartesianGrid
-          vertical={false}
-          stroke={theme`colors.color3`}
-        />
+        <CartesianGrid vertical={false} stroke={theme`colors.color3`} />
         <XAxis
           tickLine={false}
           axisLine={false}
