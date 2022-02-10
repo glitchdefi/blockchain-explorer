@@ -17,7 +17,7 @@ export const BalanceHistoryPanel = React.memo(() => {
     if (addressBalanceHistory?.length) {
       const data = addressBalanceHistory.map((o) => {
         return {
-          balance: formatWei(o?.balance),
+          balance: Number(formatWei(o?.balance)),
           block: o?.blockIndex,
         };
       });
