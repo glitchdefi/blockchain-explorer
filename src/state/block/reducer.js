@@ -28,11 +28,11 @@ export const slice = createSlice({
       state.error = null;
     },
 
-    headBlockLoaded: (state, action) => {
-      state.headBlock = action.payload;
+    finalizedBlockLoaded: (state, action) => {
+      state.finalizedBlock = action.payload;
     },
-    headBlockError: (state, action) => {
-      state.headBlockError = action.payload;
+    finalizedBlockError: (state, action) => {
+      state.finalizedBlockError = action.payload;
     },
 
     latestBlockLoaded: (state, action) => {
@@ -82,8 +82,8 @@ export const {
   blockListError,
   resetBlockList,
 
-  headBlockLoaded,
-  headBlockError,
+  finalizedBlockLoaded,
+  finalizedBlockError,
 
   latestBlockLoaded,
 

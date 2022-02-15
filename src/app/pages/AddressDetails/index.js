@@ -74,7 +74,6 @@ export function AddressDetailsPage() {
 
           <TabPanel evtKey="transactions">
             <TransactionsTable
-              showType
               loading={isFetchingAddressTxs}
               data={data}
               total={total}

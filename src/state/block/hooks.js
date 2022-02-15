@@ -8,7 +8,6 @@ import { useToast } from "src/hooks/useToast";
 import { slice } from "./reducer";
 import {
   fetchBlockList,
-  fetchHeadBlock,
   resetBlockList,
   fetchBlockDetails,
   resetLoadBlockDetails,
@@ -70,24 +69,6 @@ export const useBlockDetails = (height) => {
   return { isFetchingBlockDetails, blockDetails };
 };
 
-export const useHeadBlockNumber = () => {
-  const { headBlock, headBlockError } = useSelector((state) => state.block);
-  const { toastError } = useToast();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchHeadBlock());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (headBlockError) {
-      toastError("Error", headBlockError);
-    }
-  }, [headBlockError]);
-
-  return { headBlock };
-};
-
 export const useBlockTxs = (height, params) => {
   const { isFetchingBlockTxs, blockTxs, blockTxsError } = useSelector(
     (state) => state.block
@@ -112,4 +93,10 @@ export const useBlockTxs = (height, params) => {
   }, [blockTxsError]);
 
   return { isFetchingBlockTxs, data, total };
+};
+
+export const useFinalizedBlock = () => {
+  const { finalizedBlock } = useSelector((state) => state.block);
+
+  return { finalizedBlock };
 };

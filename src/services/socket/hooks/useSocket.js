@@ -7,8 +7,12 @@ import {
   LATEST_HEAD_BLOCK_EVENT,
   LATEST_TX_EVENT,
   LATEST_HEAD_WALLET,
+  FINALIZED_BLOCK,
 } from "../events";
-import { latestBlockLoaded, headBlockLoaded } from "src/state/block/reducer";
+import {
+  latestBlockLoaded,
+  finalizedBlockLoaded,
+} from "src/state/block/reducer";
 import { latestTxLoaded } from "src/state/transaction/reducer";
 import { walletCountLoaded } from "src/state/wallet/reducer";
 import { producerNameLoaded } from "src/state/producer/reducer";
@@ -30,9 +34,9 @@ export function useSocket() {
       dispatch(producerNameLoaded(latestBlock?.producer));
     });
 
-    // socketRef.current.on(LATEST_HEAD_BLOCK_EVENT, (headBlock) => {
-    //   dispatch(headBlockLoaded(headBlock));
-    // });
+    socketRef.current.on(FINALIZED_BLOCK, (finalizedBlock) => {
+      dispatch(finalizedBlockLoaded(finalizedBlock));
+    });
 
     socketRef.current.on(LATEST_TX_EVENT, (latestTx) => {
       dispatch(latestTxLoaded(latestTx));

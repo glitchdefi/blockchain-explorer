@@ -23,15 +23,7 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Journey } from "./Journey";
 
 export const TransactionsTable = React.memo((props) => {
-  const {
-    loading,
-    total,
-    onChange,
-    data,
-    animation = false,
-    showType,
-    ...rest
-  } = props;
+  const { loading, total, onChange, data, animation = false, ...rest } = props;
   const countUpdated = useRef(0);
 
   useEffect(() => {
@@ -44,7 +36,6 @@ export const TransactionsTable = React.memo((props) => {
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
         <TableRow>
-          {showType && <TableHeaderCell tw="pl-5">Type</TableHeaderCell>}
           <TableHeaderCell>Txn Hash</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Journey</TableHeaderCell>
@@ -60,18 +51,8 @@ export const TransactionsTable = React.memo((props) => {
           <TableEmpty colSpan={8} invisible={loading} />
         ) : (
           data.map((tx, i) => {
-            const {
-              hash,
-              value,
-              to,
-              from,
-              time,
-              fee,
-              block,
-              status,
-              type: txType,
-            } = tx;
-            const type = txType === "in" ? "Receive" : "Send";
+            const { hash, value, to, from, time, fee, block, status, tips } =
+              tx;
 
             return (
               <TableRow
@@ -79,7 +60,6 @@ export const TransactionsTable = React.memo((props) => {
                 count={countUpdated.current}
                 animation={animation && i === 0}
               >
-                {showType && <TableCell tw="pl-5">{type}</TableCell>}
                 <TableCell id={i} isLink href={`/tx/${hash}`} tip={hash}>
                   {truncateAddress(hash, 8, 8)}
                 </TableCell>
@@ -100,7 +80,10 @@ export const TransactionsTable = React.memo((props) => {
                   <ValueWithPrefix tw="justify-end" value={formatWei(value)} />
                 </TableCell>
                 <TableCell>
-                  <ValueWithPrefix tw="justify-end" value={formatWei(fee)} />
+                  <ValueWithPrefix
+                    tw="justify-end"
+                    value={formatWei(fee + tips)}
+                  />
                 </TableCell>
                 <TableCell tw="text-center">
                   <Status

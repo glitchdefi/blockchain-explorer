@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { useDashboardDaily, useDashboardData } from "src/state/dashboard/hooks";
+import { useFinalizedBlock } from "src/state/block/hooks";
 
 import { InfoItem } from "./InfoItem";
 import { Text } from "src/app/components/Text";
@@ -22,6 +23,7 @@ export const LeftInfoSection = React.memo(() => {
   const { t } = useTranslation();
   const { dashboardData } = useDashboardData();
   const { isDashboardDailyFetching, chartsData } = useDashboardDaily();
+  const { finalizedBlock } = useFinalizedBlock();
   const { active_account_count, tx_count } = dashboardData || {};
   const { txCount, dailyNewAccount, dailyAverageBlockTime } = chartsData || {};
 
@@ -52,7 +54,7 @@ export const LeftInfoSection = React.memo(() => {
             icon={<HeadBlockIcon />}
             title={t("homePage.finalized_block")}
             tooltipLabel="View blocks"
-            value={null}
+            value={finalizedBlock}
           />
         </Box>
       </Flex>

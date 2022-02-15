@@ -14,9 +14,8 @@ import {
 } from "src/app/components/Table";
 
 // Hooks
-import { formatAmount, formatWei, formatNumber } from "src/utils/numbers";
+import { formatNumber } from "src/utils/numbers";
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_1 } from "src/utils/dates";
-import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Text } from "src/app/components/Text";
 
 export const BlocksTable = React.memo((props) => {
@@ -36,7 +35,6 @@ export const BlocksTable = React.memo((props) => {
           <TableHeaderCell tw="pl-5">Epoch</TableHeaderCell>
           <TableHeaderCell>Block</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
-          <TableHeaderCell tw="text-right">Reward</TableHeaderCell>
           <TableHeaderCell>Validator</TableHeaderCell>
         </TableRow>
       </TableHeader>
@@ -46,7 +44,7 @@ export const BlocksTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { epoch, time, reward, index, validator } = o;
+            const { epoch, time, index, validator } = o;
 
             return (
               <TableRow
@@ -63,9 +61,6 @@ export const BlocksTable = React.memo((props) => {
                   <Text tw="mt-1 text-sm text-color6 dark:text-color5">
                     {formatDateTimeUTC(time, FORMAT_1)} GMT
                   </Text>
-                </TableCell>
-                <TableCell>
-                  <ValueWithPrefix tw="justify-end" value={formatWei(reward)} />
                 </TableCell>
                 <TableCell>{validator}</TableCell>
               </TableRow>
