@@ -47,7 +47,12 @@ export const AllAccountsTable = React.memo((props) => {
                     </Link>
                     {evmAddress && (
                       <div tw="flex items-center">
-                        <Text tw="text-sm text-color6">{evmAddress}</Text>
+                        <Link
+                          tw="text-sm text-color6"
+                          href={`/account/${address}`}
+                        >
+                          {evmAddress}
+                        </Link>
                         <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
                       </div>
                     )}

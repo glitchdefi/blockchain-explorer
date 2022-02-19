@@ -48,7 +48,7 @@ export const RightInfoSection = React.memo(() => {
 
         <div tw="flex items-center z-10">
           <Text tw="ml-4 font-semibold" size="20px">
-            {current_price || "--"}
+            {`$${current_price || "--"}`}
           </Text>
           <Difference tw="ml-2" value={price_change_percentage_24h} />
         </div>

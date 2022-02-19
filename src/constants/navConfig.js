@@ -22,7 +22,7 @@ export const mainNav = [
     ],
   },
   {
-    label: "Account",
+    label: "Accounts",
     href: "#",
     items: [
       {
