@@ -51,9 +51,7 @@ export const TransactionsTable = React.memo((props) => {
           <TableEmpty colSpan={8} invisible={loading} />
         ) : (
           data.map((tx, i) => {
-            const { hash, value, to, from, time, fee, block, status, tips } =
-              tx;
-
+            const { hash, value, to, from, time, fee, block, status, tip } = tx;
             return (
               <TableRow
                 key={i}
@@ -82,7 +80,7 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell>
                   <ValueWithPrefix
                     tw="justify-end"
-                    value={formatWei(fee + tips)}
+                    value={formatWei(fee + tip)}
                   />
                 </TableCell>
                 <TableCell tw="text-center">
