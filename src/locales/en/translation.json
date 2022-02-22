@@ -26,7 +26,7 @@
         "miners": "Miners",
         "loading": "Loading, please wait...",
         "glitch_price": "Glitch price",
-        "search_placeholder": "Search by Address / Txn Hash / Block Hash",
+        "search_placeholder": "Search by account, transaction, or block",
         "latest_blocks": "Latest Blocks",
         "latest_txs": "Latest Transactions",
         "network_box": "Note: You are currently connected to the Glitch {{network}}",

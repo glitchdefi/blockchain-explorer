@@ -6,6 +6,7 @@ import { isEmpty } from "lodash";
 // Utils
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 import { formatNumber } from "src/utils/numbers";
+import { useFinalizedBlock } from "src/state/block/hooks";
 
 // Components
 import { InfoRow } from "src/app/components/InfoRow";
@@ -17,6 +18,7 @@ import { BlockNavigation } from "../BlockNavigation";
 
 export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
   const { t } = useTranslation();
+  const { finalizedBlock } = useFinalizedBlock();
   const { txNum, index, time, hash, epoch, validator } = data || {};
 
   const getContent = () => {
@@ -37,12 +39,13 @@ export const BlockDetailsCard = React.memo(({ loading, blockHeight, data }) => {
       );
     return (
       <>
-        <BlockNavigation currentBlock={index} />
+        <BlockNavigation currentBlock={index} nextBlock={finalizedBlock} />
         <InfoRow
           isCopy={true}
           label={t("blockDetails.hash")}
           customValueComp={<Text color={theme`colors.primary`}>{hash}</Text>}
           dataTip={t("blockDetails.hash_tip")}
+          copyValue={hash}
         />
 
         <InfoRow

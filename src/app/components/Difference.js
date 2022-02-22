@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import { Text } from "src/app/components/Text";
-import { formatAmount } from "src/utils/numbers";
 
 export const Difference = React.memo(({ value, ...props }) => {
   if (!value) return null;
@@ -20,7 +19,7 @@ export const Difference = React.memo(({ value, ...props }) => {
         size={theme`fontSize.sm`}
         color={value > 0 ? theme`colors.success` : theme`colors.fail`}
       >
-        {`${formatAmount(value)}%`}
+        {`${value?.toFixed(1)}%`}
       </Text>
     </div>
   );

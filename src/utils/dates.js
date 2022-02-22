@@ -23,10 +23,17 @@ moment.updateLocale("en", {
 export const D_FOR_TABLE = "YYYY-MM-DD";
 export const D_FOR_DETAIL = "MMM-DD-YYYY";
 export const FORMAT_1 = "DD MMM, YYYY | HH:mm:ss";
-export const FORMAT_2 = "MMM DD, YYYY - HH:mm:ss A"
+export const FORMAT_2 = "MMM DD, YYYY - HH:mm:ss A";
 
 export function formatTimeAgo(date) {
   if (date) {
+    const m = moment(date);
+    const today = moment();
+    const days = Math.round(moment.duration(today - m).asDays());
+    if (days > 1 && days < 30) {
+      return `${days} days ago`;
+    }
+
     const fromNow = moment(date).fromNow(true);
 
     if (Number(fromNow.slice(0, 2)) > 1 && fromNow.includes("second")) {

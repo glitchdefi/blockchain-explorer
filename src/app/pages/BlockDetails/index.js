@@ -7,9 +7,11 @@ import {
   useBlockDetails,
   useBlockSlice,
   useBlockTxs,
+  useFinalizedBlock,
 } from "src/state/block/hooks";
 import { useProducerSlice } from "src/state/producer/hooks";
 import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
+import { useFinalizedBlockSocket } from "src/services/socket/hooks/useFinalizedBlockSocket";
 
 // Components
 import { Text } from "src/app/components/Text";
@@ -29,6 +31,8 @@ export function BlockDetailsPage() {
   useBlockSlice();
   useProducerSlice();
   usePriceSlice();
+  useFinalizedBlockSocket();
+
   const [params, setParams] = useState();
   const { t } = useTranslation();
   const { height } = useParams();

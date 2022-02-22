@@ -26,8 +26,9 @@ export function InfoDetailCard() {
   const { current_price } = allGlitchInfo || {};
   const { hash, time, block, from, to, status, fee, value, tip } =
     txDetails || {};
-  const valueToUsd = formatWei(value) * current_price;
-  const feeToUsd = formatWei(fee + tip) * current_price;
+  const valueToUsd = formatWei(value, false) * current_price;
+  const feeToUsd =
+    formatWei(parseFloat(fee) + parseFloat(tip), false) * current_price;
 
   const renderInfoRow = ({
     label,
@@ -125,7 +126,10 @@ export function InfoDetailCard() {
         {renderInfoRow({
           label: t("common.txnFee"),
           customValueComp: (
-            <ValueWithPrefix value={formatWei(fee + tip)} usd={feeToUsd} />
+            <ValueWithPrefix
+              value={formatWei(parseFloat(fee) + parseFloat(tip))}
+              usd={feeToUsd}
+            />
           ),
           dataTip: t("transactionDetails.fee_tip"),
         })}

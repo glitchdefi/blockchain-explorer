@@ -42,6 +42,14 @@ export const useAllGlitchInfo = () => {
 
   useEffect(() => {
     dispatch(fetchAllGlitchInfo());
+
+    const fetchInterval = setInterval(() => {
+      dispatch(fetchAllGlitchInfo());
+    }, 3000);
+
+    return () => {
+      clearInterval(fetchInterval);
+    };
   }, [dispatch]);
 
   return { isFetchingAllGlitchInfo, allGlitchInfo };

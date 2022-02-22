@@ -21,6 +21,7 @@ export const RightInfoSection = React.memo(() => {
     current_price,
     price_change_percentage_24h,
     market_cap_change_percentage_24h,
+    total_volume,
   } = allGlitchInfo || {};
 
   return (
@@ -67,7 +68,7 @@ export const RightInfoSection = React.memo(() => {
           <InfoItem
             icon={<VolumnIcon />}
             title={t("homePage.volumn_24h")}
-            value={0}
+            value={total_volume}
             prefix="$"
             diff={null}
           />

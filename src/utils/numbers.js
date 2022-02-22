@@ -63,7 +63,7 @@ export const formatWei = (number, isFormatNumber = true) => {
   if (num == 0) return "0";
   if (!num) return "--";
 
-  const numWei = Web3Utils.fromWei(num);
+  const numWei = Web3Utils.fromWei(num, "ether");
 
   return isFormatNumber ? numberWithCommas(numWei) : numWei;
 };

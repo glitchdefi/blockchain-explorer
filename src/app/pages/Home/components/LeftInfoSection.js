@@ -36,6 +36,7 @@ export const LeftInfoSection = React.memo(() => {
             title={t("common.transactions")}
             tooltipLabel="View transactions"
             value={tx_count}
+            onValueClick={() => history.push("/txs")}
           />
         </Box>
 
@@ -55,6 +56,7 @@ export const LeftInfoSection = React.memo(() => {
             title={t("homePage.finalized_block")}
             tooltipLabel="View blocks"
             value={finalizedBlock}
+            onValueClick={() => history.push("/blocks")}
           />
         </Box>
       </Flex>

@@ -6,11 +6,18 @@ import { formatAmount } from "src/utils/numbers";
 import { Text } from "src/app/components/Text";
 import { BlockIcon } from "src/app/components/Svg/Icons";
 
-export function BlockNavigation({ currentBlock }) {
+export function BlockNavigation({ currentBlock, nextBlock }) {
+
+  console.log(nextBlock)
   return (
     <div tw="lg:(flex w-2/5 justify-between) mb-6">
-      <NavigationItem label="Previous" height={currentBlock - 1} />
+      {currentBlock > 0 && (
+        <NavigationItem label="Previous" height={currentBlock - 1} />
+      )}
       <NavigationItem label="Current" height={currentBlock} />
+      {nextBlock > currentBlock && (
+        <NavigationItem label="Next" height={currentBlock + 1} />
+      )}
     </div>
   );
 }
