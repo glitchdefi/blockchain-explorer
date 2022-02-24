@@ -31,10 +31,15 @@ export const formatAmount = (num, digits = 2) => {
   return nf.format(parseFloat(cvNum?.toFixed(cvNum > 1000 ? 0 : digits)));
 };
 
-export const formatNumber = (num) => {
+export const formatNumber = (num, digits = 0, round = false) => {
   if (num == 0) return "0";
   if (!num) return "--";
-  return numbro(num).format({ thousandSeparated: true });
+
+  return numbro(num).format({
+    average: round,
+    mantissa: digits,
+    thousandSeparated: true,
+  });
 };
 
 const toNumber = (num) => {

@@ -63,7 +63,7 @@ export const LineChart = ({
   );
 };
 
-const chartMarginStyles = { top: 16, left: -32, bottom: 5 };
+const chartMarginStyles = { top: 16, left: -20, right: 8, bottom: 5 };
 const tickStyles = {
   fill: theme`colors.color6`,
   fontSize: theme`fontSize.sm`,

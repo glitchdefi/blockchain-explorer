@@ -29,6 +29,7 @@ import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
 import { BalanceTransferPanel } from "./components/BalanceTransferPanel";
 import { BalanceHistoryPanel } from "./components/BalanceHistoryPanel";
+// import { glitchWeb3 } from "src/utils/glitchWeb3";
 
 export function AddressDetailsPage() {
   useAddressSlice();
@@ -42,6 +43,8 @@ export function AddressDetailsPage() {
   const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
+
+  // console.log(glitchWeb3.getBalance(address));
 
   return (
     <div tw="mt-16">

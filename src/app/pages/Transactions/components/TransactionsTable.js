@@ -23,7 +23,15 @@ import { ValueWithPrefix } from "src/app/components/ValueWithPrefix";
 import { Journey } from "./Journey";
 
 export const TransactionsTable = React.memo((props) => {
-  const { loading, total, onChange, data, animation = false, ...rest } = props;
+  const {
+    loading,
+    total,
+    onChange,
+    data,
+    animation = false,
+    showBlockCol = true,
+    ...rest
+  } = props;
   const countUpdated = useRef(0);
 
   useEffect(() => {
@@ -37,7 +45,7 @@ export const TransactionsTable = React.memo((props) => {
       <TableHeader>
         <TableRow>
           <TableHeaderCell>Txn Hash</TableHeaderCell>
-          <TableHeaderCell>Block</TableHeaderCell>
+          {showBlockCol && <TableHeaderCell>Block</TableHeaderCell>}
           <TableHeaderCell>Journey</TableHeaderCell>
           <TableHeaderCell>Age</TableHeaderCell>
           <TableHeaderCell tw="text-right">Amount</TableHeaderCell>
@@ -61,9 +69,11 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell id={i} isLink href={`/tx/${hash}`} tip={hash}>
                   {truncateAddress(hash, 8, 8)}
                 </TableCell>
-                <TableCell isLink href={`/block/${block}`}>
-                  {block}
-                </TableCell>
+                {showBlockCol && (
+                  <TableCell isLink href={`/block/${block}`}>
+                    {block}
+                  </TableCell>
+                )}
                 <TableCell>
                   <Journey id={i} from={from} to={to} />
                 </TableCell>

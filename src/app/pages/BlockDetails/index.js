@@ -71,6 +71,7 @@ export function BlockDetailsPage() {
 
           <TabPanel evtKey="transactions">
             <TransactionsTable
+              showBlockCol={false}
               loading={isFetchingBlockTxs}
               data={data}
               total={total}

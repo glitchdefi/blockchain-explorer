@@ -53,7 +53,11 @@ export const useDashboardDaily = () => {
 
   useEffect(() => {
     if (dashboardDaily?.length) {
-      const txCount = dashboardDaily.map((o) => {
+      const sortData = [...dashboardDaily].sort(function (a, b) {
+        return a.time.localeCompare(b.time);
+      });
+
+      const txCount = sortData.map((o) => {
         return {
           txCount: o?.txCount,
           formatTime: moment(o?.time).format("DD.MMM"),
@@ -61,7 +65,7 @@ export const useDashboardDaily = () => {
         };
       });
 
-      const dailyNewAccount = dashboardDaily.map((o) => {
+      const dailyNewAccount = sortData.map((o) => {
         return {
           newAcc: o?.newAcc,
           formatTime: moment(o?.time).format("DD.MMM"),
@@ -69,7 +73,7 @@ export const useDashboardDaily = () => {
         };
       });
 
-      const dailyAverageBlockTime = dashboardDaily.map((o) => {
+      const dailyAverageBlockTime = sortData.map((o) => {
         return {
           aveBlockTime: o?.aveBlockTime,
           formatTime: moment(o?.time).format("DD.MMM"),

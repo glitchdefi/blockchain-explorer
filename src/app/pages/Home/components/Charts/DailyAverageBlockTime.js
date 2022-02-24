@@ -4,6 +4,7 @@ import "twin.macro";
 
 import { LineChart } from "src/app/components/Charts";
 import { TooltipTable } from "src/app/components/Tooltip/TooltipTable";
+import { formatNumber } from "src/utils/numbers";
 
 export const DailyAverageBlockTime = React.memo(({ loading, data }) => {
   return (
@@ -12,6 +13,9 @@ export const DailyAverageBlockTime = React.memo(({ loading, data }) => {
       data={data}
       xAxis={{ dataKey: "formatTime" }}
       line={{ dataKey: "aveBlockTime" }}
+      yAxis={{
+        tickFormatter: (val) => (val === 0 ? val : formatNumber(val, 0, true)),
+      }}
       tooltipContent={({ payload, active }) => {
         if (active) {
           const data = payload?.length ? payload[0].payload : {};
@@ -23,7 +27,7 @@ export const DailyAverageBlockTime = React.memo(({ loading, data }) => {
               />
               <div tw="flex items-center">
                 <TooltipTable.Text
-                  value={data.aveBlockTime}
+                  value={formatNumber(data.aveBlockTime, 0)}
                   tw="text-color6 mr-2"
                 />
               </div>

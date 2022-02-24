@@ -4,7 +4,7 @@ import "twin.macro";
 
 import { LineChart } from "src/app/components/Charts";
 import { TooltipTable } from "src/app/components/Tooltip/TooltipTable";
-import { formatAmount } from "src/utils/numbers";
+import { formatNumber } from "src/utils/numbers";
 
 export const DailyNewAccount = React.memo(({ loading, data }) => {
   return (
@@ -13,6 +13,9 @@ export const DailyNewAccount = React.memo(({ loading, data }) => {
       data={data}
       xAxis={{ dataKey: "formatTime" }}
       line={{ dataKey: "newAcc" }}
+      yAxis={{
+        tickFormatter: (val) => (val === 0 ? val : formatNumber(val, 0, true)),
+      }}
       tooltipContent={({ payload, active }) => {
         if (active) {
           const data = payload?.length ? payload[0].payload : {};
@@ -24,7 +27,7 @@ export const DailyNewAccount = React.memo(({ loading, data }) => {
               />
               <div tw="flex items-center">
                 <TooltipTable.Text
-                  value={formatAmount(data.newAcc)}
+                  value={formatNumber(data.newAcc, 0)}
                   tw="text-color6 mr-2"
                 />
               </div>
