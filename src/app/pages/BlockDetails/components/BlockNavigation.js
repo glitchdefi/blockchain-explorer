@@ -7,8 +7,6 @@ import { Text } from "src/app/components/Text";
 import { BlockIcon } from "src/app/components/Svg/Icons";
 
 export function BlockNavigation({ currentBlock, nextBlock }) {
-
-  console.log(nextBlock)
   return (
     <div tw="lg:(flex w-2/5 justify-between) mb-6">
       {currentBlock > 0 && (
