@@ -29,7 +29,6 @@ import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
 import { BalanceTransferPanel } from "./components/BalanceTransferPanel";
 import { BalanceHistoryPanel } from "./components/BalanceHistoryPanel";
-// import { glitchWeb3 } from "src/utils/glitchWeb3";
 
 export function AddressDetailsPage() {
   useAddressSlice();
@@ -43,8 +42,6 @@ export function AddressDetailsPage() {
   const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
-
-  // console.log(glitchWeb3.getBalance(address));
 
   return (
     <div tw="mt-16">
@@ -69,9 +66,9 @@ export function AddressDetailsPage() {
           <Tabs>
             <Tab evtKey="transactions">{t("common.transactions")}</Tab>
             <Tab evtKey="balance-transfers">Balance transfer</Tab>
-            <Tab evtKey="authored-blocks">Authored blocks</Tab>
+            {/* <Tab evtKey="authored-blocks">Authored blocks</Tab>
             <Tab evtKey="account-lifecycle">Authored lifecycle</Tab>
-            <Tab evtKey="roles">Roles</Tab>
+            <Tab evtKey="roles">Roles</Tab> */}
             <Tab evtKey="balance-history">Balance history</Tab>
           </Tabs>
 
@@ -86,7 +83,7 @@ export function AddressDetailsPage() {
           <TabPanel evtKey="balance-transfers">
             <BalanceTransferPanel />
           </TabPanel>
-          <TabPanel evtKey="authored-blocks">
+          {/* <TabPanel evtKey="authored-blocks">
             <AuthoredBlocksTable
               loading={false}
               total={20}
@@ -102,7 +99,7 @@ export function AddressDetailsPage() {
           </TabPanel>
           <TabPanel evtKey="roles">
             <RolesTable loading={false} total={20} data={[1, 2, 3, 4, 5, 6]} />
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel evtKey="balance-history">
             <BalanceHistoryPanel />
           </TabPanel>

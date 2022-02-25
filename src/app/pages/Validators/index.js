@@ -5,10 +5,14 @@ import { useTranslation } from "react-i18next";
 // Components
 import { Text } from "src/app/components/Text";
 import { ValidatorsTable } from "./components/ValidatorsTable";
+import { useValidatorList, useValidatorSlice } from "src/state/validator/hooks";
 
 export function ValidatorsPage() {
+  useValidatorSlice();
   const { t } = useTranslation();
+
   const [params, setParams] = useState();
+  const { isFetchingValidatorList, data, total } = useValidatorList(params);
 
   return (
     <>
@@ -18,9 +22,10 @@ export function ValidatorsPage() {
         </Text>
         <div tw="mt-4">
           <ValidatorsTable
-            loading={false}
-            total={20}
-            data={[1, 2, 3, 4, 5, 6]}
+            loading={isFetchingValidatorList}
+            total={total}
+            data={data}
+            onChange={(p) => setParams(p)}
           />
         </div>
       </Wrapper>

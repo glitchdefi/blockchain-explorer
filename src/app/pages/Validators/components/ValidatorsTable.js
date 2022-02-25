@@ -14,6 +14,7 @@ import {
 } from "src/app/components/Table";
 import { Link } from "src/app/components/Link";
 import { Text } from "src/app/components/Text";
+import { formatAmount, formatWei } from "src/utils/numbers";
 
 export const ValidatorsTable = React.memo((props) => {
   const { loading, total, onChange, data, ...rest } = props;
@@ -34,24 +35,30 @@ export const ValidatorsTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
+            const { address, balance, tx_count, evmAddress } = o || {};
             return (
               <TableRow key={i}>
                 <TableCell>{i + 1}</TableCell>
                 <TableCell>
                   <div>
-                    <Link primary href={`/validator/tglc1elnpa4avu4nd5auu2m7tyz5qdynrfs3qsz8x7a`}>
-                      0x11a9f2119ade1ef6394579b95d1c60df106bbc9f
+                    <Link primary href={`/validator/${address}`}>
+                      {address}
                     </Link>
-                    <div tw="flex items-center">
-                      <Text tw="text-sm text-color6">
-                        0x8c6f4De63ec0E55f180E33D29E113826A189AbcD
-                      </Text>
-                      <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
-                    </div>
+                    {evmAddress && (
+                      <div tw="flex items-center">
+                        <Link
+                          tw="text-sm text-color6"
+                          href={`/validator/${evmAddress}`}
+                        >
+                          {evmAddress}
+                        </Link>
+                        <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
+                      </div>
+                    )}
                   </div>
                 </TableCell>
-                <TableCell>132,722</TableCell>
-                <TableCell>311,357,346.86 GLCH</TableCell>
+                <TableCell>{formatAmount(tx_count)}</TableCell>
+                <TableCell>{formatWei(balance)} GLCH</TableCell>
               </TableRow>
             );
           })

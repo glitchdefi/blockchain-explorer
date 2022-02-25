@@ -21,12 +21,12 @@ import {
   Tab,
   TabPanel,
 } from "src/app/components/Tab/Horizontal";
-import { BalanceTransferTable } from "src/app/components/Shared/BalanceTransferTable";
 import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTable";
 import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
-import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
 import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
+import { BalanceHistoryPanel } from "../AddressDetails/components/BalanceHistoryPanel";
+import { BalanceTransferPanel } from "../AddressDetails/components/BalanceTransferPanel";
 
 export function ValidatorDetailsPage() {
   useAddressSlice();
@@ -65,8 +65,8 @@ export function ValidatorDetailsPage() {
           <Tabs tw="grid-cols-2 lg:grid-cols-4">
             <Tab evtKey="transactions">{t("common.transactions")}</Tab>
             <Tab evtKey="balance-transfers">Balance transfer</Tab>
-            <Tab evtKey="authored-blocks">Authored blocks</Tab>
-            <Tab evtKey="account-lifecycle">Authored blocks</Tab>
+            {/* <Tab evtKey="authored-blocks">Authored blocks</Tab>
+            <Tab evtKey="account-lifecycle">Authored blocks</Tab> */}
             <Tab evtKey="balance-history">Balance history</Tab>
           </Tabs>
 
@@ -80,28 +80,24 @@ export function ValidatorDetailsPage() {
             />
           </TabPanel>
           <TabPanel evtKey="balance-transfers">
-            <BalanceTransferTable
-              loading={false}
-              total={20}
-              data={[1, 2, 3, 4, 5, 6]}
-            />
+            <BalanceTransferPanel />
           </TabPanel>
-          <TabPanel evtKey="authored-blocks">
+          {/* <TabPanel evtKey="authored-blocks">
             <AuthoredBlocksTable
               loading={false}
               total={20}
               data={[1, 2, 3, 4, 5, 6]}
             />
-          </TabPanel>
-          <TabPanel evtKey="account-lifecycle">
+          </TabPanel> */}
+          {/* <TabPanel evtKey="account-lifecycle">
             <AccountLifeCycleTable
               loading={false}
               total={20}
               data={[1, 2, 3, 4, 5, 6]}
             />
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel evtKey="balance-history">
-            <BalanceHistoryChart />
+            <BalanceHistoryPanel />
           </TabPanel>
         </TabContainer>
       </div>

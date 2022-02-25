@@ -23,22 +23,22 @@ import { SkeletonLoading } from "./SkeletonLoading";
 
 export function InfoAddressCard({ loading, address, data, currentPrice }) {
   const {
-    evmAddress,
+    evm_address,
     balance,
-    totalReceived,
-    totalSpend,
-    totalTx,
-    lastTxDate,
+    total_received,
+    total_spend,
+    total_tx,
+    last_tx_date,
   } = data || {};
   const totalBalanceToUsd =
     balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
   const totalReceivedToUsd =
-    totalReceived && currentPrice
-      ? formatWei(totalReceived, false) * currentPrice
+    total_received && currentPrice
+      ? formatWei(total_received, false) * currentPrice
       : "0";
   const totalSpentToUsd =
-    totalSpend && currentPrice
-      ? formatWei(totalSpend, false) * currentPrice
+    total_spend && currentPrice
+      ? formatWei(total_spend, false) * currentPrice
       : "0";
 
   return (
@@ -58,10 +58,10 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
         ) : (
           <>
             <InfoRow
-              isCopy={!!evmAddress}
+              isCopy={!!evm_address}
               label="EVM address"
-              value={evmAddress}
-              dataTip={evmAddress}
+              value={evm_address}
+              dataTip={evm_address}
             />
 
             <InfoRow
@@ -79,7 +79,7 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
               label="Total Received"
               customValueComp={
                 <Value
-                  value={formatWei(totalReceived)}
+                  value={formatWei(total_received)}
                   usd={totalReceivedToUsd}
                 />
               }
@@ -88,7 +88,7 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
             <InfoRow
               label="Total Spent"
               customValueComp={
-                <Value value={formatWei(totalSpend)} usd={totalSpentToUsd} />
+                <Value value={formatWei(total_spend)} usd={totalSpentToUsd} />
               }
               dataTip="The amount spent on this address."
             />
@@ -100,13 +100,13 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
             />
             <InfoRow
               label="Transactions"
-              value={`${totalTx} Txn`}
+              value={`${total_tx} Txn`}
               dataTip="The number of transactions related to this address."
             />
             <InfoRow
               label="Last transaction"
-              value={`${formatTimeAgo(lastTxDate)} • (${formatDateTimeUTC(
-                lastTxDate,
+              value={`${formatTimeAgo(last_tx_date)} • (${formatDateTimeUTC(
+                last_tx_date,
                 FORMAT_2
               )} +UTC)`}
               dataTip="The last time in which the address did transaction."

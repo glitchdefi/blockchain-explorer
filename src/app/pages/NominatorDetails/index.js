@@ -27,6 +27,8 @@ import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycl
 import { BalanceHistoryChart } from "src/app/components/Shared/BalanceHistoryChart";
 import { LeftArrowIcon } from "src/app/components/Svg/Icons";
 import { Button } from "src/app/components/Button";
+import { BalanceTransferPanel } from "../AddressDetails/components/BalanceTransferPanel";
+import { BalanceHistoryPanel } from "../AddressDetails/components/BalanceHistoryPanel";
 
 export function NominatorDetailsPage() {
   useAddressSlice();
@@ -65,8 +67,8 @@ export function NominatorDetailsPage() {
           <Tabs tw="grid-cols-2 lg:grid-cols-4">
             <Tab evtKey="transactions">{t("common.transactions")}</Tab>
             <Tab evtKey="balance-transfers">Balance transfer</Tab>
-            <Tab evtKey="authored-blocks">Authored blocks</Tab>
-            <Tab evtKey="account-lifecycle">Authored blocks</Tab>
+            {/* <Tab evtKey="authored-blocks">Authored blocks</Tab>
+            <Tab evtKey="account-lifecycle">Authored blocks</Tab> */}
             <Tab evtKey="balance-history">Balance history</Tab>
           </Tabs>
 
@@ -80,13 +82,9 @@ export function NominatorDetailsPage() {
             />
           </TabPanel>
           <TabPanel evtKey="balance-transfers">
-            <BalanceTransferTable
-              loading={false}
-              total={20}
-              data={[1, 2, 3, 4, 5, 6]}
-            />
+            <BalanceTransferPanel />
           </TabPanel>
-          <TabPanel evtKey="authored-blocks">
+          {/* <TabPanel evtKey="authored-blocks">
             <AuthoredBlocksTable
               loading={false}
               total={20}
@@ -99,9 +97,9 @@ export function NominatorDetailsPage() {
               total={20}
               data={[1, 2, 3, 4, 5, 6]}
             />
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel evtKey="balance-history">
-            <BalanceHistoryChart />
+            <BalanceHistoryPanel />
           </TabPanel>
         </TabContainer>
       </div>

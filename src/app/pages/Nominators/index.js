@@ -5,10 +5,14 @@ import { useTranslation } from "react-i18next";
 // Components
 import { Text } from "src/app/components/Text";
 import { NominatorsTable } from "./components/NominatorsTable";
+import { useNominatorList, useNominatorSlice } from "src/state/nominator/hooks";
 
 export function NominatorsPage() {
+  useNominatorSlice();
   const { t } = useTranslation();
   const [params, setParams] = useState();
+
+  const { isFetchingNominatorList, data, total } = useNominatorList(params);
 
   return (
     <>
@@ -18,9 +22,10 @@ export function NominatorsPage() {
         </Text>
         <div tw="mt-4">
           <NominatorsTable
-            loading={false}
-            total={20}
-            data={[1, 2, 3, 4, 5, 6]}
+            loading={isFetchingNominatorList}
+            total={total}
+            data={data}
+            onChange={(p) => setParams(p)}
           />
         </div>
       </Wrapper>

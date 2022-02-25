@@ -3,7 +3,7 @@ import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
 
 // Utils
-import { formatWei } from "src/utils/numbers";
+import { formatAmount, formatWei } from "src/utils/numbers";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -17,14 +17,8 @@ import { Image } from "src/app/components/Image";
 import { CloseCircleIcon } from "src/app/components/Svg/Icons";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoNominatorCard({
-  loading,
-  address,
-  data,
-  currentPrice,
-  total,
-}) {
-  const { balance } = data || {};
+export function InfoNominatorCard({ loading, address, data, currentPrice }) {
+  const { evmAddress, balance, total_tx } = data || {};
   const totalBalanceToUsd =
     balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
 
@@ -45,10 +39,10 @@ export function InfoNominatorCard({
         ) : (
           <>
             <InfoRow
-              isCopy
+              isCopy={!!evmAddress}
               label="EVM address"
-              value="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
-              dataTip="0x8c6f4De63ec0E55f180E33D29E113826A189AbcD"
+              value={evmAddress}
+              dataTip={evmAddress}
             />
 
             <InfoRow
@@ -70,9 +64,12 @@ export function InfoNominatorCard({
               customValueComp={<Value value="0" usd="$0" />}
             />
 
-            <InfoRow label="Current role" value="Nominator" />
-            <InfoRow label="Last seen" value="7 minutes ago" />
-            <InfoRow label="Transactions" value="132,722 Txns" />
+            <InfoRow label="Current role" value={null} />
+            <InfoRow label="Last seen" value={null} />
+            <InfoRow
+              label="Transactions"
+              value={`${formatAmount(total_tx)} Txns`}
+            />
             <InfoRow
               label="Status"
               customValueComp={

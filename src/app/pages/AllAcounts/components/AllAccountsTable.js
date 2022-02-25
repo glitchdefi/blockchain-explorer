@@ -2,7 +2,7 @@ import React from "react";
 import { isEmpty } from "lodash";
 import "twin.macro";
 
-import { formatWei } from "src/utils/numbers";
+import { formatAmount, formatWei } from "src/utils/numbers";
 
 // Components
 import {
@@ -36,29 +36,29 @@ export const AllAccountsTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { address, balance, evmAddress } = o || {};
+            const { glitch_address, balance, evm_address, tx_count } = o || {};
             return (
               <TableRow key={i}>
                 <TableCell>{i + 1}</TableCell>
                 <TableCell>
                   <div>
-                    <Link primary href={`/account/${address}`}>
-                      {address}
+                    <Link primary href={`/account/${glitch_address}`}>
+                      {glitch_address}
                     </Link>
-                    {evmAddress && (
+                    {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/account/${evmAddress}`}
+                          href={`/account/${evm_address}`}
                         >
-                          {evmAddress}
+                          {evm_address}
                         </Link>
                         <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
                       </div>
                     )}
                   </div>
                 </TableCell>
-                <TableCell>-</TableCell>
+                <TableCell>{formatAmount(tx_count)}</TableCell>
                 <TableCell>{formatWei(balance)} GLCH</TableCell>
               </TableRow>
             );
