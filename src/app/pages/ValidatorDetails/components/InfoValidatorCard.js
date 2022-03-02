@@ -65,12 +65,12 @@ export function InfoValidatorCard({ loading, address, data, currentPrice }) {
             />
 
             <InfoRow label="Current role" value={null} />
-            <InfoRow label="Last seen" value={null} />
+            {/* <InfoRow label="Last seen" value={null} /> */}
             <InfoRow
               label="Transactions"
               value={`${formatAmount(total_tx)} Txns`}
             />
-            <InfoRow
+            {/* <InfoRow
               label="Status"
               customValueComp={
                 <div tw="flex items-center">
@@ -78,7 +78,7 @@ export function InfoValidatorCard({ loading, address, data, currentPrice }) {
                   <Text tw="ml-2">Inactive</Text>
                 </div>
               }
-            />
+            /> */}
           </>
         )}
       </div>

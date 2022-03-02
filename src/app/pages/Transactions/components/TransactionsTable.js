@@ -90,7 +90,7 @@ export const TransactionsTable = React.memo((props) => {
                 <TableCell>
                   <ValueWithPrefix
                     tw="justify-end"
-                    value={formatWei(fee + tip)}
+                    value={formatWei(parseFloat(fee) + parseFloat(tip))}
                   />
                 </TableCell>
                 <TableCell tw="text-center">
