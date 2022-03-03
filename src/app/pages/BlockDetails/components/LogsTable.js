@@ -37,8 +37,8 @@ export const LogsTable = React.memo((props) => {
           data.map((o, i) => {
             return (
               <TableRow key={i}>
-                <TableCell id={i}>152453-0</TableCell>
-                <TableCell>PreRuntime</TableCell>
+                <TableCell id={i}>{o?.id}</TableCell>
+                <TableCell>{o?.title}</TableCell>
               </TableRow>
             );
           })

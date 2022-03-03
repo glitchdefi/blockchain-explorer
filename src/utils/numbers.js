@@ -72,3 +72,7 @@ export const formatWei = (number, isFormatNumber = true) => {
 
   return isFormatNumber ? numberWithCommas(numWei) : numWei;
 };
+
+export const calculateFee = (fee, tip) => {
+  return formatWei(parseFloat(fee) + parseFloat(tip));
+};

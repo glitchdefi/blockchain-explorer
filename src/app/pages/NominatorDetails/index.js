@@ -69,7 +69,7 @@ export function NominatorDetailsPage() {
             <Tab evtKey="balance-transfers">Balance transfer</Tab>
             {/* <Tab evtKey="authored-blocks">Authored blocks</Tab>
             <Tab evtKey="account-lifecycle">Authored blocks</Tab> */}
-            <Tab evtKey="balance-history">Balance history</Tab>
+            {/* <Tab evtKey="balance-history">Balance history</Tab> */}
           </Tabs>
 
           <TabPanel evtKey="transactions">
@@ -98,9 +98,9 @@ export function NominatorDetailsPage() {
               data={[1, 2, 3, 4, 5, 6]}
             />
           </TabPanel> */}
-          <TabPanel evtKey="balance-history">
+          {/* <TabPanel evtKey="balance-history">
             <BalanceHistoryPanel />
-          </TabPanel>
+          </TabPanel> */}
         </TabContainer>
       </div>
     </div>

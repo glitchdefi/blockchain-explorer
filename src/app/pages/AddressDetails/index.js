@@ -69,7 +69,7 @@ export function AddressDetailsPage() {
             {/* <Tab evtKey="authored-blocks">Authored blocks</Tab>
             <Tab evtKey="account-lifecycle">Authored lifecycle</Tab>
             <Tab evtKey="roles">Roles</Tab> */}
-            <Tab evtKey="balance-history">Balance history</Tab>
+            {/* <Tab evtKey="balance-history">Balance history</Tab> */}
           </Tabs>
 
           <TabPanel evtKey="transactions">
@@ -100,9 +100,9 @@ export function AddressDetailsPage() {
           <TabPanel evtKey="roles">
             <RolesTable loading={false} total={20} data={[1, 2, 3, 4, 5, 6]} />
           </TabPanel> */}
-          <TabPanel evtKey="balance-history">
+          {/* <TabPanel evtKey="balance-history">
             <BalanceHistoryPanel />
-          </TabPanel>
+          </TabPanel> */}
         </TabContainer>
       </div>
     </div>

@@ -41,6 +41,7 @@ export function BlockDetailsPage() {
   const { isFetchingBlockTxs, data, total } = useBlockTxs(height, params);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
+  const { logs } = blockDetails || {};
 
   return (
     <>
@@ -79,7 +80,7 @@ export function BlockDetailsPage() {
             />
           </TabPanel>
           <TabPanel evtKey="logs">
-            <LogsTable data={[1, 2, 3, 4, 5]} />
+            <LogsTable data={logs} />
           </TabPanel>
         </TabContainer>
       </Wrapper>
