@@ -64,6 +64,9 @@ function numberWithCommas(n) {
 }
 
 export const formatWei = (number, isFormatNumber = true) => {
+  if (Web3Utils.isHexStrict(number)) {
+    number = Web3Utils.hexToNumberString(number);
+  }
   const num = toNumber(number);
   if (num == 0) return "0";
   if (!num) return "--";

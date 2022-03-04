@@ -74,6 +74,15 @@ export const fetchAddressBalanceTx = (address, params) => async (dispatch) => {
   }
 };
 
+export const fetchBalance = async (address) => {
+  try {
+    const data = await AddressApis.getBalance(address);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const resetAddressBalanceTx = () => async (dispatch) => {
   dispatch(actionResetAddressBalanceTx());
 };

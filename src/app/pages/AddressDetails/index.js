@@ -9,6 +9,7 @@ import {
   useAddressDetails,
   useAddressSlice,
   useAddressTxs,
+  useBalance,
 } from "src/state/address/hooks";
 import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
@@ -39,6 +40,7 @@ export function AddressDetailsPage() {
   const { address } = useParams();
   const { isFetchingAddressDetails, addressDetails } =
     useAddressDetails(address);
+  const { isFetchingBalance, balance } = useBalance(address);
   const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
   const { allGlitchInfo } = useAllGlitchInfo();
   const { current_price } = allGlitchInfo || {};
@@ -53,7 +55,8 @@ export function AddressDetailsPage() {
       </HeadWrapper>
 
       <InfoAddressCard
-        loading={isFetchingAddressDetails}
+        loading={isFetchingAddressDetails || isFetchingBalance}
+        balance={balance}
         address={address}
         data={addressDetails}
         currentPrice={current_price}

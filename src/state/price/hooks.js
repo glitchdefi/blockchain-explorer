@@ -45,7 +45,7 @@ export const useAllGlitchInfo = () => {
 
     const fetchInterval = setInterval(() => {
       dispatch(fetchAllGlitchInfo());
-    }, 3000);
+    }, 6000);
 
     return () => {
       clearInterval(fetchInterval);

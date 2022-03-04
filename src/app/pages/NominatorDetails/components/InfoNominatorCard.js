@@ -17,10 +17,22 @@ import { Image } from "src/app/components/Image";
 import { CloseCircleIcon } from "src/app/components/Svg/Icons";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoNominatorCard({ loading, address, data, currentPrice }) {
-  const { evmAddress, balance, total_tx } = data || {};
+export function InfoNominatorCard({
+  loading,
+  address,
+  balance,
+  data,
+  currentPrice,
+}) {
+  const { evmAddress, total_tx } = data || {};
+
+  const { free, reserved } = balance || {};
+
+  const totalBalance =
+    parseFloat(formatWei(free, false)) + parseFloat(formatWei(reserved, false));
+
   const totalBalanceToUsd =
-    balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
+    totalBalance && currentPrice ? totalBalance * currentPrice : "0";
 
   return (
     <Wrapper>
@@ -49,7 +61,7 @@ export function InfoNominatorCard({ loading, address, data, currentPrice }) {
               label="Balance"
               customValueComp={
                 <Value
-                  value={formatWei(balance)}
+                  value={totalBalance}
                   usd={totalBalanceToUsd}
                   price={currentPrice}
                 />
@@ -65,12 +77,12 @@ export function InfoNominatorCard({ loading, address, data, currentPrice }) {
             />
 
             <InfoRow label="Current role" value={null} />
-            <InfoRow label="Last seen" value={null} />
+            {/* <InfoRow label="Last seen" value={null} /> */}
             <InfoRow
               label="Transactions"
               value={`${formatAmount(total_tx)} Txns`}
             />
-            <InfoRow
+            {/* <InfoRow
               label="Status"
               customValueComp={
                 <div tw="flex items-center">
@@ -78,7 +90,7 @@ export function InfoNominatorCard({ loading, address, data, currentPrice }) {
                   <Text tw="ml-2">Inactive</Text>
                 </div>
               }
-            />
+            /> */}
           </>
         )}
       </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInjectReducer } from "redux-injectors";
 
@@ -17,6 +17,7 @@ import {
   resetAddressBalanceTx,
   fetchAddressBalanceHistory,
   resetAddressBalanceHistory,
+  fetchBalance,
 } from "./actions";
 
 export const useAddressSlice = () => {
@@ -130,6 +131,25 @@ export const useAddressBalanceTx = (address, params) => {
   }, [addressBalanceTxError]);
 
   return { isFetchingAddressBalanceTx, data, total };
+};
+
+export const useBalance = (address) => {
+  const [isFetchingBalance, setIsFetchingBalance] = useState(true);
+  const [balance, setBalance] = useState("0");
+
+  useEffect(() => {
+    async function getBalance() {
+      if (address) {
+        const data = await fetchBalance(address);
+        setBalance(data);
+        setIsFetchingBalance(false);
+      }
+    }
+
+    getBalance();
+  }, [address]);
+
+  return { isFetchingBalance, balance };
 };
 
 export const useAddressBalanceHistory = (address) => {

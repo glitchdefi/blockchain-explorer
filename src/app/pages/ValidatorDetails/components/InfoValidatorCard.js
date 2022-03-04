@@ -17,10 +17,22 @@ import { Image } from "src/app/components/Image";
 import { CloseCircleIcon } from "src/app/components/Svg/Icons";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoValidatorCard({ loading, address, data, currentPrice }) {
-  const { evmAddress, balance, total_tx } = data || {};
+export function InfoValidatorCard({
+  loading,
+  address,
+  balance,
+  data,
+  currentPrice,
+}) {
+  const { evmAddress, total_tx } = data || {};
+
+  const { free, reserved } = balance || {};
+
+  const totalBalance =
+    parseFloat(formatWei(free, false)) + parseFloat(formatWei(reserved, false));
+
   const totalBalanceToUsd =
-    balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
+    totalBalance && currentPrice ? totalBalance * currentPrice : "0";
 
   return (
     <Wrapper>
@@ -49,7 +61,7 @@ export function InfoValidatorCard({ loading, address, data, currentPrice }) {
               label="Balance"
               customValueComp={
                 <Value
-                  value={formatWei(balance)}
+                  value={totalBalance}
                   usd={totalBalanceToUsd}
                   price={currentPrice}
                 />

@@ -21,21 +21,29 @@ import { Skeleton } from "src/app/components/Skeleton";
 import { Image } from "src/app/components/Image";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoAddressCard({ loading, address, data, currentPrice }) {
-  const {
-    evm_address,
-    balance,
-    total_received,
-    total_spend,
-    total_tx,
-    last_tx_date,
-  } = data || {};
+export function InfoAddressCard({
+  loading,
+  address,
+  balance,
+  data,
+  currentPrice,
+}) {
+  const { evm_address, total_received, total_spend, total_tx, last_tx_date } =
+    data || {};
+
+  const { free, reserved } = balance || {};
+
+  const totalBalance =
+    parseFloat(formatWei(free, false)) + parseFloat(formatWei(reserved, false));
+
   const totalBalanceToUsd =
-    balance && currentPrice ? formatWei(balance, false) * currentPrice : "0";
+    totalBalance && currentPrice ? totalBalance * currentPrice : "0";
+
   const totalReceivedToUsd =
     total_received && currentPrice
       ? formatWei(total_received, false) * currentPrice
       : "0";
+
   const totalSpentToUsd =
     total_spend && currentPrice
       ? formatWei(total_spend, false) * currentPrice
@@ -68,7 +76,7 @@ export function InfoAddressCard({ loading, address, data, currentPrice }) {
               label="Balance"
               customValueComp={
                 <Value
-                  value={formatWei(balance)}
+                  value={totalBalance}
                   usd={totalBalanceToUsd}
                   price={currentPrice}
                 />
