@@ -34,8 +34,10 @@ export function SearchInput() {
         const { block } = searchResult?.data || {};
         block?.length && history.push(`/block/${block[0].index}`);
       }
-      if (searchResult?.type === "wallet")
-        history.push(`/account/${text.trim()}`);
+      if (searchResult?.type === "wallet") {
+        const { wallet } = searchResult?.data || {};
+        wallet?.length && history.push(`/account/${wallet[0].address}`);
+      }
       onClearText();
     }
 
