@@ -1,6 +1,7 @@
 import React from "react";
 import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
+import { toBN, toWei } from "web3-utils";
 
 // Utils
 import { formatAmount, formatWei } from "src/utils/numbers";
@@ -24,15 +25,32 @@ export function InfoValidatorCard({
   data,
   currentPrice,
 }) {
-  const { evmAddress, total_tx } = data || {};
+  const { evm_address, total_tx, type } = data || {};
 
-  const { free, reserved } = balance || {};
+  const { free, reserved, miscFrozen } = balance || {};
 
-  const totalBalance =
-    parseFloat(formatWei(free, false)) + parseFloat(formatWei(reserved, false));
-
+  const totalBalance = formatWei(
+    toBN(toWei(formatWei(free, false))).add(
+      toBN(toWei(formatWei(reserved, false)))
+    )
+  );
   const totalBalanceToUsd =
     totalBalance && currentPrice ? totalBalance * currentPrice : "0";
+
+  const available = formatWei(
+    toBN(toWei(formatWei(free, false))).sub(
+      toBN(toWei(formatWei(miscFrozen, false)))
+    )
+  );
+  const availableToUsd =
+    available && currentPrice ? available * currentPrice : "0";
+
+  const locked = formatWei(
+    toBN(toWei(formatWei(reserved, false))).add(
+      toBN(toWei(formatWei(miscFrozen, false)))
+    )
+  );
+  const lockedToUsd = locked && currentPrice ? locked * currentPrice : "0";
 
   return (
     <Wrapper>
@@ -50,12 +68,14 @@ export function InfoValidatorCard({
           </>
         ) : (
           <>
-            <InfoRow
-              isCopy={!!evmAddress}
-              label="EVM address"
-              value={evmAddress}
-              dataTip={evmAddress}
-            />
+            {evm_address && (
+              <InfoRow
+                isCopy={!!evm_address}
+                label="EVM address"
+                value={evm_address}
+                dataTip={evm_address}
+              />
+            )}
 
             <InfoRow
               label="Balance"
@@ -66,31 +86,40 @@ export function InfoValidatorCard({
                   price={currentPrice}
                 />
               }
+              dataTip="Sum of the value of all tokens in the account."
             />
             <InfoRow
               label="Available"
-              customValueComp={<Value value="0" usd="$0" />}
+              customValueComp={<Value value={available} usd={availableToUsd} />}
             />
             <InfoRow
               label="Locked"
-              customValueComp={<Value value="0" usd="$0" />}
+              customValueComp={<Value value={locked} usd={lockedToUsd} />}
             />
 
-            <InfoRow label="Current role" value={null} />
+            {type !== null && (
+              <InfoRow
+                label="Current role"
+                value={type === 0 ? "Validator" : "Noninator"}
+                dataTip="Validator or Nomidator of this address. (the person who successfully validates transactions and confirms this block in Glitch network)"
+              />
+            )}
             {/* <InfoRow label="Last seen" value={null} /> */}
             <InfoRow
               label="Transactions"
               value={`${formatAmount(total_tx)} Txns`}
+              dataTip="The number of transactions related to this address."
             />
-            {/* <InfoRow
+            <InfoRow
               label="Status"
               customValueComp={
                 <div tw="flex items-center">
-                  <CloseCircleIcon />
-                  <Text tw="ml-2">Inactive</Text>
+                  {/* <CloseCircleIcon /> */}
+                  <div tw="w-2 h-2 rounded-full bg-success" />
+                  <Text tw="ml-2 text-white!">Active</Text>
                 </div>
               }
-            /> */}
+            />
           </>
         )}
       </div>

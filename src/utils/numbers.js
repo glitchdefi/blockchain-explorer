@@ -69,7 +69,7 @@ export const formatWei = (number, isFormatNumber = true) => {
   }
   const num = toNumber(number);
   if (num == 0) return "0";
-  if (!num) return "--";
+  if (!num) return "0";
 
   const numWei = Web3Utils.fromWei(num, "ether");
 
