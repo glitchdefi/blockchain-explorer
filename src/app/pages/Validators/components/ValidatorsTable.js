@@ -48,7 +48,7 @@ export const ValidatorsTable = React.memo((props) => {
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/validator/${evm_address}`}
+                          href={`/validator/${address}`}
                         >
                           {evm_address}
                         </Link>

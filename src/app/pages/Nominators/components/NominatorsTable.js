@@ -48,7 +48,7 @@ export const NominatorsTable = React.memo((props) => {
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/nominator/${evm_address}`}
+                          href={`/nominator/${address}`}
                         >
                           {evm_address}
                         </Link>

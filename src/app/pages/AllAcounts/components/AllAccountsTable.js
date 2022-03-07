@@ -49,7 +49,7 @@ export const AllAccountsTable = React.memo((props) => {
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/account/${evm_address}`}
+                          href={`/account/${glitch_address}`}
                         >
                           {evm_address}
                         </Link>
