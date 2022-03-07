@@ -35,7 +35,7 @@ export const ValidatorsTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { address, balance, tx_count, evmAddress } = o || {};
+            const { address, balance, tx_count, evm_address } = o || {};
             return (
               <TableRow key={i}>
                 <TableCell>{i + 1}</TableCell>
@@ -44,13 +44,13 @@ export const ValidatorsTable = React.memo((props) => {
                     <Link primary href={`/validator/${address}`}>
                       {address}
                     </Link>
-                    {evmAddress && (
+                    {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/validator/${evmAddress}`}
+                          href={`/validator/${evm_address}`}
                         >
-                          {evmAddress}
+                          {evm_address}
                         </Link>
                         <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
                       </div>

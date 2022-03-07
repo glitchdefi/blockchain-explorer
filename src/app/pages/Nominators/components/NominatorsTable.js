@@ -35,7 +35,7 @@ export const NominatorsTable = React.memo((props) => {
           <TableEmpty invisible={loading} />
         ) : (
           data.map((o, i) => {
-            const { address, balance, tx_count, evmAddress } = o || {};
+            const { address, balance, tx_count, evm_address } = o || {};
             return (
               <TableRow key={i}>
                 <TableCell>{i + 1}</TableCell>
@@ -44,13 +44,13 @@ export const NominatorsTable = React.memo((props) => {
                     <Link primary href={`/nominator/${address}`}>
                       {address}
                     </Link>
-                    {evmAddress && (
+                    {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/nominator/${evmAddress}`}
+                          href={`/nominator/${evm_address}`}
                         >
-                          {evmAddress}
+                          {evm_address}
                         </Link>
                         <Text tw="ml-1 text-sm text-color5">(EVM address)</Text>
                       </div>
