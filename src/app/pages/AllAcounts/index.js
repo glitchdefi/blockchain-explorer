@@ -25,6 +25,7 @@ export function AllAccountsPage() {
             loading={isFetchingAddressList}
             total={total}
             data={data}
+            pageInfo={params}
             onChange={(p) => setParams(p)}
           />
         </div>

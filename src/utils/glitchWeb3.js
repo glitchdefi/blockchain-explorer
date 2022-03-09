@@ -1,16 +1,13 @@
-// Import
-import { ApiPromise, WsProvider } from "@polkadot/api";
+import { GlitchWeb3 } from "@glitchdefi/web3";
 
-class GlitchWeb3 {
+class We3GlitchHelper {
   /**
    * The Singleton's constructor should always be private to prevent direct
    * construction calls with the `new` operator.
    */
   constructor() {
-    const wsProvider = new WsProvider(process.env.REACT_APP_WS_PROVIDER);
-    ApiPromise.create({ provider: wsProvider }).isReady.then(
-      (api) => (this.api = api)
-    );
+    const web3Account = new GlitchWeb3(process.env.REACT_APP_WS_PROVIDER);
+    this.web3Glitch = web3Account;
   }
 
   /**
@@ -20,21 +17,32 @@ class GlitchWeb3 {
    * just one instance of each subclass around.
    */
   static getInstance() {
-    if (!GlitchWeb3.instance) {
-      GlitchWeb3.instance = new GlitchWeb3();
+    if (!We3GlitchHelper.instance) {
+      We3GlitchHelper.instance = new We3GlitchHelper();
     }
 
-    return GlitchWeb3.instance;
+    return We3GlitchHelper.instance;
   }
 
+  getWeb3Glitch() {
+    if (this.web3Glitch) {
+      We3GlitchHelper.getInstance();
+    }
+    return this.web3Glitch;
+  }
+
+  /**
+   * Finally, any singleton should define some business logic, which can be
+   * executed on its instance.
+   */
   async getBalance(address) {
     try {
-      const { data: balance } = await this.api.query.system.account(address);
-      return `${balance.free}` ? `${balance.free}` : "0";
-    } catch (e) {
-      throw new Error(e.message);
+      const result = await this.web3Glitch.getBalance(address);
+      return result;
+    } catch (error) {
+      return "0";
     }
   }
 }
 
-export const glitchWeb3 = GlitchWeb3.getInstance();
+export const web3Glitch = We3GlitchHelper.getInstance();

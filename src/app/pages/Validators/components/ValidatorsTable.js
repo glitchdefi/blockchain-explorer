@@ -23,7 +23,7 @@ export const ValidatorsTable = React.memo((props) => {
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell>Rank</TableHeaderCell>
+          {/* <TableHeaderCell>Rank</TableHeaderCell> */}
           <TableHeaderCell>Address</TableHeaderCell>
           <TableHeaderCell>Transactions</TableHeaderCell>
           <TableHeaderCell>Balance</TableHeaderCell>
@@ -38,7 +38,7 @@ export const ValidatorsTable = React.memo((props) => {
             const { address, balance, tx_count, evm_address } = o || {};
             return (
               <TableRow key={i}>
-                <TableCell>{i + 1}</TableCell>
+                {/* <TableCell>{i + 1}</TableCell> */}
                 <TableCell>
                   <div>
                     <Link primary href={`/validator/${address}`}>

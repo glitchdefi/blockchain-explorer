@@ -10,8 +10,8 @@ export function BlockNavigation({ currentBlock, nextBlock }) {
   return (
     <div
       css={[
-        tw`lg:(flex w-2/5 justify-between) mb-6`,
-        !nextBlock && tw`lg:w-1/4`,
+        tw`lg:(flex w-2/3 justify-between) mb-6`,
+        !nextBlock && tw`lg:w-2/5`,
       ]}
     >
       {currentBlock > 0 && (

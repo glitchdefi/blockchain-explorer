@@ -59,7 +59,7 @@ export const useDashboardDaily = () => {
 
       const txCount = sortData.map((o) => {
         return {
-          txCount: o?.txCount,
+          txCount: o?.txCount < 0 ? 0 : o?.txCount,
           formatTime: moment(o?.time).format("DD.MMM"),
           time: o?.time,
         };

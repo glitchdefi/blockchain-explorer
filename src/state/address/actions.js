@@ -1,4 +1,6 @@
 import AddressApis from "src/services/apis/address";
+import web3Utils from "web3-utils";
+import { web3Glitch } from "src/utils/glitchWeb3";
 import {
   loadAddressList,
   addressListLoaded,
@@ -76,7 +78,18 @@ export const fetchAddressBalanceTx = (address, params) => async (dispatch) => {
 
 export const fetchBalance = async (address) => {
   try {
-    const data = await AddressApis.getBalance(address);
+    let data = {};
+    if (web3Utils.isAddress(address)) {
+      const res = await web3Glitch.getBalance(address);
+      data = {
+        free: res?.balance,
+        reserved: "0",
+        miscFrozen: "0",
+      };
+    } else {
+      const res = await AddressApis.getBalance(address);
+      data = { ...res };
+    }
     return data;
   } catch (error) {
     throw error;

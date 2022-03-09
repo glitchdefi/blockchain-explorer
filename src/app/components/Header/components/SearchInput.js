@@ -36,7 +36,8 @@ export function SearchInput() {
       }
       if (searchResult?.type === "wallet") {
         const { wallet } = searchResult?.data || {};
-        wallet?.length && history.push(`/account/${wallet[0].address}`);
+        wallet?.length &&
+          history.push(`/account/${wallet[0].address || wallet[0].evmAddress}`);
       }
       onClearText();
     }

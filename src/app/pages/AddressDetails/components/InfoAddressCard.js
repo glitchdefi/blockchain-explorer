@@ -33,6 +33,7 @@ export function InfoAddressCard({
     evm_address,
     // total_received,
     // total_spend,
+    glitch_address,
     total_tx,
     last_tx_date,
     type,
@@ -62,10 +63,12 @@ export function InfoAddressCard({
   return (
     <Wrapper>
       <div tw="flex-1 order-2 lg:order-1">
-        <Flex tw="mb-4">
-          <Address>{address}</Address>
-          <CopyButton text={address} tw="ml-3" />
-        </Flex>
+        {glitch_address && (
+          <Flex tw="mb-4">
+            <Address>{address}</Address>
+            <CopyButton text={address} tw="ml-3" />
+          </Flex>
+        )}
 
         {loading ? (
           <>
