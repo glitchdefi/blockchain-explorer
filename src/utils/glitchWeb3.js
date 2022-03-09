@@ -1,4 +1,4 @@
-import { GlitchWeb3 } from "@glitchdefi/web3";
+import Web3 from "web3";
 
 class We3GlitchHelper {
   /**
@@ -6,8 +6,8 @@ class We3GlitchHelper {
    * construction calls with the `new` operator.
    */
   constructor() {
-    const web3Account = new GlitchWeb3(process.env.REACT_APP_WS_PROVIDER);
-    this.web3Glitch = web3Account;
+    const web3 = new Web3(process.env.REACT_APP_WS_PROVIDER);
+    this.web3Glitch = web3;
   }
 
   /**
@@ -37,7 +37,7 @@ class We3GlitchHelper {
    */
   async getBalance(address) {
     try {
-      const result = await this.web3Glitch.getBalance(address);
+      const result = await this.web3Glitch.eth.getBalance(address);
       return result;
     } catch (error) {
       return "0";

@@ -82,7 +82,7 @@ export const fetchBalance = async (address) => {
     if (web3Utils.isAddress(address)) {
       const res = await web3Glitch.getBalance(address);
       data = {
-        free: res?.balance,
+        free: res,
         reserved: "0",
         miscFrozen: "0",
       };
