@@ -43,14 +43,16 @@ export const AllAccountsTable = React.memo((props) => {
                 <TableCell>{page_size * (page_index - 1) + i + 1}</TableCell>
                 <TableCell>
                   <div>
-                    <Link primary href={`/account/${glitch_address}`}>
-                      {glitch_address}
-                    </Link>
+                    {glitch_address && (
+                      <Link primary href={`/account/${glitch_address}`}>
+                        {glitch_address}
+                      </Link>
+                    )}
                     {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/account/${glitch_address}`}
+                          href={`/account/${glitch_address || evm_address}`}
                         >
                           {evm_address}
                         </Link>

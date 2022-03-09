@@ -41,14 +41,16 @@ export const ValidatorsTable = React.memo((props) => {
                 {/* <TableCell>{i + 1}</TableCell> */}
                 <TableCell>
                   <div>
-                    <Link primary href={`/validator/${address}`}>
-                      {address}
-                    </Link>
+                    {address && (
+                      <Link primary href={`/validator/${address}`}>
+                        {address}
+                      </Link>
+                    )}
                     {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/validator/${address}`}
+                          href={`/validator/${address || evm_address}`}
                         >
                           {evm_address}
                         </Link>
