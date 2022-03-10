@@ -6,7 +6,7 @@ import { toBN, toWei } from "web3-utils";
 import QRCode from "qrcode.react";
 
 // Utils
-import { formatWei } from "src/utils/numbers";
+import { formatNumber, formatWei, numberWithCommas } from "src/utils/numbers";
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 // Hooks
@@ -44,11 +44,14 @@ export function InfoAddressCard({
   const totalBalance = formatWei(
     toBN(toWei(formatWei(free, false))).add(
       toBN(toWei(formatWei(reserved, false)))
-    )
+    ),
+    false
   );
 
   const totalBalanceToUsd =
     totalBalance && currentPrice ? totalBalance * currentPrice : "0";
+
+  console.log(formatNumber(totalBalanceToUsd));
 
   // const totalReceivedToUsd =
   //   total_received && currentPrice
@@ -90,8 +93,8 @@ export function InfoAddressCard({
               label="Balance"
               customValueComp={
                 <Value
-                  value={totalBalance}
-                  usd={totalBalanceToUsd}
+                  value={numberWithCommas(totalBalance)}
+                  usd={formatNumber(totalBalanceToUsd, 2)}
                   price={currentPrice}
                 />
               }
@@ -170,7 +173,7 @@ const Value = ({ value, usd, price }) => {
           resizeMode
           width={24}
         />
-        <ValueWithPrefix tw="ml-3" value={value} usd={usd} />
+        <ValueWithPrefix tw="ml-3" isCustomFormat value={value} usd={usd} />
       </Flex>
 
       {price && (

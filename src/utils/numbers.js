@@ -55,7 +55,7 @@ const toNumber = (num) => {
   return numToStr;
 };
 
-function numberWithCommas(n) {
+export function numberWithCommas(n) {
   var parts = n?.toString()?.split(".");
   return (
     parts[0]?.replace(/\B(?=(\d{3})+(?!\d))/g, ",") +

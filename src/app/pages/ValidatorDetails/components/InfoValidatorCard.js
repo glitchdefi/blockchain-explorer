@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { toBN, toWei } from "web3-utils";
 
 // Utils
-import { formatAmount, formatWei } from "src/utils/numbers";
+import { formatAmount, formatNumber, formatWei, numberWithCommas } from "src/utils/numbers";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -32,7 +32,8 @@ export function InfoValidatorCard({
   const totalBalance = formatWei(
     toBN(toWei(formatWei(free, false))).add(
       toBN(toWei(formatWei(reserved, false)))
-    )
+    ),
+    false
   );
   const totalBalanceToUsd =
     totalBalance && currentPrice ? totalBalance * currentPrice : "0";
@@ -40,7 +41,8 @@ export function InfoValidatorCard({
   const available = formatWei(
     toBN(toWei(formatWei(free, false))).sub(
       toBN(toWei(formatWei(miscFrozen, false)))
-    )
+    ),
+    false
   );
   const availableToUsd =
     available && currentPrice ? available * currentPrice : "0";
@@ -48,7 +50,8 @@ export function InfoValidatorCard({
   const locked = formatWei(
     toBN(toWei(formatWei(reserved, false))).add(
       toBN(toWei(formatWei(miscFrozen, false)))
-    )
+    ),
+    false
   );
   const lockedToUsd = locked && currentPrice ? locked * currentPrice : "0";
 
@@ -81,8 +84,8 @@ export function InfoValidatorCard({
               label="Balance"
               customValueComp={
                 <Value
-                  value={totalBalance}
-                  usd={totalBalanceToUsd}
+                  value={numberWithCommas(totalBalance)}
+                  usd={formatNumber(totalBalanceToUsd, 2)}
                   price={currentPrice}
                 />
               }
@@ -90,11 +93,21 @@ export function InfoValidatorCard({
             />
             <InfoRow
               label="Available"
-              customValueComp={<Value value={available} usd={availableToUsd} />}
+              customValueComp={
+                <Value
+                  value={numberWithCommas(available)}
+                  usd={formatNumber(availableToUsd, 2)}
+                />
+              }
             />
             <InfoRow
               label="Locked"
-              customValueComp={<Value value={locked} usd={lockedToUsd} />}
+              customValueComp={
+                <Value
+                  value={numberWithCommas(locked)}
+                  usd={formatNumber(lockedToUsd, 2)}
+                />
+              }
             />
 
             {type !== null && (
