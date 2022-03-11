@@ -19,11 +19,6 @@ jobs:
       uses: borales/actions-yarn@v2.3.0
       with:
         cmd: build
-      
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
     - name: copy explorer testnet-v2
       uses: appleboy/scp-action@master
       with:
@@ -31,7 +26,7 @@ jobs:
         username: ${{ secrets.TESTNET_SERVER_USERNAME }}
         key: ${{ secrets.TESTNET_SERVER_KEY }}
         port: 22
-        source: "build/"
+        source: "./build/"
         target: "/tmp/explorer-build/"
     - name: deploy explorer testnet-v2
       uses: appleboy/ssh-action@master
