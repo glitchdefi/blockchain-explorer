@@ -1,0 +1,31 @@
+name: Upload Website
+
+on:
+  push:
+    branches:
+    - prod_v2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Build app
+      run: yarn build
+      
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: copy build to testnet server
+      run: scp -rp build/* ${{ secrets.TESTNET_SERVER_USERNAME }}@${{ secrets.TESTNET_SERVER_HOST }}:/tmp/explorer-build/
+    - name: deploy explorer testnet-v2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.TESTNET_SERVER_HOST }}
+        username: ${{ secrets.TESTNET_SERVER_USERNAME }}
+        key: ${{ secrets.TESTNET_SERVER_KEY }}
+        port: 22
+        script: |
+          sudo cp -rp /tmp/explorer-build/* /usr/share/nginx/html/explorer/
