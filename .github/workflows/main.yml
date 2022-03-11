@@ -31,7 +31,7 @@ jobs:
         username: ${{ secrets.TESTNET_SERVER_USERNAME }}
         key: ${{ secrets.TESTNET_SERVER_KEY }}
         port: 22
-        source: "build/*"
+        source: "build/"
         target: "/tmp/explorer-build/"
     - name: deploy explorer testnet-v2
       uses: appleboy/ssh-action@master
