@@ -21,11 +21,11 @@ jobs:
     - name: copy build to testnet server
       run: scp -rp build/* ${{ secrets.TESTNET_SERVER_USERNAME }}@${{ secrets.TESTNET_SERVER_HOST }}:/tmp/explorer-build/
     - name: deploy explorer testnet-v2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.TESTNET_SERVER_HOST }}
-          username: ${{ secrets.TESTNET_SERVER_USERNAME }}
-          key: ${{ secrets.TESTNET_SERVER_KEY }}
-          port: 22
-          script: |
-            sudo cp -rp /tmp/explorer-build/* /usr/share/nginx/html/explorer/
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.TESTNET_SERVER_HOST }}
+        username: ${{ secrets.TESTNET_SERVER_USERNAME }}
+        key: ${{ secrets.TESTNET_SERVER_KEY }}
+        port: 22
+        script: |
+          sudo cp -rp /tmp/explorer-build/* /usr/share/nginx/html/explorer/
