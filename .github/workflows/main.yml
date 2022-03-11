@@ -24,8 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: copy build to testnet server
-      run: scp -o StrictHostKeyChecking=no -rp build/* ec2-user@13.214.226.173:/tmp/explorer-build/
     - name: deploy explorer testnet-v2
       uses: appleboy/ssh-action@master
       with:
@@ -33,5 +31,7 @@ jobs:
         username: ${{ secrets.TESTNET_SERVER_USERNAME }}
         key: ${{ secrets.TESTNET_SERVER_KEY }}
         port: 22
+        source: "build/*"
+        target: "/tmp/explorer-build/"
         script: |
           sudo cp -rp /tmp/explorer-build/* /usr/share/nginx/html/explorer/
