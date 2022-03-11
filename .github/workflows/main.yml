@@ -33,5 +33,3 @@ jobs:
         port: 22
         source: "build/*"
         target: "/tmp/explorer-build/"
-        script: |
-          sudo cp -rp /tmp/explorer-build/* /usr/share/nginx/html/explorer/
