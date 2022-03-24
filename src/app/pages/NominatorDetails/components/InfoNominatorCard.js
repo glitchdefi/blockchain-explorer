@@ -81,7 +81,7 @@ export function InfoNominatorCard({
                 isCopy={!!evm_address}
                 label="EVM address"
                 value={evm_address}
-                dataTip={evm_address}
+                dataTip="Linked account managed by EVM pallet."
               />
             )}
 

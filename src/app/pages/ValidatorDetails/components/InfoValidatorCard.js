@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 import { toBN, toWei } from "web3-utils";
 
 // Utils
-import { formatAmount, formatNumber, formatWei, numberWithCommas } from "src/utils/numbers";
+import {
+  formatAmount,
+  formatNumber,
+  formatWei,
+  numberWithCommas,
+} from "src/utils/numbers";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -76,7 +81,7 @@ export function InfoValidatorCard({
                 isCopy={!!evm_address}
                 label="EVM address"
                 value={evm_address}
-                dataTip={evm_address}
+                dataTip="Linked account managed by EVM pallet."
               />
             )}
 

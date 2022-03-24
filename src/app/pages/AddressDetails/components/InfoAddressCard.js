@@ -51,8 +51,6 @@ export function InfoAddressCard({
   const totalBalanceToUsd =
     totalBalance && currentPrice ? totalBalance * currentPrice : "0";
 
-  console.log(formatNumber(totalBalanceToUsd));
-
   // const totalReceivedToUsd =
   //   total_received && currentPrice
   //     ? formatWei(total_received, false) * currentPrice
@@ -86,7 +84,7 @@ export function InfoAddressCard({
                 isCopy={!!evm_address}
                 label="EVM address"
                 value={evm_address}
-                dataTip={evm_address}
+                dataTip="Linked account managed by EVM pallet."
               />
             )}
             <InfoRow
