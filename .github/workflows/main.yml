@@ -11,15 +11,23 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Install app
+      uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: install
     - name: Build app
-      run: yarn build
-      
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: copy build to testnet server
-      run: scp -rp build/* ${{ secrets.TESTNET_SERVER_USERNAME }}@${{ secrets.TESTNET_SERVER_HOST }}:/tmp/explorer-build/
+      uses: borales/actions-yarn@v2.3.0
+      with:
+        cmd: build
+    - name: copy explorer testnet-v2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.TESTNET_SERVER_HOST }}
+        username: ${{ secrets.TESTNET_SERVER_USERNAME }}
+        key: ${{ secrets.TESTNET_SERVER_KEY }}
+        port: 22
+        source: "./build/"
+        target: "/tmp/explorer-build/"
     - name: deploy explorer testnet-v2
       uses: appleboy/ssh-action@master
       with:
