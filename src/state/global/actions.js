@@ -14,6 +14,7 @@ export const fetchSearchResult = (params) => async (dispatch) => {
       const key = Object.keys(data);
       const newData = {
         type: key?.length ? key[0] : null,
+        data,
       };
       dispatch(searchResultLoaded(newData));
     } else {

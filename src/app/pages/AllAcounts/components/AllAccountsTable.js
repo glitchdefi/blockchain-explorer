@@ -18,7 +18,8 @@ import { Link } from "src/app/components/Link";
 import { Text } from "src/app/components/Text";
 
 export const AllAccountsTable = React.memo((props) => {
-  const { loading, total, onChange, data, ...rest } = props;
+  const { loading, total, onChange, data, pageInfo, ...rest } = props;
+  const { page_size, page_index } = pageInfo || {};
 
   return (
     <Table loading={loading} total={total} onChange={onChange} {...rest}>
@@ -39,17 +40,19 @@ export const AllAccountsTable = React.memo((props) => {
             const { glitch_address, balance, evm_address, tx_count } = o || {};
             return (
               <TableRow key={i}>
-                <TableCell>{i + 1}</TableCell>
+                <TableCell>{page_size * (page_index - 1) + i + 1}</TableCell>
                 <TableCell>
                   <div>
-                    <Link primary href={`/account/${glitch_address}`}>
-                      {glitch_address}
-                    </Link>
+                    {glitch_address && (
+                      <Link primary href={`/account/${glitch_address}`}>
+                        {glitch_address}
+                      </Link>
+                    )}
                     {evm_address && (
                       <div tw="flex items-center">
                         <Link
                           tw="text-sm text-color6"
-                          href={`/account/${evm_address}`}
+                          href={`/account/${glitch_address || evm_address}`}
                         >
                           {evm_address}
                         </Link>

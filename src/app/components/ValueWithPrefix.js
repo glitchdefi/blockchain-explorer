@@ -9,6 +9,7 @@ export function ValueWithPrefix({
   prefix,
   valueStyles,
   prefixStyles,
+  isCustomFormat,
   ...props
 }) {
   return (
@@ -19,7 +20,7 @@ export function ValueWithPrefix({
       </Text> */}
       {usd ? (
         <Text tw="ml-2 text-color6 dark:text-color5">
-          ~ {usd ? formatDollarAmount(usd, 2, false) : 0} USD
+          ~ {isCustomFormat ? usd : formatDollarAmount(usd, 2, false)} USD
         </Text>
       ) : null}
     </Wrapper>

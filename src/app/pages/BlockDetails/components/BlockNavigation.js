@@ -8,7 +8,12 @@ import { BlockIcon } from "src/app/components/Svg/Icons";
 
 export function BlockNavigation({ currentBlock, nextBlock }) {
   return (
-    <div tw="lg:(flex w-2/5 justify-between) mb-6">
+    <div
+      css={[
+        tw`lg:(flex w-2/3 justify-between) mb-6`,
+        !nextBlock && tw`lg:w-2/5`,
+      ]}
+    >
       {currentBlock > 0 && (
         <NavigationItem label="Previous" height={currentBlock - 1} />
       )}

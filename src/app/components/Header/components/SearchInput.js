@@ -30,9 +30,15 @@ export function SearchInput() {
   useEffect(() => {
     if (!isSearching && searchResult && !searchError) {
       if (searchResult?.type === "tx") history.push(`/tx/${text.trim()}`);
-      if (searchResult?.type === "block") history.push(`/block/${text.trim()}`);
-      if (searchResult?.type === "wallet")
-        history.push(`/account/${text.trim()}`);
+      if (searchResult?.type === "block") {
+        const { block } = searchResult?.data || {};
+        block?.length && history.push(`/block/${block[0].index}`);
+      }
+      if (searchResult?.type === "wallet") {
+        const { wallet } = searchResult?.data || {};
+        wallet?.length &&
+          history.push(`/account/${wallet[0].address || wallet[0].evmAddress}`);
+      }
       onClearText();
     }
 

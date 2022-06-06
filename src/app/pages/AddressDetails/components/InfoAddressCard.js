@@ -1,11 +1,12 @@
 import React from "react";
 import tw, { css, styled } from "twin.macro";
 import PropTypes from "prop-types";
+import { toBN, toWei } from "web3-utils";
 
 import QRCode from "qrcode.react";
 
 // Utils
-import { formatWei } from "src/utils/numbers";
+import { formatNumber, formatWei, numberWithCommas } from "src/utils/numbers";
 import { formatDateTimeUTC, formatTimeAgo, FORMAT_2 } from "src/utils/dates";
 
 // Hooks
@@ -28,34 +29,47 @@ export function InfoAddressCard({
   data,
   currentPrice,
 }) {
-  const { evm_address, total_received, total_spend, total_tx, last_tx_date } =
-    data || {};
+  const {
+    evm_address,
+    // total_received,
+    // total_spend,
+    glitch_address,
+    total_tx,
+    last_tx_date,
+    type,
+  } = data || {};
 
   const { free, reserved } = balance || {};
 
-  const totalBalance =
-    parseFloat(formatWei(free, false)) + parseFloat(formatWei(reserved, false));
+  const totalBalance = formatWei(
+    toBN(toWei(formatWei(free, false))).add(
+      toBN(toWei(formatWei(reserved, false)))
+    ),
+    false
+  );
 
   const totalBalanceToUsd =
     totalBalance && currentPrice ? totalBalance * currentPrice : "0";
 
-  const totalReceivedToUsd =
-    total_received && currentPrice
-      ? formatWei(total_received, false) * currentPrice
-      : "0";
+  // const totalReceivedToUsd =
+  //   total_received && currentPrice
+  //     ? formatWei(total_received, false) * currentPrice
+  //     : "0";
 
-  const totalSpentToUsd =
-    total_spend && currentPrice
-      ? formatWei(total_spend, false) * currentPrice
-      : "0";
+  // const totalSpentToUsd =
+  //   total_spend && currentPrice
+  //     ? formatWei(total_spend, false) * currentPrice
+  //     : "0";
 
   return (
     <Wrapper>
       <div tw="flex-1 order-2 lg:order-1">
-        <Flex tw="mb-4">
-          <Address>{address}</Address>
-          <CopyButton text={address} tw="ml-3" />
-        </Flex>
+        {glitch_address && (
+          <Flex tw="mb-4">
+            <Address>{address}</Address>
+            <CopyButton text={address} tw="ml-3" />
+          </Flex>
+        )}
 
         {loading ? (
           <>
@@ -65,25 +79,26 @@ export function InfoAddressCard({
           </>
         ) : (
           <>
-            <InfoRow
-              isCopy={!!evm_address}
-              label="EVM address"
-              value={evm_address}
-              dataTip={evm_address}
-            />
-
+            {evm_address && (
+              <InfoRow
+                isCopy={!!evm_address}
+                label="EVM address"
+                value={evm_address}
+                dataTip="Linked account managed by EVM pallet."
+              />
+            )}
             <InfoRow
               label="Balance"
               customValueComp={
                 <Value
-                  value={totalBalance}
-                  usd={totalBalanceToUsd}
+                  value={numberWithCommas(totalBalance)}
+                  usd={formatNumber(totalBalanceToUsd, 2)}
                   price={currentPrice}
                 />
               }
               dataTip="Sum of the value of all tokens in the account."
             />
-            <InfoRow
+            {/* <InfoRow
               label="Total Received"
               customValueComp={
                 <Value
@@ -99,13 +114,14 @@ export function InfoAddressCard({
                 <Value value={formatWei(total_spend)} usd={totalSpentToUsd} />
               }
               dataTip="The amount spent on this address."
-            />
-
-            <InfoRow
-              label="Current role"
-              value={null}
-              dataTip="Validator or Nomidator of this address. (the person who successfully validates transactions and confirms this block in Glitch network)"
-            />
+            /> */}
+            {type !== null && (
+              <InfoRow
+                label="Current role"
+                value={type === 0 ? "Validator" : "Noninator"}
+                dataTip="Validator or Nomidator of this address. (the person who successfully validates transactions and confirms this block in Glitch network)"
+              />
+            )}
             <InfoRow
               label="Transactions"
               value={`${total_tx} Txn`}
@@ -155,7 +171,7 @@ const Value = ({ value, usd, price }) => {
           resizeMode
           width={24}
         />
-        <ValueWithPrefix tw="ml-3" value={value} usd={usd} />
+        <ValueWithPrefix tw="ml-3" isCustomFormat value={value} usd={usd} />
       </Flex>
 
       {price && (
