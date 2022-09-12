@@ -13,9 +13,9 @@ export const DailyAverageBlockTime = React.memo(({ loading, data }) => {
       data={data}
       xAxis={{ dataKey: "formatTime" }}
       line={{ dataKey: "aveBlockTime" }}
-      yAxis={{
-        tickFormatter: (val) => (val === 0 ? val : formatNumber(val, 0, true)),
-      }}
+      // yAxis={{
+      //   tickFormatter: (val) => (val === 0 ? val : formatNumber(val, 0, true)),
+      // }}
       tooltipContent={({ payload, active }) => {
         if (active) {
           const data = payload?.length ? payload[0].payload : {};
