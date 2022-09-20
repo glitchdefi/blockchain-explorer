@@ -61,6 +61,7 @@
     "socket.io-client": "^4.1.2",
     "styled-components": "^5.2.3",
     "tailwindcss": "^2.1.1",
+    "tar": "^6.1.11",
     "twin.macro": "^2.3.2",
     "use-constant": "^1.1.0",
     "web-vitals": "^1.0.1",
@@ -77,7 +78,9 @@
     "start-prod": "env-cmd -f .env.production react-scripts start",
     "build-prod": "env-cmd -f .env.production react-scripts build",
     "start-test": "env-cmd -f .env.test react-scripts start",
-    "build-test": "CI=false env-cmd -f .env.test react-scripts build"
+    "build-test": "CI=false env-cmd -f .env.test react-scripts build",
+    "zip": "rm -rf build.tar.gz && tar -zcvf build.tar.gz build",
+    "unzip": "rm -rf build && tar -xf build.tar.gz"
   },
   "eslintConfig": {
     "extends": [

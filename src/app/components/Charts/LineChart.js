@@ -49,6 +49,7 @@ export const LineChart = ({
           axisLine={false}
           tickSize={10}
           tick={tickStyles}
+          domain={[0, "auto"]}
           {...yAxis}
         />
         <Tooltip cursor={false} content={tooltipContent} />
