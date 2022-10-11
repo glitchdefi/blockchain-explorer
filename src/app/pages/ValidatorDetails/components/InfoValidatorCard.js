@@ -118,7 +118,7 @@ export function InfoValidatorCard({
             {type !== null && (
               <InfoRow
                 label="Current role"
-                value={type === 0 ? "Validator" : "Noninator"}
+                value={type === 0 ? "Validator" : "Nominator"}
                 dataTip="Validator or Nomidator of this address. (the person who successfully validates transactions and confirms this block in Glitch network)"
               />
             )}
