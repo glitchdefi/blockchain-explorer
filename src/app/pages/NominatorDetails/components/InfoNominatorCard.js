@@ -4,12 +4,7 @@ import PropTypes from "prop-types";
 import { toBN, toWei } from "web3-utils";
 
 // Utils
-import {
-  formatAmount,
-  formatNumber,
-  formatWei,
-  numberWithCommas,
-} from "src/utils/numbers";
+import { formatAmount, formatNumber, formatWei, numberWithCommas } from "src/utils/numbers";
 
 // Hooks
 import { useTheme } from "src/hooks/useTheme";
@@ -23,39 +18,25 @@ import { Image } from "src/app/components/Image";
 import { CloseCircleIcon } from "src/app/components/Svg/Icons";
 import { SkeletonLoading } from "./SkeletonLoading";
 
-export function InfoNominatorCard({
-  loading,
-  address,
-  balance,
-  data,
-  currentPrice,
-}) {
+export function InfoNominatorCard({ loading, address, balance, data, currentPrice }) {
   const { evm_address, total_tx, type } = data || {};
 
   const { free, reserved, miscFrozen } = balance || {};
 
   const totalBalance = formatWei(
-    toBN(toWei(formatWei(free, false))).add(
-      toBN(toWei(formatWei(reserved, false)))
-    ),
+    toBN(toWei(formatWei(free, false))).add(toBN(toWei(formatWei(reserved, false)))),
     false
   );
-  const totalBalanceToUsd =
-    totalBalance && currentPrice ? totalBalance * currentPrice : "0";
+  const totalBalanceToUsd = totalBalance && currentPrice ? totalBalance * currentPrice : "0";
 
   const available = formatWei(
-    toBN(toWei(formatWei(free, false))).sub(
-      toBN(toWei(formatWei(miscFrozen, false)))
-    ),
+    toBN(toWei(formatWei(free, false))).sub(toBN(toWei(formatWei(miscFrozen, false)))),
     false
   );
-  const availableToUsd =
-    available && currentPrice ? available * currentPrice : "0";
+  const availableToUsd = available && currentPrice ? available * currentPrice : "0";
 
   const locked = formatWei(
-    toBN(toWei(formatWei(reserved, false))).add(
-      toBN(toWei(formatWei(miscFrozen, false)))
-    ),
+    toBN(toWei(formatWei(reserved, false))).add(toBN(toWei(formatWei(miscFrozen, false)))),
     false
   );
   const lockedToUsd = locked && currentPrice ? locked * currentPrice : "0";
@@ -85,7 +66,7 @@ export function InfoNominatorCard({
               />
             )}
 
-            {/* <InfoRow
+            <InfoRow
               label="Balance"
               customValueComp={
                 <Value
@@ -98,22 +79,12 @@ export function InfoNominatorCard({
             />
             <InfoRow
               label="Available"
-              customValueComp={
-                <Value
-                  value={numberWithCommas(available)}
-                  usd={formatNumber(availableToUsd, 2)}
-                />
-              }
+              customValueComp={<Value value={numberWithCommas(available)} usd={formatNumber(availableToUsd, 2)} />}
             />
             <InfoRow
               label="Locked"
-              customValueComp={
-                <Value
-                  value={numberWithCommas(locked)}
-                  usd={formatNumber(lockedToUsd, 2)}
-                />
-              }
-            /> */}
+              customValueComp={<Value value={numberWithCommas(locked)} usd={formatNumber(lockedToUsd, 2)} />}
+            />
 
             {type !== null && (
               <InfoRow
@@ -151,20 +122,14 @@ const Value = ({ value, usd, price }) => {
       <Flex>
         <Image
           tw="mt-1"
-          src={
-            isDark
-              ? "/images/gl_logo_no_text.png"
-              : "/images/gl_logo_no_text_light.png"
-          }
+          src={isDark ? "/images/gl_logo_no_text.png" : "/images/gl_logo_no_text_light.png"}
           resizeMode
           width={24}
         />
         <ValueWithPrefix tw="ml-3" isCustomFormat value={value} usd={usd} />
       </Flex>
 
-      {price && (
-        <Text tw="ml-2 text-color6 dark:text-color5">{`• ($${price}/GLCH)`}</Text>
-      )}
+      {price && <Text tw="ml-2 text-color6 dark:text-color5">{`• ($${price}/GLCH)`}</Text>}
     </Flex>
   );
 };
