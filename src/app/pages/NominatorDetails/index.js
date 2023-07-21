@@ -4,24 +4,14 @@ import { useTranslation } from "react-i18next";
 import tw from "twin.macro";
 
 // Hooks
-import {
-  useAddressDetails,
-  useAddressSlice,
-  useAddressTxs,
-  useBalance,
-} from "src/state/address/hooks";
+import { useAddressDetails, useAddressSlice, useAddressTxs, useBalance } from "src/state/address/hooks";
 import { useAllGlitchInfo, usePriceSlice } from "src/state/price/hooks";
 
 // Components
 import { Text } from "src/app/components/Text";
 import { InfoNominatorCard } from "./components/InfoNominatorCard";
 import { TransactionsTable } from "../Transactions/components/TransactionsTable";
-import {
-  TabContainer,
-  Tabs,
-  Tab,
-  TabPanel,
-} from "src/app/components/Tab/Horizontal";
+import { TabContainer, Tabs, Tab, TabPanel } from "src/app/components/Tab/Horizontal";
 import { BalanceTransferTable } from "src/app/components/Shared/BalanceTransferTable";
 import { AuthoredBlocksTable } from "src/app/components/Shared/AuthoredBlocksTable";
 import { AccountLifeCycleTable } from "src/app/components/Shared/AccountLifeCycleTable";
@@ -38,8 +28,7 @@ export function NominatorDetailsPage() {
   const history = useHistory();
   const [params, setParams] = useState();
   const { address } = useParams();
-  const { isFetchingAddressDetails, addressDetails } =
-    useAddressDetails(address);
+  const { isFetchingAddressDetails, addressDetails } = useAddressDetails(address);
   const { isFetchingBalance, balance } = useBalance(address);
   const { isFetchingAddressTxs, data, total } = useAddressTxs(address, params);
   const { allGlitchInfo } = useAllGlitchInfo();
