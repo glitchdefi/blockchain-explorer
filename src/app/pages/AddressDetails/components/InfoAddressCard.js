@@ -129,10 +129,10 @@ export function InfoAddressCard({
             />
             <InfoRow
               label="Last transaction"
-              value={`${formatTimeAgo(last_tx_date)} • (${formatDateTimeUTC(
+              value={(last_tx_date) ? `${formatTimeAgo(last_tx_date)} • (${formatDateTimeUTC(
                 last_tx_date,
                 FORMAT_2
-              )} +UTC)`}
+              )} +UTC)` : `N/A`}
               dataTip="The last time in which the address did transaction."
             />
           </>
